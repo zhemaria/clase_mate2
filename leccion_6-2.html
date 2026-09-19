@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<!-- Lección 6.2 · Depreciación y otras aplicaciones financieras · Spanish ASE Math, Nivel 2 · © José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago. Licencia Creative Commons CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es) -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 6.2 · Depreciación y otras aplicaciones financieras</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<meta name="dcterms.license" content="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root {
+    --tema:   #00695c;
+    --tema-d: #004d40;
+    --tema-bg:#b2dfdb;
+    --tema-bg2:#e6f3f1;
+    --tema-soft:#e0f2f1;
+    --txt:    #222;
+    --bg:     #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+  a { color: #00574b; }
+  :focus-visible { outline: 3px solid #1565c0; outline-offset: 2px; }
+
+  header.principal {
+    background: #00695c;
+    background: linear-gradient(135deg, #004d40 0%, #00695c 60%, #00796b 100%);
+    color: #fff; padding: 30px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(0,77,64,.28);
+  }
+  header.principal .ruta { font-size: 13px; letter-spacing: .3px; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; line-height: 1.3; }
+  header.principal .meta { font-size: 14px; }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-soft); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 6px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+  p { margin: 10px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #fff;
+    font-size: 13px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 6px;
+  }
+  .paso { margin: 7px 0; padding-left: 32px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 1px;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+
+  .caja-tip {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #1b5e20; font-size: 15px;
+  }
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5C3900;
+  }
+  .caja-atencion strong { color: #5C3900; }
+
+  .formula-card {
+    background: var(--tema-soft); border: 2px solid var(--tema);
+    border-radius: 12px; padding: 16px; margin: 14px 0; text-align: center;
+  }
+  .formula-card .formula {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 24px; font-weight: 700; color: var(--tema-d); margin: 6px 0;
+  }
+  .formula-card .leyenda { font-size: 14px; color: #333; margin-top: 8px; }
+  .formula-card .leyenda strong { color: var(--tema-d); }
+  .formulas-tres { display: flex; gap: 12px; flex-wrap: wrap; margin: 14px 0; }
+  .formulas-tres .formula-card { flex: 1; min-width: 200px; margin: 0; }
+  .formulas-tres .formula { font-size: 20px; }
+
+  .tabla-wrap { overflow-x: auto; }
+  table.tabla-fin {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; background: #fff;
+  }
+  table.tabla-fin caption {
+    caption-side: top; text-align: left; font-weight: 600; color: var(--tema-d);
+    padding: 4px 0 8px; font-size: 14px;
+  }
+  table.tabla-fin th, table.tabla-fin td {
+    border: 1px solid #d6d6d6; padding: 8px 11px; text-align: center;
+  }
+  table.tabla-fin th { background: var(--tema); color: #fff; }
+  table.tabla-fin td:first-child { background: var(--tema-soft); font-weight: 600; color: var(--tema-d); }
+  table.tabla-fin tr.destacada td { background: #e8f5e9; font-weight: 700; }
+  table.tabla-fin td.izq { text-align: left; }
+
+  .comparacion { display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0; }
+  .tipo-fin { flex: 1; min-width: 260px; border-radius: 10px; padding: 14px 16px; }
+  .tipo-crece { background: #e8f5e9; border-left: 5px solid #2e7d32; }
+  .tipo-crece h3 { color: #1b5e20; margin-top: 0; }
+  .tipo-baja { background: #fff3e0; border-left: 5px solid #bf360c; }
+  .tipo-baja h3 { color: #5C3900; margin-top: 0; }
+
+  .grafico-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+  .grafico-wrap svg { max-width: 100%; height: auto; }
+  .grafico-wrap .pie-graf { font-size: 14px; color: #444; text-align: left; }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #d0d0d0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); background: #f1f8f7; font-weight: 600; }
+  .fb { margin-top: 6px; font-size: 14px; font-weight: 600; }
+  .fb:empty { display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #b71c1c; }
+
+  .fila-num { margin: 12px 0; }
+  .campo-texto {
+    font-size: 16px; padding: 6px 10px; border: 2px solid #9e9e9e;
+    border-radius: 7px; width: 130px; font-family: inherit;
+  }
+  .campo-texto:focus { border-color: var(--tema); }
+  table.tabla-fin .campo-texto { width: 110px; }
+  .btn {
+    background: var(--tema); color: #fff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #546e7a; }
+  .btn.sec:hover { background: #37474f; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 12px 16px; font-size: 15px; }
+  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo h4 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h4 { color: #0d47a1; }
+  .modo-virt h4 { color: #4a148c; }
+
+  .actividad { margin-bottom: 22px; }
+  .actividad > h3 {
+    color: var(--tema-d); font-size: 16px; margin: 0 0 8px;
+    background: var(--tema-soft); padding: 7px 14px; border-radius: 7px;
+  }
+
+  details.docente {
+    background: #ede7f6; border-left: 5px solid #5e35b1; border-radius: 0 8px 8px 0;
+    padding: 8px 16px; margin: 12px 0; font-size: 15px;
+  }
+  details.docente summary { cursor: pointer; font-weight: 700; color: #4527a0; }
+  details.docente[open] summary { margin-bottom: 6px; }
+
+  .enlace-act {
+    display: inline-block; background: #fff; border: 2px solid var(--tema);
+    color: var(--tema-d); font-weight: 700; padding: 8px 16px; border-radius: 8px;
+    text-decoration: none; margin: 6px 8px 6px 0;
+  }
+  .enlace-act:hover { background: var(--tema-soft); }
+
+  .caja-tarea {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 14px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 4px; color: #4527a0; }
+
+  .quiz {
+    background: #fff; border: 2px solid var(--tema);
+    border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0;
+  }
+  .quiz h2 { color: var(--tema-d); }
+  .quiz .ficha { font-size: 14px; color: #333; }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center;
+  }
+  #resultado-quiz:empty { display: none; }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 14px; background: #fff;
+  }
+  table.tabla-rubrica caption { text-align: left; padding-bottom: 8px; color: #333; font-size: 14px; }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #d6d6d6; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica thead th { background: var(--tema); color: #fff; font-size: 13px; }
+  table.tabla-rubrica tbody th { background: var(--tema-soft); color: var(--tema-d); text-align: left; }
+
+  .bilingue { font-size: 14px; }
+  .bilingue td:first-child { text-align: left; }
+  .bilingue td { text-align: left !important; }
+  .bilingue td:last-child { font-style: italic; }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 20px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #333;
+    font-size: 13px; border-top: 1px solid #ccc; margin-top: 20px;
+  }
+  @media (max-width: 600px) {
+    .contenedor { padding: 14px; }
+    .bloque { padding: 4px 14px 14px; }
+    header.principal h1 { font-size: 21px; }
+  }
+  @media print {
+    body { background: #fff; }
+    .btn, .practica .fb { display: none; }
+    details.docente { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+  <header class="principal">
+    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 6 · Matemáticas financieras y conversiones de medidas</div>
+    <h1>Lección 6.2 · Depreciación y otras aplicaciones financieras</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Explicar qué significan el valor inicial, el valor residual, la vida útil y el valor contable de un bien.</li>
+      <li>Construir la tabla de valor contable año por año antes de usar la fórmula.</li>
+      <li>Calcular la depreciación lineal anual: (valor inicial − valor residual) ÷ vida útil, y su tasa anual.</li>
+      <li>Determinar el valor contable de un bien en un año específico.</li>
+      <li>Resolver problemas financieros que combinan porcentaje, interés simple y depreciación.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Conexión con la lección anterior.</strong> En la Lección 6.1, el dinero ahorrado crecía en una <strong>cantidad fija</strong> cada año gracias al interés simple. Muchas cosas que se compran siguen el camino contrario: un carro, una computadora o una herramienta de trabajo <strong>pierden</strong> valor con el uso y el paso del tiempo. Cuando esa pérdida es la misma cada año, se llama <strong>depreciación lineal</strong>.</p>
+    <div class="comparacion">
+      <div class="tipo-fin tipo-crece">
+        <h3>Interés simple <span aria-hidden="true">↑</span></h3>
+        <p>El dinero <strong>gana</strong> la misma cantidad cada año.</p>
+      </div>
+      <div class="tipo-fin tipo-baja">
+        <h3>Depreciación lineal <span aria-hidden="true">↓</span></h3>
+        <p>El bien <strong>pierde</strong> la misma cantidad cada año.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="seccion">1. Vocabulario de la depreciación</h2>
+  <div class="bloque">
+    <ul>
+      <li><strong>Activo o bien:</strong> algo de valor que se compra para usarlo varios años (un carro, una máquina, una computadora).</li>
+      <li><strong>Valor inicial (V₀):</strong> lo que costó el bien al comprarlo.</li>
+      <li><strong>Vida útil (n):</strong> los años que se espera usar el bien.</li>
+      <li><strong>Valor residual (Vr):</strong> lo que todavía valdrá al final de su vida útil; por ejemplo, lo que pagaría alguien por él como usado o por sus piezas.</li>
+      <li><strong>Depreciación anual (D):</strong> el valor que pierde cada año.</li>
+      <li><strong>Valor contable:</strong> lo que vale el bien, según los cálculos, al final de un año determinado.</li>
+    </ul>
+    <div class="tabla-wrap">
+      <table class="tabla-fin bilingue">
+        <caption>Vocabulario bilingüe: así aparecen estos términos en documentos en inglés</caption>
+        <thead><tr><th scope="col">Español</th><th scope="col">Inglés</th></tr></thead>
+        <tbody>
+          <tr><td>depreciación lineal</td><td>straight-line depreciation</td></tr>
+          <tr><td>activo o bien</td><td>asset</td></tr>
+          <tr><td>valor residual</td><td>salvage value (residual value)</td></tr>
+          <tr><td>vida útil</td><td>useful life</td></tr>
+          <tr><td>valor contable</td><td>book value</td></tr>
+          <tr><td>depreciación acumulada</td><td>accumulated depreciation</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2 class="seccion">2. Primero la tabla, después la fórmula</h2>
+  <div class="bloque">
+    <p>Antes de usar una fórmula, conviene ver el patrón con una tabla.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1 · La computadora de la oficina</span>
+      <p>Una oficina compra una computadora por <strong>$1,800</strong>. Se espera usarla <strong>4 años</strong>, y al final se podrá vender en <strong>$200</strong>. ¿Cuánto vale al final de cada año?</p>
+      <div class="paso"><span class="n">1</span> ¿Cuánto valor se pierde en total? 1,800 − 200 = 1,600.</div>
+      <div class="paso"><span class="n">2</span> Esa pérdida se reparte en partes iguales entre los 4 años: 1,600 ÷ 4 = 400 por año.</div>
+      <div class="paso"><span class="n">3</span> Cada año se restan $400 al valor del año anterior.</div>
+    </div>
+
+    <div class="tabla-wrap">
+      <table class="tabla-fin">
+        <caption>Valor contable de la computadora año por año</caption>
+        <thead>
+          <tr><th scope="col">Año</th><th scope="col">Depreciación del año ($)</th><th scope="col">Depreciación acumulada ($)</th><th scope="col">Valor contable ($)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0</td><td>—</td><td>0</td><td>1,800</td></tr>
+          <tr><td>1</td><td>400</td><td>400</td><td>1,400</td></tr>
+          <tr><td>2</td><td>400</td><td>800</td><td>1,000</td></tr>
+          <tr><td>3</td><td>400</td><td>1,200</td><td>600</td></tr>
+          <tr class="destacada"><td>4</td><td>400</td><td>1,600</td><td>200</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grafico-wrap">
+      <svg width="600" height="250" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica de barras: el valor de la computadora baja 400 dólares cada año, de 1,800 en el año 0 a 200 en el año 4, que es el valor residual.">
+        <g font-family="Segoe UI, sans-serif" font-size="12" fill="#333">
+          <line x1="70" y1="210" x2="490" y2="210" stroke="#444" stroke-width="2"/>
+          <line x1="70" y1="20" x2="70" y2="210" stroke="#444" stroke-width="2"/>
+          <line x1="70" y1="190" x2="490" y2="190" stroke="#bf360c" stroke-dasharray="5 4"/>
+          <text x="496" y="186" fill="#bf360c">Valor residual</text><text x="496" y="201" fill="#bf360c">$200</text>
+          <line x1="70" y1="120" x2="490" y2="120" stroke="#ccc" stroke-dasharray="4 4"/>
+          <line x1="70" y1="30" x2="490" y2="30" stroke="#ccc" stroke-dasharray="4 4"/>
+          <text x="62" y="214" text-anchor="end">$0</text>
+          <text x="62" y="124" text-anchor="end">$900</text>
+          <text x="62" y="34" text-anchor="end">$1,800</text>
+          <text x="280" y="242" text-anchor="middle">Años</text>
+          <rect x="95" y="30" width="50" height="180" fill="#00695c"/><text x="120" y="226" text-anchor="middle">0</text>
+          <rect x="175" y="70" width="50" height="140" fill="#00695c"/><text x="200" y="226" text-anchor="middle">1</text>
+          <rect x="255" y="110" width="50" height="100" fill="#00695c"/><text x="280" y="226" text-anchor="middle">2</text>
+          <rect x="335" y="150" width="50" height="60" fill="#00695c"/><text x="360" y="226" text-anchor="middle">3</text>
+          <rect x="415" y="190" width="50" height="20" fill="#00695c"/><text x="440" y="226" text-anchor="middle">4</text>
+        </g>
+      </svg>
+      <p class="pie-graf">Cada barra es $400 más baja que la anterior. El valor nunca baja del valor residual.</p>
+    </div>
+  </div>
+
+  <h2 class="seccion">3. Las fórmulas de la depreciación lineal</h2>
+  <div class="bloque">
+    <p>Los pasos del Ejemplo 1 se resumen en dos fórmulas.</p>
+    <div class="formula-card">
+      <div class="formula">D = (V₀ − Vr) ÷ n</div>
+      <div class="leyenda"><strong>D</strong> = depreciación anual &nbsp;|&nbsp; <strong>V₀</strong> = valor inicial &nbsp;|&nbsp; <strong>Vr</strong> = valor residual &nbsp;|&nbsp; <strong>n</strong> = vida útil en años</div>
+    </div>
+    <div class="formula-card">
+      <div class="formula">Valor contable en el año t = V₀ − D × t</div>
+      <div class="leyenda">D × t es la <strong>depreciación acumulada</strong> hasta ese año.</div>
+    </div>
+
+    <h3>La tasa anual de depreciación</h3>
+    <p>Si un bien dura 4 años, cada año pierde <strong>1 de 4 partes</strong> del valor que se va a depreciar: 1 ÷ 4 = 0.25 = 25% por año. En general, la tasa anual de depreciación lineal es <strong>1 ÷ n</strong>. En la computadora: 25% de $1,600 = $400, el mismo resultado.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2 · Equipo de trabajo</span>
+      <p>Un taller de costura compra una máquina industrial por $3,000. Su vida útil es de 5 años y su valor residual, $500. Calcula la depreciación anual, la tasa anual y el valor contable al final del año 3.</p>
+      <div class="paso"><span class="n">1</span> D = (3,000 − 500) ÷ 5 = 2,500 ÷ 5 = 500 por año.</div>
+      <div class="paso"><span class="n">2</span> Tasa anual = 1 ÷ 5 = 0.20 = 20% por año.</div>
+      <div class="paso"><span class="n">3</span> Valor contable en el año 3 = 3,000 − 500 × 3 = 3,000 − 1,500 = 1,500.</div>
+      <p><strong>Respuesta:</strong> pierde $500 por año (20%) y al final del año 3 vale $1,500.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3 · ¿En qué año llega a cierto valor?</span>
+      <p>Con la máquina del Ejemplo 2: ¿al final de qué año su valor contable será de $1,000?</p>
+      <div class="paso"><span class="n">1</span> Valor que tiene que perder: 3,000 − 1,000 = 2,000.</div>
+      <div class="paso"><span class="n">2</span> Años necesarios: 2,000 ÷ 500 = 4.</div>
+      <p><strong>Respuesta:</strong> al final del año 4.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4 · Cuando el problema da un porcentaje del costo</span>
+      <p>Algunos problemas dicen, por ejemplo: «una camioneta de reparto de $30,000 se deprecia un 10% anual de su costo original». ¿Cuánto vale después de 4 años?</p>
+      <div class="paso"><span class="n">1</span> Depreciación anual: 10% de 30,000 = 30,000 × 0.10 = 3,000.</div>
+      <div class="paso"><span class="n">2</span> Valor contable en el año 4 = 30,000 − 3,000 × 4 = 30,000 − 12,000 = 18,000.</div>
+      <p><strong>Respuesta:</strong> vale $18,000. Es depreciación lineal: la pérdida es la misma cada año; solo cambia la forma de dar el dato.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Error frecuente:</strong> dividir el valor inicial entre la vida útil sin restar antes el valor residual. En el Ejemplo 2, 3,000 ÷ 5 = 600 es incorrecto: con esa cifra, la máquina terminaría valiendo $0 y no los $500 del enunciado.
+    </div>
+
+    <div class="practica" id="prac-1">
+      <h3>Práctica interactiva 1 · Completar la tabla</h3>
+      <p>Una tienda compra un refrigerador comercial por <strong>$2,600</strong>. Su vida útil es de <strong>5 años</strong> y su valor residual, <strong>$600</strong>. Calcula la depreciación anual y completa los valores contables. Escribe solo el número.</p>
+      <div class="fila-num">Depreciación anual D = $
+        <input type="text" class="campo-texto" id="r0" inputmode="decimal" data-ans="400" data-pista="(2,600 − 600) ÷ 5." aria-label="Depreciación anual">
+        <div class="fb" id="fb-r0" aria-live="polite"></div></div>
+      <div class="tabla-wrap">
+        <table class="tabla-fin">
+          <caption>Valor contable del refrigerador</caption>
+          <thead><tr><th scope="col">Año</th><th scope="col">Valor contable ($)</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>2,600</td></tr>
+            <tr><td>1</td><td><input type="text" class="campo-texto" id="r1" inputmode="decimal" data-ans="2200" data-pista="2,600 − D." aria-label="Valor contable al final del año 1"><div class="fb" id="fb-r1" aria-live="polite"></div></td></tr>
+            <tr><td>2</td><td><input type="text" class="campo-texto" id="r2" inputmode="decimal" data-ans="1800" data-pista="resta D al valor del año 1." aria-label="Valor contable al final del año 2"><div class="fb" id="fb-r2" aria-live="polite"></div></td></tr>
+            <tr><td>3</td><td><input type="text" class="campo-texto" id="r3" inputmode="decimal" data-ans="1400" data-pista="resta D al valor del año 2." aria-label="Valor contable al final del año 3"><div class="fb" id="fb-r3" aria-live="polite"></div></td></tr>
+            <tr><td>4</td><td><input type="text" class="campo-texto" id="r4" inputmode="decimal" data-ans="1000" data-pista="resta D al valor del año 3." aria-label="Valor contable al final del año 4"><div class="fb" id="fb-r4" aria-live="polite"></div></td></tr>
+            <tr><td>5</td><td><input type="text" class="campo-texto" id="r5" inputmode="decimal" data-ans="600" data-pista="al final de la vida útil debe quedar el valor residual." aria-label="Valor contable al final del año 5"><div class="fb" id="fb-r5" aria-live="polite"></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="button" class="btn" data-verificar="prac-1">Verificar</button>
+    </div>
+  </div>
+
+  <h2 class="seccion">4. Problemas financieros integrados</h2>
+  <div class="bloque">
+    <p>En la vida real, las decisiones de dinero mezclan varias ideas: el porcentaje de un impuesto, el interés de un préstamo y la pérdida de valor de lo que se compra. La estrategia es resolver <strong>cada parte por separado</strong> y después juntar los resultados.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 5 · La camioneta del negocio</span>
+      <p>Rosa pide un préstamo de $18,000 al 6% de interés simple anual, a 3 años, para comprar una camioneta para su negocio. La camioneta tiene una vida útil de 6 años y un valor residual de $3,000. Al terminar de pagar el préstamo, ¿cuánto pagó en total y cuánto vale la camioneta?</p>
+      <div class="paso"><span class="n">1</span> Parte del préstamo: I = 18,000 × 0.06 × 3 = 3,240; total pagado A = 18,000 + 3,240 = 21,240.</div>
+      <div class="paso"><span class="n">2</span> Parte de la depreciación: D = (18,000 − 3,000) ÷ 6 = 2,500 por año.</div>
+      <div class="paso"><span class="n">3</span> Valor contable en el año 3 = 18,000 − 2,500 × 3 = 10,500.</div>
+      <div class="paso"><span class="n">4</span> Interpretación: 21,240 − 10,500 = 10,740.</div>
+      <p><strong>Respuesta:</strong> Rosa pagó $21,240 y la camioneta vale $10,500. Usarla durante tres años le costó, en realidad, $10,740.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 6 · Impuesto y depreciación</span>
+      <p>Una laptop cuesta $1,200 más un impuesto sobre ventas del 10%. Se usará 3 años y al final valdrá $120. ¿Cuánto vale después de 2 años?</p>
+      <div class="paso"><span class="n">1</span> Valor inicial con impuesto (Lección 5.3): 1,200 × 1.10 = 1,320.</div>
+      <div class="paso"><span class="n">2</span> D = (1,320 − 120) ÷ 3 = 1,200 ÷ 3 = 400.</div>
+      <div class="paso"><span class="n">3</span> Valor contable en el año 2 = 1,320 − 400 × 2 = 520.</div>
+      <p><strong>Respuesta:</strong> después de 2 años vale $520.</p>
+    </div>
+
+    <div class="practica">
+      <h3>Práctica interactiva 2 · Depreciación y aplicaciones</h3>
+      <p>Selecciona la respuesta correcta. Puedes usar el teclado: tabulador para moverte y Enter para elegir.</p>
+      <div class="pregunta" data-correcta="a" data-pista="Resta primero el valor residual.">
+        <div class="enun">1. Una impresora de $900 tiene un valor residual de $100 y una vida útil de 4 años. ¿Cuál es la depreciación anual?</div>
+        <div class="opciones">
+          <div class="opcion" data-op="a">$200</div>
+          <div class="opcion" data-op="b">$225</div>
+          <div class="opcion" data-op="c">$250</div>
+        </div>
+        <div class="fb" aria-live="polite"></div>
+      </div>
+      <div class="pregunta" data-correcta="a" data-pista="Calcula D y réstalo tres veces al valor inicial.">
+        <div class="enun">2. Un taladro profesional de $450 tiene un valor residual de $50 y una vida útil de 5 años. ¿Cuál es su valor contable al final del año 3?</div>
+        <div class="opciones">
+          <div class="opcion" data-op="a">$210</div>
+          <div class="opcion" data-op="b">$240</div>
+          <div class="opcion" data-op="c">$290</div>
+        </div>
+        <div class="fb" aria-live="polite"></div>
+      </div>
+      <div class="pregunta" data-correcta="b" data-pista="La tasa anual es 1 ÷ n.">
+        <div class="enun">3. Un bien tiene una vida útil de 8 años. ¿Cuál es su tasa anual de depreciación lineal?</div>
+        <div class="opciones">
+          <div class="opcion" data-op="a">8%</div>
+          <div class="opcion" data-op="b">12.5%</div>
+          <div class="opcion" data-op="c">80%</div>
+        </div>
+        <div class="fb" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="seccion">5. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p>Las tres actividades se realizan durante las horas sincrónicas, en doble modalidad. Materiales: MyOpenMath, calculadora TI-30XS y, como consulta, la sección de problemas financieros del libro <em>Steck-Vaughn GED Mathematics</em>.</p>
+
+    <div class="actividad">
+      <h3>Actividad 1 · El auto de Juan</h3>
+      <p>Juan compró un auto en <strong>$24,000</strong>. Se espera que dure <strong>8 años</strong>, con un valor residual de <strong>$4,000</strong>.</p>
+      <ol>
+        <li>Construyan la tabla de valor contable año por año, del año 0 al año 8.</li>
+        <li>Calculen la depreciación anual y la tasa anual de depreciación.</li>
+        <li>¿Cuánto vale el auto después de 3 años? ¿Y después de 5?</li>
+        <li><strong>Decisión:</strong> Juan piensa venderlo. ¿Le conviene venderlo a los 3 años o a los 5? Justifiquen con números y mencionen qué otros factores tomarían en cuenta.</li>
+      </ol>
+      <div class="modalidad">
+        <div class="modo modo-pres"><h4><span aria-hidden="true">🏫</span> Presencial</h4>En parejas, construyen la tabla en papel cuadriculado y dibujan con ella una gráfica de barras. La discusión sobre la decisión se hace con todo el grupo.</div>
+        <div class="modo modo-virt"><h4><span aria-hidden="true">💻</span> En línea</h4>En salas pequeñas (Breakout rooms), construyen la tabla en una hoja compartida (Google Sheets u otro editor colaborativo) y generan la gráfica. Cada sala comparte su decisión en el pleno.</div>
+      </div>
+      <details class="docente">
+        <summary>Para el docente: respuestas de la actividad 1</summary>
+        <p>D = (24,000 − 4,000) ÷ 8 = $2,500 por año; tasa = 1 ÷ 8 = 12.5%. Valores: año 0: $24,000 · 1: $21,500 · 2: $19,000 · 3: <strong>$16,500</strong> · 4: $14,000 · 5: <strong>$11,500</strong> · 6: $9,000 · 7: $6,500 · 8: $4,000.</p>
+        <p>Para la decisión: cada año de espera cuesta $2,500 de valor, pero también es un año más de uso del auto. En el modelo lineal, el costo por año de uso es siempre el mismo, así que la decisión depende de otros factores: reparaciones, necesidades de la familia, oferta de reventa. Conviene señalar que en la vida real los autos suelen perder más valor en los primeros años; el modelo lineal es una simplificación útil para la contabilidad y para los problemas del GED.</p>
+      </details>
+    </div>
+
+    <div class="actividad">
+      <h3>Actividad 2 · La herramienta de mi trabajo</h3>
+      <p>Cada estudiante elige una de estas tarjetas, la que más se parezca a su vida o a su trabajo, construye su tabla de valor contable e indica el valor al final del año 3:</p>
+      <ul>
+        <li>Horno de panadería: $6,500 · vida útil de 10 años · valor residual de $500.</li>
+        <li>Podadora comercial: $2,200 · vida útil de 5 años · valor residual de $200.</li>
+        <li>Laptop para estudiar: $1,100 · vida útil de 4 años · valor residual de $100.</li>
+        <li>Camión de comida: $45,000 · vida útil de 8 años · valor residual de $5,000.</li>
+      </ul>
+      <div class="modalidad">
+        <div class="modo modo-pres"><h4><span aria-hidden="true">🏫</span> Presencial</h4>Los estudiantes que eligieron la misma tarjeta se juntan para comparar sus tablas y explican al grupo el valor del año 3.</div>
+        <div class="modo modo-virt"><h4><span aria-hidden="true">💻</span> En línea</h4>Cada estudiante publica su tabla en el foro del curso (Brightspace Discussions) y comenta la tabla de un compañero que eligió otra tarjeta.</div>
+      </div>
+      <details class="docente">
+        <summary>Para el docente: respuestas de la actividad 2</summary>
+        <p>Horno: D = $600; año 3 = $4,700. · Podadora: D = $400; año 3 = $1,000. · Laptop: D = $250; año 3 = $350. · Camión: D = $5,000; año 3 = $30,000.</p>
+      </details>
+    </div>
+
+    <div class="actividad">
+      <h3>Actividad 3 · El negocio de Marisol</h3>
+      <p>Marisol pide un préstamo de <strong>$8,000</strong> al <strong>7%</strong> de interés simple anual, a <strong>2 años</strong>, para comprar una máquina de bordar. La máquina tiene una vida útil de <strong>6 años</strong> y un valor residual de <strong>$800</strong>.</p>
+      <ol>
+        <li>¿Cuánto interés paga y cuánto devuelve en total?</li>
+        <li>¿Cuánto se deprecia la máquina cada año?</li>
+        <li>¿Cuánto vale la máquina cuando Marisol termina de pagar el préstamo?</li>
+        <li>Si la vende en ese momento, ¿cuánto le costó en realidad usarla dos años?</li>
+      </ol>
+      <div class="modalidad">
+        <div class="modo modo-pres"><h4><span aria-hidden="true">🏫</span> Presencial</h4>En parejas: un integrante resuelve la parte del préstamo y el otro la de la depreciación. Después juntan los resultados para responder la pregunta 4.</div>
+        <div class="modo modo-virt"><h4><span aria-hidden="true">💻</span> En línea</h4>En salas pequeñas (Breakout rooms), con el mismo reparto de roles. Escriben la solución en un documento compartido (Google Docs u otro editor colaborativo).</div>
+      </div>
+      <details class="docente">
+        <summary>Para el docente: respuestas de la actividad 3</summary>
+        <p>1. I = 8,000 × 0.07 × 2 = $1,120; total = $9,120. · 2. D = (8,000 − 800) ÷ 6 = $1,200. · 3. Año 2: 8,000 − 1,200 × 2 = $5,600. · 4. 9,120 − 5,600 = $3,520.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2>Tarea asincrónica</h2>
+    <p>Diez ejercicios individuales en MyOpenMath, antes de la próxima sesión:</p>
+    <ul>
+      <li>Seis problemas de depreciación lineal: depreciación anual, tasa anual, tabla y valor contable en un año específico.</li>
+      <li>Cuatro problemas de repaso de interés simple (Lección 6.1).</li>
+    </ul>
+    <p>La plataforma ofrece retroalimentación en cada intento. Tiempo estimado: 60 minutos.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 6.2</h2>
+    <p class="ficha">10 preguntas · 25 minutos · se permite calculadora. Cuatro preguntas de depreciación lineal, tres de valor contable en un año específico y tres de problemas mixtos (interés y depreciación). Para aprobar se necesitan al menos 7 respuestas correctas; se puede reintentar.</p>
+    <div id="quiz-cont"></div>
+    <div id="resultado-quiz" aria-live="polite"></div>
+    <button type="button" class="btn" id="btn-corregir">Corregir quiz</button>
+    <button type="button" class="btn sec" id="btn-reintentar">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2>Rúbrica de matemáticas financieras</h2>
+    <div class="tabla-wrap">
+      <table class="tabla-rubrica">
+        <caption>Tres criterios evaluados en cuatro niveles de desempeño.</caption>
+        <thead>
+          <tr><th scope="col">Criterio</th><th scope="col">Inicial (1)</th><th scope="col">En desarrollo (2)</th><th scope="col">Competente (3)</th><th scope="col">Destacado (4)</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Calcula la depreciación anual y su tasa</th>
+            <td>No identifica los datos, o divide el valor inicial entre la vida útil sin restar el valor residual.</td>
+            <td>Calcula la depreciación anual con apoyo o con errores de operación.</td>
+            <td>Calcula D = (V₀ − Vr) ÷ n y la tasa anual (1 ÷ n) correctamente.</td>
+            <td>Además resuelve casos en los que la tasa se da como porcentaje del costo original y explica la diferencia.</td>
+          </tr>
+          <tr>
+            <th scope="row">Construye o interpreta la tabla de valor contable</th>
+            <td>La tabla está incompleta o no muestra el patrón.</td>
+            <td>Construye la tabla con errores de resta o sin la depreciación acumulada.</td>
+            <td>Construye la tabla completa y lee el valor contable en el año pedido.</td>
+            <td>Además comprueba con V₀ − D × t y determina en qué año se alcanza un valor dado.</td>
+          </tr>
+          <tr>
+            <th scope="row">Resuelve un problema financiero integrado</th>
+            <td>No separa la parte del interés de la parte de la depreciación.</td>
+            <td>Resuelve correctamente solo una de las dos partes.</td>
+            <td>Resuelve ambas partes (I = P × r × t y depreciación) con exactitud.</td>
+            <td>Además interpreta el resultado para tomar una decisión, por ejemplo, el costo real de usar un bien.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="cierre">
+    <h2>Cierre de la lección 6.2</h2>
+    <p>La depreciación lineal es el espejo del interés simple: en lugar de sumar una cantidad fija cada año, se <strong>resta</strong>. Con la tabla año por año y la fórmula D = (V₀ − Vr) ÷ n se puede saber cuánto vale un bien en cualquier momento y cuánto cuesta en realidad usarlo.</p>
+    <p>Con esto se completa la parte financiera del Tema 6. La <strong>Lección 6.3</strong> cambia de terreno, pero no de herramienta: para convertir entre el sistema inglés y el métrico también se multiplica por una cantidad fija, el factor de conversión, con el mismo razonamiento proporcional del Tema 4.</p>
+  </div>
+
+  <footer>
+    Spanish ASE Math · Nivel 2 · Lección 6.2<br>
+    José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago.<br>
+    Material bajo licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer license">Creative Commons CC BY-NC-SA 4.0</a>.
+  </footer>
+</div>
+<script>
+var QUIZ_MINIMO = 7;
+var QUIZ = [
+  { enun: 'Un equipo cuesta $5,000, tiene un valor residual de $1,000 y una vida útil de 4 años. ¿Cuál es la depreciación anual?',
+    ops: ['$1,000', '$1,250', '$1,500', '$4,000'], correcta: 0,
+    exp: 'D = (5,000 − 1,000) ÷ 4 = 4,000 ÷ 4 = $1,000.' },
+  { enun: 'Una computadora de $1,300 tiene un valor residual de $100 y una vida útil de 3 años. ¿Cuál es la depreciación anual?',
+    ops: ['$300', '$400', '$433.33', '$1,200'], correcta: 1,
+    exp: 'D = (1,300 − 100) ÷ 3 = 1,200 ÷ 3 = $400. La opción $433.33 olvida restar el valor residual.' },
+  { enun: 'Un bien tiene una vida útil de 5 años. ¿Cuál es su tasa anual de depreciación lineal?',
+    ops: ['5%', '20%', '25%', '50%'], correcta: 1,
+    exp: 'Tasa = 1 ÷ 5 = 0.20 = 20% por año.' },
+  { enun: 'Una maquinaria de $12,000 se deprecia un 15% anual de su costo original. ¿Cuánto valor pierde cada año?',
+    ops: ['$180', '$1,200', '$1,800', '$10,200'], correcta: 2,
+    exp: '15% de 12,000 = 12,000 × 0.15 = $1,800 por año.' },
+  { enun: 'Un carro de $20,000 tiene un valor residual de $2,000 y una vida útil de 6 años. ¿Cuál es su valor contable al final del año 4?',
+    ops: ['$8,000', '$12,000', '$10,000', '$6,000'], correcta: 0,
+    exp: 'D = 18,000 ÷ 6 = 3,000. Valor = 20,000 − 3,000 × 4 = $8,000. La opción $12,000 es la depreciación acumulada.' },
+  { enun: 'Un tractor de $36,000 tiene un valor residual de $6,000 y una vida útil de 10 años. ¿Cuál es su valor contable al final del año 7?',
+    ops: ['$21,000', '$15,000', '$9,000', '$6,000'], correcta: 1,
+    exp: 'D = 30,000 ÷ 10 = 3,000. Valor = 36,000 − 3,000 × 7 = 36,000 − 21,000 = $15,000.' },
+  { enun: 'Una tabla de depreciación lineal muestra: año 0, $4,800; año 1, $4,200; año 2, $3,600. Si el patrón continúa, ¿cuál es el valor al final del año 5?',
+    ops: ['$1,200', '$1,800', '$2,400', '$3,000'], correcta: 1,
+    exp: 'Pierde $600 por año. Valor = 4,800 − 600 × 5 = $1,800.' },
+  { enun: 'Luis pide $10,000 al 5% de interés simple anual por 3 años para comprar un equipo que se deprecia $1,500 por año. Al terminar de pagar, ¿cuánto vale el equipo?',
+    ops: ['$5,500', '$8,500', '$11,500', '$1,500'], correcta: 0,
+    exp: 'Valor = 10,000 − 1,500 × 3 = $5,500. La opción $11,500 es lo que Luis devuelve por el préstamo.' },
+  { enun: 'Con los datos de Luis (préstamo de $10,000 al 5% anual por 3 años; el equipo pierde $1,500 por año), ¿cuál es la diferencia entre lo que pagó en total y lo que vale el equipo al terminar el préstamo?',
+    ops: ['$1,500', '$4,500', '$6,000', '$11,500'], correcta: 2,
+    exp: 'Total pagado: 10,000 + 10,000 × 0.05 × 3 = $11,500. Valor del equipo: $5,500. Diferencia: $6,000.' },
+  { enun: 'Una computadora cuesta $1,000 más un impuesto del 8%. Se usará 4 años y al final valdrá $80. ¿Cuál es su valor contable después de 2 años?',
+    ops: ['$500', '$540', '$580', '$830'], correcta: 2,
+    exp: 'Valor inicial: 1,000 × 1.08 = 1,080. D = (1,080 − 80) ÷ 4 = 250. Valor = 1,080 − 250 × 2 = $580.' }
+];
+
+</script>
+<script>
+(function () {
+  function activar(el, fn) {
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('click', fn);
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fn(); }
+    });
+  }
+
+  /* ---- Práctica de opción múltiple (retroalimentación inmediata) ---- */
+  document.querySelectorAll('.practica .pregunta[data-correcta]').forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    var pista = preg.getAttribute('data-pista') || 'Revisa el procedimiento.';
+    opciones.forEach(function (op) {
+      op.setAttribute('role', 'button');
+      activar(op, function () {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); o.setAttribute('aria-pressed', 'false'); });
+        op.setAttribute('aria-pressed', 'true');
+        if (op.getAttribute('data-op') === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! Bien razonado.'; fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          fb.textContent = 'Todavía no. ' + pista + ' Inténtalo otra vez.'; fb.className = 'fb no';
+        }
+      });
+    });
+  });
+
+  /* ---- Práctica numérica ---- */
+  function leerNumero(txt) {
+    var limpio = txt.trim().replace(/\s/g, '').replace(/,/g, '').replace(/^\$/, '').replace(/%$/, '');
+    return limpio === '' ? NaN : Number(limpio);
+  }
+  document.querySelectorAll('[data-verificar]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var grupo = document.getElementById(btn.getAttribute('data-verificar'));
+      grupo.querySelectorAll('input.campo-texto').forEach(function (campo) {
+        var fb = document.getElementById('fb-' + campo.id);
+        var val = leerNumero(campo.value);
+        var ans = Number(campo.getAttribute('data-ans'));
+        var tol = Number(campo.getAttribute('data-tol') || '0.01');
+        if (isNaN(val)) {
+          fb.textContent = 'Escribe solo el número (sin unidades).'; fb.className = 'fb no';
+        } else if (Math.abs(val - ans) <= tol) {
+          fb.textContent = '¡Correcto!'; fb.className = 'fb ok';
+        } else {
+          fb.textContent = 'Revisa: ' + (campo.getAttribute('data-pista') || 'repasa los pasos del ejemplo.'); fb.className = 'fb no';
+        }
+      });
+    });
+  });
+
+  /* ---- Quiz ---- */
+  var cont = document.getElementById('quiz-cont');
+  if (cont && window.QUIZ) {
+    var elegidas = {};
+    window.QUIZ.forEach(function (q, i) {
+      var div = document.createElement('div');
+      div.className = 'pregunta';
+      var enun = document.createElement('div');
+      enun.className = 'enun'; enun.id = 'q' + i + '-enun';
+      enun.textContent = (i + 1) + '. ' + q.enun;
+      div.appendChild(enun);
+      var ops = document.createElement('div');
+      ops.className = 'opciones'; ops.setAttribute('role', 'group');
+      ops.setAttribute('aria-labelledby', enun.id);
+      q.ops.forEach(function (t, j) {
+        var o = document.createElement('div');
+        o.className = 'opcion'; o.textContent = String.fromCharCode(65 + j) + ') ' + t;
+        o.setAttribute('role', 'button'); o.setAttribute('aria-pressed', 'false');
+        activar(o, function () {
+          ops.querySelectorAll('.opcion').forEach(function (x) { x.classList.remove('elegida', 'correcta', 'incorrecta'); x.setAttribute('aria-pressed', 'false'); });
+          o.classList.add('elegida'); o.setAttribute('aria-pressed', 'true');
+          elegidas[i] = j;
+        });
+        ops.appendChild(o);
+      });
+      div.appendChild(ops);
+      var fb = document.createElement('div');
+      fb.className = 'fb'; fb.id = 'fbq' + i; fb.setAttribute('aria-live', 'polite');
+      div.appendChild(fb);
+      cont.appendChild(div);
+    });
+    var res = document.getElementById('resultado-quiz');
+    var minimo = window.QUIZ_MINIMO || 7;
+    document.getElementById('btn-corregir').addEventListener('click', function () {
+      var aciertos = 0;
+      window.QUIZ.forEach(function (q, i) {
+        var ops = cont.querySelectorAll('.pregunta')[i].querySelectorAll('.opcion');
+        var fb = document.getElementById('fbq' + i);
+        ops.forEach(function (x) { x.classList.remove('correcta', 'incorrecta'); });
+        if (elegidas[i] === undefined) {
+          fb.textContent = 'Sin responder.'; fb.className = 'fb no';
+        } else if (elegidas[i] === q.correcta) {
+          aciertos++; ops[q.correcta].classList.add('correcta');
+          fb.textContent = 'Correcto. ' + (q.exp || ''); fb.className = 'fb ok';
+        } else {
+          ops[elegidas[i]].classList.add('incorrecta');
+          fb.textContent = 'Incorrecto. ' + (q.exp || ''); fb.className = 'fb no';
+        }
+      });
+      res.textContent = 'Resultado: ' + aciertos + ' de ' + window.QUIZ.length + ' respuestas correctas. ' +
+        (aciertos >= minimo ? '¡Aprobado!' : 'Se necesitan al menos ' + minimo + '. Repasa las explicaciones e inténtalo de nuevo.');
+      res.className = aciertos >= minimo ? 'aprob' : 'repro';
+    });
+    document.getElementById('btn-reintentar').addEventListener('click', function () {
+      elegidas = {};
+      cont.querySelectorAll('.opcion').forEach(function (x) { x.classList.remove('elegida', 'correcta', 'incorrecta'); x.setAttribute('aria-pressed', 'false'); });
+      cont.querySelectorAll('.fb').forEach(function (f) { f.textContent = ''; f.className = 'fb'; });
+      res.textContent = ''; res.className = '';
+    });
+  }
+})();
+</script>
+</body>
+</html>

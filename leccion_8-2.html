@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 8.2 · Gráficos circulares: leer, interpretar y construir</title>
+<style>
+  :root {
+    --tema:   #33691e;
+    --tema-d: #1a3d0c;
+    --tema-bg:#f1f8e9;
+    --tema-bg2:#dcedc8;
+    --tema-soft:#f5faf0;
+    --acento: #5e35b1;
+    --txt:    #222;
+    --bg:     #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  header.principal {
+    background: var(--tema);
+    background: linear-gradient(135deg, #1a3d0c 0%, #33691e 55%, #558b2f 100%);
+    color: #fff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(26,61,12,.32);
+  }
+  header.principal .ruta { font-size: 13px; opacity: .92; letter-spacing: .4px; text-transform: uppercase; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; }
+  header.principal .meta { font-size: 14px; opacity: .94; }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 {
+    margin: 0 0 10px; color: var(--tema-d); font-size: 19px;
+  }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+
+  p { margin: 10px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #fff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+
+  .caja-tip {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #1b5e20; font-size: 15px;
+  }
+  .caja-tip strong { color: #1b5e20; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5a3d00;
+  }
+  .caja-atencion strong { color: #c54500; }
+
+  .etiqueta {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    padding: 2px 10px; border-radius: 10px; margin-right: 4px;
+  }
+  .et-ambar { background: #ffe082; color: #000; }
+  .et-verde { background: var(--tema); color: #fff; }
+
+  .formula-card {
+    background: var(--tema-bg); border: 2px solid var(--tema);
+    border-radius: 12px; padding: 18px; margin: 14px 0;
+    text-align: center;
+  }
+  .formula-card .formula {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 22px; font-weight: 700; color: var(--tema-d);
+    margin: 6px 0;
+  }
+  .formula-card .leyenda {
+    font-size: 14px; color: #444; margin-top: 10px;
+  }
+
+  .svg-wrap { text-align: center; margin: 18px 0; overflow-x: auto; }
+
+  /* layout grafico + leyenda */
+  .pie-layout {
+    display: flex; gap: 18px; flex-wrap: wrap; align-items: center;
+    justify-content: center; margin: 16px 0;
+  }
+  .pie-leyenda {
+    background: var(--tema-soft); border-radius: 10px; padding: 14px 18px;
+    min-width: 240px;
+  }
+  .pie-leyenda h3 { margin: 0 0 10px; color: var(--tema-d); }
+  .pie-leyenda ul { list-style: none; padding: 0; margin: 0; }
+  .pie-leyenda li {
+    display: flex; align-items: center; gap: 10px; padding: 5px 0;
+    font-size: 14px;
+  }
+  .swatch {
+    display: inline-block; width: 18px; height: 18px;
+    border: 1px solid #1c2a30; border-radius: 3px; flex-shrink: 0;
+  }
+
+  /* tabla conversiones */
+  .conversiones {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px;
+  }
+  .conversiones th, .conversiones td {
+    border: 1px solid #e0e0e0; padding: 9px 12px; text-align: center;
+  }
+  .conversiones th { background: var(--tema); color: #fff; }
+  .conversiones td:first-child { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); text-align: left; }
+  .conversiones tr.suma td { background: #fff59d; font-weight: 700; }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #b71c1c; }
+
+  .campo-num {
+    font-size: 16px; padding: 7px 10px; border: 2px solid #cfcfcf;
+    border-radius: 7px; width: 130px; font-family: inherit;
+  }
+  .campo-num:focus { border-color: var(--tema); outline: none; }
+  .btn {
+    background: var(--tema); color: #fff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit;
+    margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #607d8b; }
+  .btn.sec:hover { background: #455a64; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo {
+    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
+    font-size: 14px;
+  }
+  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .modo-pres strong { color: #0d47a1; }
+  .modo-virt { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-virt strong { color: #004d40; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #0d47a1; }
+  .modo-virt h3 { color: #004d40; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #4527a0; }
+
+  .quiz {
+    background: #fff; border: 2px solid var(--tema);
+    border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0;
+  }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #fff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #222222;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 8 · Estadística y probabilidad</div>
+    <h1>Lección 8.2 · Gráficos circulares: leer, interpretar y construir</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Reconocer un gráfico circular como una representación de porcentajes mediante sectores de un círculo.</li>
+      <li>Calcular el ángulo central de cada sector como 360° × (% / 100).</li>
+      <li>Convertir libremente entre porcentaje, ángulo central y valor absoluto.</li>
+      <li>Leer e interpretar gráficos circulares reales (presupuesto, demografía, distribución del tiempo).</li>
+      <li>Construir un gráfico circular sencillo a partir de un conjunto de porcentajes.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Conexión con dos temas previos.</strong> Esta lección reúne dos hilos del Nivel 2 en un solo lugar. Del <strong>Tema 5</strong> proviene la idea de <strong>porcentaje</strong> como razón con denominador 100; del <strong>Tema 7</strong> proviene el <strong>círculo</strong> como figura geométrica. El gráfico circular es la unión natural: un círculo entero representa el 100% de los datos, y cada sector representa una parte proporcional al porcentaje que ocupa. Es una de las formas visuales más comunes para presentar datos en periódicos, informes y presentaciones.</p>
+  </div>
+
+  <h2 class="seccion">1. Qué es un gráfico circular</h2>
+  <div class="bloque">
+    <p>Un <strong>gráfico circular</strong> —llamado en inglés <em>pie chart</em>— es un círculo dividido en sectores, donde el tamaño de cada sector es proporcional al porcentaje que representa la categoría correspondiente. La regla más importante: <strong>todos los porcentajes deben sumar 100%</strong>, ya que el círculo entero representa el total.</p>
+
+    <div class="pie-layout">
+      <svg width="240" height="240" viewBox="-110 -110 220 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico circular de un presupuesto mensual con cinco sectores">
+        <!-- 35% comida (0° a 126°), 30% renta (126° a 234°), 15% transporte (234° a 288°), 10% salud (288° a 324°), 10% ocio (324° a 360°)
+             Centro (0,0), radio 100. Comienza en arriba (-90°). -->
+        <!-- Comida 35% : 126° de 360 -->
+        <path d="M 0,0 L 0,-100 A 100,100 0 0,1 80.9,58.78 Z" fill="#558b2f"/>
+        <!-- Renta 30% : 108° (de 126° a 234°) -->
+        <path d="M 0,0 L 80.9,58.78 A 100,100 0 0,1 -80.9,58.78 Z" fill="#8d6e63"/>
+        <!-- Transporte 15% : 54° (de 234° a 288°) -->
+        <path d="M 0,0 L -80.9,58.78 A 100,100 0 0,1 -95.1,-30.9 Z" fill="#0288d1"/>
+        <!-- Salud 10% : 36° (de 288° a 324°) -->
+        <path d="M 0,0 L -95.1,-30.9 A 100,100 0 0,1 -58.78,-80.9 Z" fill="#c62828"/>
+        <!-- Ocio 10% : 36° (de 324° a 360°) -->
+        <path d="M 0,0 L -58.78,-80.9 A 100,100 0 0,1 0,-100 Z" fill="#f9a825"/>
+        <!-- Etiquetas de porcentaje dentro -->
+        <g font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">
+          <text x="35" y="-20">35%</text>
+          <text x="0" y="50">30%</text>
+          <text x="-58" y="20">15%</text>
+          <text x="-65" y="-40">10%</text>
+          <text x="-25" y="-60">10%</text>
+        </g>
+      </svg>
+
+      <div class="pie-leyenda">
+        <h3>Presupuesto mensual</h3>
+        <ul>
+          <li><span class="swatch" style="background:#558b2f"></span> Comida — 35%</li>
+          <li><span class="swatch" style="background:#8d6e63"></span> Renta — 30%</li>
+          <li><span class="swatch" style="background:#0288d1"></span> Transporte — 15%</li>
+          <li><span class="swatch" style="background:#c62828"></span> Salud — 10%</li>
+          <li><span class="swatch" style="background:#f9a825"></span> Ocio — 10%</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>De un vistazo se ve que la comida es la mayor categoría, seguida por la renta. Salud y ocio son los sectores más pequeños y empatados. Esa lectura visual instantánea es la gran ventaja del gráfico circular: permite comparar categorías sin leer una lista de números.</p>
+
+    <div class="caja-tip">
+      <strong>Cuándo conviene un gráfico circular:</strong> es ideal para representar la <strong>composición</strong> de un total: cómo se reparte un presupuesto, qué porcentaje de la población vive en cada barrio, cómo se distribuye un día. No es la mejor opción para comparar valores a lo largo del tiempo (eso pide gráficos de líneas) ni para muchas categorías muy pequeñas (los sectores se vuelven ilegibles).
+    </div>
+  </div>
+
+  <h2 class="seccion">2. El ángulo central de cada sector</h2>
+  <div class="bloque">
+    <p>Para construir un gráfico circular hace falta convertir cada porcentaje en un <strong>ángulo central</strong>: el ángulo del sector medido desde el centro del círculo. Como el círculo completo abarca <strong>360°</strong> y representa el 100% de los datos, la regla es directa:</p>
+
+    <div class="formula-card">
+      <div class="formula">ángulo = 360° × (% ÷ 100)</div>
+      <div class="leyenda">Una proporción directa entre porcentaje y ángulo. Se aplica el mismo producto cruzado del Tema 4.</div>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1 · Del porcentaje al ángulo</span>
+      <p>¿Cuántos grados ocupa un sector que representa el 25%?</p>
+      <div class="paso"><span class="n">1</span> Aplicar la fórmula: 360° × (25 ÷ 100) = 360° × 0.25.</div>
+      <div class="paso"><span class="n">2</span> Calcular: 360° × 0.25 = 90°.</div>
+      <p><strong>Respuesta:</strong> el sector del 25% ocupa un ángulo central de 90°, es decir, exactamente un cuarto del círculo.</p>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Atajos útiles:</strong> los porcentajes redondos tienen ángulos memorables que conviene recordar. <strong>100% = 360°</strong>; <strong>50% = 180°</strong> (media tarta); <strong>25% = 90°</strong> (un cuarto); <strong>10% = 36°</strong>; <strong>1% = 3.6°</strong>. Reconocerlos al vuelo permite verificar que un sector dibujado tiene un tamaño razonable.
+    </div>
+
+    <h3>Tabla completa de la conversión</h3>
+    <p>Para el presupuesto del ejemplo anterior, la tabla completa de las tres formas equivalentes —porcentaje, ángulo y valor absoluto— se construye así, suponiendo un ingreso mensual de $2 000:</p>
+
+    <table class="conversiones">
+      <thead>
+        <tr><th>Categoría</th><th>Porcentaje</th><th>Ángulo central</th><th>Valor en $</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Comida</td><td>35%</td><td>126°</td><td>$700</td></tr>
+        <tr><td>Renta</td><td>30%</td><td>108°</td><td>$600</td></tr>
+        <tr><td>Transporte</td><td>15%</td><td>54°</td><td>$300</td></tr>
+        <tr><td>Salud</td><td>10%</td><td>36°</td><td>$200</td></tr>
+        <tr><td>Ocio</td><td>10%</td><td>36°</td><td>$200</td></tr>
+        <tr class="suma"><td>Total</td><td>100%</td><td>360°</td><td>$2 000</td></tr>
+      </tbody>
+    </table>
+
+    <p>La fila «Total» es el sello de seguridad: si los porcentajes no suman 100%, si los ángulos no suman 360°, o si los valores absolutos no suman el total real, hay un error en alguna fila. Conviene calcularla siempre.</p>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Porcentaje a ángulo</h3>
+    <p>Escribe el ángulo central correspondiente (en grados, solo el número) y presiona «Verificar».</p>
+    <div class="pregunta">
+      <div class="enun">1. Un sector del 20% ocupa un ángulo de:</div>
+      <input type="text" class="campo-num" id="a1" inputmode="numeric" aria-label="Respuesta de la pregunta 1: ángulo central correspondiente al veinte por ciento" />
+      <div class="fb" id="fb-a1"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">2. Un sector del 75% ocupa un ángulo de:</div>
+      <input type="text" class="campo-num" id="a2" inputmode="numeric" aria-label="Respuesta de la pregunta 2: ángulo central correspondiente al setenta y cinco por ciento" />
+      <div class="fb" id="fb-a2"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">3. Un sector del 5% ocupa un ángulo de:</div>
+      <input type="text" class="campo-num" id="a3" inputmode="numeric" aria-label="Respuesta de la pregunta 3: ángulo central correspondiente al cinco por ciento" />
+      <div class="fb" id="fb-a3"></div>
+    </div>
+    <button class="btn" id="btn-ang">Verificar</button>
+  </div>
+
+  <h2 class="seccion">3. Convertir entre porcentaje, ángulo y valor</h2>
+  <div class="bloque">
+    <p>Las tres formas de expresar un sector están conectadas. Conociendo cualquiera de ellas y el total real, se obtienen las otras dos.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2 · De porcentaje a valor</span>
+      <p>En el presupuesto del ejemplo, la categoría «Salud» ocupa el 10%. ¿A cuántos dólares equivale, si el total es $2 000?</p>
+      <div class="paso"><span class="n">1</span> Aplicar la regla del Tema 5: valor = total × (% / 100).</div>
+      <div class="paso"><span class="n">2</span> Calcular: 2 000 × 0.10 = $200.</div>
+      <p><strong>Respuesta:</strong> la categoría «Salud» equivale a $200 del presupuesto mensual.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3 · De ángulo a porcentaje</span>
+      <p>Un sector de un gráfico circular tiene un ángulo central de 72°. ¿Qué porcentaje representa?</p>
+      <div class="paso"><span class="n">1</span> Despejar la fórmula: % = (ángulo / 360°) × 100.</div>
+      <div class="paso"><span class="n">2</span> Calcular: (72 ÷ 360) × 100 = 0.2 × 100 = 20.</div>
+      <p><strong>Respuesta:</strong> el sector representa el 20% del total.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Atención a las unidades:</strong> ángulos van en grados (°), porcentajes en % y valores absolutos en la unidad del problema ($, personas, horas). Confundir las tres es un error frecuente. Antes de escribir la respuesta, conviene preguntarse: «¿en qué unidad debe ir esto?».
+    </div>
+  </div>
+
+  <h2 class="seccion">4. Cómo construir un gráfico circular</h2>
+  <div class="bloque">
+    <p>Construir un gráfico circular paso a paso con transportador y compás es un ejercicio clásico que ayuda a entender la geometría detrás. El procedimiento es siempre el mismo:</p>
+
+    <div class="ejemplo">
+      <span class="et">Procedimiento de construcción</span>
+      <div class="paso"><span class="n">1</span> <strong>Verificar</strong> que los porcentajes suman 100%. Si no, corregir antes de seguir.</div>
+      <div class="paso"><span class="n">2</span> <strong>Calcular el ángulo central</strong> de cada categoría con la fórmula 360° × (% / 100).</div>
+      <div class="paso"><span class="n">3</span> <strong>Dibujar un círculo</strong> con compás. Marcar el centro y trazar un radio vertical hacia arriba como punto de partida (esto es opcional, pero ayuda).</div>
+      <div class="paso"><span class="n">4</span> <strong>Medir el primer ángulo</strong> con el transportador desde el radio inicial, y trazar el segundo radio. Esto define el primer sector.</div>
+      <div class="paso"><span class="n">5</span> <strong>Continuar acumulando ángulos</strong>: cada radio nuevo se mide desde el anterior, no desde el inicial.</div>
+      <div class="paso"><span class="n">6</span> <strong>Colorear y etiquetar</strong> cada sector con el nombre de la categoría y su porcentaje.</div>
+      <div class="paso"><span class="n">7</span> <strong>Comprobar</strong>: el último radio debe coincidir con el primero. Si no, hay un error de medida.</div>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Sugerencia visual:</strong> ordenar las categorías de mayor a menor antes de dibujar suele dar un gráfico más limpio. Las categorías más pequeñas se ubican juntas al final y son más fáciles de etiquetar afuera, con líneas guía si es necesario.
+    </div>
+  </div>
+
+  <h2 class="seccion">5. Leer e interpretar gráficos reales</h2>
+  <div class="bloque">
+    <p>Leer un gráfico circular es la habilidad más común en el examen GED y en la vida cotidiana. Implica reconocer la categoría más grande y la más pequeña, comparar dos sectores, y a veces calcular el valor absoluto de uno de ellos.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4 · Distribución del día</span>
+      <p>El gráfico circular muestra cómo distribuye su tiempo un trabajador en un día de 24 horas: 33% sueño, 38% trabajo, 8% comida, 13% familia, 8% ocio.</p>
+      <div class="paso"><span class="n">1</span> Verificar la suma: 33 + 38 + 8 + 13 + 8 = 100%. ✓</div>
+      <div class="paso"><span class="n">2</span> La categoría más grande es <strong>trabajo</strong> (38%).</div>
+      <div class="paso"><span class="n">3</span> Para saber cuántas horas son: 24 × 0.38 = 9.12 horas, es decir, aproximadamente 9 h 7 min.</div>
+      <p><strong>Lectura:</strong> el trabajador dedica al trabajo casi 9 horas y 7 minutos diarios, más que cualquier otra actividad.</p>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · De porcentajes a valores</h3>
+    <p>Supón un total de $1 500 mensuales. Calcula a cuántos dólares equivale cada categoría.</p>
+    <div class="pregunta">
+      <div class="enun">1. Renta: 40%. Cantidad =</div>
+      <input type="text" class="campo-num" id="v1" inputmode="decimal" aria-label="Respuesta de la pregunta 1: cantidad correspondiente al cuarenta por ciento de mil quinientos" />
+      <div class="fb" id="fb-v1"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">2. Comida: 25%. Cantidad =</div>
+      <input type="text" class="campo-num" id="v2" inputmode="decimal" aria-label="Respuesta de la pregunta 2: cantidad correspondiente al veinticinco por ciento de mil quinientos" />
+      <div class="fb" id="fb-v2"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">3. Transporte: 12%. Cantidad =</div>
+      <input type="text" class="campo-num" id="v3" inputmode="decimal" aria-label="Respuesta de la pregunta 3: cantidad correspondiente al doce por ciento de mil quinientos" />
+      <div class="fb" id="fb-v3"></div>
+    </div>
+    <button class="btn" id="btn-val">Verificar</button>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 3 · Interpretación</h3>
+    <p>Selecciona la respuesta correcta.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. En un gráfico circular, todos los porcentajes deben sumar:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">360</div>
+        <div class="opcion" data-op="b">100%</div>
+        <div class="opcion" data-op="c">El total real</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. Un sector de ángulo central 180° representa:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">25%</div>
+        <div class="opcion" data-op="b">33%</div>
+        <div class="opcion" data-op="c">50%</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. Si un sector vale el 50% y la población total es 800 personas, el sector representa a:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">400 personas</div>
+        <div class="opcion" data-op="b">200 personas</div>
+        <div class="opcion" data-op="c">50 personas</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">4. Un gráfico circular es útil sobre todo para representar:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">El cambio en el tiempo</div>
+        <div class="opcion" data-op="b">La composición de un total</div>
+        <div class="opcion" data-op="c">Diferencias entre individuos</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">6. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 1 · Mi presupuesto en gráfico</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          Cada estudiante define un presupuesto mensual (real o simulado) con cinco categorías y sus porcentajes. Calcula los ángulos correspondientes y dibuja el gráfico circular con compás y transportador. Etiqueta los sectores con nombre y porcentaje.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          Cada estudiante completa una hoja de cálculo compartida con su presupuesto. El docente muestra una plantilla para generar el gráfico circular en la herramienta de gráficos. Cada estudiante exporta su gráfico y lo sube al foro.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 2 · Lectura de gráficos reales</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          El docente proyecta tres gráficos circulares reales (presupuesto familiar, composición demográfica de Chicago, distribución del tiempo de un trabajador). Las parejas responden seis preguntas de interpretación por gráfico y comparten sus conclusiones.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          Los tres gráficos aparecen en una hoja compartida con sus preguntas asociadas. Las parejas responden directamente en la hoja y, al regresar al pleno, el docente revisa las respuestas y aclara dudas.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 3 · Diseñar y verificar</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          El docente da una lista de cinco categorías y sus valores absolutos (no porcentajes). Los estudiantes deben primero convertir a porcentajes, luego calcular los ángulos centrales y finalmente dibujar el gráfico. Verifican que ángulos sumen 360° antes de cerrar.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          La lista de valores absolutos aparece en una hoja compartida con tres columnas vacías para porcentaje, ángulo y verificación. Los estudiantes la completan y, al final, suben el gráfico construido.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2>Tarea asincrónica</h2>
+    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
+    <ul>
+      <li>Cuatro ejercicios de calcular ángulos centrales a partir de porcentajes.</li>
+      <li>Tres ejercicios de calcular valores absolutos a partir de un porcentaje y un total.</li>
+      <li>Tres ejercicios de leer e interpretar un gráfico circular dado.</li>
+      <li>Una construcción guiada: dada una tabla de cinco categorías con valores absolutos, calcular porcentajes, ángulos y comprobar la suma.</li>
+    </ul>
+    <p>La plataforma ofrece retroalimentación paso a paso en cada intento. Tiempo estimado: 50 minutos.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 8.2</h2>
+    <p>Diez preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2>Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th>Inicial (1)</th>
+          <th>En desarrollo (2)</th>
+          <th>Competente (3)</th>
+          <th>Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lectura de un gráfico circular</td>
+          <td>No identifica las categorías ni sus porcentajes.</td>
+          <td>Lee porcentajes con apoyo.</td>
+          <td>Lee, compara y ordena categorías sin ayuda.</td>
+          <td>Lee, interpreta y extrae conclusiones cuantitativas.</td>
+        </tr>
+        <tr>
+          <td>Cálculo del ángulo central</td>
+          <td>No reconoce la relación 360° ↔ 100%.</td>
+          <td>Calcula con apoyo.</td>
+          <td>Calcula ángulos centrales correctamente.</td>
+          <td>Calcula y verifica que los ángulos suman 360°.</td>
+        </tr>
+        <tr>
+          <td>Conversión entre porcentaje, ángulo y valor</td>
+          <td>Confunde las tres formas.</td>
+          <td>Convierte con apoyo.</td>
+          <td>Convierte correctamente entre las tres formas.</td>
+          <td>Convierte e identifica la unidad correcta en cada respuesta.</td>
+        </tr>
+        <tr>
+          <td>Construcción de un gráfico</td>
+          <td>No traza sectores proporcionales.</td>
+          <td>Construye con apoyo y errores de medida.</td>
+          <td>Construye un gráfico circular con sectores bien medidos y etiquetados.</td>
+          <td>Construye con orden, comprueba el cierre y presenta el gráfico claro y legible.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2>Cierre y enlace con la última lección del Nivel 2</h2>
+    <p>En esta lección los porcentajes del <strong>Tema 5</strong> se encontraron con el círculo del <strong>Tema 7</strong> para formar el <strong>gráfico circular</strong>: el círculo entero como 100% del total y cada sector como una proporción visual. Quedaron dominadas las conversiones entre porcentaje, ángulo y valor absoluto, y el procedimiento para construir un gráfico paso a paso.</p>
+    <p>La <strong>Lección 8.3 · Probabilidad simple y proyecto final integrador</strong> cierra el Nivel 2. Introducirá la idea de <strong>probabilidad</strong> como la razón entre los casos favorables y los casos totales, y culminará con un <strong>proyecto final</strong> que reúne todo lo aprendido: medidas de tendencia central, gráficos circulares, porcentajes y operaciones básicas en una sola entrega integradora.</p>
+  </div>
+
+  <footer>
+    Spanish ASE Math · Nivel 2 · Lección 8.2 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) {
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+        });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revisa: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Ángulos: 20% → 72°, 75% → 270°, 5% → 18° ---- */
+  var clavesAng = { a1: 72, a2: 270, a3: 18 };
+  document.getElementById('btn-ang').addEventListener('click', function () {
+    Object.keys(clavesAng).forEach(function (id) {
+      var campo = document.getElementById(id);
+      var fb = document.getElementById('fb-' + id);
+      var limpio = campo.value.trim().replace(/\s/g, '').replace(',', '.').replace(/°$/, '');
+      var val = parseFloat(limpio);
+      if (limpio === '' || isNaN(val)) {
+        fb.textContent = 'Escribe un número (sin el símbolo °).';
+        fb.className = 'fb no';
+      } else if (Math.abs(val - clavesAng[id]) < 0.5) {
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        fb.textContent = 'Revisa: aplica ángulo = 360° × (% ÷ 100).';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+  });
+
+  /* ---- Valores: 40% de 1500 = 600; 25% = 375; 12% = 180 ---- */
+  var clavesVal = { v1: 600, v2: 375, v3: 180 };
+  document.getElementById('btn-val').addEventListener('click', function () {
+    Object.keys(clavesVal).forEach(function (id) {
+      var campo = document.getElementById(id);
+      var fb = document.getElementById('fb-' + id);
+      var limpio = campo.value.trim().replace(/\s/g, '').replace(',', '.').replace(/^\$/, '');
+      var val = parseFloat(limpio);
+      if (limpio === '' || isNaN(val)) {
+        fb.textContent = 'Escribe un número (sin el símbolo $).';
+        fb.className = 'fb no';
+      } else if (Math.abs(val - clavesVal[id]) < 0.5) {
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        fb.textContent = 'Revisa: valor = total × (% ÷ 100).';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+  });
+
+  /* ---- Quiz ---- */
+  var preguntasQuiz = [
+    { enun: '1. En un gráfico circular, el círculo entero representa:', ops: ['Una categoría', 'El 50%', 'El 100% del total', '360 categorías'], correcta: 2 },
+    { enun: '2. La suma de todos los porcentajes en un gráfico circular debe ser:', ops: ['100%', '360%', 'El total real', 'No hay regla fija'], correcta: 0 },
+    { enun: '3. La fórmula para calcular el ángulo central a partir del porcentaje es:', ops: ['ángulo = % × 100', 'ángulo = 360° × (% / 100)', 'ángulo = % + 360', 'ángulo = % × 360%'], correcta: 1 },
+    { enun: '4. ¿Cuántos grados corresponden a un sector del 50%?', ops: ['90°', '180°', '270°', '360°'], correcta: 1 },
+    { enun: '5. ¿Cuántos grados corresponden a un sector del 25%?', ops: ['25°', '45°', '90°', '180°'], correcta: 2 },
+    { enun: '6. Un sector de 36° representa qué porcentaje?', ops: ['1%', '10%', '36%', '50%'], correcta: 1 },
+    { enun: '7. Si el total es $4 000 y un sector vale el 15%, su valor absoluto es:', ops: ['$15', '$60', '$600', '$1 500'], correcta: 2 },
+    { enun: '8. Si la suma de los porcentajes de un gráfico es 95%, esto indica:', ops: ['Está correcto', 'Falta una categoría o hay un error', 'Hay una categoría de más', 'Es válido pero raro'], correcta: 1 },
+    { enun: '9. El gráfico circular es ideal para mostrar:', ops: ['La evolución del tiempo', 'La composición de un total', 'Diferencias individuales', 'Valores muy precisos'], correcta: 1 },
+    { enun: '10. Un día tiene 24 horas. Si un trabajador dedica el 33% al sueño, ¿cuántas horas duerme aproximadamente?', ops: ['3 horas', '5 horas', '8 horas', '12 horas'], correcta: 2 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) {
+          o.classList.remove('elegida');
+        });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta');
+      });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 7) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 10 correctas. ¡Aprobado! Puedes continuar a la Lección 8.3.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 10 correctas. Repasa la lección e intenta de nuevo (se requieren 7).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta', 'elegida');
+      });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

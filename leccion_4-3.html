@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 4.3 · Porcentajes: concepto y cálculo</title>
+<style>
+  :root {
+    --tema:   #00695c;
+    --tema-d: #004d40;
+    --tema-bg:#b2dfdb;
+    --tema-bg2:#cce8e5;
+    --tema-soft:#e0f2f1;
+    --acento: #5e35b1;
+    --txt:    #222;
+    --bg:     #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  header.principal {
+    background: var(--tema);
+    background: linear-gradient(135deg, #004d40 0%, #00695c 55%, #00897b 100%);
+    color: #fff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(0,77,64,.28);
+  }
+  header.principal .ruta { font-size: 13px; opacity: .92; letter-spacing: .4px; text-transform: uppercase; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; }
+  header.principal .meta { font-size: 14px; opacity: .94; }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-soft); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 {
+    margin: 0 0 10px; color: var(--tema-d); font-size: 19px;
+  }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+
+  p { margin: 10px 0; }
+
+  .frac {
+    display: inline-block; text-align: center; vertical-align: middle;
+    margin: 0 4px; font-size: 16px;
+  }
+  .frac .num { display: block; padding: 0 6px; border-bottom: 2px solid #444; }
+  .frac .den { display: block; padding: 0 6px; }
+  .frac.grande { font-size: 20px; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #fff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+
+  .caja-tip {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #1b5e20; font-size: 15px;
+  }
+  .caja-tip strong { color: #1b5e20; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5a3d00;
+  }
+  .caja-atencion strong { color: #c54500; }
+
+  .etiqueta {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    padding: 2px 10px; border-radius: 10px; margin-right: 4px;
+  }
+  .et-ambar { background: #ffe082; color: #000; }
+  .et-verde { background: var(--tema); color: #fff; }
+
+  /* rejilla 10x10 para visualizar % */
+  .grid100 {
+    display: grid;
+    grid-template-columns: repeat(10, 26px);
+    gap: 2px;
+    width: max-content;
+    margin: 14px auto;
+  }
+  .grid100 .celda {
+    width: 26px; height: 26px; border: 1px solid #00695c;
+    background: #fff;
+  }
+  .grid100 .celda.lleno { background: var(--tema); }
+  .grid-titulo {
+    text-align: center; font-weight: 700; color: var(--tema-d);
+    margin-top: 8px;
+  }
+
+  /* equivalencia entre representaciones */
+  .equiv-tabla {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px;
+  }
+  .equiv-tabla th, .equiv-tabla td {
+    border: 1px solid #e0e0e0; padding: 9px 12px; text-align: center;
+  }
+  .equiv-tabla th { background: var(--tema); color: #fff; }
+  .equiv-tabla td:first-child { background: var(--tema-soft); font-weight: 600; color: var(--tema-d); }
+
+  /* triángulo de los tres tipos */
+  .triangulo {
+    display: flex; justify-content: center; margin: 14px 0;
+  }
+  .tres-tipos {
+    background: var(--tema-soft); border: 2px solid var(--tema);
+    border-radius: 10px; padding: 14px 18px; max-width: 460px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 17px; text-align: center;
+  }
+  .tres-tipos .formula {
+    font-size: 20px; font-weight: 700; color: var(--tema-d);
+    margin: 8px 0;
+  }
+  .tres-tipos .leyenda {
+    font-size: 13px; color: #555; font-family: 'Segoe UI', sans-serif;
+    margin-top: 8px;
+  }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #b71c1c; }
+
+  .campo-texto {
+    font-size: 16px; padding: 7px 10px; border: 2px solid #cfcfcf;
+    border-radius: 7px; width: 130px; font-family: inherit;
+  }
+  .campo-texto:focus { border-color: var(--tema); outline: none; }
+  .btn {
+    background: var(--tema); color: #fff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit;
+    margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #607d8b; }
+  .btn.sec:hover { background: #455a64; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo {
+    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
+    font-size: 14px;
+  }
+  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .modo-pres strong { color: #0d47a1; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #0d47a1; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-soft); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #4527a0; }
+
+  .quiz {
+    background: #fff; border: 2px solid var(--tema);
+    border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0;
+  }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #fff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-soft); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #222222;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 4 · Razones, proporciones y porcentajes</div>
+    <h1>Lección 4.3 · Porcentajes: concepto y cálculo</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Interpretar un porcentaje como una razón con denominador 100.</li>
+      <li>Convertir libremente entre porcentaje, decimal y fracción.</li>
+      <li>Resolver los tres tipos de problemas de porcentaje: hallar la parte, hallar el total y hallar el porcentaje.</li>
+      <li>Calcular el cambio porcentual entre un valor inicial y un valor final.</li>
+      <li>Aplicar los porcentajes a situaciones reales: descuentos, propinas e impuestos.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Conexión con la lección anterior.</strong> En la Lección 4.2 se aprendió a resolver proporciones con el producto cruzado. Esta lección aplica esa herramienta a un caso particular muy especial: las razones cuyo segundo término es siempre <strong>100</strong>. Estas razones tienen un nombre familiar — <strong>porcentajes</strong> — y aparecen en descuentos, impuestos, propinas, estadísticas, intereses bancarios y prácticamente en cualquier comparación cotidiana.</p>
+  </div>
+
+  <h2 class="seccion">1. El porcentaje como razón de 100</h2>
+  <div class="bloque">
+    <p>La palabra <strong>porcentaje</strong> viene del latín <em>per centum</em>, que significa «por cada cien». Un porcentaje no es más que una razón cuyo segundo término es siempre 100.</p>
+
+    <div class="ejemplo">
+      <span class="et">Idea central</span>
+      <p style="text-align:center; font-size:18px; font-weight:700;">
+        25% &nbsp;=&nbsp; <span class="frac grande"><span class="num">25</span><span class="den">100</span></span> &nbsp;=&nbsp; 0.25
+      </p>
+      <p>Las tres formas representan exactamente lo mismo: 25 partes de cada 100. Solo cambia la notación.</p>
+    </div>
+
+    <p>La visualización con una rejilla de 100 celdas ayuda a ver el porcentaje como una <strong>cantidad coloreada del total</strong>:</p>
+
+    <div class="grid100" id="grid25" aria-label="Rejilla de cien celdas, veinticinco coloreadas"></div>
+    <p class="grid-titulo">25% = 25 celdas coloreadas de las 100 totales</p>
+  </div>
+
+  <h2 class="seccion">2. Conversiones entre las tres formas</h2>
+  <div class="bloque">
+    <p>Cualquier porcentaje se puede expresar como decimal o como fracción, y viceversa. Las reglas son sencillas:</p>
+
+    <table class="equiv-tabla">
+      <thead>
+        <tr><th>Conversión</th><th>Procedimiento</th><th>Ejemplo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Porcentaje → decimal</td><td>Dividir entre 100 (mover el punto decimal dos lugares a la izquierda).</td><td>45% = 0.45</td></tr>
+        <tr><td>Decimal → porcentaje</td><td>Multiplicar por 100 (mover el punto decimal dos lugares a la derecha).</td><td>0.07 = 7%</td></tr>
+        <tr><td>Porcentaje → fracción</td><td>Escribir como n/100 y simplificar.</td><td>40% = 40/100 = 2/5</td></tr>
+        <tr><td>Fracción → porcentaje</td><td>Dividir y multiplicar el resultado por 100.</td><td>3/4 = 0.75 = 75%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>Atajo mental:</strong> los porcentajes más comunes conviene memorizarlos. 50% = 1/2 = 0.5. 25% = 1/4 = 0.25. 10% = 1/10 = 0.1. 75% = 3/4 = 0.75. 1% = 1/100 = 0.01. Reconocerlos al vuelo acelera muchos cálculos sin necesidad de calculadora.
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Error frecuente:</strong> confundir 0.5 con 5%. Son cosas distintas: 0.5 = 50%, mientras que 5% = 0.05. La regla del punto decimal de dos lugares evita este error.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Convertir entre formas</h3>
+    <p>Selecciona la conversión correcta.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. 60% como decimal es:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">6.0</div>
+        <div class="opcion" data-op="b">0.6</div>
+        <div class="opcion" data-op="c">0.06</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. 0.08 como porcentaje es:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">0.8%</div>
+        <div class="opcion" data-op="b">80%</div>
+        <div class="opcion" data-op="c">8%</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. 20% como fracción simplificada es:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">1/5</div>
+        <div class="opcion" data-op="b">20/10</div>
+        <div class="opcion" data-op="c">2/5</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">3. Los tres tipos de problemas de porcentaje</h2>
+  <div class="bloque">
+    <p>Todo problema de porcentaje tiene tres elementos: <strong>la parte</strong>, <strong>el total</strong> y <strong>el porcentaje</strong>. Cuando se conocen dos, el tercero se calcula. Por eso hay <strong>tres tipos</strong> de problemas, según cuál sea el desconocido.</p>
+
+    <div class="triangulo">
+      <div class="tres-tipos">
+        <div class="formula">parte = total × <span class="frac"><span class="num">%</span><span class="den">100</span></span></div>
+        <div class="leyenda">Una sola fórmula. Despejando lo desconocido se resuelven los tres tipos.</div>
+      </div>
+    </div>
+
+    <h3>Tipo 1 · Hallar la parte (conocidos el total y el %)</h3>
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1</span>
+      <p>¿Cuánto es el 15% de $80?</p>
+      <div class="paso"><span class="n">1</span> Se conoce el total ($80) y el porcentaje (15%). Se busca la parte.</div>
+      <div class="paso"><span class="n">2</span> Se aplica la fórmula: parte = 80 × (15/100) = 80 × 0.15.</div>
+      <div class="paso"><span class="n">3</span> Se calcula: 80 × 0.15 = 12.</div>
+      <p><strong>Respuesta:</strong> el 15% de $80 es $12.</p>
+    </div>
+
+    <h3>Tipo 2 · Hallar el total (conocidos la parte y el %)</h3>
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2</span>
+      <p>El 30% de un número es 45. ¿Cuál es ese número?</p>
+      <div class="paso"><span class="n">1</span> Se conoce la parte (45) y el porcentaje (30%). Se busca el total.</div>
+      <div class="paso"><span class="n">2</span> Se despeja: total = parte ÷ (% / 100) = 45 ÷ 0.30.</div>
+      <div class="paso"><span class="n">3</span> Se calcula: 45 ÷ 0.30 = 150.</div>
+      <p><strong>Respuesta:</strong> el número es 150. Verificación: 150 × 0.30 = 45. ✓</p>
+    </div>
+
+    <h3>Tipo 3 · Hallar el porcentaje (conocidos la parte y el total)</h3>
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3</span>
+      <p>De 50 estudiantes, 32 aprobaron el examen. ¿Qué porcentaje aprobó?</p>
+      <div class="paso"><span class="n">1</span> Se conoce la parte (32) y el total (50). Se busca el porcentaje.</div>
+      <div class="paso"><span class="n">2</span> Se despeja: % = (parte ÷ total) × 100 = (32 ÷ 50) × 100.</div>
+      <div class="paso"><span class="n">3</span> Se calcula: 32 ÷ 50 = 0.64; 0.64 × 100 = 64.</div>
+      <p><strong>Respuesta:</strong> aprobó el 64% de los estudiantes.</p>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Estrategia universal:</strong> identificar primero cuáles dos elementos se conocen y cuál se busca. Una vez claro el tipo, el cálculo es directo. No hay tres fórmulas distintas que memorizar: hay una sola, aplicada de tres maneras.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Los tres tipos</h3>
+    <p>Escribe el resultado (solo el número) y presiona «Verificar».</p>
+    <div class="pregunta">
+      <div class="enun">1. ¿Cuánto es el 25% de 240?</div>
+      <input type="text" class="campo-texto" id="p1" inputmode="numeric" aria-label="Respuesta de la pregunta 1: veinticinco por ciento de doscientos cuarenta" />
+      <div class="fb" id="fb-p1"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">2. El 40% de un número es 80. El número es:</div>
+      <input type="text" class="campo-texto" id="p2" inputmode="numeric" aria-label="Respuesta de la pregunta 2: el cuarenta por ciento de un número es ochenta, hallar el número" />
+      <div class="fb" id="fb-p2"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">3. ¿Qué porcentaje es 18 de 60?</div>
+      <input type="text" class="campo-texto" id="p3" inputmode="numeric" aria-label="Respuesta de la pregunta 3: dieciocho es qué porcentaje de sesenta" />
+      <div class="fb" id="fb-p3"></div>
+    </div>
+    <button class="btn" id="btn-tipos">Verificar</button>
+  </div>
+
+  <h2 class="seccion">4. Cambio porcentual: aumento y disminución</h2>
+  <div class="bloque">
+    <p>El <strong>cambio porcentual</strong> mide cuánto creció o disminuyó una cantidad, expresado como un porcentaje del valor original. Es la herramienta para decir frases como «el precio subió un 12%» o «la población bajó un 3%».</p>
+
+    <p style="text-align:center; font-size:17px; font-weight:700; color: var(--tema-d);">
+      cambio % = <span class="frac"><span class="num">valor final − valor inicial</span><span class="den">valor inicial</span></span> × 100
+    </p>
+
+    <p>Si el resultado es positivo, hubo <strong>aumento</strong>. Si es negativo, hubo <strong>disminución</strong>. El valor inicial siempre va abajo, porque es el punto de referencia.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4 · Aumento de precio</span>
+      <p>Un café costaba $4.00 y ahora cuesta $5.00. ¿Cuál fue el aumento porcentual?</p>
+      <div class="paso"><span class="n">1</span> Cambio en valor absoluto: 5.00 − 4.00 = 1.00.</div>
+      <div class="paso"><span class="n">2</span> Se divide entre el inicial: 1.00 ÷ 4.00 = 0.25.</div>
+      <div class="paso"><span class="n">3</span> Se multiplica por 100: 0.25 × 100 = 25.</div>
+      <p><strong>Respuesta:</strong> el precio aumentó un 25%.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 5 · Disminución</span>
+      <p>Una camisa rebajada pasó de $40 a $34. ¿Qué porcentaje de descuento se aplicó?</p>
+      <div class="paso"><span class="n">1</span> Cambio: 34 − 40 = −6 (negativo: indica disminución).</div>
+      <div class="paso"><span class="n">2</span> Se divide entre el inicial: −6 ÷ 40 = −0.15.</div>
+      <div class="paso"><span class="n">3</span> Se multiplica por 100: −0.15 × 100 = −15.</div>
+      <p><strong>Respuesta:</strong> el descuento fue del 15%.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Atención:</strong> el porcentaje de aumento y el porcentaje de disminución <strong>no son inversos</strong>. Si un precio sube 10% y luego baja 10%, no vuelve al original. Es un error común. Conviene calcular cada cambio sobre el valor vigente en ese momento.
+    </div>
+  </div>
+
+  <h2 class="seccion">5. Aplicaciones cotidianas</h2>
+  <div class="bloque">
+    <h3>Descuentos en la tienda</h3>
+    <div class="ejemplo">
+      <span class="et">Ejemplo 6</span>
+      <p>Unos zapatos cuestan $85 y tienen un descuento del 20%. ¿Cuál es el precio final?</p>
+      <div class="paso"><span class="n">1</span> Se calcula el descuento: 85 × 0.20 = $17.</div>
+      <div class="paso"><span class="n">2</span> Se resta del precio original: 85 − 17 = $68.</div>
+      <p><strong>Respuesta:</strong> el precio final es $68.</p>
+    </div>
+
+    <h3>Impuestos sobre la venta</h3>
+    <div class="ejemplo">
+      <span class="et">Ejemplo 7</span>
+      <p>Una compra de $120 tiene un impuesto sobre la venta del 8%. ¿Cuál es el total a pagar?</p>
+      <div class="paso"><span class="n">1</span> Se calcula el impuesto: 120 × 0.08 = $9.60.</div>
+      <div class="paso"><span class="n">2</span> Se suma al precio: 120 + 9.60 = $129.60.</div>
+      <p><strong>Respuesta:</strong> el total es $129.60.</p>
+    </div>
+
+    <h3>Propinas</h3>
+    <div class="ejemplo">
+      <span class="et">Ejemplo 8</span>
+      <p>La cuenta de un restaurante es de $48. Se quiere dejar una propina del 15%. ¿Cuánto se paga en total?</p>
+      <div class="paso"><span class="n">1</span> Se calcula la propina: 48 × 0.15 = $7.20.</div>
+      <div class="paso"><span class="n">2</span> Se suma al total: 48 + 7.20 = $55.20.</div>
+      <p><strong>Respuesta:</strong> el pago final es de $55.20.</p>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 3 · Aplicaciones cotidianas</h3>
+    <p>Selecciona la respuesta correcta.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Un suéter de $60 tiene un 30% de descuento. El precio rebajado es:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">$30</div>
+        <div class="opcion" data-op="b">$42</div>
+        <div class="opcion" data-op="c">$78</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. Una factura de $200 tiene un impuesto del 7%. El total a pagar es:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">$214</div>
+        <div class="opcion" data-op="b">$186</div>
+        <div class="opcion" data-op="c">$207</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">3. Un libro pasó de $25 a $20. El descuento fue del:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">5%</div>
+        <div class="opcion" data-op="b">10%</div>
+        <div class="opcion" data-op="c">20%</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">6. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 1 · Las tres caras del porcentaje</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          El docente escribe nueve cantidades en la pizarra (tres porcentajes, tres decimales, tres fracciones). Los estudiantes las convierten a las otras dos formas en su cuaderno y comparten resultados al final.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          En una hoja compartida con tres columnas («%», «decimal», «fracción»), los estudiantes completan las nueve filas. Una vez completas, se revisan en conjunto los casos que generaron dudas.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 2 · Identificar el tipo</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          El docente lee diez problemas de porcentaje. Antes de resolverlos, los estudiantes los clasifican: tipo 1 (parte), tipo 2 (total) o tipo 3 (porcentaje). Luego, en parejas, los resuelven todos.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          Las diez situaciones aparecen en una encuesta de selección («tipo 1», «tipo 2» o «tipo 3»). Tras clasificarlas, los estudiantes resuelven en una hoja compartida y comparan respuestas.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 3 · Compras simuladas</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          Cada grupo recibe una «lista de compras» con precios y porcentajes de descuento o impuesto. Calculan el precio final de cada artículo y el total general. Comparan resultados y discuten estrategias mentales rápidas.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          En salas pequeñas, los grupos trabajan en una hoja compartida con la lista. Calculan precios finales con descuento e impuesto y entregan el total al regresar al pleno.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2>Tarea asincrónica</h2>
+    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
+    <ul>
+      <li>Seis ejercicios de convertir entre porcentaje, decimal y fracción.</li>
+      <li>Cinco ejercicios de los tres tipos de problemas de porcentaje (parte, total, porcentaje).</li>
+      <li>Cuatro ejercicios de cambio porcentual (aumento y disminución).</li>
+      <li>Cinco aplicaciones reales: descuentos, propinas e impuestos.</li>
+    </ul>
+    <p>La plataforma ofrece retroalimentación paso a paso en cada intento. Tiempo estimado: 55 minutos.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 4.3</h2>
+    <p>Doce preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2>Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th>Inicial (1)</th>
+          <th>En desarrollo (2)</th>
+          <th>Competente (3)</th>
+          <th>Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Conversiones entre formas</td>
+          <td>Confunde decimales con porcentajes.</td>
+          <td>Convierte con apoyo.</td>
+          <td>Convierte entre las tres formas sin ayuda.</td>
+          <td>Convierte con fluidez y memoriza los porcentajes clave.</td>
+        </tr>
+        <tr>
+          <td>Tres tipos de problemas</td>
+          <td>No identifica cuál tipo se está resolviendo.</td>
+          <td>Identifica el tipo con apoyo.</td>
+          <td>Identifica y resuelve los tres tipos correctamente.</td>
+          <td>Resuelve, verifica y explica usando una sola fórmula.</td>
+        </tr>
+        <tr>
+          <td>Cambio porcentual</td>
+          <td>Confunde aumento con disminución.</td>
+          <td>Calcula con apoyo en casos simples.</td>
+          <td>Calcula aumento y disminución correctamente.</td>
+          <td>Calcula e interpreta el signo en cualquier contexto.</td>
+        </tr>
+        <tr>
+          <td>Aplicaciones reales</td>
+          <td>No completa cálculos de descuento o impuesto.</td>
+          <td>Calcula descuentos simples con ayuda.</td>
+          <td>Resuelve descuentos, propinas e impuestos correctamente.</td>
+          <td>Resuelve y combina descuento con impuesto en una misma compra.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2>Cierre y enlace con la próxima lección</h2>
+    <p>En esta lección las proporciones de la 4.2 se aplicaron al caso particular más usado en la vida cotidiana: las razones <strong>por cada 100</strong>. Quedaron dominadas las conversiones entre porcentaje, decimal y fracción; los <strong>tres tipos</strong> de problemas con una sola fórmula; el <strong>cambio porcentual</strong>; y las aplicaciones a descuentos, propinas e impuestos.</p>
+    <p>En la <strong>Lección 4.4 · Matemáticas financieras: interés simple y depreciación</strong> se cerrará el Tema 4 y todo el Nivel 2 con un contenido <strong>NUEVO</strong>: el uso de los porcentajes a lo largo del tiempo. El interés simple muestra cómo crece un capital con una tasa fija anual; la depreciación, cómo pierde valor un activo con una tasa fija anual. Las dos ideas comparten la misma fórmula, solo cambia el signo del cambio.</p>
+  </div>
+
+  <footer>
+    Spanish ASE Math · Nivel 2 · Lección 4.3 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  /* ---- Generar la rejilla 10x10 con 25 celdas llenas ---- */
+  var grid = document.getElementById('grid25');
+  for (var i = 0; i < 100; i++) {
+    var c = document.createElement('div');
+    c.className = 'celda' + (i < 25 ? ' lleno' : '');
+    grid.appendChild(c);
+  }
+
+  /* ---- Práctica de opciones ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) {
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+        });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revisa: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Práctica de los tres tipos ---- */
+  var clavesTipos = { p1: 60, p2: 200, p3: 30 };
+  document.getElementById('btn-tipos').addEventListener('click', function () {
+    Object.keys(clavesTipos).forEach(function (id) {
+      var campo = document.getElementById(id);
+      var fb = document.getElementById('fb-' + id);
+      var limpio = campo.value.trim().replace(/\s/g, '').replace(/^\$/, '').replace(/%$/, '');
+      var val = parseFloat(limpio);
+      if (limpio === '' || isNaN(val)) {
+        fb.textContent = 'Escribe un número (sin símbolos de $ ni %).';
+        fb.className = 'fb no';
+      } else if (Math.abs(val - clavesTipos[id]) < 0.001) {
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        fb.textContent = 'Revisa: identifica el tipo (parte, total o %) y aplica la fórmula.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+  });
+
+  /* ---- Quiz ---- */
+  var preguntasQuiz = [
+    { enun: '1. La palabra «porcentaje» significa:', ops: ['Por cada diez', 'Por cada cien', 'Por cada mil', 'Por cada millón'], correcta: 1 },
+    { enun: '2. 75% como decimal es:', ops: ['7.5', '0.75', '0.075', '75.0'], correcta: 1 },
+    { enun: '3. 0.04 como porcentaje es:', ops: ['0.4%', '4%', '40%', '400%'], correcta: 1 },
+    { enun: '4. 50% como fracción simplificada es:', ops: ['5/10', '1/4', '1/2', '50/1'], correcta: 2 },
+    { enun: '5. ¿Cuánto es el 30% de 90?', ops: ['3', '27', '60', '120'], correcta: 1 },
+    { enun: '6. El 20% de un número es 30. El número es:', ops: ['6', '50', '150', '600'], correcta: 2 },
+    { enun: '7. ¿Qué porcentaje es 12 de 48?', ops: ['12%', '24%', '25%', '40%'], correcta: 2 },
+    { enun: '8. Un televisor de $400 con un 15% de descuento queda en:', ops: ['$60', '$340', '$385', '$460'], correcta: 1 },
+    { enun: '9. Una factura de $50 con un 8% de impuesto queda en:', ops: ['$54.00', '$58.00', '$50.08', '$46.00'], correcta: 0 },
+    { enun: '10. Un libro pasó de $30 a $24. El descuento fue del:', ops: ['6%', '20%', '24%', '80%'], correcta: 1 },
+    { enun: '11. Un sueldo subió de $1 500 a $1 650. El aumento fue del:', ops: ['5%', '10%', '15%', '20%'], correcta: 1 },
+    { enun: '12. Para hallar el cambio porcentual se divide entre:', ops: ['El valor final', 'El valor inicial', 'La suma de ambos', '100'], correcta: 1 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) {
+          o.classList.remove('elegida');
+        });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta');
+      });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 8) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. ¡Aprobado! Puedes continuar a la Lección 4.4.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repasa la lección e intenta de nuevo (se requieren 8).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta', 'elegida');
+      });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

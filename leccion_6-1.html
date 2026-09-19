@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 6.1 · Matemáticas financieras: interés simple y depreciación</title>
+<style>
+  :root {
+    --tema:   #00695c;
+    --tema-d: #004d40;
+    --tema-bg:#b2dfdb;
+    --tema-bg2:#cce8e5;
+    --tema-soft:#e0f2f1;
+    --acento: #5e35b1;
+    --txt:    #222;
+    --bg:     #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  header.principal {
+    background: var(--tema);
+    background: linear-gradient(135deg, #004d40 0%, #00695c 55%, #00897b 100%);
+    color: #fff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(0,77,64,.28);
+  }
+  header.principal .ruta { font-size: 13px; opacity: .92; letter-spacing: .4px; text-transform: uppercase; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; }
+  header.principal .meta { font-size: 14px; opacity: .94; }
+
+  .pildora {
+    display: inline-block; background: #ffd54f; color: #5a3d00;
+    font-size: 11px; font-weight: 700; padding: 3px 10px;
+    border-radius: 12px; margin-left: 8px; letter-spacing: .4px;
+    vertical-align: middle;
+  }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-soft); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 {
+    margin: 0 0 10px; color: var(--tema-d); font-size: 19px;
+  }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+
+  p { margin: 10px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #fff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+
+  .caja-tip {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #1b5e20; font-size: 15px;
+  }
+  .caja-tip strong { color: #1b5e20; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5a3d00;
+  }
+  .caja-atencion strong { color: #c54500; }
+
+  .etiqueta {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    padding: 2px 10px; border-radius: 10px; margin-right: 4px;
+  }
+  .et-ambar { background: #ffe082; color: #000; }
+  .et-verde { background: var(--tema); color: #fff; }
+
+  /* tarjeta de fórmula */
+  .formula-card {
+    background: var(--tema-soft); border: 2px solid var(--tema);
+    border-radius: 12px; padding: 18px; margin: 14px 0;
+    text-align: center;
+  }
+  .formula-card .formula {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 26px; font-weight: 700; color: var(--tema-d);
+    margin: 6px 0;
+  }
+  .formula-card .leyenda {
+    font-size: 14px; color: #444; margin-top: 10px;
+  }
+  .formula-card .leyenda strong { color: var(--tema-d); }
+
+  /* tabla de crecimiento */
+  .tabla-fin {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px;
+  }
+  .tabla-fin th, .tabla-fin td {
+    border: 1px solid #e0e0e0; padding: 9px 12px; text-align: center;
+  }
+  .tabla-fin th { background: var(--tema); color: #fff; }
+  .tabla-fin td:first-child { background: var(--tema-soft); font-weight: 600; color: var(--tema-d); }
+  .tabla-fin tr.destacada td { background: #e8f5e9; font-weight: 700; }
+
+  /* comparación interés vs depreciación */
+  .comparacion {
+    display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0;
+  }
+  .tipo-fin {
+    flex: 1; min-width: 270px;
+    border-radius: 10px; padding: 16px;
+  }
+  .tipo-crece { background: #e8f5e9; border-left: 5px solid #2e7d32; }
+  .tipo-crece h3 { color: #1b5e20; margin-top: 0; }
+  .tipo-crece strong { color: #1b5e20; }
+  .tipo-baja { background: #fff3e0; border-left: 5px solid #c54500; }
+  .tipo-baja h3 { color: #5a3d00; margin-top: 0; }
+  .tipo-baja strong { color: #c54500; }
+
+  /* gráfico de barras simple */
+  .grafico-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #b71c1c; }
+
+  .campo-texto {
+    font-size: 16px; padding: 7px 10px; border: 2px solid #cfcfcf;
+    border-radius: 7px; width: 130px; font-family: inherit;
+  }
+  .campo-texto:focus { border-color: var(--tema); outline: none; }
+  .btn {
+    background: var(--tema); color: #fff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit;
+    margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #607d8b; }
+  .btn.sec:hover { background: #455a64; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo {
+    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
+    font-size: 14px;
+  }
+  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .modo-pres strong { color: #0d47a1; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #0d47a1; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-soft); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #4527a0; }
+
+  .quiz {
+    background: #fff; border: 2px solid var(--tema);
+    border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0;
+  }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #fff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-soft); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #222222;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 6 · Matemáticas financieras y conversiones de medidas</div>
+    <h1>Lección 6.1 · Matemáticas financieras: interés simple y depreciación <span class="pildora">CONTENIDO NUEVO</span></h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Identificar el capital principal, la tasa de interés y el tiempo en una situación financiera.</li>
+      <li>Aplicar la fórmula del interés simple I = C · r · t.</li>
+      <li>Calcular el monto final como la suma del capital y los intereses.</li>
+      <li>Aplicar la depreciación lineal para calcular el valor de un activo después de varios años.</li>
+      <li>Reconocer que interés simple y depreciación lineal comparten la misma estructura, con signo opuesto.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Conexión con la lección anterior.</strong> En la Lección 5.3 se aplicaron los porcentajes a situaciones puntuales —un descuento, una propina, un impuesto—. Esta lección, primera del Tema 6, da el paso siguiente: aplicarlos <strong>a lo largo del tiempo</strong>. Cuando un capital genera intereses año tras año, o cuando un activo (un carro, una computadora) pierde valor año tras año, los porcentajes se vuelven una herramienta de planificación financiera.</p>
+  </div>
+
+  <h2 class="seccion">1. Vocabulario financiero</h2>
+  <div class="bloque">
+    <p>Antes de aplicar fórmulas, conviene fijar el vocabulario. Cualquier situación de interés simple gira en torno a tres cantidades:</p>
+
+    <ul>
+      <li><strong>Capital principal (C):</strong> la cantidad de dinero inicial que se invierte o se presta. También se le llama «principal».</li>
+      <li><strong>Tasa de interés (r):</strong> el porcentaje que se aplica al capital cada periodo de tiempo. Suele expresarse como tasa anual (por ejemplo, 5% al año).</li>
+      <li><strong>Tiempo (t):</strong> la duración del préstamo o inversión, medida normalmente en años.</li>
+    </ul>
+
+    <p>Con estos tres datos se calculan otras dos cantidades:</p>
+
+    <ul>
+      <li><strong>Interés (I):</strong> el dinero adicional generado por la inversión, o el costo del préstamo.</li>
+      <li><strong>Monto final (M):</strong> el dinero total al cabo del tiempo. Para una inversión, M = C + I.</li>
+    </ul>
+
+    <div class="caja-tip">
+      <strong>Idea esencial:</strong> el interés es siempre un <strong>porcentaje del capital</strong>. Si la tasa anual es 5%, el interés generado en un año es exactamente el 5% del capital. La fórmula que sigue solo formaliza esta idea.
+    </div>
+  </div>
+
+  <h2 class="seccion">2. La fórmula del interés simple</h2>
+  <div class="bloque">
+    <div class="formula-card">
+      <div class="formula">I = C · r · t</div>
+      <div class="leyenda">
+        <strong>I</strong> = interés generado &nbsp;|&nbsp;
+        <strong>C</strong> = capital inicial &nbsp;|&nbsp;
+        <strong>r</strong> = tasa anual (en decimal) &nbsp;|&nbsp;
+        <strong>t</strong> = tiempo (en años)
+      </div>
+    </div>
+
+    <p>La tasa <strong>r</strong> se introduce en su forma <strong>decimal</strong>, no porcentual. Una tasa del 6% se convierte en r = 0.06 antes de multiplicar. Esa conversión es el paso donde más errores ocurren.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1 · Interés a un año</span>
+      <p>Se depositan $2 000 en una cuenta que paga el 5% de interés anual simple. ¿Cuánto interés se gana al cabo de un año?</p>
+      <div class="paso"><span class="n">1</span> Identificar los datos: C = 2 000, r = 0.05, t = 1.</div>
+      <div class="paso"><span class="n">2</span> Aplicar la fórmula: I = 2 000 × 0.05 × 1.</div>
+      <div class="paso"><span class="n">3</span> Calcular: I = $100.</div>
+      <p><strong>Respuesta:</strong> el interés ganado en un año es de $100.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2 · Interés en varios años</span>
+      <p>¿Cuánto interés genera un capital de $3 500 al 4% de interés simple anual durante 6 años?</p>
+      <div class="paso"><span class="n">1</span> Datos: C = 3 500, r = 0.04, t = 6.</div>
+      <div class="paso"><span class="n">2</span> Fórmula: I = 3 500 × 0.04 × 6.</div>
+      <div class="paso"><span class="n">3</span> Calcular paso a paso: 3 500 × 0.04 = 140 (interés anual); 140 × 6 = 840.</div>
+      <p><strong>Respuesta:</strong> el interés total después de 6 años es de $840.</p>
+    </div>
+
+    <h3>El monto final</h3>
+    <p>El <strong>monto final</strong> M es lo que se tiene al cabo del tiempo: el capital original más todos los intereses generados.</p>
+
+    <div class="formula-card">
+      <div class="formula">M = C + I</div>
+      <div class="leyenda">El capital y el interés se suman para obtener el monto final.</div>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3 · Monto final</span>
+      <p>Continuando el Ejemplo 2: ¿cuánto dinero hay después de 6 años?</p>
+      <div class="paso"><span class="n">1</span> Capital inicial: C = $3 500.</div>
+      <div class="paso"><span class="n">2</span> Interés calculado: I = $840.</div>
+      <div class="paso"><span class="n">3</span> Monto final: M = 3 500 + 840 = $4 340.</div>
+      <p><strong>Respuesta:</strong> al cabo de 6 años se tienen $4 340.</p>
+    </div>
+  </div>
+
+  <h2 class="seccion">3. Crecimiento año tras año</h2>
+  <div class="bloque">
+    <p>En el interés <strong>simple</strong>, el interés que se gana cada año es <strong>siempre el mismo</strong>, porque se calcula siempre sobre el capital original. Esto produce un crecimiento <strong>lineal</strong>.</p>
+
+    <p>Capital de $1 000 al 8% de interés simple anual:</p>
+
+    <table class="tabla-fin">
+      <thead>
+        <tr><th>Año</th><th>Interés del año ($)</th><th>Interés acumulado ($)</th><th>Monto total ($)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td>—</td><td>0</td><td>1 000</td></tr>
+        <tr><td>1</td><td>80</td><td>80</td><td>1 080</td></tr>
+        <tr><td>2</td><td>80</td><td>160</td><td>1 160</td></tr>
+        <tr><td>3</td><td>80</td><td>240</td><td>1 240</td></tr>
+        <tr class="destacada"><td>5</td><td>80</td><td>400</td><td>1 400</td></tr>
+        <tr><td>10</td><td>80</td><td>800</td><td>1 800</td></tr>
+      </tbody>
+    </table>
+
+    <div class="grafico-wrap">
+      <svg width="540" height="220" viewBox="0 0 540 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica de barras del crecimiento lineal del capital con interés simple">
+        <!-- ejes -->
+        <line x1="50" y1="180" x2="510" y2="180" stroke="#444" stroke-width="2"/>
+        <line x1="50" y1="20"  x2="50"  y2="180" stroke="#444" stroke-width="2"/>
+        <text x="20" y="30" font-family="Segoe UI, sans-serif" font-size="11" fill="#444">$</text>
+        <text x="280" y="208" font-family="Segoe UI, sans-serif" font-size="12" fill="#444" text-anchor="middle">Años</text>
+        <!-- barras: capital base + interés acumulado -->
+        <!-- escala: 1000 = 100 px de altura -->
+        <g>
+          <!-- año 0 -->
+          <rect x="80"  y="80"  width="40" height="100" fill="#00695c"/>
+          <text x="100" y="195" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#444">0</text>
+          <!-- año 1 -->
+          <rect x="140" y="80" width="40" height="100" fill="#00695c"/>
+          <rect x="140" y="72" width="40" height="8" fill="#a5d6a7"/>
+          <text x="160" y="195" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#444">1</text>
+          <!-- año 2 -->
+          <rect x="200" y="80" width="40" height="100" fill="#00695c"/>
+          <rect x="200" y="64" width="40" height="16" fill="#a5d6a7"/>
+          <text x="220" y="195" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#444">2</text>
+          <!-- año 3 -->
+          <rect x="260" y="80" width="40" height="100" fill="#00695c"/>
+          <rect x="260" y="56" width="40" height="24" fill="#a5d6a7"/>
+          <text x="280" y="195" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#444">3</text>
+          <!-- año 5 -->
+          <rect x="320" y="80" width="40" height="100" fill="#00695c"/>
+          <rect x="320" y="40" width="40" height="40" fill="#a5d6a7"/>
+          <text x="340" y="195" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#444">5</text>
+          <!-- año 10 -->
+          <rect x="380" y="80" width="40" height="100" fill="#00695c"/>
+          <rect x="380" y="0" width="40" height="80" fill="#a5d6a7"/>
+          <text x="400" y="195" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#444">10</text>
+        </g>
+        <!-- leyenda -->
+        <g font-family="Segoe UI, sans-serif" font-size="11">
+          <rect x="450" y="25"  width="14" height="14" fill="#00695c"/>
+          <text x="470" y="36" fill="#444">Capital</text>
+          <rect x="450" y="48" width="14" height="14" fill="#a5d6a7"/>
+          <text x="470" y="59" fill="#444">Interés</text>
+        </g>
+      </svg>
+    </div>
+
+    <p>La parte verde oscuro (el capital) nunca cambia. La parte verde clara (el interés acumulado) crece de forma <strong>regular y constante</strong>, año tras año.</p>
+
+    <div class="caja-atencion">
+      <strong>Importante:</strong> el interés <strong>compuesto</strong> es diferente. En ese caso, cada año se calcula sobre el monto del año anterior, no sobre el capital original. Eso produce un crecimiento más rápido. En este nivel se estudia solo el interés simple; el compuesto pertenece al Nivel 4.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Calcular interés simple</h3>
+    <p>Escribe el resultado en dólares (solo el número) y presiona «Verificar».</p>
+    <div class="pregunta">
+      <div class="enun">1. C = $500, r = 6%, t = 2 años. I =</div>
+      <input type="text" class="campo-texto" id="i1" inputmode="decimal" aria-label="Respuesta de la pregunta 1: interés simple sobre quinientos dólares al seis por ciento durante dos años" />
+      <div class="fb" id="fb-i1"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">2. C = $1 200, r = 4%, t = 5 años. I =</div>
+      <input type="text" class="campo-texto" id="i2" inputmode="decimal" aria-label="Respuesta de la pregunta 2: interés simple sobre mil doscientos dólares al cuatro por ciento durante cinco años" />
+      <div class="fb" id="fb-i2"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">3. C = $800, r = 3%, t = 4 años. Monto final M =</div>
+      <input type="text" class="campo-texto" id="i3" inputmode="decimal" aria-label="Respuesta de la pregunta 3: monto final con interés simple sobre ochocientos dólares al tres por ciento durante cuatro años" />
+      <div class="fb" id="fb-i3"></div>
+    </div>
+    <button class="btn" id="btn-int">Verificar</button>
+  </div>
+
+  <h2 class="seccion">4. Depreciación lineal: el otro lado de la moneda</h2>
+  <div class="bloque">
+    <p>La <strong>depreciación</strong> es el proceso por el cual un activo —un carro, una computadora, una máquina— pierde valor con el paso del tiempo. La depreciación <strong>lineal</strong> supone que la pérdida anual es <strong>la misma cada año</strong>, igual que el interés simple, pero hacia abajo.</p>
+
+    <div class="formula-card">
+      <div class="formula">V = V₀ − V₀ · r · t</div>
+      <div class="leyenda">
+        <strong>V</strong> = valor después de t años &nbsp;|&nbsp;
+        <strong>V₀</strong> = valor inicial &nbsp;|&nbsp;
+        <strong>r</strong> = tasa anual de depreciación (en decimal) &nbsp;|&nbsp;
+        <strong>t</strong> = tiempo (en años)
+      </div>
+    </div>
+
+    <p>La estructura de la fórmula es <strong>idéntica</strong> a la del interés simple. Lo único que cambia es el signo: en el interés se suma; en la depreciación, se resta. Por eso conviene pensar en ambos procesos como dos caras de la misma idea.</p>
+
+    <div class="comparacion">
+      <div class="tipo-fin tipo-crece">
+        <h3>Interés simple ↑</h3>
+        <p>El capital <strong>crece</strong> en una cantidad fija cada año. M = C + C · r · t.</p>
+      </div>
+      <div class="tipo-fin tipo-baja">
+        <h3>Depreciación lineal ↓</h3>
+        <p>El activo <strong>pierde</strong> una cantidad fija cada año. V = V₀ − V₀ · r · t.</p>
+      </div>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4 · Carro nuevo</span>
+      <p>Un carro nuevo cuesta $24 000. Se deprecia un 8% anual de su valor original. ¿Cuál será su valor al cabo de 5 años?</p>
+      <div class="paso"><span class="n">1</span> Datos: V₀ = 24 000, r = 0.08, t = 5.</div>
+      <div class="paso"><span class="n">2</span> Pérdida anual: 24 000 × 0.08 = $1 920 al año.</div>
+      <div class="paso"><span class="n">3</span> Pérdida total en 5 años: 1 920 × 5 = $9 600.</div>
+      <div class="paso"><span class="n">4</span> Valor final: 24 000 − 9 600 = $14 400.</div>
+      <p><strong>Respuesta:</strong> el carro vale $14 400 al cabo de 5 años.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 5 · Computadora de oficina</span>
+      <p>Una computadora se compró por $1 500 y se deprecia un 20% anual de su valor inicial. ¿Cuánto vale después de 3 años?</p>
+      <div class="paso"><span class="n">1</span> V₀ = 1 500, r = 0.20, t = 3.</div>
+      <div class="paso"><span class="n">2</span> Pérdida total: 1 500 × 0.20 × 3 = $900.</div>
+      <div class="paso"><span class="n">3</span> Valor final: 1 500 − 900 = $600.</div>
+      <p><strong>Respuesta:</strong> la computadora vale $600 después de 3 años.</p>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Nota práctica:</strong> en la depreciación lineal se supone que cada año se pierde el mismo porcentaje del valor <strong>original</strong>. En la vida real, muchos activos pierden un porcentaje del valor <strong>vigente</strong>, lo que produce una curva descendente más suave. Ese modelo se estudia más adelante.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Depreciación lineal</h3>
+    <p>Selecciona la respuesta correcta.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Un televisor de $800 se deprecia al 10% anual. ¿Cuánto vale a los 4 años?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">$400</div>
+        <div class="opcion" data-op="b">$480</div>
+        <div class="opcion" data-op="c">$720</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. Una máquina de $15 000 se deprecia al 5% anual. ¿Cuánto vale a los 6 años?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">$10 500</div>
+        <div class="opcion" data-op="b">$13 500</div>
+        <div class="opcion" data-op="c">$4 500</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">3. Una bicicleta de $400 se deprecia al 15% anual. ¿Cuánto se ha depreciado en 2 años?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">$30</div>
+        <div class="opcion" data-op="b">$60</div>
+        <div class="opcion" data-op="c">$120</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">5. Aplicaciones combinadas</h2>
+  <div class="bloque">
+    <p>Muchas decisiones financieras combinan varias ideas: comparar dos cuentas de ahorro, decidir cuánto vale un activo usado, calcular el rendimiento de una inversión.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 6 · Comparar dos cuentas</span>
+      <p>El banco A ofrece 4% anual de interés simple. El banco B ofrece 5%. Con $2 500 invertidos durante 3 años en cada uno, ¿qué diferencia hay entre los dos intereses?</p>
+      <div class="paso"><span class="n">1</span> Banco A: I = 2 500 × 0.04 × 3 = $300.</div>
+      <div class="paso"><span class="n">2</span> Banco B: I = 2 500 × 0.05 × 3 = $375.</div>
+      <div class="paso"><span class="n">3</span> Diferencia: 375 − 300 = $75 más en el banco B.</div>
+      <p><strong>Respuesta:</strong> el banco B genera $75 más en 3 años. Una diferencia del 1% en la tasa se traduce, en este plazo, en 75 dólares.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 7 · Comprar un carro usado</span>
+      <p>Un carro se compró nuevo por $20 000 hace 3 años. Si se deprecia al 12% anual, ¿cuál es un precio justo de reventa hoy?</p>
+      <div class="paso"><span class="n">1</span> Pérdida anual: 20 000 × 0.12 = $2 400.</div>
+      <div class="paso"><span class="n">2</span> Pérdida total en 3 años: 2 400 × 3 = $7 200.</div>
+      <div class="paso"><span class="n">3</span> Valor justo de reventa: 20 000 − 7 200 = $12 800.</div>
+      <p><strong>Respuesta:</strong> un precio justo de reventa es de $12 800.</p>
+    </div>
+  </div>
+
+  <h2 class="seccion">6. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 1 · Identificar los datos</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          El docente lee diez situaciones financieras. Los estudiantes anotan en su cuaderno tres columnas: C, r y t (o V₀, r y t para depreciación). Identificar los datos antes de calcular evita confusiones posteriores.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          En una hoja compartida con tres columnas, los estudiantes identifican los datos de cada una de las diez situaciones. Comparten al final los casos donde no encontraban la tasa o el tiempo.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 2 · Inversiones simuladas</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          Cada grupo recibe un capital y tres opciones de banco con distintas tasas y plazos. Calculan el monto final en cada caso y eligen la mejor opción, justificando su decisión.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          En salas pequeñas, los grupos trabajan en una hoja compartida con las opciones. Completan una tabla con interés y monto final para cada banco y comparten su elección al regresar al pleno.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 3 · ¿Cuánto vale tu carro?</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          Cada estudiante elige un activo (carro, computadora, electrodoméstico) con un precio nuevo realista y una tasa de depreciación dada. Calcula su valor a 1, 3 y 5 años, y dibuja un pequeño gráfico de barras que muestre la caída.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          Los estudiantes hacen el ejercicio en una hoja compartida y construyen un gráfico de barras digital. Publican su gráfico final en el foro y comentan el de un compañero.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2>Tarea asincrónica</h2>
+    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
+    <ul>
+      <li>Cinco ejercicios de calcular el interés simple a partir de C, r y t.</li>
+      <li>Tres ejercicios de calcular el monto final M = C + I.</li>
+      <li>Cinco ejercicios de calcular el valor de un activo después de varios años de depreciación lineal.</li>
+      <li>Tres ejercicios combinados: comparar opciones financieras o calcular precios de reventa.</li>
+    </ul>
+    <p>La plataforma ofrece retroalimentación paso a paso en cada intento. Tiempo estimado: 60 minutos.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 6.1</h2>
+    <p>Doce preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2>Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th>Inicial (1)</th>
+          <th>En desarrollo (2)</th>
+          <th>Competente (3)</th>
+          <th>Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Identificar datos financieros</td>
+          <td>No distingue capital, tasa y tiempo.</td>
+          <td>Identifica los datos con apoyo.</td>
+          <td>Identifica C, r y t sin ayuda en cualquier situación.</td>
+          <td>Identifica y traduce la tasa porcentual a decimal sin error.</td>
+        </tr>
+        <tr>
+          <td>Aplicar la fórmula del interés simple</td>
+          <td>Confunde la fórmula o multiplica mal.</td>
+          <td>Aplica la fórmula en casos simples.</td>
+          <td>Aplica la fórmula y calcula interés y monto final.</td>
+          <td>Aplica, calcula y verifica los resultados con un cálculo alternativo.</td>
+        </tr>
+        <tr>
+          <td>Depreciación lineal</td>
+          <td>No calcula la pérdida anual.</td>
+          <td>Calcula con apoyo en casos simples.</td>
+          <td>Calcula el valor de un activo después de varios años.</td>
+          <td>Reconoce la simetría con el interés simple y la explica.</td>
+        </tr>
+        <tr>
+          <td>Aplicaciones reales</td>
+          <td>No completa problemas combinados.</td>
+          <td>Resuelve problemas combinados con ayuda.</td>
+          <td>Compara opciones financieras correctamente.</td>
+          <td>Compara, decide y justifica la elección con argumentos numéricos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2>Cierre de la lección 6.1</h2>
+    <p>Con esta lección se abre el <strong>Tema 6</strong> con la <strong>matemática financiera básica</strong>: el interés simple y la depreciación lineal, dos procesos con la misma estructura matemática pero signos opuestos. El Tema 6 continúa con las conversiones entre el sistema inglés y el métrico, y el <strong>Nivel 2</strong> cierra más adelante con la geometría del círculo, la estadística descriptiva y el proyecto final integrador.</p>
+    <p>Más allá de este nivel, el <strong>Nivel 3</strong> abrirá un terreno nuevo: reglas completas de exponentes, notación científica, simplificación de radicales, números racionales e irracionales, el ingreso formal al <strong>lenguaje algebraico</strong> con sus ecuaciones e inecuaciones, y la geometría del teorema de Pitágoras. Todo lo construido en el Nivel 2 —los signos, las fracciones, las potencias, las raíces, PEMDAS, las proporciones y los porcentajes— será la materia prima de ese siguiente nivel. <strong>La victoria fue nuestra</strong>, y el camino sigue.</p>
+  </div>
+
+  <footer>
+    Spanish ASE Math · Nivel 2 · Lección 6.1 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) {
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+        });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revisa: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Práctica de interés simple ---- */
+  var clavesInt = { i1: 60, i2: 240, i3: 896 };
+  document.getElementById('btn-int').addEventListener('click', function () {
+    Object.keys(clavesInt).forEach(function (id) {
+      var campo = document.getElementById(id);
+      var fb = document.getElementById('fb-' + id);
+      var limpio = campo.value.trim().replace(/\s/g, '').replace(/,/g, '').replace(/^\$/, '');
+      var val = parseFloat(limpio);
+      if (limpio === '' || isNaN(val)) {
+        fb.textContent = 'Escribe un número (sin símbolo $).';
+        fb.className = 'fb no';
+      } else if (Math.abs(val - clavesInt[id]) < 0.01) {
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        fb.textContent = 'Revisa: convierte la tasa a decimal y aplica I = C × r × t.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+  });
+
+  /* ---- Quiz ---- */
+  var preguntasQuiz = [
+    { enun: '1. En la fórmula I = C · r · t, la letra C representa:', ops: ['La tasa de interés', 'El capital inicial', 'El tiempo', 'El monto final'], correcta: 1 },
+    { enun: '2. Una tasa del 7% en forma decimal es:', ops: ['7.0', '0.7', '0.07', '0.007'], correcta: 2 },
+    { enun: '3. C = $1 000, r = 5%, t = 1 año. El interés es:', ops: ['$5', '$50', '$500', '$1 050'], correcta: 1 },
+    { enun: '4. C = $2 000, r = 6%, t = 3 años. El interés es:', ops: ['$60', '$120', '$360', '$2 360'], correcta: 2 },
+    { enun: '5. Si C = $1 500 y el interés total es $180 en 3 años, el monto final es:', ops: ['$1 320', '$1 680', '$1 980', '$2 040'], correcta: 1 },
+    { enun: '6. En el interés simple, el interés de cada año es:', ops: ['Mayor cada año', 'Menor cada año', 'Siempre el mismo', 'Depende del banco'], correcta: 2 },
+    { enun: '7. Un carro de $18 000 se deprecia al 10% anual. La pérdida del primer año es:', ops: ['$1 000', '$1 800', '$3 600', '$10 000'], correcta: 1 },
+    { enun: '8. ¿Cuál es el valor del carro anterior al cabo de 4 años?', ops: ['$10 800', '$12 600', '$14 400', '$16 200'], correcta: 0 },
+    { enun: '9. Una computadora de $1 000 se deprecia al 25% anual. ¿Cuándo se hace cero su valor (depreciación lineal)?', ops: ['Nunca', 'A los 2 años', 'A los 4 años', 'A los 25 años'], correcta: 2 },
+    { enun: '10. Interés simple y depreciación lineal comparten:', ops: ['Solo el nombre', 'La misma estructura, signos opuestos', 'La misma fórmula exacta', 'No tienen nada en común'], correcta: 1 },
+    { enun: '11. Banco A: 3% por 4 años. Banco B: 4% por 3 años. Con el mismo capital, ¿cuál genera más interés?', ops: ['Banco A', 'Banco B', 'Ambos generan igual', 'No se puede comparar'], correcta: 2 },
+    { enun: '12. Una bicicleta de $500 se deprecia 8% al año. A los 5 años vale:', ops: ['$100', '$200', '$300', '$400'], correcta: 2 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) {
+          o.classList.remove('elegida');
+        });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta');
+      });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 8) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. ¡Aprobado! Has completado la lección 6.1 del Tema 6. ¡La victoria es tuya!';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repasa la lección e intenta de nuevo (se requieren 8).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta', 'elegida');
+      });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

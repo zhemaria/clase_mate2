@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 3.2 · PEMDAS con potencias, raíces, fracciones y signos</title>
+<style>
+  :root {
+    --tema:   #1a237e;
+    --tema-d: #0d144d;
+    --tema-bg:#e8eaf6;
+    --tema-bg2:#dfe2f1;
+    --acento: #00695c;
+    --txt:    #222;
+    --bg:     #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  header.principal {
+    background: var(--tema);
+    background: linear-gradient(135deg, #0d144d 0%, #1a237e 55%, #283593 100%);
+    color: #fff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(13,20,77,.28);
+  }
+  header.principal .ruta { font-size: 13px; opacity: .92; letter-spacing: .4px; text-transform: uppercase; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; }
+  header.principal .meta { font-size: 14px; opacity: .94; }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 {
+    margin: 0 0 10px; color: var(--tema-d); font-size: 19px;
+  }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+
+  p { margin: 10px 0; }
+
+  /* fraccion visual */
+  .frac {
+    display: inline-block; text-align: center; vertical-align: middle;
+    margin: 0 3px; font-size: 16px;
+  }
+  .frac .num { display: block; padding: 0 6px; border-bottom: 2px solid #444; }
+  .frac .den { display: block; padding: 0 6px; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #fff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+
+  .caja-tip {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #1b5e20; font-size: 15px;
+  }
+  .caja-tip strong { color: #1b5e20; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5a3d00;
+  }
+  .caja-atencion strong { color: #c54500; }
+
+  .etiqueta {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    padding: 2px 10px; border-radius: 10px; margin-right: 4px;
+  }
+  .et-ambar { background: #ffe082; color: #000; }
+  .et-indigo { background: var(--tema); color: #fff; }
+
+  .expr-paso {
+    font-family: 'Consolas', 'Courier New', monospace;
+    background: #f5f6fa; border: 1px solid #d4d8eb;
+    padding: 9px 14px; border-radius: 6px;
+    font-size: 16px; margin: 5px 0;
+  }
+  .resalta {
+    background: #fff59d; padding: 0 3px; border-radius: 3px;
+    font-weight: 700; color: #5a3d00;
+  }
+
+  /* tarjeta integradora con los 3 temas */
+  .integra {
+    background: var(--tema-bg); border-radius: 10px;
+    padding: 18px; margin: 14px 0;
+  }
+  .integra-titulo {
+    color: var(--tema-d); font-weight: 700; font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    background: #fff; border: 2px solid var(--tema);
+    border-radius: 20px; padding: 6px 14px; font-size: 13px;
+    color: var(--tema-d); font-weight: 600;
+  }
+  .chip-1 { border-color: #b71c1c; color: #7f1414; }
+  .chip-2 { border-color: #4a148c; color: #4a148c; }
+  .chip-3 { border-color: var(--tema); color: var(--tema-d); }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #b71c1c; }
+
+  .campo-texto {
+    font-size: 16px; padding: 7px 10px; border: 2px solid #cfcfcf;
+    border-radius: 7px; width: 140px; font-family: inherit;
+  }
+  .campo-texto:focus { border-color: var(--tema); outline: none; }
+  .btn {
+    background: var(--tema); color: #fff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit;
+    margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #607d8b; }
+  .btn.sec:hover { background: #455a64; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo {
+    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
+    font-size: 14px;
+  }
+  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .modo-pres strong { color: #0d47a1; }
+  .modo-virt { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-virt strong { color: #004d40; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #0d47a1; }
+  .modo-virt h3 { color: #004d40; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #4527a0; }
+
+  .quiz {
+    background: #fff; border: 2px solid var(--tema);
+    border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0;
+  }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #fff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #222222;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 3 · PEMDAS completo</div>
+    <h1>Lección 3.2 · PEMDAS con potencias, raíces, fracciones y signos</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Aplicar PEMDAS a expresiones que incluyen potencias y raíces cuadradas.</li>
+      <li>Tratar la barra de fracción y el símbolo radical como agrupadores invisibles.</li>
+      <li>Evaluar expresiones que combinan enteros con signo y fracciones bajo PEMDAS.</li>
+      <li>Resolver expresiones integradoras que reúnen todas las herramientas del Nivel 2.</li>
+      <li>Verificar resultados complejos con la calculadora TI-30XS.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Conexión con la lección anterior.</strong> En la Lección 3.1 quedó establecida la pirámide PEMDAS y se trabajó con paréntesis anidados usando enteros positivos. Esta lección final del Tema 3 incorpora <strong>todas</strong> las piezas estudiadas en el Nivel 2: potencias, raíces cuadradas, fracciones complejas y enteros con signo. La pirámide no cambia; cambia la riqueza de los ingredientes.</p>
+
+    <div class="integra">
+      <div class="integra-titulo">Lo que se integra hoy</div>
+      <div class="chips">
+        <span class="chip chip-1">Tema 1 · enteros con signo</span>
+        <span class="chip chip-2">Tema 2 · fracciones, potencias, raíces</span>
+        <span class="chip chip-3">Tema 3 · PEMDAS</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="seccion">1. PEMDAS con potencias y raíces</h2>
+  <div class="bloque">
+    <p>En PEMDAS, la <strong>E</strong> de «Exponentes» incluye también a las <strong>raíces</strong>. Ambas comparten el mismo nivel de prioridad: el segundo, justo después de los agrupadores y antes de cualquier multiplicación, división, suma o resta.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1</span>
+      <p>Evaluar 3 + √25 × 2.</p>
+      <div class="expr-paso">3 + <span class="resalta">√25</span> × 2</div>
+      <div class="paso"><span class="n">1</span> La raíz comparte nivel con los exponentes: se evalúa primero. √25 = 5.</div>
+      <div class="expr-paso">3 + <span class="resalta">5 × 2</span></div>
+      <div class="paso"><span class="n">2</span> MD: se multiplica antes de sumar. 5 × 2 = 10.</div>
+      <div class="expr-paso">3 + 10</div>
+      <div class="paso"><span class="n">3</span> AS: se suma. 3 + 10 = 13.</div>
+      <p><strong>Respuesta:</strong> 13.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2 · Potencia y raíz juntas</span>
+      <p>Evaluar 2³ + √(16 + 9).</p>
+      <div class="expr-paso">2³ + √<span class="resalta">(16 + 9)</span></div>
+      <div class="paso"><span class="n">1</span> P: dentro del paréntesis bajo la raíz, 16 + 9 = 25.</div>
+      <div class="expr-paso"><span class="resalta">2³</span> + <span class="resalta">√25</span></div>
+      <div class="paso"><span class="n">2</span> E: se evalúan la potencia y la raíz. 2³ = 8 y √25 = 5.</div>
+      <div class="expr-paso">8 + 5</div>
+      <div class="paso"><span class="n">3</span> AS: se suma. 8 + 5 = 13.</div>
+      <p><strong>Respuesta:</strong> 13.</p>
+    </div>
+
+    <div class="caja-tip">
+      <strong>El símbolo radical como agrupador:</strong> todo lo que está bajo el símbolo √ se considera <strong>dentro de un paréntesis invisible</strong>. Por eso √(16 + 9) ≠ √16 + √9. En el primer caso, primero se suma (16 + 9 = 25) y luego se saca la raíz: √25 = 5. En el segundo, se sacarían dos raíces por separado: 4 + 3 = 7.
+    </div>
+  </div>
+
+  <h2 class="seccion">2. La barra de fracción como agrupador</h2>
+  <div class="bloque">
+    <p>De forma similar al radical, la <strong>barra de fracción</strong> agrupa lo que está arriba y lo que está abajo. Numerador y denominador se evalúan por separado, y luego se realiza la división.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3</span>
+      <p>Evaluar <span class="frac"><span class="num">3² + 7</span><span class="den">2 × 4</span></span>.</p>
+      <div class="paso"><span class="n">1</span> Numerador: 3² + 7 = 9 + 7 = 16. (E antes que A.)</div>
+      <div class="paso"><span class="n">2</span> Denominador: 2 × 4 = 8.</div>
+      <div class="paso"><span class="n">3</span> Se divide: 16 ÷ 8 = 2.</div>
+      <p><strong>Respuesta:</strong> 2.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Atención:</strong> al transcribir una fracción a una línea, hay que poner <strong>paréntesis</strong> alrededor del numerador y del denominador. Así, (3² + 7) ÷ (2 × 4) preserva el significado original. Sin esos paréntesis, una calculadora interpretaría 3² + 7 ÷ 2 × 4, que da un resultado completamente distinto.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Potencias, raíces y fracciones</h3>
+    <p>Selecciona el resultado correcto.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Evalúa: 4 + √36 × 2.</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">20</div>
+        <div class="opcion" data-op="b">16</div>
+        <div class="opcion" data-op="c">8</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. Evalúa: 5² − √(9 + 16).</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">20</div>
+        <div class="opcion" data-op="b">18</div>
+        <div class="opcion" data-op="c">28</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">3. Evalúa: (2² + 6) ÷ (5 − 3).</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">8</div>
+        <div class="opcion" data-op="b">10</div>
+        <div class="opcion" data-op="c">5</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">3. PEMDAS con enteros negativos</h2>
+  <div class="bloque">
+    <p>Cuando aparecen <strong>signos negativos</strong>, lo importante es saber distinguir cuándo el signo forma parte del número y cuándo indica una resta o un opuesto.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4</span>
+      <p>Evaluar −6 + 2 × (−4).</p>
+      <div class="expr-paso">−6 + <span class="resalta">2 × (−4)</span></div>
+      <div class="paso"><span class="n">1</span> MD: la multiplicación va antes que la suma. Signos distintos → negativo: 2 × (−4) = −8.</div>
+      <div class="expr-paso">−6 + (−8)</div>
+      <div class="paso"><span class="n">2</span> AS: suma de enteros con el mismo signo (ambos negativos): −6 + (−8) = −14.</div>
+      <p><strong>Respuesta:</strong> −14.</p>
+    </div>
+
+    <h3>El caso de la base negativa con exponente</h3>
+    <p>La diferencia entre <strong>(−5)²</strong> y <strong>−5²</strong> es uno de los errores más finos de PEMDAS, y conviene mirarlo con cuidado.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 5 · Dos casos casi iguales</span>
+      <p><strong>Caso A:</strong> (−5)² significa elevar el número −5 al cuadrado. El paréntesis incluye el signo en la base.</p>
+      <div class="expr-paso">(−5)² = (−5) × (−5) = 25</div>
+      <p><strong>Caso B:</strong> −5² significa el opuesto de 5². Sin paréntesis, el exponente solo afecta al 5, no al signo.</p>
+      <div class="expr-paso">−5² = −(5 × 5) = −25</div>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Regla:</strong> el exponente afecta solo al símbolo que está justo a su izquierda. Sin paréntesis, el signo menos queda <strong>fuera</strong> del alcance del exponente.
+    </div>
+  </div>
+
+  <h2 class="seccion">4. Expresiones integradoras</h2>
+  <div class="bloque">
+    <p>Una expresión <strong>integradora</strong> es la que combina, en un solo cálculo, herramientas de los tres temas del nivel. Resolverla es exactamente igual que las anteriores: PEMDAS, paso a paso, copiando cada línea.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 6 · Integradora completa</span>
+      <p>Evaluar (−3)² + √64 ÷ 2 − <span class="frac"><span class="num">5</span><span class="den">2</span></span> × 4.</p>
+      <div class="expr-paso"><span class="resalta">(−3)²</span> + <span class="resalta">√64</span> ÷ 2 − <span class="frac"><span class="num">5</span><span class="den">2</span></span> × 4</div>
+      <div class="paso"><span class="n">1</span> E: se evalúan potencia y raíz a la vez. (−3)² = 9 y √64 = 8.</div>
+      <div class="expr-paso">9 + <span class="resalta">8 ÷ 2</span> − <span class="resalta"><span class="frac"><span class="num">5</span><span class="den">2</span></span> × 4</span></div>
+      <div class="paso"><span class="n">2</span> MD: las dos operaciones intermedias se calculan de izquierda a derecha. 8 ÷ 2 = 4; (5/2) × 4 = 20/2 = 10.</div>
+      <div class="expr-paso">9 + 4 − 10</div>
+      <div class="paso"><span class="n">3</span> AS: de izquierda a derecha. 9 + 4 = 13; 13 − 10 = 3.</div>
+      <p><strong>Respuesta:</strong> 3.</p>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Verificación con la TI-30XS:</strong> esta calculadora respeta PEMDAS automáticamente. Conviene <strong>limpiar la memoria</strong> antes de cada cálculo y, al introducir fracciones complejas, usar paréntesis alrededor del numerador y del denominador. Recordar también que (−5)² requiere paréntesis explícitos en la tecleo; de lo contrario, la calculadora interpretará −5² y devolverá −25.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Integradoras</h3>
+    <p>Escribe el resultado de cada expresión (puede ser número entero o fracción simple como <em>3/2</em>) y presiona «Verificar».</p>
+    <div class="pregunta">
+      <div class="enun">1. (−4)² − 10 ÷ 2 =</div>
+      <input type="text" class="campo-texto" id="i1" aria-label="Respuesta de la pregunta 1: paréntesis menos cuatro cerrar paréntesis al cuadrado menos diez dividido entre dos" />
+      <div class="fb" id="fb-i1"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">2. √81 + 3² × 2 =</div>
+      <input type="text" class="campo-texto" id="i2" aria-label="Respuesta de la pregunta 2: raíz cuadrada de ochenta y uno más tres al cuadrado por dos" />
+      <div class="fb" id="fb-i2"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">3. (5 + 7) ÷ 4 − √9 =</div>
+      <input type="text" class="campo-texto" id="i3" aria-label="Respuesta de la pregunta 3: paréntesis cinco más siete cerrar paréntesis dividido entre cuatro menos raíz cuadrada de nueve" />
+      <div class="fb" id="fb-i3"></div>
+    </div>
+    <button class="btn" id="btn-int">Verificar</button>
+  </div>
+
+  <h2 class="seccion">5. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 1 · La E incluye raíces</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          El docente presenta ocho expresiones que mezclan potencias y raíces. Los estudiantes señalan en cada una qué operación pertenece al nivel «E» de PEMDAS antes de resolver. Se discuten en grupo los casos en que la raíz contiene una suma.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          En una pizarra compartida, los estudiantes resaltan con un color todas las potencias y con otro todas las raíces de las ocho expresiones. Luego resuelven cada una y comentan los aciertos y errores en el chat.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 2 · (−5)² vs. −5²</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          En parejas, los estudiantes evalúan diez expresiones donde se mezclan (−a)² con −a². Comparan los dos resultados y discuten por qué los paréntesis cambian el significado. Al final, cada pareja inventa un ejemplo más para la clase.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          En salas pequeñas, las parejas completan una tabla compartida de dos columnas: «con paréntesis» y «sin paréntesis». Anotan resultados y comentan en el foro qué versión obtuvieron en sus calculadoras.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 3 · Maratón integradora</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          El docente plantea cinco expresiones integradoras que combinan enteros con signo, fracciones, potencias y raíces. Los estudiantes resuelven cada una paso a paso en su cuaderno y luego comparan con la TI-30XS para validar.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          Los estudiantes resuelven las cinco expresiones en una hoja compartida. Publican el resultado final en el chat; el docente revela las soluciones, comenta los errores comunes y muestra cómo se introduce cada expresión en la calculadora.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2>Tarea asincrónica</h2>
+    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
+    <ul>
+      <li>Cinco expresiones que combinan potencias y raíces.</li>
+      <li>Cinco expresiones con la barra de fracción como agrupador.</li>
+      <li>Cinco expresiones con enteros negativos, incluyendo el contraste (−a)² vs. −a².</li>
+      <li>Cinco expresiones integradoras que reúnen herramientas de los tres temas del nivel.</li>
+    </ul>
+    <p>La plataforma ofrece retroalimentación paso a paso en cada intento. Tiempo estimado: 60 minutos.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 3.2</h2>
+    <p>Doce preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2>Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th>Inicial (1)</th>
+          <th>En desarrollo (2)</th>
+          <th>Competente (3)</th>
+          <th>Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Potencias y raíces en PEMDAS</td>
+          <td>No reconoce que la raíz comparte nivel con la potencia.</td>
+          <td>Las evalúa en orden con apoyo.</td>
+          <td>Evalúa potencias y raíces en su nivel correcto sin ayuda.</td>
+          <td>Evalúa potencias y raíces y explica que comparten nivel E.</td>
+        </tr>
+        <tr>
+          <td>Barra de fracción y radical como agrupadores</td>
+          <td>Trata cada operación por separado sin respetar el agrupador.</td>
+          <td>Identifica el agrupador con guía.</td>
+          <td>Trata barra de fracción y radical como agrupadores invisibles.</td>
+          <td>Aplica el agrupador y lo transcribe a línea con paréntesis.</td>
+        </tr>
+        <tr>
+          <td>Caso (−a)² vs. −a²</td>
+          <td>Confunde ambos casos.</td>
+          <td>Distingue los casos con apoyo.</td>
+          <td>Distingue (−a)² de −a² y los evalúa correctamente.</td>
+          <td>Distingue, evalúa y justifica por qué los paréntesis cambian el alcance.</td>
+        </tr>
+        <tr>
+          <td>Expresiones integradoras</td>
+          <td>No completa expresiones integradoras.</td>
+          <td>Resuelve algunas integradoras con errores.</td>
+          <td>Resuelve expresiones integradoras correctamente.</td>
+          <td>Resuelve y verifica con la TI-30XS expresiones integradoras complejas.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2>Cierre del Tema 3 y enlace con el Tema 4</h2>
+    <p>Con esta lección se completa el <strong>Tema 3</strong> y, con él, el hilo conductor del Nivel 2: el <strong>orden de operaciones</strong> aplicado a todo el repertorio aritmético del nivel. Quedaron integrados enteros con signo, fracciones complejas, potencias y raíces dentro de una única pirámide de prioridades.</p>
+    <p>El <strong>Tema 4 · Razones, proporciones y porcentajes</strong> abre con la <strong>Lección 4.1 · Razones y tasas unitarias</strong>. Cambia el terreno: del cálculo aritmético abstracto se pasa a <strong>comparar cantidades</strong>. Las razones son la herramienta natural para comparar precios, velocidades y mezclas, y serán la base de los porcentajes y de la matemática financiera que vendrán después.</p>
+  </div>
+
+  <footer>
+    Spanish ASE Math · Nivel 2 · Lección 3.2 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) {
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+        });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revisa: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Práctica de integradoras (campo de texto, acepta entero o fracción) ---- */
+  var clavesInt = {
+    i1: ['11'],
+    i2: ['27'],
+    i3: ['0']
+  };
+  function normaliza(txt) {
+    return txt.trim().replace(/\s/g, '').replace(/−/g, '-');
+  }
+  document.getElementById('btn-int').addEventListener('click', function () {
+    Object.keys(clavesInt).forEach(function (id) {
+      var campo = document.getElementById(id);
+      var fb = document.getElementById('fb-' + id);
+      var val = normaliza(campo.value);
+      if (val === '') {
+        fb.textContent = 'Escribe la respuesta como número entero o fracción.';
+        fb.className = 'fb no';
+      } else if (clavesInt[id].indexOf(val) !== -1) {
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        fb.textContent = 'Revisa: aplica PEMDAS paso a paso. Evalúa la potencia y la raíz antes que MD.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+  });
+
+  /* ---- Quiz ---- */
+  var preguntasQuiz = [
+    { enun: '1. Evalúa: 2 + 3².', ops: ['25', '11', '13', '10'], correcta: 1 },
+    { enun: '2. Evalúa: √49 − 3.', ops: ['46', '7', '4', '10'], correcta: 2 },
+    { enun: '3. Evalúa: 2 × √36 + 1.', ops: ['13', '12', '37', '25'], correcta: 0 },
+    { enun: '4. Evalúa: √(4 + 21).', ops: ['5', '7', '25', '23'], correcta: 0 },
+    { enun: '5. La expresión √16 + √9 NO es igual a:', ops: ['4 + 3', '7', '√25', '3 + 4'], correcta: 2 },
+    { enun: '6. Evalúa: (12 + 4) ÷ (6 − 2).', ops: ['4', '8', '14', '20'], correcta: 0 },
+    { enun: '7. Evalúa: (−6)².', ops: ['−36', '36', '−12', '12'], correcta: 1 },
+    { enun: '8. Evalúa: −6².', ops: ['36', '−36', '−12', '12'], correcta: 1 },
+    { enun: '9. Evalúa: −4 + 3 × (−5).', ops: ['−5', '−19', '−35', '11'], correcta: 1 },
+    { enun: '10. Evalúa: (−2)³ + 10.', ops: ['18', '2', '−2', '4'], correcta: 1 },
+    { enun: '11. Evalúa: 5 + √100 ÷ 2.', ops: ['10', '15', '7.5', '5'], correcta: 0 },
+    { enun: '12. Evalúa: 2² × 3 − √81.', ops: ['3', '12', '0', '−3'], correcta: 0 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) {
+          o.classList.remove('elegida');
+        });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta');
+      });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 8) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. ¡Aprobado! Has completado el Tema 3. Puedes continuar al Tema 4.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repasa la lección e intenta de nuevo (se requieren 8).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta', 'elegida');
+      });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

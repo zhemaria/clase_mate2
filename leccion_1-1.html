@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 1.1 · La recta numérica, valor absoluto y opuestos</title>
+<style>
+  :root {
+    --tema:   #b71c1c;
+    --tema-d: #7f1414;
+    --tema-bg:#ffebee;
+    --tema-bg2:#fce4e6;
+    --acento: #00695c;
+    --txt:    #222;
+    --bg:     #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  header.principal {
+    background: var(--tema);
+    background: linear-gradient(135deg, #7f1414 0%, #b71c1c 55%, #d32f2f 100%);
+    color: #fff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(127,20,20,.28);
+  }
+  header.principal .ruta { font-size: 13px; opacity: .92; letter-spacing: .4px; text-transform: uppercase; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; }
+  header.principal .meta { font-size: 14px; opacity: .94; }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 {
+    margin: 0 0 10px; color: var(--tema-d); font-size: 19px;
+  }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+
+  p { margin: 10px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #fff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+
+  .caja-tip {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #1b5e20; font-size: 15px;
+  }
+  .caja-tip strong { color: #1b5e20; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5a3d00;
+  }
+  .caja-atencion strong { color: #c54500; }
+
+  .etiqueta {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    padding: 2px 10px; border-radius: 10px; margin-right: 4px;
+  }
+  .et-ambar { background: #ffe082; color: #000; }
+  .et-rojo  { background: var(--tema); color: #fff; }
+
+  /* recta numerica SVG */
+  .recta-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+
+  /* practica interactiva */
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 {
+    margin-top: 0; color: var(--tema-d);
+  }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #b71c1c; }
+
+  .campo-num {
+    font-size: 16px; padding: 7px 10px; border: 2px solid #cfcfcf;
+    border-radius: 7px; width: 110px; font-family: inherit;
+  }
+  .campo-num:focus { border-color: var(--tema); outline: none; }
+  .btn {
+    background: var(--tema); color: #fff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit;
+    margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #607d8b; }
+  .btn.sec:hover { background: #455a64; }
+
+  /* doble modalidad */
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo {
+    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
+    font-size: 14px;
+  }
+  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .modo-pres strong { color: #0d47a1; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #0d47a1; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #4527a0; }
+
+  /* quiz */
+  .quiz {
+    background: #fff; border: 2px solid var(--tema);
+    border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0;
+  }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  /* rubrica */
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #fff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  /* cierre */
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #777;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 1 · Enteros con signo</div>
+    <h1>Lección 1.1 · La recta numérica, valor absoluto y opuestos</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Ubicar números enteros positivos y negativos en la recta numérica.</li>
+      <li>Comparar y ordenar enteros usando los símbolos &gt;, &lt; e =.</li>
+      <li>Calcular el valor absoluto de un número e interpretarlo como su distancia al cero.</li>
+      <li>Identificar el opuesto (inverso aditivo) de cualquier número entero.</li>
+      <li>Representar situaciones reales —temperatura, deuda, altitud— mediante enteros con signo.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Bienvenida al Nivel 2.</strong> En el Nivel 1 se trabajó con los números enteros desde el cero hacia arriba: se aprendió a leerlos, escribirlos, compararlos y operar con ellos. En este nuevo nivel se amplía ese mundo numérico hacia la izquierda del cero. Los <strong>números negativos</strong> permiten representar todo aquello que está «por debajo» de un punto de referencia: una temperatura bajo cero, una deuda, una profundidad bajo el nivel del mar. Esta primera lección establece el terreno: la recta numérica completa, la comparación de enteros, el valor absoluto y los opuestos.</p>
+  </div>
+
+  <h2 class="seccion">1. La recta numérica completa</h2>
+  <div class="bloque">
+    <p>La <strong>recta numérica</strong> es una línea en la que cada punto representa un número. El <strong>cero</strong> es el punto de referencia central. A su derecha se ubican los números positivos (1, 2, 3, …) y a su izquierda los negativos (−1, −2, −3, …).</p>
+
+    <div class="recta-wrap">
+      <svg width="760" height="110" viewBox="0 0 760 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Recta numérica del menos siete al siete">
+        <line x1="30" y1="55" x2="730" y2="55" stroke="#b71c1c" stroke-width="3"/>
+        <polygon points="30,55 44,48 44,62" fill="#b71c1c"/>
+        <polygon points="730,55 716,48 716,62" fill="#b71c1c"/>
+        <!-- marcas -->
+        <g font-family="Segoe UI, sans-serif" font-size="14" text-anchor="middle">
+          <!-- -7 a 7 : 15 marcas, separacion 50 px desde x=55 -->
+          <g>
+            <line x1="55"  y1="46" x2="55"  y2="64" stroke="#b71c1c" stroke-width="2"/><text x="55"  y="84" fill="#7f1414">-7</text>
+            <line x1="105" y1="46" x2="105" y2="64" stroke="#b71c1c" stroke-width="2"/><text x="105" y="84" fill="#7f1414">-6</text>
+            <line x1="155" y1="46" x2="155" y2="64" stroke="#b71c1c" stroke-width="2"/><text x="155" y="84" fill="#7f1414">-5</text>
+            <line x1="205" y1="46" x2="205" y2="64" stroke="#b71c1c" stroke-width="2"/><text x="205" y="84" fill="#7f1414">-4</text>
+            <line x1="255" y1="46" x2="255" y2="64" stroke="#b71c1c" stroke-width="2"/><text x="255" y="84" fill="#7f1414">-3</text>
+            <line x1="305" y1="46" x2="305" y2="64" stroke="#b71c1c" stroke-width="2"/><text x="305" y="84" fill="#7f1414">-2</text>
+            <line x1="355" y1="46" x2="355" y2="64" stroke="#b71c1c" stroke-width="2"/><text x="355" y="84" fill="#7f1414">-1</text>
+            <line x1="405" y1="42" x2="405" y2="68" stroke="#263238" stroke-width="3"/><text x="405" y="88" fill="#263238" font-weight="700">0</text>
+            <line x1="455" y1="46" x2="455" y2="64" stroke="#1565c0" stroke-width="2"/><text x="455" y="84" fill="#0d47a1">1</text>
+            <line x1="505" y1="46" x2="505" y2="64" stroke="#1565c0" stroke-width="2"/><text x="505" y="84" fill="#0d47a1">2</text>
+            <line x1="555" y1="46" x2="555" y2="64" stroke="#1565c0" stroke-width="2"/><text x="555" y="84" fill="#0d47a1">3</text>
+            <line x1="605" y1="46" x2="605" y2="64" stroke="#1565c0" stroke-width="2"/><text x="605" y="84" fill="#0d47a1">4</text>
+            <line x1="655" y1="46" x2="655" y2="64" stroke="#1565c0" stroke-width="2"/><text x="655" y="84" fill="#0d47a1">5</text>
+            <line x1="705" y1="46" x2="705" y2="64" stroke="#1565c0" stroke-width="2"/><text x="705" y="84" fill="#0d47a1">6</text>
+          </g>
+          <text x="230" y="24" fill="#7f1414" font-size="13" font-weight="700">← NEGATIVOS</text>
+          <text x="560" y="24" fill="#0d47a1" font-size="13" font-weight="700">POSITIVOS →</text>
+        </g>
+      </svg>
+    </div>
+
+    <p>Tres ideas fundamentales sobre la recta numérica:</p>
+    <h3>El orden crece hacia la derecha</h3>
+    <p>Cualquier número situado más a la derecha es <strong>mayor</strong> que cualquier número a su izquierda. Por eso −2 es mayor que −5, aunque «5» parezca un número más grande que «2». En la recta, −2 está más cerca del cero y, por tanto, más a la derecha.</p>
+
+    <h3>El signo indica la dirección</h3>
+    <p>El signo menos (−) no es una resta cuando acompaña a un número solo: indica que ese número está a la izquierda del cero. Así, −8 se lee «menos ocho» o «negativo ocho».</p>
+
+    <div class="caja-tip">
+      <strong>Conexión con la vida real:</strong> un termómetro vertical es una recta numérica girada. El cero marca el punto de congelación; los grados sobre cero son positivos y los grados bajo cero son negativos. Una temperatura de −10 °F está «más abajo» —es más fría— que −3 °F.
+    </div>
+
+    <h3>Cada número tiene una posición única</h3>
+    <p>A cada punto de la recta le corresponde un solo número, y a cada número una sola posición. Esto permite comparar dos enteros cualesquiera con solo mirar quién está más a la derecha.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1</span>
+      <p>Ordenar de menor a mayor: −4, 3, −7, 0, −1.</p>
+      <div class="paso"><span class="n">1</span> Se ubican mentalmente en la recta. Los negativos quedan a la izquierda del 0; los positivos a la derecha.</div>
+      <div class="paso"><span class="n">2</span> El más a la izquierda es el menor: −7 es el menor de todos.</div>
+      <div class="paso"><span class="n">3</span> Se avanza hacia la derecha: −7, −4, −1, 0, 3.</div>
+      <p><strong>Respuesta:</strong> −7 &lt; −4 &lt; −1 &lt; 0 &lt; 3.</p>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Comparar enteros</h3>
+    <p>Selecciona el símbolo correcto para cada par de números.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Compara: −6 ___ −2</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">−6 &gt; −2</div>
+        <div class="opcion" data-op="b">−6 &lt; −2</div>
+        <div class="opcion" data-op="c">−6 = −2</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. Compara: 0 ___ −9</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">0 &gt; −9</div>
+        <div class="opcion" data-op="b">0 &lt; −9</div>
+        <div class="opcion" data-op="c">0 = −9</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. ¿Cuál temperatura es más fría?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">−3 °F</div>
+        <div class="opcion" data-op="b">−11 °F</div>
+        <div class="opcion" data-op="c">Ambas son iguales</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">2. El valor absoluto: distancia al cero</h2>
+  <div class="bloque">
+    <p>El <strong>valor absoluto</strong> de un número es la <strong>distancia</strong> que lo separa del cero en la recta numérica. Como una distancia nunca puede ser negativa, el valor absoluto siempre es positivo o cero.</p>
+    <p>Se escribe con dos barras verticales alrededor del número. Se lee «valor absoluto de».</p>
+
+    <div class="ejemplo">
+      <span class="et">Notación</span>
+      <p>| 5 | = 5 &nbsp;&nbsp;→&nbsp;&nbsp; el 5 está a 5 unidades del cero.</p>
+      <p>| −5 | = 5 &nbsp;&nbsp;→&nbsp;&nbsp; el −5 también está a 5 unidades del cero.</p>
+      <p>| 0 | = 0 &nbsp;&nbsp;→&nbsp;&nbsp; el cero está a 0 unidades de sí mismo.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Atención:</strong> el valor absoluto no «borra el signo» mecánicamente; mide distancia. Por eso | −12 | = 12 y | 12 | = 12: ambos números están exactamente a la misma distancia del cero, solo que en lados opuestos.
+    </div>
+
+    <h3>Comparar usando el valor absoluto</h3>
+    <p>El valor absoluto ayuda a comparar la <strong>magnitud</strong> de dos números sin importar su signo. Una deuda de −$80 es «mayor en magnitud» que una de −$30 porque | −80 | &gt; | −30 |, aunque −80 sea el número menor en la recta.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2</span>
+      <p>Calcular: | −7 | + | 4 |.</p>
+      <div class="paso"><span class="n">1</span> | −7 | = 7 (distancia de −7 al cero).</div>
+      <div class="paso"><span class="n">2</span> | 4 | = 4 (distancia de 4 al cero).</div>
+      <div class="paso"><span class="n">3</span> Se suman los resultados: 7 + 4 = 11.</div>
+      <p><strong>Respuesta:</strong> | −7 | + | 4 | = 11.</p>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Valor absoluto</h3>
+    <p>Escribe el valor absoluto de cada número y presiona «Verificar».</p>
+
+    <div class="pregunta">
+      <div class="enun">1. | −15 | =</div>
+      <input type="text" class="campo-num" id="va1" inputmode="numeric" aria-label="Respuesta de la pregunta 1: valor absoluto de menos quince" />
+      <div class="fb" id="fb-va1"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">2. | 23 | =</div>
+      <input type="text" class="campo-num" id="va2" inputmode="numeric" aria-label="Respuesta de la pregunta 2: valor absoluto de veintitrés" />
+      <div class="fb" id="fb-va2"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">3. | −9 | + | −6 | =</div>
+      <input type="text" class="campo-num" id="va3" inputmode="numeric" aria-label="Respuesta de la pregunta 3: valor absoluto de menos nueve más valor absoluto de menos seis" />
+      <div class="fb" id="fb-va3"></div>
+    </div>
+    <button class="btn" id="btn-va">Verificar</button>
+  </div>
+
+  <h2 class="seccion">3. Los opuestos (inverso aditivo)</h2>
+  <div class="bloque">
+    <p>Dos números son <strong>opuestos</strong> cuando están a la misma distancia del cero pero en lados contrarios de la recta. El opuesto de 6 es −6; el opuesto de −6 es 6.</p>
+    <p>El cero es su propio opuesto, ya que no está a ningún lado: es el centro.</p>
+
+    <div class="caja-tip">
+      <strong>Idea clave:</strong> un número y su opuesto siempre suman cero. Por eso al opuesto también se le llama <strong>inverso aditivo</strong>: 6 + (−6) = 0. Esta propiedad será la base de la suma de enteros en la próxima lección.
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3</span>
+      <p>Indicar el opuesto de cada número y su valor absoluto.</p>
+      <div class="paso"><span class="n">1</span> El opuesto de −13 es 13. El valor absoluto de ambos es 13.</div>
+      <div class="paso"><span class="n">2</span> El opuesto de 40 es −40. El valor absoluto de ambos es 40.</div>
+      <div class="paso"><span class="n">3</span> Observación: dos opuestos siempre comparten el mismo valor absoluto.</div>
+    </div>
+
+    <h3>El doble signo negativo</h3>
+    <p>El símbolo «−» delante de un número significa «el opuesto de». Por eso −(−8) se lee «el opuesto de −8», que es 8. Dos signos negativos seguidos se cancelan.</p>
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4</span>
+      <p>Simplificar: −(−25).</p>
+      <div class="paso"><span class="n">1</span> −(−25) significa «el opuesto de −25».</div>
+      <div class="paso"><span class="n">2</span> El opuesto de −25 es 25.</div>
+      <p><strong>Respuesta:</strong> −(−25) = 25.</p>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 3 · Opuestos</h3>
+    <p>Selecciona la respuesta correcta.</p>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">1. El opuesto de −17 es:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">−17</div>
+        <div class="opcion" data-op="b">0</div>
+        <div class="opcion" data-op="c">17</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. −(−42) es igual a:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">42</div>
+        <div class="opcion" data-op="b">−42</div>
+        <div class="opcion" data-op="c">−84</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. ¿Qué número es su propio opuesto?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">1</div>
+        <div class="opcion" data-op="b">0</div>
+        <div class="opcion" data-op="c">−1</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">4. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 1 · Termómetros y bancos</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          El docente entrega ocho tarjetas con situaciones reales («temperatura de −12 °F», «deuda de $45», «buzo a −30 m de profundidad», «saldo de +$120», etc.). Cada estudiante asigna el entero con signo correspondiente y lo coloca físicamente sobre una recta numérica gigante pegada en la pared.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          El docente comparte una pizarra colaborativa con la recta numérica dibujada. Los estudiantes arrastran las ocho situaciones a su posición correcta y escriben en el chat el entero asignado a cada una, justificando el signo.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 2 · ¿Quién está más lejos del cero?</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          En parejas, los estudiantes reciben pares de números (por ejemplo −9 y 6). Uno indica cuál es mayor en la recta; el otro indica cuál tiene mayor valor absoluto. Discuten por qué a veces la respuesta es distinta.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          En salas pequeñas, las parejas resuelven una hoja compartida con seis pares de números. Para cada par registran dos columnas: «mayor en la recta» y «mayor valor absoluto», y comentan los casos en que difieren.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 3 · La historia de un entero</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          Cada estudiante elige un entero negativo y redacta en una ficha una breve situación real que lo represente (una deuda, una temperatura, una altitud). Luego intercambian fichas y verifican que el signo sea coherente con la situación descrita.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          Cada estudiante publica en el foro un mensaje con un entero negativo y la situación real que lo representa. Después comenta el mensaje de un compañero confirmando o corrigiendo el signo elegido.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2>Tarea asincrónica</h2>
+    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
+    <ul>
+      <li>Diez ejercicios de ordenar y comparar enteros con los símbolos &gt;, &lt; e =.</li>
+      <li>Cinco ejercicios de calcular el valor absoluto, incluyendo expresiones como | −8 | + | 3 |.</li>
+      <li>Cinco ejercicios de identificar el opuesto de un número, incluyendo casos con doble signo negativo.</li>
+      <li>Tres situaciones de contexto real en las que se debe asignar un entero con signo y justificar la elección.</li>
+    </ul>
+    <p>El sistema ofrece retroalimentación inmediata en cada intento. Tiempo estimado: 45 minutos.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 1.1</h2>
+    <p>Diez preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2>Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th>Inicial (1)</th>
+          <th>En desarrollo (2)</th>
+          <th>Competente (3)</th>
+          <th>Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ubicación en la recta numérica</td>
+          <td>Confunde la posición de los negativos.</td>
+          <td>Ubica negativos con ayuda de un modelo.</td>
+          <td>Ubica enteros positivos y negativos sin apoyo.</td>
+          <td>Ubica enteros con precisión y explica el orden a un compañero.</td>
+        </tr>
+        <tr>
+          <td>Comparación de enteros</td>
+          <td>Aplica &gt; y &lt; solo con positivos.</td>
+          <td>Compara negativos con errores ocasionales.</td>
+          <td>Compara cualquier par de enteros con el símbolo correcto.</td>
+          <td>Compara y justifica usando la posición en la recta.</td>
+        </tr>
+        <tr>
+          <td>Valor absoluto</td>
+          <td>No reconoce la notación de barras.</td>
+          <td>Calcula el valor absoluto de números simples.</td>
+          <td>Calcula el valor absoluto e interpreta la distancia al cero.</td>
+          <td>Resuelve expresiones combinadas de valor absoluto correctamente.</td>
+        </tr>
+        <tr>
+          <td>Opuestos y contexto real</td>
+          <td>No identifica el opuesto de un número.</td>
+          <td>Identifica opuestos simples sin doble signo.</td>
+          <td>Identifica opuestos, incluido el doble signo negativo.</td>
+          <td>Aplica el concepto de opuesto a situaciones reales con autonomía.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2>Cierre y enlace con la próxima lección</h2>
+    <p>En esta lección se construyó el terreno del Nivel 2: la recta numérica completa, la comparación de enteros, el <strong>valor absoluto</strong> como distancia al cero y los <strong>opuestos</strong> como inversos aditivos. Quedó establecida una idea esencial: <strong>un número y su opuesto siempre suman cero</strong>.</p>
+    <p>En la <strong>Lección 1.2 · Suma y resta de enteros con signo</strong> se pondrá en marcha esa propiedad: se usarán fichas de dos colores y la recta numérica para sumar enteros, y se descubrirá que <strong>restar es sumar el opuesto</strong>. El valor absoluto reaparecerá como guía para anticipar la magnitud de cada resultado.</p>
+  </div>
+
+  <footer>
+    Spanish ASE Math · Nivel 2 · Lección 1.1 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  /* ---- Práctica interactiva 1 y 3: opciones de selección ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) {
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+        });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revisa: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Práctica interactiva 2: valor absoluto ---- */
+  var clavesVA = { va1: 15, va2: 23, va3: 15 };
+  document.getElementById('btn-va').addEventListener('click', function () {
+    Object.keys(clavesVA).forEach(function (id) {
+      var campo = document.getElementById(id);
+      var fb = document.getElementById('fb-' + id);
+      var val = parseInt(campo.value, 10);
+      if (campo.value.trim() === '' || isNaN(val)) {
+        fb.textContent = 'Escribe un número.';
+        fb.className = 'fb no';
+      } else if (val === clavesVA[id]) {
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        fb.textContent = 'Revisa el cálculo. Recuerda: el valor absoluto es la distancia al cero.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+  });
+
+  /* ---- Quiz ---- */
+  var preguntasQuiz = [
+    {
+      enun: '1. ¿Cuál de estos números es el menor?',
+      ops: ['−2', '−9', '0', '5'],
+      correcta: 1
+    },
+    {
+      enun: '2. Compara: −4 ___ −1. El símbolo correcto es:',
+      ops: ['−4 > −1', '−4 < −1', '−4 = −1', 'No se pueden comparar'],
+      correcta: 1
+    },
+    {
+      enun: '3. El valor absoluto | −20 | es igual a:',
+      ops: ['−20', '0', '20', '40'],
+      correcta: 2
+    },
+    {
+      enun: '4. El opuesto de 31 es:',
+      ops: ['31', '−31', '0', '−62'],
+      correcta: 1
+    },
+    {
+      enun: '5. −(−14) es igual a:',
+      ops: ['−14', '0', '14', '−28'],
+      correcta: 2
+    },
+    {
+      enun: '6. Una temperatura de −7 °F comparada con una de −2 °F es:',
+      ops: ['Más cálida', 'Más fría', 'Igual', 'No se puede saber'],
+      correcta: 1
+    },
+    {
+      enun: '7. ¿Qué número está a 8 unidades del cero, hacia la izquierda?',
+      ops: ['8', '−8', '0', '16'],
+      correcta: 1
+    },
+    {
+      enun: '8. Calcula: | −6 | + | 5 |.',
+      ops: ['1', '−11', '11', '30'],
+      correcta: 2
+    },
+    {
+      enun: '9. Ordenados de menor a mayor, los números −3, 2, −8, 0 quedan:',
+      ops: ['−3, −8, 0, 2', '−8, −3, 0, 2', '2, 0, −3, −8', '0, −3, −8, 2'],
+      correcta: 1
+    },
+    {
+      enun: '10. ¿Cuál afirmación es verdadera?',
+      ops: [
+        'El valor absoluto puede ser negativo',
+        'El opuesto de 0 es 1',
+        'Un número y su opuesto suman cero',
+        '−5 es mayor que −2'
+      ],
+      correcta: 2
+    }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) {
+          o.classList.remove('elegida');
+        });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var sinResponder = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta');
+      });
+      if (elegida === null) {
+        sinResponder++;
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 7) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 10 correctas. ¡Aprobado! Puedes continuar a la Lección 1.2.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 10 correctas. Repasa la lección e intenta de nuevo (se requieren 7).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta', 'elegida');
+      });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

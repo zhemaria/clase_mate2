@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 1.3 · Multiplicación y división de enteros; aplicaciones</title>
+<style>
+  :root {
+    --tema:   #b71c1c;
+    --tema-d: #7f1414;
+    --tema-bg:#ffebee;
+    --tema-bg2:#fce4e6;
+    --acento: #00695c;
+    --txt:    #222;
+    --bg:     #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  header.principal {
+    background: var(--tema);
+    background: linear-gradient(135deg, #7f1414 0%, #b71c1c 55%, #d32f2f 100%);
+    color: #fff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(127,20,20,.28);
+  }
+  header.principal .ruta { font-size: 13px; opacity: .92; letter-spacing: .4px; text-transform: uppercase; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; }
+  header.principal .meta { font-size: 14px; opacity: .94; }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 {
+    margin: 0 0 10px; color: var(--tema-d); font-size: 19px;
+  }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+
+  p { margin: 10px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #fff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+
+  .caja-tip {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #1b5e20; font-size: 15px;
+  }
+  .caja-tip strong { color: #1b5e20; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5a3d00;
+  }
+  .caja-atencion strong { color: #c54500; }
+
+  .etiqueta {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    padding: 2px 10px; border-radius: 10px; margin-right: 4px;
+  }
+  .et-ambar { background: #ffe082; color: #000; }
+  .et-rojo  { background: var(--tema); color: #fff; }
+
+  .reglas {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px;
+  }
+  .reglas th, .reglas td {
+    border: 1px solid #e0e0e0; padding: 9px 12px; text-align: center;
+  }
+  .reglas th { background: var(--tema); color: #fff; }
+  .reglas td.caso { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+  .reglas td.pos { background: #e8f5e9; color: #1b5e20; font-weight: 700; }
+  .reglas td.neg { background: #ffebee; color: #b71c1c; font-weight: 700; }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #b71c1c; }
+
+  .campo-num {
+    font-size: 16px; padding: 7px 10px; border: 2px solid #cfcfcf;
+    border-radius: 7px; width: 110px; font-family: inherit;
+  }
+  .campo-num:focus { border-color: var(--tema); outline: none; }
+  .btn {
+    background: var(--tema); color: #fff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit;
+    margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #607d8b; }
+  .btn.sec:hover { background: #455a64; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo {
+    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
+    font-size: 14px;
+  }
+  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .modo-pres strong { color: #0d47a1; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo-virt strong { color: #4a148c; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #0d47a1; }
+  .modo-virt h3 { color: #4a148c; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #4527a0; }
+
+  .quiz {
+    background: #fff; border: 2px solid var(--tema);
+    border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0;
+  }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #fff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #222222;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 1 · Enteros con signo</div>
+    <h1>Lección 1.3 · Multiplicación y división de enteros; aplicaciones</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Multiplicar y dividir enteros con signo aplicando la regla de los signos.</li>
+      <li>Justificar por qué el producto de dos negativos es positivo, usando un patrón numérico.</li>
+      <li>Reconocer que la regla de los signos es la misma para la multiplicación y la división.</li>
+      <li>Resolver expresiones que combinan las cuatro operaciones con enteros.</li>
+      <li>Interpretar el resultado de un problema de contexto real con su signo correcto.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Conexión con la lección anterior.</strong> En la Lección 1.2 se dominaron la suma y la resta de enteros, y se aprendió que restar es sumar el opuesto. Esta lección cierra el Tema 1 con las dos operaciones restantes: la <strong>multiplicación</strong> y la <strong>división</strong>. La buena noticia es que ambas comparten una única regla de los signos, más corta y directa que la de la suma.</p>
+  </div>
+
+  <h2 class="seccion">1. La regla de los signos en la multiplicación</h2>
+  <div class="bloque">
+    <p>Al multiplicar dos enteros, el <strong>valor absoluto</strong> del resultado se obtiene multiplicando los valores absolutos como siempre. Lo que cambia es el <strong>signo</strong>, que depende solo de los signos de los dos factores.</p>
+
+    <table class="reglas">
+      <thead>
+        <tr><th>Factor 1</th><th>Factor 2</th><th>Signo del producto</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="caso">positivo</td><td class="caso">positivo</td><td class="pos">positivo (+)</td></tr>
+        <tr><td class="caso">negativo</td><td class="caso">negativo</td><td class="pos">positivo (+)</td></tr>
+        <tr><td class="caso">positivo</td><td class="caso">negativo</td><td class="neg">negativo (−)</td></tr>
+        <tr><td class="caso">negativo</td><td class="caso">positivo</td><td class="neg">negativo (−)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="caja-tip">
+      <strong>Regla breve:</strong> signos <strong>iguales</strong> dan producto <strong>positivo</strong>; signos <strong>distintos</strong> dan producto <strong>negativo</strong>. Una sola frase resume las cuatro filas de la tabla.
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1</span>
+      <p>Resolver (−7) × (−6).</p>
+      <div class="paso"><span class="n">1</span> Se multiplican los valores absolutos: 7 × 6 = 42.</div>
+      <div class="paso"><span class="n">2</span> Los dos factores son negativos: signos iguales.</div>
+      <div class="paso"><span class="n">3</span> Signos iguales → producto positivo.</div>
+      <p><strong>Respuesta:</strong> (−7) × (−6) = 42.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2</span>
+      <p>Resolver 9 × (−4).</p>
+      <div class="paso"><span class="n">1</span> Se multiplican los valores absolutos: 9 × 4 = 36.</div>
+      <div class="paso"><span class="n">2</span> Un factor positivo y uno negativo: signos distintos.</div>
+      <div class="paso"><span class="n">3</span> Signos distintos → producto negativo.</div>
+      <p><strong>Respuesta:</strong> 9 × (−4) = −36.</p>
+    </div>
+  </div>
+
+  <h2 class="seccion">2. ¿Por qué negativo por negativo da positivo?</h2>
+  <div class="bloque">
+    <p>La regla «negativo por negativo da positivo» no es un capricho: se puede <strong>descubrir</strong> observando un patrón. Si se multiplica −2 por una lista de números que va bajando de uno en uno, cada producto aumenta exactamente 2 unidades:</p>
+
+    <div class="ejemplo">
+      <span class="et">El patrón revelador</span>
+      <p>3 × (−2) = −6</p>
+      <p>2 × (−2) = −4 &nbsp;&nbsp;<em>(aumentó 2)</em></p>
+      <p>1 × (−2) = −2 &nbsp;&nbsp;<em>(aumentó 2)</em></p>
+      <p>0 × (−2) = &nbsp;0 &nbsp;&nbsp;<em>(aumentó 2)</em></p>
+      <p>(−1) × (−2) = &nbsp;2 &nbsp;&nbsp;<em>(el patrón obliga a que aumente 2 → debe ser positivo)</em></p>
+      <p>(−2) × (−2) = &nbsp;4 &nbsp;&nbsp;<em>(aumentó 2 otra vez)</em></p>
+    </div>
+
+    <p>Para que el patrón sea consistente, el producto de dos negativos <strong>tiene que</strong> ser positivo. No hay otra forma de continuar la secuencia sin romperla.</p>
+
+    <div class="caja-atencion">
+      <strong>Atención:</strong> esta justificación con patrón solo busca dar sentido a la regla. En la práctica, basta con aplicar la regla breve: signos iguales, positivo; signos distintos, negativo.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Multiplicar enteros</h3>
+    <p>Selecciona el resultado correcto de cada producto.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. (−8) × 5 =</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">40</div>
+        <div class="opcion" data-op="b">−40</div>
+        <div class="opcion" data-op="c">−13</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. (−6) × (−7) =</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">42</div>
+        <div class="opcion" data-op="b">−42</div>
+        <div class="opcion" data-op="c">−13</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">3. 12 × (−3) =</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">36</div>
+        <div class="opcion" data-op="b">9</div>
+        <div class="opcion" data-op="c">−36</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">3. La división de enteros</h2>
+  <div class="bloque">
+    <p>La división de enteros usa <strong>exactamente la misma regla de los signos</strong> que la multiplicación. No hay nada nuevo que memorizar: signos iguales dan cociente positivo; signos distintos dan cociente negativo.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3</span>
+      <p>Resolver (−45) ÷ (−9).</p>
+      <div class="paso"><span class="n">1</span> Se dividen los valores absolutos: 45 ÷ 9 = 5.</div>
+      <div class="paso"><span class="n">2</span> Los dos números son negativos: signos iguales.</div>
+      <div class="paso"><span class="n">3</span> Signos iguales → cociente positivo.</div>
+      <p><strong>Respuesta:</strong> (−45) ÷ (−9) = 5.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4</span>
+      <p>Resolver (−56) ÷ 8.</p>
+      <div class="paso"><span class="n">1</span> Se dividen los valores absolutos: 56 ÷ 8 = 7.</div>
+      <div class="paso"><span class="n">2</span> Un número negativo y uno positivo: signos distintos.</div>
+      <div class="paso"><span class="n">3</span> Signos distintos → cociente negativo.</div>
+      <p><strong>Respuesta:</strong> (−56) ÷ 8 = −7.</p>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Relación con la multiplicación:</strong> la división se puede comprobar multiplicando. Si (−45) ÷ (−9) = 5, entonces 5 × (−9) debe dar −45. La verificación confirma tanto el valor como el signo.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Dividir enteros</h3>
+    <p>Escribe el cociente de cada división y presiona «Verificar».</p>
+    <div class="pregunta">
+      <div class="enun">1. (−48) ÷ 6 =</div>
+      <input type="text" class="campo-num" id="d1" inputmode="numeric" aria-label="Respuesta de la pregunta 1: menos cuarenta y ocho dividido entre seis" />
+      <div class="fb" id="fb-d1"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">2. (−54) ÷ (−9) =</div>
+      <input type="text" class="campo-num" id="d2" inputmode="numeric" aria-label="Respuesta de la pregunta 2: menos cincuenta y cuatro dividido entre menos nueve" />
+      <div class="fb" id="fb-d2"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">3. 72 ÷ (−8) =</div>
+      <input type="text" class="campo-num" id="d3" inputmode="numeric" aria-label="Respuesta de la pregunta 3: setenta y dos dividido entre menos ocho" />
+      <div class="fb" id="fb-d3"></div>
+    </div>
+    <button class="btn" id="btn-div">Verificar</button>
+  </div>
+
+  <h2 class="seccion">4. Expresiones con las cuatro operaciones</h2>
+  <div class="bloque">
+    <p>Muchas expresiones combinan suma, resta, multiplicación y división de enteros. Por ahora, sin paréntesis ni potencias, se respeta una regla sencilla: <strong>primero las multiplicaciones y divisiones, de izquierda a derecha; luego las sumas y restas, de izquierda a derecha</strong>. El orden completo de operaciones se estudiará a fondo en el Tema 3.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 5</span>
+      <p>Resolver (−4) × 3 + (−10) ÷ 2.</p>
+      <div class="paso"><span class="n">1</span> Se resuelve la multiplicación: (−4) × 3 = −12.</div>
+      <div class="paso"><span class="n">2</span> Se resuelve la división: (−10) ÷ 2 = −5.</div>
+      <div class="paso"><span class="n">3</span> Queda una suma de enteros: −12 + (−5) = −17.</div>
+      <p><strong>Respuesta:</strong> (−4) × 3 + (−10) ÷ 2 = −17.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Error frecuente:</strong> resolver de izquierda a derecha sin respetar la prioridad. En el ejemplo anterior, sumar −4 y 3 antes de multiplicar daría un resultado incorrecto. La multiplicación y la división van primero.
+    </div>
+  </div>
+
+  <h2 class="seccion">5. Aplicaciones a contextos reales</h2>
+  <div class="bloque">
+    <p>La multiplicación y la división de enteros aparecen siempre que una cantidad con signo se repite o se reparte.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 6 · Descenso de temperatura</span>
+      <p>La temperatura de una cámara frigorífica baja 3 °F cada hora. Si el descenso es constante, ¿cuánto habrá cambiado la temperatura después de 5 horas?</p>
+      <div class="paso"><span class="n">1</span> «Baja 3 °F» se representa con −3 por hora.</div>
+      <div class="paso"><span class="n">2</span> Cinco horas: se multiplica (−3) × 5.</div>
+      <div class="paso"><span class="n">3</span> Signos distintos → producto negativo: −15.</div>
+      <p><strong>Respuesta:</strong> la temperatura habrá bajado 15 °F, es decir, un cambio de −15 °F.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 7 · Pérdida repartida</span>
+      <p>Una pequeña empresa registró una pérdida total de $84 durante 7 días, con la misma pérdida cada día. ¿Cuál fue la pérdida diaria?</p>
+      <div class="paso"><span class="n">1</span> La pérdida total se representa con −84; los días son 7.</div>
+      <div class="paso"><span class="n">2</span> Se divide: (−84) ÷ 7.</div>
+      <div class="paso"><span class="n">3</span> Signos distintos → cociente negativo: −12.</div>
+      <p><strong>Respuesta:</strong> la pérdida diaria fue de $12, es decir, −$12 por día.</p>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 3 · Expresiones y contexto</h3>
+    <p>Selecciona la respuesta correcta.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. Resuelve: (−5) × 4 + 6.</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">−6</div>
+        <div class="opcion" data-op="b">−14</div>
+        <div class="opcion" data-op="c">26</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. Resuelve: 20 ÷ (−4) − 3.</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">2</div>
+        <div class="opcion" data-op="b">−2</div>
+        <div class="opcion" data-op="c">−8</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. Un buzo desciende 6 metros por minuto. ¿A qué profundidad estará después de 4 minutos?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">−24 metros</div>
+        <div class="opcion" data-op="b">24 metros</div>
+        <div class="opcion" data-op="c">−10 metros</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">6. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 1 · El detective de signos</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          El docente escribe doce productos y cocientes en la pizarra. Para cada uno, los estudiantes primero <strong>predicen</strong> el signo del resultado en voz alta, luego lo calculan y por último lo verifican. La predicción anticipada refuerza la regla.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          El docente comparte una hoja con doce operaciones en tres columnas: «signo previsto», «resultado» y «verificación». Los estudiantes la completan y comparan sus predicciones con el resultado real.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 2 · Construir el patrón</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          En grupos, los estudiantes completan la secuencia de productos de −2 (desde 3 × (−2) hacia abajo) y descubren por sí mismos que negativo por negativo debe dar positivo. Cada grupo explica el patrón a la clase.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          En salas pequeñas, los grupos completan la secuencia en una pizarra compartida y graban una breve explicación de por qué el patrón obliga a que el resultado sea positivo.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 3 · Historias de números con signo</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          Cada grupo inventa una breve historia real que use una multiplicación o división de enteros negativos (temperatura, elevación, finanzas) y plantea la operación correspondiente. Los demás grupos la resuelven.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          Cada grupo publica su historia en el foro junto con la operación planteada. Otro grupo responde con la solución y la interpretación del signo del resultado en el contexto.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2>Tarea asincrónica</h2>
+    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
+    <ul>
+      <li>Cuatro multiplicaciones de enteros, incluyendo dos con ambos factores negativos.</li>
+      <li>Cuatro divisiones de enteros con distintas combinaciones de signo.</li>
+      <li>Cuatro expresiones que combinan multiplicación o división con suma o resta.</li>
+      <li>Dos problemas de contexto real: uno de temperatura y uno de finanzas.</li>
+    </ul>
+    <p>La plataforma ofrece retroalimentación paso a paso en cada intento. Tiempo estimado: 50 minutos.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 1.3</h2>
+    <p>Doce preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2>Rúbrica analítica de la lección</h2>
+    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th>Inicial (1)</th>
+          <th>En desarrollo (2)</th>
+          <th>Competente (3)</th>
+          <th>Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Regla de signos en la multiplicación</td>
+          <td>No distingue cuándo el producto es positivo o negativo.</td>
+          <td>Aplica la regla con errores ocasionales.</td>
+          <td>Aplica correctamente la regla en todos los casos.</td>
+          <td>Aplica la regla y la justifica con el patrón numérico.</td>
+        </tr>
+        <tr>
+          <td>Regla de signos en la división</td>
+          <td>No reconoce que la regla es la misma que en la multiplicación.</td>
+          <td>Divide con algún error de signo.</td>
+          <td>Divide enteros con el signo correcto siempre.</td>
+          <td>Divide y verifica el resultado mediante la multiplicación.</td>
+        </tr>
+        <tr>
+          <td>Expresiones combinadas</td>
+          <td>Resuelve de izquierda a derecha sin respetar la prioridad.</td>
+          <td>Respeta la prioridad con ayuda.</td>
+          <td>Resuelve expresiones de varias operaciones correctamente.</td>
+          <td>Resuelve con fluidez y explica el orden seguido.</td>
+        </tr>
+        <tr>
+          <td>Interpretación en contexto</td>
+          <td>No relaciona la operación con la situación real.</td>
+          <td>Plantea la operación, pero interpreta mal el signo.</td>
+          <td>Plantea, resuelve e interpreta el signo correctamente.</td>
+          <td>Plantea, resuelve e interpreta con autonomía y precisión.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2>Cierre del Tema 1 y enlace con el Tema 2</h2>
+    <p>Con esta lección se completa el <strong>Tema 1</strong>: el sistema de los números enteros con signo está dominado en sus cuatro operaciones. Quedó clara una idea unificadora: la multiplicación y la división comparten una <strong>única regla de los signos</strong> —iguales dan positivo, distintos dan negativo—.</p>
+    <p>El <strong>Tema 2 · Fracciones complejas, exponentes y raíces cuadradas perfectas</strong> abre con la <strong>Lección 2.1 · Fracciones complejas con coeficientes negativos</strong>. Allí, la regla de los signos aprendida aquí se aplicará a las fracciones: el mismo principio que rige los enteros negativos regirá los numeradores y denominadores con signo.</p>
+  </div>
+
+  <footer>
+    Spanish ASE Math · Nivel 2 · Lección 1.3 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) {
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+        });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revisa: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Práctica de divisiones ---- */
+  var clavesDiv = { d1: -8, d2: 6, d3: -9 };
+  document.getElementById('btn-div').addEventListener('click', function () {
+    Object.keys(clavesDiv).forEach(function (id) {
+      var campo = document.getElementById(id);
+      var fb = document.getElementById('fb-' + id);
+      var limpio = campo.value.trim().replace(/\s/g, '');
+      var val = parseInt(limpio, 10);
+      if (limpio === '' || isNaN(val)) {
+        fb.textContent = 'Escribe un número (puede ser negativo).';
+        fb.className = 'fb no';
+      } else if (val === clavesDiv[id]) {
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        fb.textContent = 'Revisa: signos iguales dan cociente positivo; distintos, negativo.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+  });
+
+  /* ---- Quiz ---- */
+  var preguntasQuiz = [
+    { enun: '1. Resuelve: (−9) × 4.', ops: ['36', '−36', '−5', '5'], correcta: 1 },
+    { enun: '2. Resuelve: (−7) × (−8).', ops: ['−56', '56', '−15', '15'], correcta: 1 },
+    { enun: '3. Resuelve: (−63) ÷ (−7).', ops: ['−9', '9', '−56', '56'], correcta: 1 },
+    { enun: '4. Resuelve: 40 ÷ (−5).', ops: ['8', '−8', '−35', '35'], correcta: 1 },
+    { enun: '5. Al multiplicar dos enteros de signos iguales, el producto es:', ops: ['Negativo', 'Positivo', 'Cero', 'Depende del tamaño'], correcta: 1 },
+    { enun: '6. Al dividir dos enteros de signos distintos, el cociente es:', ops: ['Positivo', 'Negativo', 'Cero', 'No se puede dividir'], correcta: 1 },
+    { enun: '7. Resuelve: (−6) × 2 + 5.', ops: ['−7', '7', '−17', '17'], correcta: 0 },
+    { enun: '8. Resuelve: 18 ÷ (−3) − 4.', ops: ['2', '−2', '−10', '10'], correcta: 2 },
+    { enun: '9. La temperatura baja 4 °F por hora durante 6 horas. El cambio total es:', ops: ['+24 °F', '−24 °F', '−10 °F', '+10 °F'], correcta: 1 },
+    { enun: '10. Una pérdida de $90 se reparte por igual en 6 días. La pérdida diaria es:', ops: ['−$15', '$15', '−$84', '$96'], correcta: 0 },
+    { enun: '11. ¿Cuál afirmación es verdadera?', ops: ['Negativo por negativo da negativo', 'Positivo por negativo da positivo', 'Negativo por negativo da positivo', 'Cero por negativo da negativo'], correcta: 2 },
+    { enun: '12. En la expresión (−3) × 5 + 8, ¿qué se resuelve primero?', ops: ['La suma 5 + 8', 'La multiplicación (−3) × 5', 'De izquierda a derecha sin prioridad', 'No importa el orden'], correcta: 1 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) {
+          o.classList.remove('elegida');
+        });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta');
+      });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 8) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. ¡Aprobado! Has completado el Tema 1. Puedes continuar al Tema 2.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repasa la lección e intenta de nuevo (se requieren 8).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta', 'elegida');
+      });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

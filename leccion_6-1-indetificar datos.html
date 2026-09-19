@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!-- Lección 6.1 · Actividad 1: identificar los datos del interés simple · Spanish ASE Math, Nivel 2 · © José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago. Licencia Creative Commons CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es) -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 6.1 · Actividad 1: identificar los datos del interés simple</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<meta name="dcterms.license" content="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root{
+    --tema:#00695c; --tema-d:#004d40; --tema-bg:#b2dfdb; --tema-soft:#e0f2f1;
+    --txt:#222; --bg:#f5f7fa;
+    --doc:#5e35b1; --doc-d:#4527a0; --doc-soft:#ede7f6;
+    --ambar:#5c3900; --ambar-bg:#fff8e1;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Segoe UI', system-ui, sans-serif; margin:0;
+    background:var(--bg); color:var(--txt); line-height:1.6; font-size:16px;
+  }
+  .contenedor{max-width:880px; margin:0 auto; padding:24px;}
+
+  header.principal{
+    background:linear-gradient(135deg,#004d40 0%,#00695c 55%,#00897b 100%);
+    color:#fff; padding:30px; border-radius:14px; margin-bottom:22px;
+    box-shadow:0 4px 14px rgba(0,77,64,.28);
+  }
+  header.principal .ruta{font-size:13px; opacity:.92; letter-spacing:.4px; text-transform:uppercase;}
+  header.principal h1{margin:8px 0 6px; font-size:24px; font-weight:700;}
+  header.principal .meta{font-size:14px; opacity:.94;}
+
+  h2.seccion{
+    color:var(--tema-d); font-size:21px; margin:32px 0 12px;
+    padding-bottom:6px; border-bottom:3px solid var(--tema-bg);
+  }
+
+  .caja-objetivos{
+    background:var(--tema-soft); border-left:6px solid var(--tema);
+    padding:18px 22px; border-radius:0 10px 10px 0; margin-bottom:22px;
+  }
+  .caja-objetivos h2{margin:0 0 10px; color:var(--tema-d); font-size:19px;}
+  .caja-objetivos ul{margin:0; padding-left:22px;}
+  .caja-objetivos li{margin:5px 0;}
+
+  .bloque{
+    background:#fff; border-radius:10px; padding:4px 24px 18px;
+    box-shadow:0 1px 5px rgba(0,0,0,.06); margin-bottom:18px;
+  }
+  p{margin:10px 0;}
+
+  /* Guía del docente (acordeón nativo) */
+  details.guia-docente{
+    background:var(--doc-soft); border-left:6px solid var(--doc);
+    border-radius:0 10px 10px 0; margin-bottom:22px; padding:0 22px;
+  }
+  details.guia-docente summary{
+    cursor:pointer; font-weight:700; color:var(--doc-d); font-size:18px;
+    padding:16px 0; list-style:none; display:flex; align-items:center; gap:10px;
+  }
+  details.guia-docente summary::-webkit-details-marker{display:none;}
+  details.guia-docente summary .chev{transition:transform .2s; font-size:14px;}
+  details.guia-docente[open] summary .chev{transform:rotate(90deg);}
+  details.guia-docente .interior{padding:0 0 18px;}
+  details.guia-docente h3{color:var(--doc-d); font-size:16px; margin:16px 0 6px;}
+  details.guia-docente ul{padding-left:22px; margin:8px 0;}
+  details.guia-docente li{margin:5px 0;}
+  .etq-doc{
+    display:inline-block; background:var(--doc); color:#fff; font-size:11px;
+    font-weight:700; padding:3px 11px; border-radius:11px; letter-spacing:.5px;
+  }
+
+  .caja-formula{
+    background:#fafafa; border:1px solid #e3e3e3; border-radius:8px;
+    padding:16px 18px; margin:14px 0; text-align:center;
+  }
+  .caja-formula .ec{font-size:22px; font-weight:700; color:var(--tema-d);}
+  .caja-formula .glosa{font-size:14px; color:#555; margin-top:8px;}
+
+  .caja-tip{
+    background:#e8f5e9; border-left:5px solid #2e7d32;
+    padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0;
+    color:#1b5e20; font-size:15px;
+  }
+  .caja-atencion{
+    background:var(--ambar-bg); border-left:5px solid #f9a825;
+    padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0;
+    color:var(--ambar); font-size:15px;
+  }
+
+  /* Pasos del estudiante */
+  ol.pasos{counter-reset:p; list-style:none; padding-left:0; margin:14px 0;}
+  ol.pasos li{
+    position:relative; padding:8px 0 8px 44px; margin:6px 0;
+  }
+  ol.pasos li::before{
+    counter-increment:p; content:counter(p);
+    position:absolute; left:0; top:8px;
+    width:28px; height:28px; border-radius:50%;
+    background:var(--tema); color:#fff; font-weight:700;
+    text-align:center; line-height:28px; font-size:14px;
+  }
+
+  /* Situaciones */
+  .situaciones{margin:14px 0;}
+  .situacion{
+    background:#fff; border:1px solid #e3e3e3; border-left:5px solid var(--tema);
+    border-radius:0 9px 9px 0; padding:12px 16px 12px 14px; margin:10px 0;
+    display:flex; gap:14px; align-items:flex-start;
+  }
+  .situacion .num{
+    flex-shrink:0; width:30px; height:30px; border-radius:50%;
+    background:var(--tema-soft); color:var(--tema-d); font-weight:700;
+    text-align:center; line-height:30px;
+  }
+  .situacion p{margin:3px 0;}
+
+  /* Tabla plantilla */
+  .tabla-wrap{overflow-x:auto; margin:14px 0;}
+  table.plantilla{width:100%; border-collapse:collapse; font-size:14px; min-width:520px;}
+  table.plantilla th, table.plantilla td{
+    border:1px solid #d9d9d9; padding:10px 12px; text-align:center;
+  }
+  table.plantilla th{background:var(--tema); color:#fff; font-size:13px;}
+  table.plantilla td.sit{background:var(--tema-soft); text-align:left; font-weight:600; color:var(--tema-d);}
+  table.plantilla tr.ejemplo td{background:#fffde7;}
+  table.plantilla .vacia{color:#bbb;}
+
+  /* Botón hoja compartida */
+  .enlace-hoja{
+    display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--txt);
+    background:#fff; border:1px solid #e3e3e3; border-left:5px solid #1e8e3e;
+    border-radius:11px; padding:15px 18px; box-shadow:0 1px 5px rgba(0,0,0,.06);
+    margin:16px 0; transition:transform .18s, box-shadow .18s;
+  }
+  .enlace-hoja:hover{transform:translateY(-3px); box-shadow:0 7px 20px rgba(30,142,62,.18);}
+  .enlace-hoja .ico{
+    flex-shrink:0; width:50px; height:50px; border-radius:10px; font-size:26px;
+    display:flex; align-items:center; justify-content:center; background:#e6f4ea;
+  }
+  .enlace-hoja .titulo{font-weight:700; color:#1e6b2f; font-size:16px;}
+  .enlace-hoja .desc{font-size:13px; color:#546e7a; margin-top:3px;}
+  .enlace-hoja .flecha{margin-left:auto; font-size:20px; color:#1e8e3e;}
+
+  .cierre{
+    background:#263238; color:#eceff1; border-radius:12px; padding:22px 26px; margin:24px 0 10px;
+  }
+  .cierre h2{color:#fff; margin-top:0;}
+  .cierre strong{color:#9BFF8F;}
+
+  footer{
+    text-align:center; padding:20px; color:#222; font-size:13px;
+    border-top:1px solid #ddd; margin-top:20px;
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 6 · Lección 6.1 · Actividad 1</div>
+    <h1>Actividad colaborativa: identificar los datos del interés simple</h1>
+    <div class="meta">Trabajo en parejas · Hoja compartida · 25–30 minutos</div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivo de la actividad</h2>
+    <ul>
+      <li>Leer una situación financiera y reconocer sus tres datos esenciales: el capital, la tasa de interés y el tiempo.</li>
+      <li>Detectar cuándo un dato no aparece de forma directa y debe deducirse o convertirse de unidad.</li>
+      <li>Preparar el terreno para aplicar la fórmula del interés simple en la siguiente parte de la lección.</li>
+    </ul>
+  </div>
+
+  <!-- ===== GUÍA PARA EL DOCENTE ===== -->
+  <details class="guia-docente" open>
+    <summary><span class="chev" aria-hidden="true">▶</span> <span class="etq-doc">Para el docente</span> &nbsp;Cómo conducir la actividad</summary>
+    <div class="interior">
+      <p>Esta actividad <strong>no pide calcular</strong>: pide <strong>leer con atención</strong>. Antes de resolver cualquier problema de interés simple, el estudiante debe separar correctamente el capital, la tasa y el tiempo. El valor pedagógico está en descubrir que, en la vida real, esos datos casi nunca vienen "ordenaditos".</p>
+
+      <h3>1. Antes de empezar</h3>
+      <ul>
+        <li>Prepare una <strong>hoja compartida</strong> (se recomienda Google Sheets) con las cuatro columnas de la plantilla y una fila por cada situación.</li>
+        <li>Comparta el enlace de edición y péguelo también en el botón de esta página.</li>
+        <li>Organice el espacio según el grupo: <em>una sola hoja</em> con un bloque por pareja; <em>una pestaña por sala</em> de trabajo; o, si trabaja dentro de Brightspace, incruste la hoja en la página.</li>
+      </ul>
+
+      <h3>2. Durante el trabajo</h3>
+      <ul>
+        <li>Cada pareja completa, para las diez situaciones, las columnas <strong>Capital</strong>, <strong>Tasa</strong> y <strong>Tiempo</strong>.</li>
+        <li>La cuarta columna es una <strong>bandera</strong> (🚩): el estudiante la marca cuando no logró identificar con seguridad la tasa o el tiempo. Así, al final, los casos difíciles saltan a la vista sin tener que revisar las diez situaciones una por una.</li>
+        <li>Recorra las parejas (o las salas) y observe sin corregir de inmediato; lo interesante es ver dónde se traban.</li>
+      </ul>
+
+      <h3>3. Puesta en común (al final)</h3>
+      <ul>
+        <li>Pida que compartan únicamente los casos donde colocaron una bandera.</li>
+        <li>Varias situaciones presentan la tasa o el tiempo de forma <strong>indirecta</strong>: en otra unidad de tiempo (meses, días), como un rango de fechas, expresada de forma mensual en lugar de anual, o deducible a partir de otro dato. Esos son los casos que conviene discutir en voz alta.</li>
+        <li>Cierre la actividad recordando que un dato "escondido" no significa que falte: significa que hay que transformarlo antes de usar la fórmula.</li>
+      </ul>
+
+      <div class="caja-tip" style="margin-top:14px;"><strong>Sugerencia:</strong> mantenga una <em>clave de respuestas</em> aparte, solo para usted. Así guía la puesta en común sin revelar de antemano cuáles situaciones son las complicadas.</div>
+    </div>
+  </details>
+
+  <!-- ===== RECORDATORIO ===== -->
+  <h2 class="seccion">¿Qué datos buscamos?</h2>
+  <div class="bloque">
+    <p>El <strong>interés simple</strong> relaciona tres cantidades. Identificarlas con claridad es el primer paso para resolver cualquier problema financiero.</p>
+    <div class="caja-formula">
+      <div class="ec">I = P × r × t</div>
+      <div class="glosa">
+        <strong>P</strong> = principal o capital (el dinero inicial) &nbsp;·&nbsp;
+        <strong>r</strong> = tasa de interés (el porcentaje) &nbsp;·&nbsp;
+        <strong>t</strong> = tiempo (el plazo)
+      </div>
+    </div>
+    <div class="caja-atencion"><strong>Atención:</strong> la tasa y el tiempo deben referirse a la <strong>misma unidad</strong>. Si la tasa es anual, el tiempo debe expresarse en años. Por eso, parte del trabajo es <strong>convertir</strong> antes de identificar.</div>
+  </div>
+
+  <!-- ===== INSTRUCCIONES ESTUDIANTE ===== -->
+  <h2 class="seccion">Instrucciones</h2>
+  <div class="bloque">
+    <ol class="pasos">
+      <li>Abre la hoja compartida usando el botón de más abajo.</li>
+      <li>Para cada una de las diez situaciones, escribe en la fila correspondiente el <strong>capital</strong>, la <strong>tasa</strong> y el <strong>tiempo</strong>.</li>
+      <li>Si la tasa o el tiempo <strong>no aparecen de forma directa</strong> (están en otra unidad, hay que calcularlos o deducirlos), escribe lo que puedas y <strong>marca la bandera</strong> 🚩 en esa fila.</li>
+      <li>Al terminar, prepárate para comentar con el grupo las filas donde pusiste una bandera.</li>
+    </ol>
+  </div>
+
+  <a class="enlace-hoja" href="PEGAR-AQUÍ-EL-ENLACE-DE-LA-HOJA-COMPARTIDA" target="_blank" rel="noopener noreferrer">
+    <span class="ico" aria-hidden="true">📊</span>
+    <span>
+      <span class="titulo">Abrir la hoja compartida</span>
+      <span class="desc">Aquí completarás los datos de las diez situaciones en equipo</span>
+    </span>
+    <span class="flecha" aria-hidden="true">→</span>
+  </a>
+
+  <!-- ===== SITUACIONES ===== -->
+  <h2 class="seccion">Las diez situaciones</h2>
+  <div class="bloque situaciones">
+
+    <div class="situacion"><span class="num">1</span><p>María deposita <strong>$1,200</strong> en una cuenta de ahorros que paga una tasa de interés simple del <strong>3% anual</strong>. Quiere saber cuánto ganará en <strong>2 años</strong>.</p></div>
+
+    <div class="situacion"><span class="num">2</span><p>Un préstamo de <strong>$5,000</strong> tiene una tasa de interés simple del <strong>8% anual</strong> y debe pagarse en <strong>18 meses</strong>.</p></div>
+
+    <div class="situacion"><span class="num">3</span><p>José pidió prestados <strong>$800</strong>. El acuerdo fija una tasa simple del <strong>5% anual</strong> por un plazo de <strong>medio año</strong>; además menciona un descuento si paga antes.</p></div>
+
+    <div class="situacion"><span class="num">4</span><p>Una tienda ofrece financiar un refrigerador de <strong>$2,400</strong> a una tasa del <strong>1.5% mensual</strong> durante <strong>10 meses</strong>.</p></div>
+
+    <div class="situacion"><span class="num">5</span><p>Ana abrió un certificado de <strong>$10,000</strong> el <strong>1 de enero</strong>; vence el <strong>1 de julio</strong> del mismo año. La tasa de interés simple es del <strong>4% anual</strong>.</p></div>
+
+    <div class="situacion"><span class="num">6</span><p>Un banco presta <strong>$3,500</strong> por un plazo de <strong>3 años</strong>. El contrato indica que el cliente pagará <strong>$420 de interés en total</strong>, pero no escribe el porcentaje de la tasa.</p></div>
+
+    <div class="situacion"><span class="num">7</span><p>Pedro deposita <strong>$600</strong> en la cuenta de ahorro de su cooperativa de crédito durante <strong>un año y medio</strong>, con un rendimiento simple del <strong>2% anual</strong>.</p></div>
+
+    <div class="situacion"><span class="num">8</span><p>Una cooperativa otorga un crédito de <strong>$7,200</strong> con una tasa de interés simple del <strong>6% anual</strong>, a pagar en <strong>4 años</strong>.</p></div>
+
+    <div class="situacion"><span class="num">9</span><p>Luis tiene un saldo de <strong>$1,500</strong> en su tarjeta. La tasa de interés simple es del <strong>24% anual</strong> y el estado de cuenta reporta un período de <strong>90 días</strong>.</p></div>
+
+    <div class="situacion"><span class="num">10</span><p>Una empresa invierte <strong>$25,000</strong> durante <strong>2 años</strong>. El documento promete pagar <strong>el doble de la tasa del mercado</strong>, que es del <strong>3.5% anual</strong>.</p></div>
+
+  </div>
+
+  <!-- ===== PLANTILLA ===== -->
+  <h2 class="seccion">Plantilla de tres columnas</h2>
+  <div class="bloque">
+    <p>Así se ve la estructura que encontrarás en la hoja compartida. La primera fila va resuelta como <strong>ejemplo</strong>; complétalas todas en equipo.</p>
+    <div class="tabla-wrap">
+      <table class="plantilla">
+        <caption>Plantilla de la hoja compartida: una fila por situación</caption>
+        <thead>
+          <tr>
+            <th scope="col" style="min-width:90px;">Situación</th>
+            <th scope="col">Principal (P)</th>
+            <th scope="col">Tasa (r)</th>
+            <th scope="col">Tiempo (t)</th>
+            <th scope="col" style="min-width:60px;"><span aria-hidden="true">🚩</span> Bandera</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="ejemplo">
+            <td class="sit" style="background:#fff9c4;">1 (ejemplo)</td>
+            <td>$1,200</td>
+            <td>3% anual</td>
+            <td>2 años</td>
+            <td>—</td>
+          </tr>
+          <tr><td class="sit">2</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">⬜</td></tr>
+          <tr><td class="sit">3</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">⬜</td></tr>
+          <tr><td class="sit">4</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">⬜</td></tr>
+          <tr><td class="sit">5</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">⬜</td></tr>
+          <tr><td class="sit">…</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">⬜</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="caja-tip"><strong>Recuerda:</strong> si un dato está en otra unidad o hay que deducirlo, anótalo igual y <strong>marca la bandera</strong> 🚩. Esos casos son justamente los que comentaremos al final.</div>
+  </div>
+
+  <!-- ===== CIERRE ===== -->
+  <div class="cierre">
+    <h2>Para cerrar</h2>
+    <p>Leer bien es la mitad del trabajo. Cuando logras separar el <strong>capital</strong>, la <strong>tasa</strong> y el <strong>tiempo</strong> —aunque vengan disfrazados— el cálculo del interés simple se vuelve sencillo. En la próxima parte usaremos estos mismos datos para aplicar la fórmula <strong>I = P × r × t</strong>.</p>
+  </div>
+
+  <footer>Spanish ASE Math · Nivel 2 · Lección 6.1 · Actividad 1<br>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago.<br>Material bajo licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer license">Creative Commons CC BY-NC-SA 4.0</a>.</footer>
+
+</div>
+</body>
+</html>

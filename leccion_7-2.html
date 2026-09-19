@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 7.2 · Circunferencia del círculo</title>
+<style>
+  :root {
+    --tema:   #37474f;
+    --tema-d: #1c2a30;
+    --tema-bg:#eceff1;
+    --tema-bg2:#dde3e6;
+    --tema-soft:#f5f7f8;
+    --acento: #00695c;
+    --txt:    #222;
+    --bg:     #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  header.principal {
+    background: var(--tema);
+    background: linear-gradient(135deg, #1c2a30 0%, #37474f 55%, #546e7a 100%);
+    color: #fff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(28,42,48,.32);
+  }
+  header.principal .ruta { font-size: 13px; opacity: .92; letter-spacing: .4px; text-transform: uppercase; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; }
+  header.principal .meta { font-size: 14px; opacity: .94; }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 {
+    margin: 0 0 10px; color: var(--tema-d); font-size: 19px;
+  }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+
+  p { margin: 10px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #fff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+
+  .caja-tip {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #1b5e20; font-size: 15px;
+  }
+  .caja-tip strong { color: #1b5e20; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5a3d00;
+  }
+  .caja-atencion strong { color: #c54500; }
+
+  .etiqueta {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    padding: 2px 10px; border-radius: 10px; margin-right: 4px;
+  }
+  .et-ambar { background: #ffe082; color: #000; }
+  .et-gris { background: var(--tema); color: #fff; }
+
+  /* tarjeta de fórmula */
+  .formula-card {
+    background: var(--tema-bg); border: 2px solid var(--tema);
+    border-radius: 12px; padding: 18px; margin: 14px 0;
+    text-align: center;
+  }
+  .formula-card .formula {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 26px; font-weight: 700; color: var(--tema-d);
+    margin: 6px 0;
+  }
+  .formula-card .leyenda {
+    font-size: 14px; color: #444; margin-top: 10px;
+  }
+  .formula-card .leyenda strong { color: var(--tema-d); }
+
+  /* tabla del descubrimiento de pi */
+  .descubrimiento {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px;
+  }
+  .descubrimiento th, .descubrimiento td {
+    border: 1px solid #e0e0e0; padding: 9px 12px; text-align: center;
+  }
+  .descubrimiento th { background: var(--tema); color: #fff; }
+  .descubrimiento td:first-child { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+  .descubrimiento td.razon { background: #fff59d; font-weight: 700; color: #5a3d00; }
+
+  .svg-wrap { text-align: center; margin: 18px 0; overflow-x: auto; }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #b71c1c; }
+
+  .campo-num {
+    font-size: 16px; padding: 7px 10px; border: 2px solid #cfcfcf;
+    border-radius: 7px; width: 130px; font-family: inherit;
+  }
+  .campo-num:focus { border-color: var(--tema); outline: none; }
+  .btn {
+    background: var(--tema); color: #fff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit;
+    margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #607d8b; }
+  .btn.sec:hover { background: #455a64; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo {
+    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
+    font-size: 14px;
+  }
+  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .modo-pres strong { color: #0d47a1; }
+  .modo-virt { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-virt strong { color: #004d40; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #0d47a1; }
+  .modo-virt h3 { color: #004d40; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #4527a0; }
+
+  .quiz {
+    background: #fff; border: 2px solid var(--tema);
+    border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0;
+  }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #fff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #222222;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 7 · Geometría transicional</div>
+    <h1>Lección 7.2 · Circunferencia del círculo</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Distinguir las partes de un círculo: centro, radio, diámetro y circunferencia.</li>
+      <li>Reconocer la relación d = 2r entre diámetro y radio.</li>
+      <li>Descubrir π como la razón constante entre la circunferencia y el diámetro.</li>
+      <li>Calcular la circunferencia usando C = πd o C = 2πr.</li>
+      <li>Resolver problemas inversos: hallar el radio o el diámetro a partir de la circunferencia.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Conexión con la lección anterior.</strong> En la Lección 7.1 se trabajó con rectángulos, triángulos y trapecios, todas figuras de lados rectos. Esta lección introduce una figura completamente distinta: el <strong>círculo</strong>, una curva cerrada cuyos puntos están todos a la misma distancia de un punto central. Para medirlo no bastan las fórmulas anteriores; aparece una constante matemática célebre: <strong>π</strong> (pi).</p>
+  </div>
+
+  <h2 class="seccion">1. Anatomía del círculo</h2>
+  <div class="bloque">
+    <p>Antes de medir un círculo, conviene nombrar sus partes con precisión.</p>
+
+    <div class="svg-wrap">
+      <svg width="380" height="320" viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Círculo con etiquetas para centro, radio, diámetro y circunferencia">
+        <!-- circulo principal -->
+        <circle cx="190" cy="160" r="110" fill="#eceff1" stroke="#37474f" stroke-width="3"/>
+        <!-- centro -->
+        <circle cx="190" cy="160" r="5" fill="#1c2a30"/>
+        <text x="200" y="158" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1c2a30">O (centro)</text>
+        <!-- radio -->
+        <line x1="190" y1="160" x2="293" y2="120" stroke="#1565c0" stroke-width="2.5"/>
+        <text x="245" y="125" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#0d47a1">radio (r)</text>
+        <!-- diametro -->
+        <line x1="80" y1="160" x2="300" y2="160" stroke="#c62828" stroke-width="2.5" stroke-dasharray="6,4"/>
+        <text x="125" y="180" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#7f1414">diámetro (d)</text>
+        <!-- circunferencia label -->
+        <text x="190" y="305" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#37474f" text-anchor="middle">circunferencia (C) = el borde del círculo</text>
+      </svg>
+    </div>
+
+    <ul>
+      <li><strong>Centro (O):</strong> el punto desde el cual todos los puntos del círculo están a la misma distancia.</li>
+      <li><strong>Radio (r):</strong> la distancia del centro a cualquier punto del círculo.</li>
+      <li><strong>Diámetro (d):</strong> el segmento que atraviesa el círculo pasando por el centro. Es <strong>el doble del radio</strong>.</li>
+      <li><strong>Circunferencia (C):</strong> la longitud del borde del círculo, es decir, el «perímetro» del círculo.</li>
+    </ul>
+
+    <div class="formula-card">
+      <div class="formula">d = 2 · r</div>
+      <div class="leyenda">El diámetro es siempre el doble del radio. Conociendo uno, se obtiene el otro al instante.</div>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Cuidado con las palabras:</strong> «círculo» y «circunferencia» no son exactamente lo mismo. El <strong>círculo</strong> es la región completa (incluyendo el interior); la <strong>circunferencia</strong> es solo el borde. En este nivel se usan a veces como sinónimos, pero al medir hay que tener claro qué se está midiendo.
+    </div>
+  </div>
+
+  <h2 class="seccion">2. El descubrimiento de π</h2>
+  <div class="bloque">
+    <p>Si se mide con una cuerda el contorno (la circunferencia, C) de varios objetos circulares y se mide también su diámetro (d) con una regla, se descubre algo asombroso: <strong>la razón C ÷ d siempre da el mismo número</strong>, no importa el tamaño del objeto.</p>
+
+    <table class="descubrimiento">
+      <thead>
+        <tr><th>Objeto</th><th>Diámetro d (cm)</th><th>Circunferencia C (cm)</th><th>Razón C ÷ d</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Moneda</td><td>2.5</td><td>7.85</td><td class="razon">≈ 3.14</td></tr>
+        <tr><td>Plato</td><td>22</td><td>69.12</td><td class="razon">≈ 3.14</td></tr>
+        <tr><td>Lata de refresco</td><td>6.5</td><td>20.42</td><td class="razon">≈ 3.14</td></tr>
+        <tr><td>Llanta de auto</td><td>58</td><td>182.21</td><td class="razon">≈ 3.14</td></tr>
+      </tbody>
+    </table>
+
+    <p>Ese número constante recibe un nombre propio: <strong>π</strong>, la letra griega «pi». Su valor exacto tiene infinitas cifras decimales sin patrón repetido, pero para los cálculos basta con aproximarlo:</p>
+
+    <div class="formula-card">
+      <div class="formula">π ≈ 3.14159</div>
+      <div class="leyenda">Aproximación habitual: <strong>π ≈ 3.14</strong>. Otra aproximación útil con fracción: <strong>π ≈ 22/7</strong>. La calculadora TI-30XS tiene una tecla dedicada.</div>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Idea fundamental:</strong> π no es una invención humana. Es una constante de la naturaleza: cualquier círculo del universo, sin importar su tamaño, cumple que su circunferencia mide aproximadamente 3.14159 veces su diámetro. Esa es la razón profunda por la que aparece tantas veces en las matemáticas.
+    </div>
+  </div>
+
+  <h2 class="seccion">3. Las dos fórmulas de la circunferencia</h2>
+  <div class="bloque">
+    <p>La definición de π da inmediatamente la fórmula de la circunferencia. Si C ÷ d = π, entonces:</p>
+
+    <div class="formula-card">
+      <div class="formula">C = π · d</div>
+      <div class="leyenda">Cuando se conoce el <strong>diámetro</strong>.</div>
+    </div>
+
+    <p>Y dado que d = 2r, también se puede escribir:</p>
+
+    <div class="formula-card">
+      <div class="formula">C = 2 · π · r</div>
+      <div class="leyenda">Cuando se conoce el <strong>radio</strong>.</div>
+    </div>
+
+    <p>Las dos fórmulas son equivalentes; la elección depende solo de qué dato esté disponible.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1 · Con el diámetro</span>
+      <p>Una pizza tiene un diámetro de 14 pulgadas. ¿Cuál es su circunferencia?</p>
+      <div class="paso"><span class="n">1</span> Datos: d = 14 in. Se usa C = π · d.</div>
+      <div class="paso"><span class="n">2</span> Sustituir: C = 3.14 × 14 = 43.96 pulgadas.</div>
+      <p><strong>Respuesta:</strong> la circunferencia de la pizza mide aproximadamente 44 pulgadas.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2 · Con el radio</span>
+      <p>Una pista circular de atletismo tiene un radio de 40 metros. ¿Cuánto mide una vuelta completa?</p>
+      <div class="paso"><span class="n">1</span> Datos: r = 40 m. Se usa C = 2 · π · r.</div>
+      <div class="paso"><span class="n">2</span> Sustituir: C = 2 × 3.14 × 40 = 251.2 metros.</div>
+      <p><strong>Respuesta:</strong> una vuelta completa mide aproximadamente 251.2 metros.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Atención:</strong> el resultado de cualquier cálculo con π es <strong>aproximado</strong>, no exacto. Por eso se usa el símbolo «≈» (aproximadamente igual) en lugar de «=» cuando el valor de π se ha redondeado. Si se requiere precisión, se deja el resultado «en términos de π» (por ejemplo, C = 14π pulgadas).
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · Calcular circunferencias</h3>
+    <p>Usa π ≈ 3.14. Escribe el resultado (solo el número, redondeado a dos decimales si es necesario) y presiona «Verificar».</p>
+    <div class="pregunta">
+      <div class="enun">1. d = 10 cm. C =</div>
+      <input type="text" class="campo-num" id="c1" inputmode="decimal" aria-label="Respuesta de la pregunta 1: circunferencia con diámetro diez centímetros" />
+      <div class="fb" id="fb-c1"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">2. r = 5 m. C =</div>
+      <input type="text" class="campo-num" id="c2" inputmode="decimal" aria-label="Respuesta de la pregunta 2: circunferencia con radio cinco metros" />
+      <div class="fb" id="fb-c2"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">3. d = 20 pulgadas. C =</div>
+      <input type="text" class="campo-num" id="c3" inputmode="decimal" aria-label="Respuesta de la pregunta 3: circunferencia con diámetro veinte pulgadas" />
+      <div class="fb" id="fb-c3"></div>
+    </div>
+    <button class="btn" id="btn-circ">Verificar</button>
+  </div>
+
+  <h2 class="seccion">4. El problema inverso: hallar el radio</h2>
+  <div class="bloque">
+    <p>A veces se conoce la <strong>circunferencia</strong> y se busca el radio o el diámetro. Basta con despejar la fórmula.</p>
+
+    <p style="text-align:center; font-size:17px; font-weight:700; color: var(--tema-d);">
+      Si C = π · d, entonces d = C ÷ π &nbsp;&nbsp;y&nbsp;&nbsp; r = C ÷ (2π).
+    </p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3 · Hallar el radio</span>
+      <p>El borde de una mesa circular mide 188.4 cm. ¿Cuál es su radio?</p>
+      <div class="paso"><span class="n">1</span> Datos: C = 188.4 cm. Se busca r.</div>
+      <div class="paso"><span class="n">2</span> Se despeja: r = C ÷ (2π) = 188.4 ÷ (2 × 3.14) = 188.4 ÷ 6.28.</div>
+      <div class="paso"><span class="n">3</span> Calcular: 188.4 ÷ 6.28 = 30.</div>
+      <p><strong>Respuesta:</strong> el radio de la mesa es de 30 cm.</p>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Verificación:</strong> conviene comprobar el resultado calculando hacia atrás. Si r = 30 cm, entonces C = 2 × 3.14 × 30 = 188.4 cm. ✓ Coincide. Esta verificación rápida atrapa errores aritméticos.
+    </div>
+  </div>
+
+  <h2 class="seccion">5. Aplicaciones reales</h2>
+  <div class="bloque">
+    <p>La circunferencia aparece en situaciones muy concretas: cuánta cerca se necesita para rodear un jardín circular, cuánto cordón cubre el borde de un sombrero, qué distancia recorre una llanta en una vuelta completa.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4 · Cerca para un jardín</span>
+      <p>Un jardín circular tiene un radio de 7 metros. ¿Cuántos metros de cerca se necesitan para rodearlo? Usar π ≈ 22/7.</p>
+      <div class="paso"><span class="n">1</span> C = 2 · π · r = 2 · (22/7) · 7.</div>
+      <div class="paso"><span class="n">2</span> El 7 del denominador se cancela con el radio: 2 · 22 = 44.</div>
+      <p><strong>Respuesta:</strong> se necesitan 44 metros de cerca. (La aproximación 22/7 es útil cuando el radio es múltiplo de 7.)</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 5 · Una llanta en movimiento</span>
+      <p>Una llanta de auto tiene un diámetro de 60 cm. ¿Qué distancia recorre el auto en una vuelta completa de la llanta?</p>
+      <div class="paso"><span class="n">1</span> Una vuelta = la circunferencia: C = π · d = 3.14 × 60.</div>
+      <div class="paso"><span class="n">2</span> C = 188.4 cm, que son 1.884 m.</div>
+      <p><strong>Respuesta:</strong> en cada vuelta, el auto avanza aproximadamente 1.88 metros.</p>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Identificar la parte del círculo</h3>
+    <p>Selecciona la respuesta correcta.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. La distancia del centro al borde del círculo se llama:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Diámetro</div>
+        <div class="opcion" data-op="b">Radio</div>
+        <div class="opcion" data-op="c">Circunferencia</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">2. Si un círculo tiene radio 12 cm, su diámetro mide:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">6 cm</div>
+        <div class="opcion" data-op="b">12 cm</div>
+        <div class="opcion" data-op="c">24 cm</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">3. El número π es aproximadamente:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">3.14</div>
+        <div class="opcion" data-op="b">3.41</div>
+        <div class="opcion" data-op="c">2.14</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">4. La razón circunferencia ÷ diámetro de cualquier círculo es:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Distinta para cada círculo</div>
+        <div class="opcion" data-op="b">Siempre la misma: π</div>
+        <div class="opcion" data-op="c">Depende del tamaño</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 3 · Aplicaciones</h3>
+    <p>Usa π ≈ 3.14. Selecciona la respuesta correcta.</p>
+
+    <div class="pregunta" data-correcta="c">
+      <div class="enun">1. Un plato tiene un diámetro de 30 cm. Su circunferencia es:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">9.42 cm</div>
+        <div class="opcion" data-op="b">15 cm</div>
+        <div class="opcion" data-op="c">94.2 cm</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. Una fuente circular tiene un radio de 4 m. ¿Cuántos metros mide su borde?</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">25.12 m</div>
+        <div class="opcion" data-op="b">12.56 m</div>
+        <div class="opcion" data-op="c">50.24 m</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. Una pista tiene una circunferencia de 314 m. Su radio es:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">100 m</div>
+        <div class="opcion" data-op="b">50 m</div>
+        <div class="opcion" data-op="c">25 m</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">6. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 1 · Descubrir π midiendo</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          Cada grupo recibe tres objetos circulares (lata, plato, moneda) y una cuerda. Miden la circunferencia con la cuerda y el diámetro con regla. Calculan la razón C ÷ d para cada objeto. Discuten por qué siempre da un número cercano a 3.14.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          El docente comparte una tabla con tres objetos y sus medidas reales. Los estudiantes calculan la razón C ÷ d en cada caso y la comparan. Discuten en el chat por qué la razón es la misma, independientemente del tamaño.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 2 · Las tres rondas</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          Tres rondas de cálculo en parejas. Ronda 1: cinco circunferencias dado el radio. Ronda 2: cinco circunferencias dado el diámetro. Ronda 3: cinco radios dado la circunferencia. Las parejas alternan el rol de quien calcula y quien verifica.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          Las parejas trabajan en una hoja compartida con las quince operaciones organizadas en tres columnas. Marcan en cada caso qué fórmula usaron. Comparan resultados al regresar al pleno.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 3 · ¿Cuánto cable se necesita?</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          Cada grupo recibe el plano de un jardín circular con un radio dado y debe calcular: cuánta cerca se necesita para rodearlo y cuánto costaría si la cerca cuesta $12 por metro. Presentan el presupuesto a la clase.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          En salas pequeñas, los grupos resuelven en una hoja compartida. Calculan circunferencia, costo, y comparan dos opciones de cerca (estándar a $12/m vs. reforzada a $18/m). Comparten conclusiones al volver.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2>Tarea asincrónica</h2>
+    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
+    <ul>
+      <li>Cuatro ejercicios de calcular la circunferencia dado el radio.</li>
+      <li>Cuatro ejercicios de calcular la circunferencia dado el diámetro.</li>
+      <li>Tres ejercicios de hallar el radio o el diámetro dada la circunferencia.</li>
+      <li>Tres aplicaciones reales (jardín circular, llanta, plato).</li>
+    </ul>
+    <p>La plataforma ofrece retroalimentación paso a paso en cada intento. Tiempo estimado: 50 minutos.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 7.2</h2>
+    <p>Diez preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2>Rúbrica analítica de la lección</h2>
+    <p>Tres criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th>Inicial (1)</th>
+          <th>En desarrollo (2)</th>
+          <th>Competente (3)</th>
+          <th>Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Partes del círculo</td>
+          <td>Confunde radio con diámetro.</td>
+          <td>Distingue los términos con apoyo.</td>
+          <td>Identifica centro, radio, diámetro y circunferencia correctamente.</td>
+          <td>Identifica las partes y explica la relación d = 2r con autonomía.</td>
+        </tr>
+        <tr>
+          <td>Aplicación de las fórmulas</td>
+          <td>No reconoce qué fórmula usar.</td>
+          <td>Aplica una fórmula con apoyo.</td>
+          <td>Aplica C = πd o C = 2πr según el dato disponible.</td>
+          <td>Aplica las dos fórmulas y elige la más cómoda según el contexto.</td>
+        </tr>
+        <tr>
+          <td>Problemas inversos y aplicaciones</td>
+          <td>No despeja el radio a partir de la circunferencia.</td>
+          <td>Despeja con apoyo.</td>
+          <td>Resuelve problemas inversos y aplicaciones reales.</td>
+          <td>Resuelve, verifica calculando hacia atrás y comenta el resultado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2>Cierre y enlace con la próxima lección</h2>
+    <p>En esta lección se incorporó una figura nueva al repertorio geométrico: el <strong>círculo</strong>. Quedaron claras sus partes —centro, radio, diámetro, circunferencia— y la relación d = 2r. Sobre todo, se descubrió <strong>π</strong> como una constante universal: la razón circunferencia ÷ diámetro de cualquier círculo. Con C = πd o C = 2πr se calculan ya bordes de jardines, fuentes y pistas.</p>
+    <p>En la <strong>Lección 7.3 · Área del círculo y figuras compuestas con semicírculos</strong> se completará el estudio del círculo midiendo no su borde, sino su <strong>superficie interior</strong>. Aparecerá una nueva fórmula —A = πr²— y se combinarán círculos con rectángulos en figuras compuestas reales, como una pista de atletismo completa.</p>
+  </div>
+
+  <footer>
+    Spanish ASE Math · Nivel 2 · Lección 7.2 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) {
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+        });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revisa: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Práctica de circunferencias ---- */
+  /* π = 3.14
+     1) d=10 → C = 3.14 × 10 = 31.4
+     2) r=5  → C = 2 × 3.14 × 5 = 31.4
+     3) d=20 → C = 3.14 × 20 = 62.8 */
+  var clavesCirc = {
+    c1: 31.4,
+    c2: 31.4,
+    c3: 62.8
+  };
+  document.getElementById('btn-circ').addEventListener('click', function () {
+    Object.keys(clavesCirc).forEach(function (id) {
+      var campo = document.getElementById(id);
+      var fb = document.getElementById('fb-' + id);
+      var limpio = campo.value.trim().replace(/\s/g, '').replace(',', '.');
+      var val = parseFloat(limpio);
+      if (limpio === '' || isNaN(val)) {
+        fb.textContent = 'Escribe un número (puede llevar decimales).';
+        fb.className = 'fb no';
+      } else if (Math.abs(val - clavesCirc[id]) < 0.05) {
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        fb.textContent = 'Revisa: aplica C = πd o C = 2πr con π ≈ 3.14.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+  });
+
+  /* ---- Quiz ---- */
+  var preguntasQuiz = [
+    { enun: '1. El segmento que va del centro a cualquier punto del círculo es el:', ops: ['Diámetro', 'Radio', 'Circunferencia', 'Centro'], correcta: 1 },
+    { enun: '2. Si el radio mide 9 cm, el diámetro mide:', ops: ['4.5 cm', '9 cm', '18 cm', '81 cm'], correcta: 2 },
+    { enun: '3. La constante π es aproximadamente:', ops: ['3.14', '2.71', '1.41', '6.28'], correcta: 0 },
+    { enun: '4. La fórmula de la circunferencia usando el diámetro es:', ops: ['C = π · r', 'C = π · d', 'C = π · d²', 'C = 2 · π · d'], correcta: 1 },
+    { enun: '5. La fórmula de la circunferencia usando el radio es:', ops: ['C = π · r', 'C = 2 · π · r', 'C = π · r²', 'C = π / r'], correcta: 1 },
+    { enun: '6. Si d = 8 cm, entonces C (usando π = 3.14) es:', ops: ['8 cm', '12.56 cm', '25.12 cm', '50.24 cm'], correcta: 2 },
+    { enun: '7. Si r = 10 m, entonces C (usando π = 3.14) es:', ops: ['31.4 m', '62.8 m', '100 m', '314 m'], correcta: 1 },
+    { enun: '8. Una pizza tiene radio 6 in. Su borde mide aproximadamente:', ops: ['12 in', '18.84 in', '37.68 in', '113.04 in'], correcta: 2 },
+    { enun: '9. Una rueda con diámetro 50 cm avanza, en una vuelta, aproximadamente:', ops: ['50 cm', '78.5 cm', '157 cm', '314 cm'], correcta: 2 },
+    { enun: '10. Si C = 62.8 m, ¿cuánto vale r (usando π = 3.14)?', ops: ['5 m', '10 m', '20 m', '31.4 m'], correcta: 1 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) {
+          o.classList.remove('elegida');
+        });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta');
+      });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 7) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 10 correctas. ¡Aprobado! Puedes continuar a la Lección 7.3.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 10 correctas. Repasa la lección e intenta de nuevo (se requieren 7).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta', 'elegida');
+      });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

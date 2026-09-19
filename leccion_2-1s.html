@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 2.1 · Fracciones complejas con coeficientes negativos</title>
+<style>
+  :root {
+    --tema:   #4a148c;
+    --tema-d: #38106b;
+    --tema-bg:#f3e5f5;
+    --tema-bg2:#ede0f3;
+    --acento: #00695c;
+    --txt:    #222;
+    --bg:     #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+
+  header.principal {
+    background: var(--tema);
+    background: linear-gradient(135deg, #38106b 0%, #4a148c 55%, #6a1b9a 100%);
+    color: #fff; padding: 32px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(56,16,107,.28);
+  }
+  header.principal .ruta { font-size: 13px; opacity: .92; letter-spacing: .4px; text-transform: uppercase; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; }
+  header.principal .meta { font-size: 14px; opacity: .94; }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-bg); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 {
+    margin: 0 0 10px; color: var(--tema-d); font-size: 19px;
+  }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+
+  p { margin: 10px 0; }
+
+  /* fraccion visual */
+  .frac {
+    display: inline-block; text-align: center; vertical-align: middle;
+    margin: 0 3px; font-size: 16px;
+  }
+  .frac .num { display: block; padding: 0 6px; border-bottom: 2px solid #444; }
+  .frac .den { display: block; padding: 0 6px; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #fff;
+    font-size: 12px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
+  }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 0;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+
+  .caja-tip {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #1b5e20; font-size: 15px;
+  }
+  .caja-tip strong { color: #1b5e20; }
+
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5a3d00;
+  }
+  .caja-atencion strong { color: #c54500; }
+
+  .etiqueta {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    padding: 2px 10px; border-radius: 10px; margin-right: 4px;
+  }
+  .et-ambar { background: #ffe082; color: #000; }
+  .et-violeta { background: var(--tema); color: #fff; }
+
+  .reglas {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px;
+  }
+  .reglas th, .reglas td {
+    border: 1px solid #e0e0e0; padding: 9px 12px; text-align: center;
+  }
+  .reglas th { background: var(--tema); color: #fff; }
+  .reglas td.caso { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
+  .reglas td.pos { background: #e8f5e9; color: #1b5e20; font-weight: 700; }
+  .reglas td.neg { background: #f3e5f5; color: #6a1b9a; font-weight: 700; }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer; transition: all .15s;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #b71c1c; }
+
+  .campo-texto {
+    font-size: 16px; padding: 7px 10px; border: 2px solid #cfcfcf;
+    border-radius: 7px; width: 140px; font-family: inherit;
+  }
+  .campo-texto:focus { border-color: var(--tema); outline: none; }
+  .btn {
+    background: var(--tema); color: #fff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit;
+    margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #607d8b; }
+  .btn.sec:hover { background: #455a64; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo {
+    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
+    font-size: 14px;
+  }
+  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .modo-pres strong { color: #0d47a1; }
+  .modo-virt { background: #e0f2f1; border-left: 5px solid #00695c; }
+  .modo-virt strong { color: #004d40; }
+  .modo h3 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h3 { color: #0d47a1; }
+  .modo-virt h3 { color: #004d40; }
+
+  .actividad { margin-bottom: 18px; }
+  .actividad > .titulo-act {
+    font-weight: 700; color: var(--tema-d); font-size: 15px;
+    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
+  }
+
+  .caja-tarea {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 0; color: #4527a0; }
+
+  .quiz {
+    background: #fff; border: 2px solid var(--tema);
+    border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0;
+  }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center; display: none;
+  }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; overflow-x: auto; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: #fff; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica th {
+    background: var(--tema); color: #fff; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  table.tabla-rubrica td:first-child {
+    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
+  }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 22px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #222222;
+    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 2 · Fracciones, exponentes y raíces</div>
+    <h1>Lección 2.1 · Fracciones complejas con coeficientes negativos</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Reconocer que una fracción negativa puede escribirse de tres formas equivalentes.</li>
+      <li>Determinar el signo del resultado antes de operar con fracciones.</li>
+      <li>Sumar, restar, multiplicar y dividir fracciones que tienen coeficientes negativos.</li>
+      <li>Simplificar fracciones complejas que combinan signos en numerador y denominador.</li>
+      <li>Resolver expresiones mixtas que combinan un entero con signo y una fracción negativa.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Bienvenida al Tema 2.</strong> En el Tema 1 se completó el dominio de los enteros con signo y se aprendió la regla esencial: <strong>signos iguales dan positivo; signos distintos dan negativo</strong>. Esa misma regla es la llave de este nuevo tema. En el Nivel 1 las fracciones siempre fueron positivas; ahora se les añade el signo. La buena noticia: no hay reglas nuevas de signo: las fracciones obedecen exactamente las mismas que los enteros.</p>
+  </div>
+
+  <h2 class="seccion">1. Las tres formas de una fracción negativa</h2>
+  <div class="bloque">
+    <p>Una fracción negativa puede escribirse de tres maneras, y todas representan <strong>el mismo número</strong>:</p>
+
+    <div class="ejemplo">
+      <span class="et">Equivalencia fundamental</span>
+      <p style="text-align:center; font-size:18px;">
+        −<span class="frac"><span class="num">3</span><span class="den">4</span></span>
+        &nbsp;=&nbsp;
+        <span class="frac"><span class="num">−3</span><span class="den">4</span></span>
+        &nbsp;=&nbsp;
+        <span class="frac"><span class="num">3</span><span class="den">−4</span></span>
+      </p>
+      <p>El signo negativo puede colocarse delante de la fracción, en el numerador o en el denominador: el valor no cambia.</p>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Forma recomendada:</strong> por claridad, el signo negativo se escribe normalmente <strong>delante de la fracción</strong> o en el numerador. Dejar el signo en el denominador es correcto, pero menos habitual y se presta a errores de lectura.
+    </div>
+
+    <h3>Una fracción con dos signos negativos es positiva</h3>
+    <p>Si tanto el numerador como el denominador son negativos, la fracción es <strong>positiva</strong>: los dos signos se cancelan, igual que en la división de enteros.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1</span>
+      <p>Simplificar el signo de <span class="frac"><span class="num">−6</span><span class="den">−8</span></span>.</p>
+      <div class="paso"><span class="n">1</span> Una fracción es, en el fondo, una división: −6 ÷ (−8).</div>
+      <div class="paso"><span class="n">2</span> Signos iguales (ambos negativos) → resultado positivo.</div>
+      <div class="paso"><span class="n">3</span> Se simplifica el valor: 6/8 se reduce a 3/4.</div>
+      <p><strong>Respuesta:</strong> <span class="frac"><span class="num">−6</span><span class="den">−8</span></span> = <span class="frac"><span class="num">3</span><span class="den">4</span></span>.</p>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 1 · El signo de la fracción</h3>
+    <p>Indica si cada fracción es positiva o negativa.</p>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">1. La fracción con numerador −5 y denominador 9 es:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Positiva</div>
+        <div class="opcion" data-op="b">Negativa</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">2. La fracción con numerador −7 y denominador −2 es:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Positiva</div>
+        <div class="opcion" data-op="b">Negativa</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. La fracción con numerador 4 y denominador −11 es:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Positiva</div>
+        <div class="opcion" data-op="b">Negativa</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">2. Multiplicar y dividir fracciones con signo</h2>
+  <div class="bloque">
+    <p>Para multiplicar o dividir fracciones con signo se procede en <strong>dos pasos separados</strong>: primero se determina el signo del resultado; después se opera con los valores absolutos como se hizo en el Nivel 1.</p>
+
+    <table class="reglas">
+      <thead>
+        <tr><th>Operación</th><th>Cómo se calcula el valor</th><th>Cómo se decide el signo</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="caso">Multiplicación</td>
+          <td>Numerador × numerador, denominador × denominador.</td>
+          <td>Regla de los signos: iguales (+), distintos (−).</td>
+        </tr>
+        <tr>
+          <td class="caso">División</td>
+          <td>Se multiplica por el recíproco de la segunda fracción.</td>
+          <td>Regla de los signos: iguales (+), distintos (−).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2 · Multiplicación</span>
+      <p>Resolver <span class="frac"><span class="num">−3</span><span class="den">4</span></span> × <span class="frac"><span class="num">−2</span><span class="den">5</span></span>.</p>
+      <div class="paso"><span class="n">1</span> Signo: ambas fracciones son negativas → signos iguales → resultado positivo.</div>
+      <div class="paso"><span class="n">2</span> Valor: se multiplican numeradores (3 × 2 = 6) y denominadores (4 × 5 = 20).</div>
+      <div class="paso"><span class="n">3</span> Se simplifica: 6/20 se reduce a 3/10.</div>
+      <p><strong>Respuesta:</strong> <span class="frac"><span class="num">3</span><span class="den">10</span></span>.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3 · División</span>
+      <p>Resolver <span class="frac"><span class="num">2</span><span class="den">3</span></span> ÷ <span class="frac"><span class="num">−4</span><span class="den">9</span></span>.</p>
+      <div class="paso"><span class="n">1</span> Signo: una positiva y una negativa → signos distintos → resultado negativo.</div>
+      <div class="paso"><span class="n">2</span> Dividir es multiplicar por el recíproco: 2/3 × 9/4.</div>
+      <div class="paso"><span class="n">3</span> Valor: 2 × 9 = 18; 3 × 4 = 12; se simplifica 18/12 a 3/2.</div>
+      <p><strong>Respuesta:</strong> −<span class="frac"><span class="num">3</span><span class="den">2</span></span>.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Atención:</strong> al hallar el recíproco de una fracción negativa, el signo negativo <strong>se conserva</strong>. El recíproco de −4/9 tiene como valor 9/4, pero el signo se decide al inicio con la regla de los signos, no se pierde en el camino.
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 2 · Signo del resultado</h3>
+    <p>Antes de operar, indica el signo que tendrá cada resultado.</p>
+
+    <div class="pregunta" data-correcta="a">
+      <div class="enun">1. (−1/2) × (−5/6) dará un resultado:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Positivo</div>
+        <div class="opcion" data-op="b">Negativo</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">2. (3/7) ÷ (−2/5) dará un resultado:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Positivo</div>
+        <div class="opcion" data-op="b">Negativo</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+
+    <div class="pregunta" data-correcta="b">
+      <div class="enun">3. (−4/9) × (7/8) dará un resultado:</div>
+      <div class="opciones">
+        <div class="opcion" data-op="a">Positivo</div>
+        <div class="opcion" data-op="b">Negativo</div>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </div>
+
+  <h2 class="seccion">3. Sumar y restar fracciones con signo</h2>
+  <div class="bloque">
+    <p>Para sumar o restar fracciones con signo se necesita un <strong>denominador común</strong>, igual que en el Nivel 1. Una vez igualados los denominadores, los numeradores se suman o se restan aplicando la <strong>regla de la suma de enteros</strong> vista en la Lección 1.2.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4 · Suma</span>
+      <p>Resolver <span class="frac"><span class="num">−5</span><span class="den">6</span></span> + <span class="frac"><span class="num">1</span><span class="den">4</span></span>.</p>
+      <div class="paso"><span class="n">1</span> El denominador común de 6 y 4 es 12.</div>
+      <div class="paso"><span class="n">2</span> Se reescriben: −5/6 = −10/12 y 1/4 = 3/12.</div>
+      <div class="paso"><span class="n">3</span> Se suman los numeradores como enteros con signo: −10 + 3 = −7.</div>
+      <p><strong>Respuesta:</strong> −<span class="frac"><span class="num">7</span><span class="den">12</span></span>.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 5 · Resta</span>
+      <p>Resolver <span class="frac"><span class="num">1</span><span class="den">3</span></span> − <span class="frac"><span class="num">−2</span><span class="den">5</span></span>.</p>
+      <div class="paso"><span class="n">1</span> Restar una fracción negativa es sumar su opuesto positivo: 1/3 + 2/5.</div>
+      <div class="paso"><span class="n">2</span> El denominador común de 3 y 5 es 15: 1/3 = 5/15 y 2/5 = 6/15.</div>
+      <div class="paso"><span class="n">3</span> Se suman los numeradores: 5 + 6 = 11.</div>
+      <p><strong>Respuesta:</strong> <span class="frac"><span class="num">11</span><span class="den">15</span></span>.</p>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Recuerda:</strong> la regla «restar es sumar el opuesto» de la Lección 1.2 funciona igual con fracciones. Restar −2/5 equivale a sumar +2/5. Los dos signos negativos seguidos se vuelven positivos.
+    </div>
+  </div>
+
+  <h2 class="seccion">4. Expresiones que combinan entero y fracción</h2>
+  <div class="bloque">
+    <p>Algunas expresiones mezclan un <strong>entero con signo</strong> y una <strong>fracción negativa</strong>. El entero se trata como una fracción de denominador 1, y luego se aplica todo lo anterior.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 6</span>
+      <p>Resolver −2 + <span class="frac"><span class="num">−3</span><span class="den">4</span></span>.</p>
+      <div class="paso"><span class="n">1</span> El entero −2 se escribe como −8/4 para tener denominador común con −3/4.</div>
+      <div class="paso"><span class="n">2</span> Se suman los numeradores como enteros: −8 + (−3) = −11.</div>
+      <div class="paso"><span class="n">3</span> El resultado es −11/4, que como número mixto es −2 y 3/4.</div>
+      <p><strong>Respuesta:</strong> −<span class="frac"><span class="num">11</span><span class="den">4</span></span>.</p>
+    </div>
+  </div>
+
+  <div class="practica">
+    <h3>Práctica interactiva 3 · Operar fracciones con signo</h3>
+    <p>Escribe el resultado de cada operación como fracción (por ejemplo: <em>-7/12</em> o <em>3/10</em>) y presiona «Verificar».</p>
+    <div class="pregunta">
+      <div class="enun">1. (−2/5) × (3/7) =</div>
+      <input type="text" class="campo-texto" id="f1" aria-label="Respuesta de la pregunta 1: menos dos quintos por tres séptimos, como fracción" />
+      <div class="fb" id="fb-f1"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">2. (−1/2) × (−4/9) =</div>
+      <input type="text" class="campo-texto" id="f2" aria-label="Respuesta de la pregunta 2: menos un medio por menos cuatro novenos, como fracción simplificada" />
+      <div class="fb" id="fb-f2"></div>
+    </div>
+    <div class="pregunta">
+      <div class="enun">3. (−3/8) + (1/8) =</div>
+      <input type="text" class="campo-texto" id="f3" aria-label="Respuesta de la pregunta 3: menos tres octavos más un octavo, como fracción simplificada" />
+      <div class="fb" id="fb-f3"></div>
+    </div>
+    <button class="btn" id="btn-frac">Verificar</button>
+  </div>
+
+  <h2 class="seccion">5. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 1 · ¿Positivo o negativo?</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          El docente presenta diez fracciones con distintas combinaciones de signo. Antes de simplificarlas, cada estudiante clasifica el resultado como positivo o negativo levantando una tarjeta de color. Luego se simplifican en conjunto.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          El docente lanza una encuesta rápida por cada fracción: los estudiantes votan «positivo» o «negativo». Tras la votación se revela y simplifica la fracción, comentando los casos de mayor desacuerdo.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 2 · Simplificar en parejas</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          En parejas, los estudiantes resuelven fracciones del tipo (−12)/(−8), (−3/4) × (−2/5) y (2/3) ÷ (−4). Un integrante simplifica y el otro verifica aplicando la regla de los signos paso a paso.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          En salas pequeñas, las parejas comparten una hoja con seis operaciones. Resuelven alternándose el rol de «quien calcula» y «quien verifica», y registran cada paso del razonamiento de signo.
+        </div>
+      </div>
+    </div>
+
+    <div class="actividad">
+      <div class="titulo-act">Actividad 3 · Expresiones mixtas</div>
+      <div class="modalidad">
+        <div class="modo modo-pres">
+          <h3>🏫 Presencial</h3>
+          El docente plantea cinco expresiones que combinan un entero con signo y una fracción negativa. Un voluntario resuelve cada una en la pizarra, mostrando cómo convierte el entero en fracción de denominador 1.
+        </div>
+        <div class="modo modo-virt">
+          <h3>💻 En línea</h3>
+          Los estudiantes resuelven las cinco expresiones en una pizarra compartida. Cada uno explica en el chat un paso clave del procedimiento de un compañero, reforzando la conversión del entero a fracción.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2>Tarea asincrónica</h2>
+    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
+    <ul>
+      <li>Tres ejercicios de simplificar fracciones con signo, incluyendo casos con doble negativo.</li>
+      <li>Cuatro ejercicios de operar fracciones complejas con las cuatro operaciones.</li>
+      <li>Tres ejercicios de expresiones mixtas que combinan un entero con signo y una fracción negativa.</li>
+    </ul>
+    <p>La plataforma ofrece retroalimentación paso a paso en cada intento. Tiempo estimado: 50 minutos.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 2.1</h2>
+    <p>Diez preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
+    <div id="quiz-cuerpo"></div>
+    <div id="resultado-quiz"></div>
+    <button class="btn" id="btn-corregir">Corregir quiz</button>
+    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2>Rúbrica analítica de la lección</h2>
+    <p>Tres criterios evaluados en cuatro niveles de desempeño.</p>
+    <table class="tabla-rubrica">
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th>Inicial (1)</th>
+          <th>En desarrollo (2)</th>
+          <th>Competente (3)</th>
+          <th>Destacado (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Signo de la fracción</td>
+          <td>No determina el signo del resultado.</td>
+          <td>Determina el signo en casos simples, falla con doble negativo.</td>
+          <td>Determina el signo correctamente en todos los casos.</td>
+          <td>Determina el signo y explica las tres formas equivalentes.</td>
+        </tr>
+        <tr>
+          <td>Operaciones con fracciones con signo</td>
+          <td>Opera fracciones positivas, pero no con signo.</td>
+          <td>Opera con algún error de signo o de cálculo.</td>
+          <td>Suma, resta, multiplica y divide fracciones con signo sin errores.</td>
+          <td>Opera con fluidez y verifica sus resultados.</td>
+        </tr>
+        <tr>
+          <td>Expresiones mixtas</td>
+          <td>No convierte el entero en fracción de denominador 1.</td>
+          <td>Convierte el entero, pero comete errores al combinar.</td>
+          <td>Resuelve expresiones mixtas de entero y fracción correctamente.</td>
+          <td>Resuelve y expresa el resultado como fracción y número mixto.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cierre">
+    <h2>Cierre y enlace con la próxima lección</h2>
+    <p>En esta lección se extendió el signo a las fracciones: se vieron las <strong>tres formas equivalentes</strong> de una fracción negativa y se aplicó la <strong>regla de los signos</strong> del Tema 1 a las cuatro operaciones con fracciones. La idea central: las fracciones con signo no traen reglas nuevas, solo combinan lo ya conocido.</p>
+    <p>En la <strong>Lección 2.2 · Exponentes enteros positivos y potencias de base 10</strong> el tema cambia de las fracciones a las <strong>potencias</strong>. Se aprenderá a escribir y evaluar potencias, a distinguir la base del exponente, a aplicar el exponente cero y a reconocer los cuadrados perfectos hasta 225 —una base indispensable para la lección de raíces cuadradas que vendrá después—.</p>
+  </div>
+
+  <footer>
+    Spanish ASE Math · Nivel 2 · Lección 2.1 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  /* ---- Práctica de opciones ---- */
+  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta]');
+  preguntasOp.forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.addEventListener('click', function () {
+        opciones.forEach(function (o) {
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+        });
+        var elegida = op.getAttribute('data-op');
+        if (elegida === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! Bien razonado.';
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) {
+            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+          });
+          fb.textContent = 'Revisa: la opción marcada en verde es la correcta.';
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* ---- Práctica de fracciones (campo de texto) ---- */
+  /* Cada clave acepta varias formas equivalentes de la respuesta correcta */
+  var clavesFrac = {
+    f1: ['-6/35'],
+    f2: ['2/9'],
+    f3: ['-1/4', '-2/8']
+  };
+  function normaliza(txt) {
+    return txt.trim().replace(/\s/g, '').replace(/−/g, '-');
+  }
+  document.getElementById('btn-frac').addEventListener('click', function () {
+    Object.keys(clavesFrac).forEach(function (id) {
+      var campo = document.getElementById(id);
+      var fb = document.getElementById('fb-' + id);
+      var val = normaliza(campo.value);
+      if (val === '') {
+        fb.textContent = 'Escribe la respuesta como fracción, por ejemplo -3/10.';
+        fb.className = 'fb no';
+      } else if (clavesFrac[id].indexOf(val) !== -1) {
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        fb.textContent = 'Revisa: decide primero el signo, luego opera y simplifica.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+  });
+
+  /* ---- Quiz ---- */
+  var preguntasQuiz = [
+    { enun: '1. ¿Cuál de estas NO es una forma de escribir la fracción negativa tres cuartos?', ops: ['Signo delante: −(3/4)', 'Numerador negativo: (−3)/4', 'Denominador negativo: 3/(−4)', 'Ambos negativos: (−3)/(−4)'], correcta: 3 },
+    { enun: '2. La fracción (−5)/(−7) es:', ops: ['Negativa', 'Positiva', 'Igual a cero', 'No se puede saber'], correcta: 1 },
+    { enun: '3. El resultado de (−2/3) × (−1/5) es:', ops: ['−2/15', '2/15', '−3/8', '3/8'], correcta: 1 },
+    { enun: '4. El resultado de (3/4) × (−2/9) es:', ops: ['6/36', '−1/6', '1/6', '−5/13'], correcta: 1 },
+    { enun: '5. Para dividir (1/2) ÷ (−3/5) se multiplica 1/2 por:', ops: ['3/5', '−5/3', '5/3', '−3/5'], correcta: 1 },
+    { enun: '6. El resultado de (−1/6) + (1/6) es:', ops: ['−2/6', '1/3', '0', '−1/3'], correcta: 2 },
+    { enun: '7. Restar la fracción negativa −2/7 equivale a:', ops: ['Sumar −2/7', 'Sumar +2/7', 'Restar dos veces', 'Multiplicar por 7'], correcta: 1 },
+    { enun: '8. El resultado de (−3/8) + (1/4) es:', ops: ['−1/8', '1/8', '−4/12', '−1/2'], correcta: 0 },
+    { enun: '9. Para sumar el entero −1 con la fracción −1/2, el entero se escribe como:', ops: ['−1/1 o −2/2', '1/2', '−1/2', '0/2'], correcta: 0 },
+    { enun: '10. El resultado de −3 + (−1/4) es:', ops: ['−11/4', '11/4', '−13/4', '−2/4'], correcta: 0 }
+  ];
+
+  var cuerpo = document.getElementById('quiz-cuerpo');
+  preguntasQuiz.forEach(function (p, i) {
+    var div = document.createElement('div');
+    div.className = 'pregunta';
+    div.setAttribute('data-idx', i);
+    var enun = document.createElement('div');
+    enun.className = 'enun';
+    enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div');
+    cont.className = 'opciones';
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div');
+      op.className = 'opcion';
+      op.setAttribute('data-j', j);
+      op.textContent = texto;
+      op.addEventListener('click', function () {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) {
+          o.classList.remove('elegida');
+        });
+        op.classList.add('elegida');
+        div.setAttribute('data-elegida', j);
+      });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div');
+    fb.className = 'fb';
+    div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+
+  var btnCorregir = document.getElementById('btn-corregir');
+  var btnReintentar = document.getElementById('btn-reintentar');
+  var resultado = document.getElementById('resultado-quiz');
+
+  btnCorregir.addEventListener('click', function () {
+    var aciertos = 0;
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div, i) {
+      var elegida = div.getAttribute('data-elegida');
+      var fb = div.querySelector('.fb');
+      var opciones = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      opciones.forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta');
+      });
+      if (elegida === null) {
+        fb.textContent = 'No se respondió esta pregunta.';
+        fb.className = 'fb no';
+        fb.style.display = 'block';
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        return;
+      }
+      var idxElegida = parseInt(elegida, 10);
+      if (idxElegida === preguntasQuiz[i].correcta) {
+        aciertos++;
+        opciones[idxElegida].classList.add('correcta');
+        fb.textContent = '¡Correcto!';
+        fb.className = 'fb ok';
+      } else {
+        opciones[idxElegida].classList.add('incorrecta');
+        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+        fb.className = 'fb no';
+      }
+      fb.style.display = 'block';
+    });
+
+    resultado.style.display = 'block';
+    if (aciertos >= 7) {
+      resultado.className = 'aprob';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 10 correctas. ¡Aprobado! Puedes continuar a la Lección 2.2.';
+    } else {
+      resultado.className = 'repro';
+      resultado.textContent = 'Resultado: ' + aciertos + ' de 10 correctas. Repasa la lección e intenta de nuevo (se requieren 7).';
+    }
+    btnCorregir.style.display = 'none';
+    btnReintentar.style.display = 'inline-block';
+  });
+
+  btnReintentar.addEventListener('click', function () {
+    var divs = cuerpo.querySelectorAll('.pregunta');
+    divs.forEach(function (div) {
+      div.removeAttribute('data-elegida');
+      div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) {
+        o.classList.remove('correcta', 'incorrecta', 'elegida');
+      });
+      var fb = div.querySelector('.fb');
+      fb.style.display = 'none';
+      fb.textContent = '';
+    });
+    resultado.style.display = 'none';
+    btnReintentar.style.display = 'none';
+    btnCorregir.style.display = 'inline-block';
+    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>
