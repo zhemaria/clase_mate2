@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clave de respuestas (docente) · 6.1 Identificar los datos del interés simple</title>
+<style>
+  :root{
+    --tema:#00695c; --tema-d:#004d40; --tema-soft:#e0f2f1;
+    --doc:#5e35b1; --doc-d:#4527a0; --doc-soft:#ede7f6;
+    --txt:#222; --bg:#f5f7fa;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:'Segoe UI',system-ui,sans-serif;margin:0;background:var(--bg);color:var(--txt);line-height:1.55;font-size:16px;}
+  .contenedor{max-width:1000px;margin:0 auto;padding:24px;}
+  header.principal{
+    background:linear-gradient(135deg,#004d40 0%,#00695c 55%,#00897b 100%);
+    color:#fff;padding:28px 30px;border-radius:14px;margin-bottom:18px;box-shadow:0 4px 14px rgba(0,77,64,.28);
+  }
+  header.principal .ruta{font-size:13px;opacity:.92;letter-spacing:.4px;text-transform:uppercase;}
+  header.principal h1{margin:8px 0 4px;font-size:23px;font-weight:700;}
+  header.principal .meta{font-size:14px;opacity:.94;}
+
+  .aviso-doc{
+    background:var(--doc-soft);border-left:6px solid var(--doc);
+    padding:12px 18px;border-radius:0 10px 10px 0;margin-bottom:18px;color:var(--doc-d);font-weight:600;
+    display:flex;align-items:center;gap:10px;
+  }
+  .aviso-doc .etq{background:var(--doc);color:#fff;font-size:11px;font-weight:700;padding:3px 11px;border-radius:11px;letter-spacing:.5px;}
+
+  .formula{
+    background:var(--tema-soft);border:2px solid var(--tema);border-radius:12px;
+    padding:12px;text-align:center;margin:0 0 18px;
+  }
+  .formula b{font-family:'Consolas','Courier New',monospace;font-size:20px;color:var(--tema-d);}
+
+  .tabla-wrap{overflow-x:auto;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+  table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;min-width:760px;}
+  th,td{border:1px solid #e0e0e0;padding:9px 11px;vertical-align:top;}
+  thead th{background:var(--tema);color:#fff;font-size:13px;text-align:center;}
+  td.n{background:var(--tema-soft);color:var(--tema-d);font-weight:700;text-align:center;}
+  td.c,td.r,td.t,td.i{text-align:center;white-space:nowrap;}
+  tr:nth-child(even) td:not(.n){background:#fafafa;}
+  .flag{display:inline-block;background:#fdecea;color:#b71c1c;font-weight:700;font-size:11px;padding:2px 8px;border-radius:10px;}
+  .ok{display:inline-block;background:#e8f5e9;color:#1b5e20;font-weight:700;font-size:11px;padding:2px 8px;border-radius:10px;}
+  td.nota{font-size:13px;}
+
+  h2{color:var(--tema-d);font-size:18px;margin:26px 0 10px;padding-bottom:6px;border-bottom:3px solid #b2dfdb;}
+  .resumen{background:#fff;border-radius:10px;padding:6px 22px 16px;box-shadow:0 1px 5px rgba(0,0,0,.06);}
+  .resumen li{margin:6px 0;}
+  .pill{display:inline-block;font-weight:700;font-size:12px;padding:2px 9px;border-radius:10px;}
+  .pill.t{background:#e3f2fd;color:#0d47a1;}
+  .pill.r{background:#fff3e0;color:#bf360c;}
+  footer{text-align:center;padding:18px;color:#555;font-size:13px;border-top:1px solid #ddd;margin-top:22px;}
+</style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <div class="ruta">Spanish ASE Math · Lección 6.1 · Matemáticas financieras</div>
+    <h1>Clave de respuestas — Identificar los datos del interés simple</h1>
+    <div class="meta">Documento de apoyo para conducir la puesta en común</div>
+  </header>
+
+  <div class="aviso-doc">
+    <span class="etq">Solo docente</span>
+    No publiques esta página para los estudiantes: contiene las respuestas y revela cuáles situaciones tienen truco.
+  </div>
+
+  <div class="formula">
+    <b>I = C × r × t</b> &nbsp;·&nbsp; recuerda: la tasa y el tiempo deben estar en la misma unidad.
+  </div>
+
+  <div class="tabla-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>N.º</th>
+          <th>Capital (C)</th>
+          <th>Tasa (r)</th>
+          <th>Tiempo (t)</th>
+          <th>¿Dato oculto?</th>
+          <th>Interés (I)*</th>
+          <th>Nota para la puesta en común</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="n">1</td><td class="c">$1,200</td><td class="r">3 % anual</td><td class="t">2 años</td>
+          <td><span class="ok">No</span></td><td class="i">$72</td>
+          <td class="nota">Los tres datos están explícitos. Caso de calentamiento.</td>
+        </tr>
+        <tr>
+          <td class="n">2</td><td class="c">$5,000</td><td class="r">8 % anual</td><td class="t">18 meses = <b>1.5 años</b></td>
+          <td><span class="flag">🚩 Tiempo</span></td><td class="i">$600</td>
+          <td class="nota">El tiempo viene en meses; hay que convertirlo a años para usarlo con una tasa anual.</td>
+        </tr>
+        <tr>
+          <td class="n">3</td><td class="c">$800</td><td class="r">5 % anual</td><td class="t">medio año = <b>0.5 años</b></td>
+          <td><span class="ok">No</span></td><td class="i">$20</td>
+          <td class="nota">Datos completos, pero el «descuento si paga antes» es un <b>distractor</b>: no entra en el cálculo.</td>
+        </tr>
+        <tr>
+          <td class="n">4</td><td class="c">$2,400</td><td class="r">1.5 % <b>mensual</b></td><td class="t">10 meses</td>
+          <td><span class="flag">🚩 Tasa</span></td><td class="i">$360</td>
+          <td class="nota">La tasa es <b>mensual</b>, no anual. Aquí tasa (mensual) y tiempo (meses) <b>ya coinciden</b>: el error típico es «anualizar» sin necesidad.</td>
+        </tr>
+        <tr>
+          <td class="n">5</td><td class="c">$10,000</td><td class="r">4 % anual</td><td class="t">1 ene → 1 jul = <b>6 meses = 0.5 años</b></td>
+          <td><span class="flag">🚩 Tiempo</span></td><td class="i">$200</td>
+          <td class="nota">El tiempo viene como un <b>rango de fechas</b>; hay que contar los meses y convertir a años.</td>
+        </tr>
+        <tr>
+          <td class="n">6</td><td class="c">$3,500</td><td class="r"><b>4 % anual</b> (deducida)</td><td class="t">3 años</td>
+          <td><span class="flag">🚩 Tasa</span></td><td class="i">$420 (dato)</td>
+          <td class="nota">La tasa <b>no aparece</b>. Se deduce del interés total: r = I ÷ (C × t) = 420 ÷ (3 500 × 3) = <b>0.04 = 4 %</b>.</td>
+        </tr>
+        <tr>
+          <td class="n">7</td><td class="c">$600</td><td class="r">2 % anual</td><td class="t">año y medio = <b>1.5 años</b></td>
+          <td><span class="ok">No</span></td><td class="i">$18</td>
+          <td class="nota">Datos completos; solo hay que leer «año y medio» como 1.5 años.</td>
+        </tr>
+        <tr>
+          <td class="n">8</td><td class="c">$7,200</td><td class="r">6 % anual</td><td class="t">4 años</td>
+          <td><span class="ok">No</span></td><td class="i">$1,728</td>
+          <td class="nota">Los tres datos explícitos. Caso limpio.</td>
+        </tr>
+        <tr>
+          <td class="n">9</td><td class="c">$1,500</td><td class="r">24 % anual</td><td class="t">90 días = <b>0.25 años</b></td>
+          <td><span class="flag">🚩 Tiempo</span></td><td class="i">$90</td>
+          <td class="nota">El tiempo viene en <b>días</b>. Usando el año comercial de 360 días: 90 ÷ 360 = 0.25 años. (Con 365 días ≈ 0.247 años → I ≈ $88.77.)</td>
+        </tr>
+        <tr>
+          <td class="n">10</td><td class="c">$25,000</td><td class="r"><b>7 % anual</b> (deducida)</td><td class="t">2 años</td>
+          <td><span class="flag">🚩 Tasa</span></td><td class="i">$3,500</td>
+          <td class="nota">La tasa es «el doble del mercado» (3.5 %): hay que <b>calcularla</b>: 2 × 3.5 % = <b>7 %</b>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:8px;">* La columna de interés es un extra de verificación: la actividad solo pide <em>identificar</em> los datos, no calcular. Monto final = C + I.</p>
+
+  <h2>Casos para destacar en la puesta en común</h2>
+  <div class="resumen">
+    <ul>
+      <li><b>Tasa escondida</b> (hay que deducirla o calcularla): situaciones <span class="pill r">6</span> y <span class="pill r">10</span>. Son las más exigentes; conviene resolverlas juntos en la pizarra.</li>
+      <li><b>Tiempo en otra unidad o disfrazado</b>: situaciones <span class="pill t">2</span> (meses), <span class="pill t">5</span> (fechas) y <span class="pill t">9</span> (días). El mensaje: el tiempo casi nunca viene «en años» servido.</li>
+      <li><b>Trampa de unidades en la tasa</b>: situación <span class="pill r">4</span> (mensual). Aquí no hay que convertir nada porque tasa y tiempo ya coinciden; el reto es <em>no</em> sobre-convertir.</li>
+      <li><b>Distractor</b>: situación 3 (el descuento). Buen momento para recordar que no todo dato del enunciado sirve.</li>
+      <li><b>Limpias</b> (sin truco): 1, 7 y 8. Útiles para los estudiantes que necesitan confianza antes de los casos difíciles.</li>
+    </ul>
+  </div>
+
+  <footer>Clave de respuestas · Lección 6.1 — Uso exclusivo del docente · Prof. José M. Fernández (Truman College, CCC)</footer>
+
+</div>
+</body>
+</html>
