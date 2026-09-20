@@ -1,4 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- Proyecto final integrador · Matemáticas Nivel 2 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <!--
   Proyecto final integrador — Spanish ASE Math, Nivel 2
   © José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago.
@@ -7,13 +10,13 @@
 -->
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago" />
-  <meta name="license" content="CC BY-NC-SA 4.0" />
-  <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" />
-  <title>Proyecto final integrador — Matemáticas, Nivel 2</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago" name="author"/>
+<meta content="CC BY-NC-SA 4.0" name="license"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<title>Proyecto final integrador — Matemáticas, Nivel 2</title>
+<style>
     :root{
       --acento:    #00695c;
       --acento-osc: #004d40;
@@ -207,323 +210,286 @@
       .escribe{ border:1px solid #bbb; background:#fff; }
       a[href]::after{ content:""; }
     }
-  </style>
+  
+  /* ── ÍNDICE DEL PROYECTO ── */
+  .indice{
+    background:#fff; border:1px solid #d8dde3; border-left:6px solid #1a237e;
+    border-radius:10px; padding:16px 20px; margin:22px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:#1a237e; border:0; padding:0; background:none; }
+  .indice ol{ margin:0; padding-left:1.35em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:#1a237e; text-decoration:underline; }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:#1a237e; color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  @media print{ .indice,.volver-indice{ display:none; } }
+</style>
 </head>
 <body>
 <div class="contenedor">
+<header class="principal">
+<h1>Proyecto final integrador — Matemáticas, Nivel 2</h1>
+<div class="meta">GEDparaHispanos · Matemáticas · Nivel 2 · Tema 8 · Lección 8.3<br/>Plantilla de trabajo del estudiante</div>
+</header>
+<!-- Barra de acciones (no se imprime) -->
+<div class="acciones no-imprimir">
+<button class="btn-pdf" onclick="exportarPDF()" type="button">⬇️ Exportar como PDF</button>
+<button class="btn-sec" onclick="agregarFila()" type="button">＋ Agregar categoría</button>
+<button class="btn-borrar" onclick="borrarTodo()" type="button">🗑️ Borrar todo</button>
+<span class="nota">Su trabajo se guarda solo en este navegador. Para conservarlo, pulse «Exportar como PDF» y elija «Guardar como PDF» en el destino de impresión.</span>
+</div>
+<!-- Instrucciones -->
+<section class="intro">
+<h2>Instrucciones del proyecto</h2>
 
-  <header class="principal">
-    <h1>Proyecto final integrador — Matemáticas, Nivel 2</h1>
-    <div class="meta">
-      Spanish ASE Math: Level 2 · City Colleges of Chicago · Harry S. Truman College<br>
-      Plantilla de trabajo del estudiante · Tema 8, lección 8.3
-    </div>
-  </header>
 
-  <!-- Barra de acciones (no se imprime) -->
-  <div class="acciones no-imprimir">
-    <button type="button" class="btn-pdf" onclick="exportarPDF()">⬇️ Exportar como PDF</button>
-    <button type="button" class="btn-sec" onclick="agregarFila()">＋ Agregar categoría</button>
-    <button type="button" class="btn-borrar" onclick="borrarTodo()">🗑️ Borrar todo</button>
-    <span class="nota">Tu trabajo se guarda automáticamente en este navegador. Para entregar, pulsa
-      «Exportar como PDF» y elige «Guardar como PDF» en el destino de impresión.</span>
-  </div>
-
-  <!-- Instrucciones -->
-  <section class="intro">
-    <h2>Instrucciones del proyecto</h2>
-    <p>Este proyecto reúne herramientas de varios temas del Nivel 2 y sustituye la tarea asincrónica de la
-      lección. La nota del proyecto se combina con la del quiz sumativo para formar la calificación final del nivel.</p>
-    <p>Elija un tema —«Mi presupuesto mensual» o «Una semana de mi tiempo»— y use datos reales o simulados.
-      Los datos deben ser coherentes y completos. Complete las cinco secciones; la plantilla calcula
-      automáticamente los totales, los porcentajes, los ángulos del gráfico circular y le ofrece
-      comprobaciones, pero usted debe mostrar su procedimiento por escrito.</p>
-  </section>
-
-  <!-- Identificación -->
-  <section class="seccion">
-    <div class="seccion-cab">
-      <h2><span class="num" aria-hidden="true">0</span> Datos del estudiante</h2>
-    </div>
-    <div class="seccion-cuerpo">
-      <div class="ident">
-        <div class="campo">
-          <label class="etq" for="f_nombre">Nombre del estudiante</label>
-          <input class="linea" type="text" id="f_nombre" />
-        </div>
-        <div class="campo">
-          <label class="etq" for="f_fecha">Fecha de entrega</label>
-          <input class="linea" type="text" id="f_fecha" placeholder="dd/mm/aaaa" />
-        </div>
-        <div class="campo">
-          <label class="etq" for="f_tema">Tema elegido</label>
-          <input class="linea" type="text" id="f_tema" placeholder="Mi presupuesto mensual / Una semana de mi tiempo" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección 1 -->
-  <section class="seccion">
-    <div class="seccion-cab">
-      <h2><span class="num" aria-hidden="true">1</span> Conjunto de datos personales</h2>
-      <p class="guia">Escriba al menos cinco categorías con sus valores absolutos (en dólares o en horas, según el tema).
+<p>Este proyecto reúne herramientas de varios temas del Nivel 2: datos, medidas de tendencia central, porcentajes, ángulos y un cálculo aplicado. Es la última pieza del nivel y la más completa, porque aquí las destrezas sueltas se usan todas sobre unos mismos datos: los suyos.</p><p>Elija un tema —«Mi presupuesto mensual» o «Una semana de mi tiempo»— y use datos reales o simulados, pero coherentes y completos. Complete las cinco secciones. La plantilla calcula automáticamente los totales, los porcentajes y los ángulos del gráfico circular, y le ofrece comprobaciones; aun así, <strong>escriba usted el procedimiento</strong>. Si la plantilla hace la cuenta y usted no sabe rehacerla en papel, el proyecto no le sirvió de nada.</p></section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Secciones del proyecto</h2><ol><li><a href="#s-datos-del-estudiante">Datos del estudiante</a></li><li><a href="#s-conjunto-de-datos-personales">Conjunto de datos personales</a></li><li><a href="#s-medidas-de-tendencia-central">Medidas de tendencia central</a></li><li><a href="#s-grafico-circular">Gráfico circular</a></li><li><a href="#s-interpretacion-escrita-del-grafico">Interpretación escrita del gráfico</a></li><li><a href="#s-calculo-aplicado-a-la-situacion">Cálculo aplicado a la situación</a></li><li><a href="#s-como-cerrar-el-proyecto">Cómo cerrar el proyecto</a></li><li><a href="#s-rubrica-del-proyecto">Rúbrica del proyecto</a></li></ol></nav>
+<!-- Identificación -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2 id="s-datos-del-estudiante"><span aria-hidden="true" class="num">0</span> Datos del estudiante</h2>
+</div>
+<div class="seccion-cuerpo">
+<div class="ident">
+<div class="campo">
+<label class="etq" for="f_nombre">Nombre del estudiante</label>
+<input class="linea" id="f_nombre" type="text"/>
+</div>
+<div class="campo">
+<label class="etq" for="f_fecha">Fecha de entrega</label>
+<input class="linea" id="f_fecha" placeholder="dd/mm/aaaa" type="text"/>
+</div>
+<div class="campo">
+<label class="etq" for="f_tema">Tema elegido</label>
+<input class="linea" id="f_tema" placeholder="Mi presupuesto mensual / Una semana de mi tiempo" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Sección 1 -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2 id="s-conjunto-de-datos-personales"><span aria-hidden="true" class="num">1</span> Conjunto de datos personales</h2>
+<p class="guia">Escriba al menos cinco categorías con sus valores absolutos (en dólares o en horas, según el tema).
         La columna de porcentaje y de ángulo se calcula sola.</p>
-    </div>
-    <div class="seccion-cuerpo">
-      <table class="datos" id="tabla-datos">
-        <caption>Categorías del proyecto con su valor, porcentaje del total y ángulo del sector circular.</caption>
-        <thead>
-          <tr>
-            <th scope="col" style="width:42px;">Color</th>
-            <th scope="col">Categoría</th>
-            <th scope="col" class="r" style="width:120px;">Valor ($ u horas)</th>
-            <th scope="col" class="r" style="width:90px;">Porcentaje</th>
-            <th scope="col" class="r" style="width:90px;">Ángulo</th>
-            <th scope="col" class="no-imprimir" style="width:40px;"><span class="vh">Acciones</span></th>
-          </tr>
-        </thead>
-        <tbody id="cuerpo-datos"><!-- filas generadas por JS --></tbody>
-        <tfoot>
-          <tr class="total">
-            <td></td>
-            <td>Total</td>
-            <td class="r calc" id="td-total">0</td>
-            <td class="r calc">100%</td>
-            <td class="r calc">360°</td>
-            <td class="no-imprimir"></td>
-          </tr>
-        </tfoot>
-      </table>
-      <div class="fila-btns no-imprimir">
-        <button type="button" class="btn-sec" onclick="agregarFila()">＋ Agregar categoría</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección 2 -->
-  <section class="seccion">
-    <div class="seccion-cab">
-      <h2><span class="num" aria-hidden="true">2</span> Medidas de tendencia central</h2>
-      <p class="guia">Calcule al menos <strong>dos</strong> medidas aplicadas a sus datos (por ejemplo, la media y la
+</div>
+<div class="seccion-cuerpo">
+<table class="datos" id="tabla-datos">
+<caption>Categorías del proyecto con su valor, porcentaje del total y ángulo del sector circular.</caption>
+<thead>
+<tr>
+<th scope="col" style="width:42px;">Color</th>
+<th scope="col">Categoría</th>
+<th class="r" scope="col" style="width:120px;">Valor ($ u horas)</th>
+<th class="r" scope="col" style="width:90px;">Porcentaje</th>
+<th class="r" scope="col" style="width:90px;">Ángulo</th>
+<th class="no-imprimir" scope="col" style="width:40px;"><span class="vh">Acciones</span></th>
+</tr>
+</thead>
+<tbody id="cuerpo-datos"><!-- filas generadas por JS --></tbody>
+<tfoot>
+<tr class="total">
+<td></td>
+<td>Total</td>
+<td class="r calc" id="td-total">0</td>
+<td class="r calc">100%</td>
+<td class="r calc">360°</td>
+<td class="no-imprimir"></td>
+</tr>
+</tfoot>
+</table>
+<div class="fila-btns no-imprimir">
+<button class="btn-sec" onclick="agregarFila()" type="button">＋ Agregar categoría</button>
+</div>
+</div>
+</section>
+<!-- Sección 2 -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2 id="s-medidas-de-tendencia-central"><span aria-hidden="true" class="num">2</span> Medidas de tendencia central</h2>
+<p class="guia">Calcule al menos <strong>dos</strong> medidas aplicadas a sus datos (por ejemplo, la media y la
         mediana de los valores, o el rango). Muestre el procedimiento, no solo el resultado.</p>
-    </div>
-    <div class="seccion-cuerpo">
-      <div class="sub-campo">
-        <span class="etq">Procedimiento y resultados (escriba aquí)</span>
-        <div class="escribe" id="f_medidas" contenteditable="true" role="textbox" aria-multiline="true"
-             aria-label="Procedimiento de las medidas de tendencia central"
-             data-placeholder="Ejemplo: Para la media sumo todos los valores y divido entre el número de categorías…"></div>
-      </div>
-      <div class="ayuda no-imprimir">
-        <h3>Comprobación automática (a partir de la tabla de la Sección 1)</h3>
-        <p>Media: <span class="res" id="c-media">—</span> &nbsp;·&nbsp;
-           Mediana: <span class="res" id="c-mediana">—</span> &nbsp;·&nbsp;
+</div>
+<div class="seccion-cuerpo">
+<div class="sub-campo">
+<span class="etq">Procedimiento y resultados (escriba aquí)</span>
+<div aria-label="Procedimiento de las medidas de tendencia central" aria-multiline="true" class="escribe" contenteditable="true" data-placeholder="Ejemplo: Para la media sumo todos los valores y divido entre el número de categorías…" id="f_medidas" role="textbox"></div>
+</div>
+<div class="ayuda no-imprimir">
+<h3>Comprobación automática (a partir de la tabla de la Sección 1)</h3>
+<p>Media: <span class="res" id="c-media">—</span>  · 
+           Mediana: <span class="res" id="c-mediana">—</span>  · 
            Rango: <span class="res" id="c-rango">—</span></p>
-        <p style="font-size:13px; color:var(--muted); margin:4px 0 0;">Use estos valores solo para verificar su propio cálculo.</p>
-      </div>
-
-      <!-- Refuerzo opcional: media ponderada (lección 8.1) -->
-      <div class="sub-campo" style="margin-top:20px; border-top:1px dashed var(--borde); padding-top:16px;">
-        <span class="etq">Refuerzo opcional — media ponderada (lección 8.1)</span>
-        <p class="guia" style="margin:0 0 10px;">Si su tema lo permite, calcule también una <strong>media ponderada</strong>:
+<p style="font-size:13px; color:var(--muted); margin:4px 0 0;">Use estos valores solo para verificar su propio cálculo.</p>
+</div>
+<!-- Refuerzo opcional: media ponderada (lección 8.1) -->
+<div class="sub-campo" style="margin-top:20px; border-top:1px dashed var(--borde); padding-top:16px;">
+<span class="etq">Refuerzo opcional — media ponderada (lección 8.1)</span>
+<p class="guia" style="margin:0 0 10px;">Si su tema lo permite, calcule también una <strong>media ponderada</strong>:
           cada valor con su peso (por ejemplo, las notas del semestre con créditos distintos). La plantilla aplica
           la fórmula Σ(valor × peso) ÷ Σpesos.</p>
-
-        <table class="datos" id="tabla-ponderada" style="max-width:520px;">
-          <caption>Valores y sus pesos para el cálculo de la media ponderada.</caption>
-          <thead>
-            <tr>
-              <th scope="col">Elemento (valor)</th>
-              <th scope="col" class="r" style="width:130px;">Valor</th>
-              <th scope="col" class="r" style="width:130px;">Peso</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><input type="text" id="pond-n1" aria-label="Elemento 1" placeholder="Ej.: examen final"></td>
-                <td class="r"><input type="number" step="any" class="valor" id="pond-v1" aria-label="Valor 1" oninput="calcularPonderada()"></td>
-                <td class="r"><input type="number" step="any" class="valor" id="pond-p1" aria-label="Peso 1" oninput="calcularPonderada()"></td></tr>
-            <tr><td><input type="text" id="pond-n2" aria-label="Elemento 2" placeholder="Ej.: examen parcial"></td>
-                <td class="r"><input type="number" step="any" class="valor" id="pond-v2" aria-label="Valor 2" oninput="calcularPonderada()"></td>
-                <td class="r"><input type="number" step="any" class="valor" id="pond-p2" aria-label="Peso 2" oninput="calcularPonderada()"></td></tr>
-            <tr><td><input type="text" id="pond-n3" aria-label="Elemento 3" placeholder="Ej.: tarea"></td>
-                <td class="r"><input type="number" step="any" class="valor" id="pond-v3" aria-label="Valor 3" oninput="calcularPonderada()"></td>
-                <td class="r"><input type="number" step="any" class="valor" id="pond-p3" aria-label="Peso 3" oninput="calcularPonderada()"></td></tr>
-            <tr><td><input type="text" id="pond-n4" aria-label="Elemento 4" placeholder="Ej.: quiz"></td>
-                <td class="r"><input type="number" step="any" class="valor" id="pond-v4" aria-label="Valor 4" oninput="calcularPonderada()"></td>
-                <td class="r"><input type="number" step="any" class="valor" id="pond-p4" aria-label="Peso 4" oninput="calcularPonderada()"></td></tr>
-          </tbody>
-        </table>
-
-        <div class="ayuda no-imprimir" style="max-width:520px;">
-          <h3>Comprobación de la media ponderada</h3>
-          <p>Σ(valor × peso) = <span class="res" id="c-pond-num">—</span> &nbsp;·&nbsp;
-             Σpesos = <span class="res" id="c-pond-den">—</span> &nbsp;→&nbsp;
+<table class="datos" id="tabla-ponderada" style="max-width:520px;">
+<caption>Valores y sus pesos para el cálculo de la media ponderada.</caption>
+<thead>
+<tr>
+<th scope="col">Elemento (valor)</th>
+<th class="r" scope="col" style="width:130px;">Valor</th>
+<th class="r" scope="col" style="width:130px;">Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><input aria-label="Elemento 1" id="pond-n1" placeholder="Ej.: examen final" type="text"/></td>
+<td class="r"><input aria-label="Valor 1" class="valor" id="pond-v1" oninput="calcularPonderada()" step="any" type="number"/></td>
+<td class="r"><input aria-label="Peso 1" class="valor" id="pond-p1" oninput="calcularPonderada()" step="any" type="number"/></td></tr>
+<tr><td><input aria-label="Elemento 2" id="pond-n2" placeholder="Ej.: examen parcial" type="text"/></td>
+<td class="r"><input aria-label="Valor 2" class="valor" id="pond-v2" oninput="calcularPonderada()" step="any" type="number"/></td>
+<td class="r"><input aria-label="Peso 2" class="valor" id="pond-p2" oninput="calcularPonderada()" step="any" type="number"/></td></tr>
+<tr><td><input aria-label="Elemento 3" id="pond-n3" placeholder="Ej.: tarea" type="text"/></td>
+<td class="r"><input aria-label="Valor 3" class="valor" id="pond-v3" oninput="calcularPonderada()" step="any" type="number"/></td>
+<td class="r"><input aria-label="Peso 3" class="valor" id="pond-p3" oninput="calcularPonderada()" step="any" type="number"/></td></tr>
+<tr><td><input aria-label="Elemento 4" id="pond-n4" placeholder="Ej.: quiz" type="text"/></td>
+<td class="r"><input aria-label="Valor 4" class="valor" id="pond-v4" oninput="calcularPonderada()" step="any" type="number"/></td>
+<td class="r"><input aria-label="Peso 4" class="valor" id="pond-p4" oninput="calcularPonderada()" step="any" type="number"/></td></tr>
+</tbody>
+</table>
+<div class="ayuda no-imprimir" style="max-width:520px;">
+<h3>Comprobación de la media ponderada</h3>
+<p>Σ(valor × peso) = <span class="res" id="c-pond-num">—</span>  · 
+             Σpesos = <span class="res" id="c-pond-den">—</span>  → 
              media ponderada = <span class="res" id="c-ponderada">—</span></p>
-        </div>
-
-        <div class="sub-campo" style="margin-top:12px;">
-          <span class="etq">Procedimiento de la media ponderada (escriba aquí)</span>
-          <div class="escribe" id="f_ponderada" contenteditable="true" role="textbox" aria-multiline="true"
-               aria-label="Procedimiento de la media ponderada"
-               data-placeholder="Ejemplo: (90×0.30) + (85×0.30) + (95×0.20) + (88×0.20) = 89.1 …"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección 3 -->
-  <section class="seccion">
-    <div class="seccion-cab">
-      <h2><span class="num" aria-hidden="true">3</span> Gráfico circular</h2>
-      <p class="guia">El gráfico se construye automáticamente con los datos de la Sección 1. Cada sector aparece
-        etiquetado con su nombre y porcentaje; la tabla muestra los ángulos calculados (360° × porcentaje).</p>
-    </div>
-    <div class="seccion-cuerpo">
-      <div class="grafico-wrap">
-        <figure class="grafico">
-          <div class="grafico-svg" id="svg-host" role="img" aria-label="Gráfico circular de las categorías del proyecto"></div>
-          <figcaption>Gráfico circular generado a partir de sus datos.</figcaption>
-        </figure>
-        <table class="angulos">
-          <caption>Porcentaje y ángulo central de cada sector del gráfico circular.</caption>
-          <thead>
-            <tr>
-              <th scope="col">Categoría</th>
-              <th scope="col">Porcentaje</th>
-              <th scope="col">Ángulo central</th>
-            </tr>
-          </thead>
-          <tbody id="cuerpo-angulos"></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección 4 -->
-  <section class="seccion">
-    <div class="seccion-cab">
-      <h2><span class="num" aria-hidden="true">4</span> Interpretación escrita del gráfico</h2>
-      <p class="guia">Redacte al menos <strong>cinco oraciones completas</strong>: cuál categoría es la mayor, cuál la
-        menor y qué conclusión extrae usted de sus datos.</p>
-    </div>
-    <div class="seccion-cuerpo">
-      <div class="escribe" id="f_interpretacion" contenteditable="true" role="textbox" aria-multiline="true"
-           aria-label="Interpretación escrita del gráfico circular"
-           data-placeholder="Escriba aquí su interpretación en oraciones completas…"
-           style="min-height:140px;"></div>
-      <p class="contador no-imprimir" id="contador-oraciones">Oraciones detectadas: 0</p>
-    </div>
-  </section>
-
-  <!-- Sección 5 -->
-  <section class="seccion">
-    <div class="seccion-cab">
-      <h2><span class="num" aria-hidden="true">5</span> Cálculo aplicado a la situación</h2>
-      <p class="guia">Resuelva al menos un cálculo aplicado: un <strong>porcentaje</strong> (por ejemplo, «la renta sube un
-        6%, ¿cuánto pago ahora?») o un <strong>interés simple</strong> si su tema fue financiero. Muestre el planteamiento.</p>
-    </div>
-    <div class="seccion-cuerpo">
-      <div class="sub-campo">
-        <span class="etq">Planteamiento y resolución (escriba aquí)</span>
-        <div class="escribe" id="f_calculo" contenteditable="true" role="textbox" aria-multiline="true"
-             aria-label="Planteamiento del cálculo aplicado"
-             data-placeholder="Ejemplo: Mi renta es $850. Sube un 6%. El aumento es 850 × 0.06 = 51. Pago ahora 850 + 51 = $901."></div>
-      </div>
-
-      <div class="ayuda no-imprimir">
-        <h3>Calculadora de comprobación</h3>
-        <div class="mini-grid">
-          <div class="mc">
-            <label class="etq" for="tipo-calc">Tipo de cálculo</label>
-            <select id="tipo-calc" onchange="actualizarTipoCalc()">
-              <option value="porcentaje">Porcentaje (aumento o descuento)</option>
-              <option value="interes">Interés simple</option>
-            </select>
-          </div>
-          <div class="mc" id="mc-base">
-            <label class="etq" for="calc-base">Cantidad base ($)</label>
-            <input type="number" id="calc-base" oninput="calcularComprobacion()" />
-          </div>
-          <div class="mc" id="mc-pct">
-            <label class="etq" for="calc-pct">Porcentaje (%)</label>
-            <input type="number" id="calc-pct" oninput="calcularComprobacion()" />
-          </div>
-          <div class="mc" id="mc-modo">
-            <label class="etq" for="calc-modo">Operación</label>
-            <select id="calc-modo" onchange="calcularComprobacion()">
-              <option value="aumento">Aumento (+)</option>
-              <option value="descuento">Descuento (−)</option>
-            </select>
-          </div>
-          <div class="mc" id="mc-tiempo" style="display:none;">
-            <label class="etq" for="calc-tiempo">Tiempo (años)</label>
-            <input type="number" id="calc-tiempo" oninput="calcularComprobacion()" />
-          </div>
-        </div>
-        <p style="margin:12px 0 0;">Resultado: <span class="res" id="calc-resultado">—</span></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Opciones de entrega -->
-  <section class="seccion">
-    <div class="seccion-cab">
-      <h2><span class="num" aria-hidden="true">✓</span> Formato de entrega elegido</h2>
-      <p class="guia">Marque el formato en el que presentará este proyecto.</p>
-    </div>
-    <div class="seccion-cuerpo">
-      <div class="entrega">
-        <label class="opcion">
-          <input type="checkbox" id="e1" />
-          <span class="txt"><strong>Presentación oral</strong> de 3 a 5 minutos durante la sesión sincrónica final.</span>
-        </label>
-        <label class="opcion">
-          <input type="checkbox" id="e2" />
-          <span class="txt"><strong>Foro escrito en Brightspace</strong>, con texto, tabla y gráfico subido como imagen.</span>
-        </label>
-        <label class="opcion">
-          <input type="checkbox" id="e3" />
-          <span class="txt"><strong>Documento entregado</strong> (este PDF) por el buzón de tareas del curso.</span>
-        </label>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rúbrica -->
-  <section class="seccion">
-    <div class="seccion-cab">
-      <h2><span class="num" aria-hidden="true">📊</span> Rúbrica del proyecto</h2>
-      <p class="guia">Así se evaluará su trabajo (5 criterios). Consérvela como referencia mientras completa el proyecto.</p>
-    </div>
-    <div class="seccion-cuerpo">
-      <table class="rubrica">
-        <caption>Criterios de evaluación del proyecto final integrador del Nivel 2.</caption>
-        <thead>
-          <tr>
-            <th scope="col">Criterio</th>
-            <th scope="col">Qué se espera</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>1. Datos y tendencia central</td><td>Presenta al menos cinco categorías con valores absolutos y calcula correctamente al menos dos medidas de tendencia central.</td></tr>
-          <tr><td>2. Gráfico circular</td><td>El gráfico está correctamente construido, con todos los sectores etiquetados (nombre y porcentaje) y los ángulos bien calculados.</td></tr>
-          <tr><td>3. Interpretación escrita</td><td>Interpreta el gráfico en al menos cinco oraciones completas, con datos y una conclusión.</td></tr>
-          <tr><td>4. Cálculo aplicado</td><td>Resuelve correctamente al menos un cálculo de porcentaje o de interés simple aplicado a una situación real.</td></tr>
-          <tr><td>5. Presentación</td><td>Presenta el proyecto de forma oral o en foro con una argumentación coherente y ordenada.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <footer>
-    Proyecto final integrador — Spanish ASE Math, Nivel 2 · Harry S. Truman College, City Colleges of Chicago.<br>
-    © José M. Fernández, ABE/ASE Math Master Teacher. Licencia
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a>.
-  </footer>
-
 </div>
-
+<div class="sub-campo" style="margin-top:12px;">
+<span class="etq">Procedimiento de la media ponderada (escriba aquí)</span>
+<div aria-label="Procedimiento de la media ponderada" aria-multiline="true" class="escribe" contenteditable="true" data-placeholder="Ejemplo: (90×0.30) + (85×0.30) + (95×0.20) + (88×0.20) = 89.1 …" id="f_ponderada" role="textbox"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sección 3 -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2 id="s-grafico-circular"><span aria-hidden="true" class="num">3</span> Gráfico circular</h2>
+<p class="guia">El gráfico se construye automáticamente con los datos de la Sección 1. Cada sector aparece
+        etiquetado con su nombre y porcentaje; la tabla muestra los ángulos calculados (360° × porcentaje).</p>
+</div>
+<div class="seccion-cuerpo">
+<div class="grafico-wrap">
+<figure class="grafico">
+<div aria-label="Gráfico circular de las categorías del proyecto" class="grafico-svg" id="svg-host" role="img"></div>
+<figcaption>Gráfico circular generado a partir de sus datos.</figcaption>
+</figure>
+<table class="angulos">
+<caption>Porcentaje y ángulo central de cada sector del gráfico circular.</caption>
+<thead>
+<tr>
+<th scope="col">Categoría</th>
+<th scope="col">Porcentaje</th>
+<th scope="col">Ángulo central</th>
+</tr>
+</thead>
+<tbody id="cuerpo-angulos"></tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Sección 4 -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2 id="s-interpretacion-escrita-del-grafico"><span aria-hidden="true" class="num">4</span> Interpretación escrita del gráfico</h2>
+<p class="guia">Redacte al menos <strong>cinco oraciones completas</strong>: cuál categoría es la mayor, cuál la
+        menor y qué conclusión extrae usted de sus datos.</p>
+</div>
+<div class="seccion-cuerpo">
+<div aria-label="Interpretación escrita del gráfico circular" aria-multiline="true" class="escribe" contenteditable="true" data-placeholder="Escriba aquí su interpretación en oraciones completas…" id="f_interpretacion" role="textbox" style="min-height:140px;"></div>
+<p class="contador no-imprimir" id="contador-oraciones">Oraciones detectadas: 0</p>
+</div>
+</section>
+<!-- Sección 5 -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2 id="s-calculo-aplicado-a-la-situacion"><span aria-hidden="true" class="num">5</span> Cálculo aplicado a la situación</h2>
+<p class="guia">Resuelva al menos un cálculo aplicado: un <strong>porcentaje</strong> (por ejemplo, «la renta sube un
+        6%, ¿cuánto pago ahora?») o un <strong>interés simple</strong> si su tema fue financiero. Muestre el planteamiento.</p>
+</div>
+<div class="seccion-cuerpo">
+<div class="sub-campo">
+<span class="etq">Planteamiento y resolución (escriba aquí)</span>
+<div aria-label="Planteamiento del cálculo aplicado" aria-multiline="true" class="escribe" contenteditable="true" data-placeholder="Ejemplo: Mi renta es $850. Sube un 6%. El aumento es 850 × 0.06 = 51. Pago ahora 850 + 51 = $901." id="f_calculo" role="textbox"></div>
+</div>
+<div class="ayuda no-imprimir">
+<h3>Calculadora de comprobación</h3>
+<div class="mini-grid">
+<div class="mc">
+<label class="etq" for="tipo-calc">Tipo de cálculo</label>
+<select id="tipo-calc" onchange="actualizarTipoCalc()">
+<option value="porcentaje">Porcentaje (aumento o descuento)</option>
+<option value="interes">Interés simple</option>
+</select>
+</div>
+<div class="mc" id="mc-base">
+<label class="etq" for="calc-base">Cantidad base ($)</label>
+<input id="calc-base" oninput="calcularComprobacion()" type="number">
+</input></div>
+<div class="mc" id="mc-pct">
+<label class="etq" for="calc-pct">Porcentaje (%)</label>
+<input id="calc-pct" oninput="calcularComprobacion()" type="number">
+</input></div>
+<div class="mc" id="mc-modo">
+<label class="etq" for="calc-modo">Operación</label>
+<select id="calc-modo" onchange="calcularComprobacion()">
+<option value="aumento">Aumento (+)</option>
+<option value="descuento">Descuento (−)</option>
+</select>
+</div>
+<div class="mc" id="mc-tiempo" style="display:none;">
+<label class="etq" for="calc-tiempo">Tiempo (años)</label>
+<input id="calc-tiempo" oninput="calcularComprobacion()" type="number">
+</input></div>
+</div>
+<p style="margin:12px 0 0;">Resultado: <span class="res" id="calc-resultado">—</span></p>
+</div>
+</div>
+</section>
+<!-- Opciones de entrega -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2 id="s-como-cerrar-el-proyecto"><span aria-hidden="true" class="num">✓</span> Cómo cerrar el proyecto</h2>
+<p class="guia">Marque lo que vaya completando. Los tres pasos importan; el tercero es el que de verdad revela si entendió.</p>
+</div>
+<div class="seccion-cuerpo"><div class="entrega"><label class="opcion"><input id="e1" type="checkbox"/><span class="txt"><strong>Guárdelo en PDF.</strong> Pulse «Exportar como PDF» y consérvelo. Es su constancia de haber terminado el Nivel 2.</span></label><label class="opcion"><input id="e2" type="checkbox"/><span class="txt"><strong>Explíquelo en voz alta,</strong> de tres a cinco minutos, a un familiar o grabándose con el teléfono. Diga qué datos eligió, qué muestra el gráfico y qué concluye. Lo que no logre explicar en voz alta todavía no lo entendió del todo.</span></label><label class="opcion"><input id="e3" type="checkbox"/><span class="txt"><strong>Revíselo al día siguiente</strong> con la rúbrica de abajo en la mano, criterio por criterio, como si el trabajo fuera de otra persona.</span></label></div></div>
+</section>
+<!-- Rúbrica -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2 id="s-rubrica-del-proyecto"><span aria-hidden="true" class="num">📊</span> Rúbrica del proyecto</h2>
+<p class="guia">Con estos cinco criterios evalúe su propio trabajo. Léalos antes de empezar y vuelva a ellos al terminar.</p>
+</div>
+<div class="seccion-cuerpo">
+<table class="rubrica">
+<caption>Criterios de evaluación del proyecto final integrador del Nivel 2.</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th scope="col">Qué se espera</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1. Datos y tendencia central</td><td>Presenta al menos cinco categorías con valores absolutos y calcula correctamente al menos dos medidas de tendencia central.</td></tr>
+<tr><td>2. Gráfico circular</td><td>El gráfico está correctamente construido, con todos los sectores etiquetados (nombre y porcentaje) y los ángulos bien calculados.</td></tr>
+<tr><td>3. Interpretación escrita</td><td>Interpreta el gráfico en al menos cinco oraciones completas, con datos y una conclusión.</td></tr>
+<tr><td>4. Cálculo aplicado</td><td>Resuelve correctamente al menos un cálculo de porcentaje o de interés simple aplicado a una situación real.</td></tr>
+<tr><td>5. Presentación</td><td>Explica el proyecto en voz alta de forma coherente y ordenada, con los datos a la vista y una conclusión propia.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Proyecto final integrador</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver a las secciones del proyecto" class="volver-indice no-imprimir" href="#indice"><span aria-hidden="true">↑</span> Secciones</a>
+</div>
 <script>
 /* ════════════════════════════════════════════════════════════════
    PROYECTO FINAL INTEGRADOR — NIVEL 2

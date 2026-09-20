@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- Lección 7.1 · Matemáticas Nivel 2 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lección 7.1 · Área de figuras compuestas</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 7.1 · Área de figuras compuestas</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root {
     --tema:   #37474f;
@@ -158,28 +161,7 @@
   }
   .btn:hover { background: var(--tema-d); }
   .btn.sec { background: #607d8b; }
-  .btn.sec:hover { background: #455a64; }
-
-  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
-  .modo {
-    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
-    font-size: 14px;
-  }
-  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
-  .modo-pres strong { color: #0d47a1; }
-  .modo-virt { background: #e0f2f1; border-left: 5px solid #00695c; }
-  .modo-virt strong { color: #004d40; }
-  .modo h3 { margin: 0 0 6px; font-size: 15px; }
-  .modo-pres h3 { color: #0d47a1; }
-  .modo-virt h3 { color: #004d40; }
-
-  .actividad { margin-bottom: 18px; }
-  .actividad > .titulo-act {
-    font-weight: 700; color: var(--tema-d); font-size: 15px;
-    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
-  }
-
-  .caja-tarea {
+  .btn.sec:hover { background: #455a64; }.caja-tarea {
     background: #ede7f6; border-left: 6px solid #5e35b1;
     padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
   }
@@ -226,439 +208,370 @@
     text-align: center; padding: 20px; color: #222222;
     font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
   }
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:#fff; border:1px solid #d8dde3; border-left:6px solid var(--tema);
+    border-radius:10px; padding:16px 20px; margin:24px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--tema-d); border:0; padding:0; background:none; }
+  .indice ol{ margin:0; padding-left:1.35em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--tema-d); text-decoration:underline; }
+  .indice a:hover{ color:var(--tema); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--tema-d); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--tema); color:#fff; }
+  footer a{ color:inherit; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
 <div class="contenedor">
-
-  <header class="principal">
-    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 7 · Geometría transicional</div>
-    <h1>Lección 7.1 · Área de figuras compuestas</h1>
-    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
-  </header>
-
-  <div class="caja-objetivos">
-    <h2>Objetivos de la lección</h2>
-    <ul>
-      <li>Recordar las fórmulas básicas de área para rectángulos, triángulos y trapecios.</li>
-      <li>Descomponer una figura compuesta en figuras simples mediante líneas auxiliares.</li>
-      <li>Aplicar la estrategia de adición: sumar las áreas parciales para obtener el área total.</li>
-      <li>Aplicar la estrategia de sustracción: restar el área de una «mordida» de un rectángulo mayor.</li>
-      <li>Calcular el costo de un material (pintura, alfombra) a partir del área y un precio unitario.</li>
-    </ul>
-  </div>
-
-  <div class="bloque">
-    <p><strong>Bienvenida al Tema 7.</strong> Hasta ahora el Nivel 2 ha trabajado con números y comparaciones: enteros con signo, fracciones, PEMDAS, razones, porcentajes y matemática financiera. En este nuevo tema el terreno cambia de manera importante: se pasa a la <strong>medición del espacio</strong>. La geometría es la rama de las matemáticas que mide formas: cuánto cabe, cuánto rodea, qué distancia hay. Esta primera lección abre el tema con una técnica esencial: cómo medir el <strong>área</strong> de figuras que no son simples rectángulos o triángulos, sino combinaciones de varias formas básicas.</p>
-  </div>
-
-  <h2 class="seccion">1. Repaso de fórmulas de área básicas</h2>
-  <div class="bloque">
-    <p>Antes de abordar figuras complejas, conviene tener a mano las fórmulas de las figuras simples que ya se estudiaron en el Nivel 1. El área se mide siempre en <strong>unidades cuadradas</strong>: cm², m², pies², etc.</p>
-
-    <table class="formulas">
-      <thead>
-        <tr><th>Figura</th><th>Fórmula</th><th>Significado</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Rectángulo</td>
-          <td><span class="formula">A = b · h</span></td>
-          <td>Base por altura</td>
-        </tr>
-        <tr>
-          <td>Cuadrado</td>
-          <td><span class="formula">A = lado²</span></td>
-          <td>Lado al cuadrado</td>
-        </tr>
-        <tr>
-          <td>Triángulo</td>
-          <td><span class="formula">A = (b · h) / 2</span></td>
-          <td>Base por altura entre dos</td>
-        </tr>
-        <tr>
-          <td>Trapecio</td>
-          <td><span class="formula">A = ((B + b) · h) / 2</span></td>
-          <td>Suma de bases por altura entre dos</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="caja-tip">
-      <strong>Idea unificadora:</strong> todas estas fórmulas comparten una estructura común: <em>base por altura</em>, ajustado por un factor (1 para el rectángulo, 1/2 para el triángulo, promedio de bases para el trapecio). Pensar así ayuda a recordarlas sin memorización mecánica.
+<header class="principal">
+<div class="ruta">Spanish ASE Math · Nivel 2 · Tema 7 · Geometría transicional</div>
+<h1>Lección 7.1 · Área de figuras compuestas</h1>
+<div class="meta">Unas 4 horas, a su ritmo · NRS 2–3</div>
+</header>
+<div class="caja-objetivos">
+<h2>Objetivos de la lección</h2>
+<ul>
+<li>Recordar las fórmulas básicas de área para rectángulos, triángulos y trapecios.</li>
+<li>Descomponer una figura compuesta en figuras simples mediante líneas auxiliares.</li>
+<li>Aplicar la estrategia de adición: sumar las áreas parciales para obtener el área total.</li>
+<li>Aplicar la estrategia de sustracción: restar el área de una «mordida» de un rectángulo mayor.</li>
+<li>Calcular el costo de un material (pintura, alfombra) a partir del área y un precio unitario.</li>
+</ul>
+</div><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-1-repaso-de-formulas-de-area-basicas">1. Repaso de fórmulas de área básicas</a></li><li><a href="#s-2-que-es-una-figura-compuesta">2. Qué es una figura compuesta</a></li><li><a href="#s-3-estrategia-de-adicion">3. Estrategia de adición</a></li><li><a href="#s-4-estrategia-de-sustraccion">4. Estrategia de sustracción</a></li><li><a href="#s-5-comparacion-de-las-dos-estrategias">5. Comparación de las dos estrategias</a></li><li><a href="#s-6-aplicaciones-reales-costo-de-materiales">6. Aplicaciones reales: costo de materiales</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-la-leccion-7-1">Quiz de la lección 7.1</a></li><li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li><li><a href="#s-cierre-y-enlace-con-la-proxima-leccion">Cierre y enlace con la próxima lección</a></li></ol></nav>
+<div class="bloque">
+<p><strong>Bienvenida al Tema 7.</strong> Hasta ahora el Nivel 2 ha trabajado con números y comparaciones: enteros con signo, fracciones, PEMDAS, razones, porcentajes y matemática financiera. En este nuevo tema el terreno cambia de manera importante: se pasa a la <strong>medición del espacio</strong>. La geometría es la rama de las matemáticas que mide formas: cuánto cabe, cuánto rodea, qué distancia hay. Esta primera lección abre el tema con una técnica esencial: cómo medir el <strong>área</strong> de figuras que no son simples rectángulos o triángulos, sino combinaciones de varias formas básicas.</p>
+</div>
+<h2 class="seccion" id="s-1-repaso-de-formulas-de-area-basicas">1. Repaso de fórmulas de área básicas</h2>
+<div class="bloque">
+<p>Antes de abordar figuras complejas, conviene tener a mano las fórmulas de las figuras simples que ya se estudiaron en el Nivel 1. El área se mide siempre en <strong>unidades cuadradas</strong>: cm², m², pies², etc.</p>
+<table class="formulas">
+<thead>
+<tr><th>Figura</th><th>Fórmula</th><th>Significado</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>Rectángulo</td>
+<td><span class="formula">A = b · h</span></td>
+<td>Base por altura</td>
+</tr>
+<tr>
+<td>Cuadrado</td>
+<td><span class="formula">A = lado²</span></td>
+<td>Lado al cuadrado</td>
+</tr>
+<tr>
+<td>Triángulo</td>
+<td><span class="formula">A = (b · h) / 2</span></td>
+<td>Base por altura entre dos</td>
+</tr>
+<tr>
+<td>Trapecio</td>
+<td><span class="formula">A = ((B + b) · h) / 2</span></td>
+<td>Suma de bases por altura entre dos</td>
+</tr>
+</tbody>
+</table>
+<div class="caja-tip">
+<strong>Idea unificadora:</strong> todas estas fórmulas comparten una estructura común: <em>base por altura</em>, ajustado por un factor (1 para el rectángulo, 1/2 para el triángulo, promedio de bases para el trapecio). Pensar así ayuda a recordarlas sin memorización mecánica.
     </div>
-  </div>
+</div>
+<h2 class="seccion" id="s-2-que-es-una-figura-compuesta">2. Qué es una figura compuesta</h2>
+<div class="bloque">
+<p>Una <strong>figura compuesta</strong> es aquella que se forma al combinar dos o más figuras simples. Aparece constantemente en la vida real: el plano de un apartamento en forma de L, un terreno con una esquina recortada, una fachada con un triángulo encima de un rectángulo (como una casa dibujada por un niño).</p>
+<div class="svg-wrap">
+<svg aria-label="Tres figuras compuestas comunes: forma de L, forma de T y casa" height="180" role="img" viewbox="0 0 540 180" width="540" xmlns="http://www.w3.org/2000/svg">
+<g fill="#eceff1" stroke="#37474f" stroke-width="2">
+<!-- L -->
+<polygon points="30,30 120,30 120,90 80,90 80,150 30,150"></polygon>
+<text fill="#37474f" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="75" y="170">Forma de L</text>
+<!-- T -->
+<polygon points="180,30 290,30 290,80 255,80 255,150 215,150 215,80 180,80"></polygon>
+<text fill="#37474f" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="235" y="170">Forma de T</text>
+<!-- Casa: rectángulo + triángulo -->
+<polygon points="350,80 350,150 450,150 450,80 400,30"></polygon>
+<text fill="#37474f" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="400" y="170">Casa (rect. + triángulo)</text>
+</g>
+</svg>
+</div>
+<p>Cualquiera de estas figuras puede medirse aplicando una idea sencilla: <strong>dividir para conquistar</strong>. Se traza una o varias líneas auxiliares que descomponen la figura en piezas simples cuya área se sabe calcular; luego se suman, o en algunos casos se restan.</p>
+</div>
+<h2 class="seccion" id="s-3-estrategia-de-adicion">3. Estrategia de adición</h2>
+<div class="bloque">
+<p>En la <strong>estrategia de adición</strong>, se traza una línea auxiliar que parte la figura en dos (o más) piezas simples. Se calcula el área de cada pieza por separado y se <strong>suman</strong> los resultados.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 1 · Forma de L</span>
+<p>Un apartamento en forma de L tiene las medidas que muestra el plano. ¿Cuál es su área total?</p>
+<div class="svg-wrap">
+<svg aria-label="Forma de L descompuesta en dos rectángulos por una línea auxiliar punteada" height="260" role="img" viewbox="0 0 380 260" width="380" xmlns="http://www.w3.org/2000/svg">
+<!-- Figura completa -->
+<polygon fill="#eceff1" points="40,30 220,30 220,130 160,130 160,230 40,230" stroke="#37474f" stroke-width="2"></polygon>
+<!-- Línea auxiliar -->
+<line stroke="#c62828" stroke-dasharray="6,4" stroke-width="2" x1="40" x2="160" y1="130" y2="130"></line>
+<!-- Etiquetas dimensiones -->
+<g fill="#1c2a30" font-family="Segoe UI, sans-serif" font-size="13">
+<text text-anchor="middle" x="130" y="22">18 m</text>
+<text x="230" y="85">10 m</text>
+<text x="190" y="125">6 m</text>
+<text x="170" y="180">10 m</text>
+<text text-anchor="middle" x="100" y="245">12 m</text>
+<text text-anchor="end" x="30" y="135">10 m</text>
+</g>
+<!-- etiquetas R1 y R2 -->
+<text fill="#1565c0" font-family="Segoe UI, sans-serif" font-size="22" font-weight="700" text-anchor="middle" x="130" y="85">R1</text>
+<text fill="#2e7d32" font-family="Segoe UI, sans-serif" font-size="22" font-weight="700" text-anchor="middle" x="100" y="190">R2</text>
 
-  <h2 class="seccion">2. Qué es una figura compuesta</h2>
-  <div class="bloque">
-    <p>Una <strong>figura compuesta</strong> es aquella que se forma al combinar dos o más figuras simples. Aparece constantemente en la vida real: el plano de un apartamento en forma de L, un terreno con una esquina recortada, una fachada con un triángulo encima de un rectángulo (como una casa dibujada por un niño).</p>
-
-    <div class="svg-wrap">
-      <svg width="540" height="180" viewBox="0 0 540 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tres figuras compuestas comunes: forma de L, forma de T y casa">
-        <g stroke="#37474f" stroke-width="2" fill="#eceff1">
-          <!-- L -->
-          <polygon points="30,30 120,30 120,90 80,90 80,150 30,150"/>
-          <text x="75" y="170" font-family="Segoe UI, sans-serif" font-size="13" fill="#37474f" text-anchor="middle" font-weight="700">Forma de L</text>
-
-          <!-- T -->
-          <polygon points="180,30 290,30 290,80 255,80 255,150 215,150 215,80 180,80"/>
-          <text x="235" y="170" font-family="Segoe UI, sans-serif" font-size="13" fill="#37474f" text-anchor="middle" font-weight="700">Forma de T</text>
-
-          <!-- Casa: rectángulo + triángulo -->
-          <polygon points="350,80 350,150 450,150 450,80 400,30"/>
-          <text x="400" y="170" font-family="Segoe UI, sans-serif" font-size="13" fill="#37474f" text-anchor="middle" font-weight="700">Casa (rect. + triángulo)</text>
-        </g>
-      </svg>
+</svg>
+</div>
+<div class="paso"><span class="n">1</span> Trazar una línea auxiliar horizontal a 10 m del borde superior. La figura queda dividida en dos rectángulos.</div>
+<div class="paso"><span class="n">2</span> <strong>R1</strong> (superior): base 18 m, altura 10 m. A₁ = 18 × 10 = 180 m².</div>
+<div class="paso"><span class="n">3</span> <strong>R2</strong> (inferior): base 12 m, altura 10 m. A₂ = 12 × 10 = 120 m².</div>
+<div class="paso"><span class="n">4</span> Área total: 180 + 120 = 300 m².</div>
+<p><strong>Respuesta:</strong> el apartamento tiene un área de 300 metros cuadrados.</p>
+</div>
+<div class="caja-tip">
+<strong>Estrategia visual:</strong> conviene marcar cada pieza con una letra o un color distinto (R1, R2, T1...) y anotar el área parcial al lado de cada una. Al final, sumar todas las áreas se vuelve un paso mecánico.
     </div>
+</div>
+<h2 class="seccion" id="s-4-estrategia-de-sustraccion">4. Estrategia de sustracción</h2>
+<div class="bloque">
+<p>En algunos casos, la figura compuesta se ve mejor como un <strong>rectángulo grande al que le falta un trozo</strong>. La estrategia de <strong>sustracción</strong> consiste en calcular el área del rectángulo completo y luego restar el área del trozo faltante.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 2 · Terreno con esquina recortada</span>
+<p>Un terreno rectangular de 25 m × 18 m tiene una esquina recortada (un rectángulo de 8 m × 6 m). ¿Cuál es el área aprovechable?</p>
+<div class="svg-wrap">
+<svg aria-label="Rectángulo grande con una esquina rectangular recortada" height="260" role="img" viewbox="0 0 380 260" width="380" xmlns="http://www.w3.org/2000/svg">
+<!-- Rectángulo grande punteado -->
+<rect fill="none" height="200" stroke="#1565c0" stroke-dasharray="6,4" stroke-width="2" width="280" x="40" y="30"></rect>
+<!-- Esquina recortada (marcada en rosa claro) -->
+<rect fill="#ffcdd2" height="60" stroke="#c62828" stroke-width="2" width="80" x="240" y="30"></rect>
+<!-- Figura real (con borde sólido oscuro) -->
+<polygon fill="none" points="40,30 240,30 240,90 320,90 320,230 40,230" stroke="#37474f" stroke-width="3"></polygon>
+<!-- Etiquetas -->
+<g fill="#1c2a30" font-family="Segoe UI, sans-serif" font-size="13">
+<text text-anchor="middle" x="180" y="22">25 m</text>
+<text x="335" y="135">18 m</text>
+<text text-anchor="middle" x="280" y="60">8 m</text>
+<text fill="#c62828" text-anchor="end" x="225" y="65">6 m</text>
+</g>
+<text fill="#c62828" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="280" y="63">faltante</text>
 
-    <p>Cualquiera de estas figuras puede medirse aplicando una idea sencilla: <strong>dividir para conquistar</strong>. Se traza una o varias líneas auxiliares que descomponen la figura en piezas simples cuya área se sabe calcular; luego se suman, o en algunos casos se restan.</p>
-  </div>
-
-  <h2 class="seccion">3. Estrategia de adición</h2>
-  <div class="bloque">
-    <p>En la <strong>estrategia de adición</strong>, se traza una línea auxiliar que parte la figura en dos (o más) piezas simples. Se calcula el área de cada pieza por separado y se <strong>suman</strong> los resultados.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 1 · Forma de L</span>
-      <p>Un apartamento en forma de L tiene las medidas que muestra el plano. ¿Cuál es su área total?</p>
-
-      <div class="svg-wrap">
-        <svg width="380" height="260" viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Forma de L descompuesta en dos rectángulos por una línea auxiliar punteada">
-          <!-- Figura completa -->
-          <polygon points="40,30 220,30 220,130 160,130 160,230 40,230" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
-          <!-- Línea auxiliar -->
-          <line x1="40" y1="130" x2="160" y2="130" stroke="#c62828" stroke-width="2" stroke-dasharray="6,4"/>
-          <!-- Etiquetas dimensiones -->
-          <g font-family="Segoe UI, sans-serif" font-size="13" fill="#1c2a30">
-            <text x="130" y="22" text-anchor="middle">18 m</text>
-            <text x="230" y="85" >10 m</text>
-            <text x="190" y="125" >6 m</text>
-            <text x="170" y="180" >10 m</text>
-            <text x="100" y="245" text-anchor="middle">12 m</text>
-            <text x="30" y="135" text-anchor="end">10 m</text>
-          </g>
-          <!-- etiquetas R1 y R2 -->
-          <text x="130" y="85"  font-family="Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#1565c0" text-anchor="middle">R1</text>
-          <text x="100" y="190" font-family="Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#2e7d32" text-anchor="middle">R2</text>
-        </g>
-      </svg>
-      </div>
-
-      <div class="paso"><span class="n">1</span> Trazar una línea auxiliar horizontal a 10 m del borde superior. La figura queda dividida en dos rectángulos.</div>
-      <div class="paso"><span class="n">2</span> <strong>R1</strong> (superior): base 18 m, altura 10 m. A₁ = 18 × 10 = 180 m².</div>
-      <div class="paso"><span class="n">3</span> <strong>R2</strong> (inferior): base 12 m, altura 10 m. A₂ = 12 × 10 = 120 m².</div>
-      <div class="paso"><span class="n">4</span> Área total: 180 + 120 = 300 m².</div>
-      <p><strong>Respuesta:</strong> el apartamento tiene un área de 300 metros cuadrados.</p>
+</svg>
+</div>
+<div class="paso"><span class="n">1</span> Área del rectángulo grande imaginario: 25 × 18 = 450 m².</div>
+<div class="paso"><span class="n">2</span> Área del trozo faltante: 8 × 6 = 48 m².</div>
+<div class="paso"><span class="n">3</span> Área aprovechable: 450 − 48 = 402 m².</div>
+<p><strong>Respuesta:</strong> el área aprovechable del terreno es de 402 metros cuadrados.</p>
+</div>
+<div class="caja-atencion">
+<strong>Atención:</strong> elegir entre adición y sustracción es cuestión de comodidad. Una misma figura puede resolverse de ambas maneras, y el resultado debe ser idéntico. Si el cálculo es engorroso por un camino, conviene probar el otro.
     </div>
-
-    <div class="caja-tip">
-      <strong>Estrategia visual:</strong> conviene marcar cada pieza con una letra o un color distinto (R1, R2, T1...) y anotar el área parcial al lado de cada una. Al final, sumar todas las áreas se vuelve un paso mecánico.
-    </div>
-  </div>
-
-  <h2 class="seccion">4. Estrategia de sustracción</h2>
-  <div class="bloque">
-    <p>En algunos casos, la figura compuesta se ve mejor como un <strong>rectángulo grande al que le falta un trozo</strong>. La estrategia de <strong>sustracción</strong> consiste en calcular el área del rectángulo completo y luego restar el área del trozo faltante.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 2 · Terreno con esquina recortada</span>
-      <p>Un terreno rectangular de 25 m × 18 m tiene una esquina recortada (un rectángulo de 8 m × 6 m). ¿Cuál es el área aprovechable?</p>
-
-      <div class="svg-wrap">
-        <svg width="380" height="260" viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rectángulo grande con una esquina rectangular recortada">
-          <!-- Rectángulo grande punteado -->
-          <rect x="40" y="30" width="280" height="200" fill="none" stroke="#1565c0" stroke-width="2" stroke-dasharray="6,4"/>
-          <!-- Esquina recortada (marcada en rosa claro) -->
-          <rect x="240" y="30" width="80" height="60" fill="#ffcdd2" stroke="#c62828" stroke-width="2"/>
-          <!-- Figura real (con borde sólido oscuro) -->
-          <polygon points="40,30 240,30 240,90 320,90 320,230 40,230" fill="none" stroke="#37474f" stroke-width="3"/>
-          <!-- Etiquetas -->
-          <g font-family="Segoe UI, sans-serif" font-size="13" fill="#1c2a30">
-            <text x="180" y="22" text-anchor="middle">25 m</text>
-            <text x="335" y="135" >18 m</text>
-            <text x="280" y="60" text-anchor="middle">8 m</text>
-            <text x="225" y="65" text-anchor="end" fill="#c62828">6 m</text>
-          </g>
-          <text x="280" y="63" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#c62828" text-anchor="middle">faltante</text>
-        </g>
-      </svg>
-      </div>
-
-      <div class="paso"><span class="n">1</span> Área del rectángulo grande imaginario: 25 × 18 = 450 m².</div>
-      <div class="paso"><span class="n">2</span> Área del trozo faltante: 8 × 6 = 48 m².</div>
-      <div class="paso"><span class="n">3</span> Área aprovechable: 450 − 48 = 402 m².</div>
-      <p><strong>Respuesta:</strong> el área aprovechable del terreno es de 402 metros cuadrados.</p>
-    </div>
-
-    <div class="caja-atencion">
-      <strong>Atención:</strong> elegir entre adición y sustracción es cuestión de comodidad. Una misma figura puede resolverse de ambas maneras, y el resultado debe ser idéntico. Si el cálculo es engorroso por un camino, conviene probar el otro.
-    </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 1 · ¿Adición o sustracción?</h3>
-    <p>Selecciona la estrategia más cómoda para cada caso.</p>
-
-    <div class="pregunta" data-correcta="a">
-      <div class="enun">1. Una habitación en forma de L se descompone naturalmente en dos rectángulos.</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">Adición</div>
-        <div class="opcion" data-op="b">Sustracción</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="b">
-      <div class="enun">2. Un campo rectangular al que se le quitó un triángulo en una esquina.</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">Adición</div>
-        <div class="opcion" data-op="b">Sustracción</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="a">
-      <div class="enun">3. Una casa dibujada como un rectángulo con un triángulo encima (el techo).</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">Adición</div>
-        <div class="opcion" data-op="b">Sustracción</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-  </div>
-
-  <h2 class="seccion">5. Comparación de las dos estrategias</h2>
-  <div class="bloque">
-    <p>En muchas figuras, las dos estrategias funcionan y conducen al mismo resultado. Vale la pena verlo en un ejemplo concreto.</p>
-
-    <div class="estrategias">
-      <div class="estrategia estrategia-suma">
-        <h3>Adición ➕</h3>
-        <p><strong>Se divide la figura</strong> en piezas simples y se suman sus áreas. Útil cuando las divisiones son fáciles de trazar.</p>
-        <p style="font-family: 'Consolas', monospace; text-align:center; font-weight:700;">A = A₁ + A₂ + … + Aₙ</p>
-      </div>
-      <div class="estrategia estrategia-resta">
-        <h3>Sustracción ➖</h3>
-        <p><strong>Se completa la figura</strong> hasta formar un rectángulo grande y se le resta el trozo que sobra. Útil cuando lo que falta es claramente identificable.</p>
-        <p style="font-family: 'Consolas', monospace; text-align:center; font-weight:700;">A = A_grande − A_faltante</p>
-      </div>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 3 · Una misma figura por dos caminos</span>
-      <p>Verificar que la forma de L del Ejemplo 1 (300 m²) también se obtiene por sustracción.</p>
-      <div class="paso"><span class="n">1</span> Rectángulo grande imaginario: 18 × 20 = 360 m² (las medidas externas).</div>
-      <div class="paso"><span class="n">2</span> Trozo faltante (el rincón superior derecho): 6 × 10 = 60 m².</div>
-      <div class="paso"><span class="n">3</span> Área de la L: 360 − 60 = 300 m². ✓ Coincide con el resultado anterior.</div>
-    </div>
-  </div>
-
-  <h2 class="seccion">6. Aplicaciones reales: costo de materiales</h2>
-  <div class="bloque">
-    <p>Una vez calculada el área, es muy común multiplicarla por un <strong>precio unitario</strong> para conocer el costo total de un material: pintura por metro cuadrado, alfombra por metro cuadrado, baldosas por pie cuadrado.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 4 · Alfombrar la L</span>
-      <p>El apartamento del Ejemplo 1 (300 m²) será alfombrado a un precio de $24 por metro cuadrado. ¿Cuánto costará en total?</p>
-      <div class="paso"><span class="n">1</span> Área: 300 m².</div>
-      <div class="paso"><span class="n">2</span> Precio por m²: $24.</div>
-      <div class="paso"><span class="n">3</span> Costo total: 300 × 24 = $7 200.</div>
-      <p><strong>Respuesta:</strong> alfombrar el apartamento costará $7 200.</p>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 5 · Pintar una fachada</span>
-      <p>Una fachada con forma de casa está compuesta por un rectángulo de 8 m × 5 m y un triángulo encima con base 8 m y altura 3 m. ¿Cuánta pintura se necesita si una lata cubre 10 m²?</p>
-      <div class="paso"><span class="n">1</span> Área del rectángulo: 8 × 5 = 40 m².</div>
-      <div class="paso"><span class="n">2</span> Área del triángulo: (8 × 3) ÷ 2 = 12 m².</div>
-      <div class="paso"><span class="n">3</span> Área total: 40 + 12 = 52 m².</div>
-      <div class="paso"><span class="n">4</span> Latas necesarias: 52 ÷ 10 = 5.2, es decir, <strong>6 latas</strong> (no se pueden comprar fracciones de lata).</div>
-      <p><strong>Respuesta:</strong> hacen falta 6 latas de pintura.</p>
-    </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 2 · Calcular áreas compuestas</h3>
-    <p>Escribe el área total (solo el número, sin unidades) y presiona «Verificar».</p>
-    <div class="pregunta">
-      <div class="enun">1. Una L: rectángulo grande 15 m × 8 m, con un trozo recortado de 6 m × 4 m. Área =</div>
-      <input type="text" class="campo-num" id="a1" inputmode="numeric" aria-label="Respuesta de la pregunta 1: área de la forma de L con trozo recortado" />
-      <div class="fb" id="fb-a1"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">2. Una casa: rectángulo de 10 m × 6 m + triángulo de base 10 m y altura 4 m. Área =</div>
-      <input type="text" class="campo-num" id="a2" inputmode="numeric" aria-label="Respuesta de la pregunta 2: área de una casa con rectángulo y triángulo" />
-      <div class="fb" id="fb-a2"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">3. Dos rectángulos: 20 m × 5 m y 12 m × 5 m, unidos. Área total =</div>
-      <input type="text" class="campo-num" id="a3" inputmode="numeric" aria-label="Respuesta de la pregunta 3: área total de dos rectángulos unidos" />
-      <div class="fb" id="fb-a3"></div>
-    </div>
-    <button class="btn" id="btn-area">Verificar</button>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 3 · Aplicaciones de costo</h3>
-    <p>Selecciona la respuesta correcta.</p>
-
-    <div class="pregunta" data-correcta="b">
-      <div class="enun">1. Una sala de 30 m² se pinta a $8 por m². ¿Cuánto cuesta?</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">$120</div>
-        <div class="opcion" data-op="b">$240</div>
-        <div class="opcion" data-op="c">$38</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="a">
-      <div class="enun">2. Un piso de 48 m² se cubre con alfombra a $15 por m². Total:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">$720</div>
-        <div class="opcion" data-op="b">$63</div>
-        <div class="opcion" data-op="c">$320</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="c">
-      <div class="enun">3. Una pared de 24 m² se pinta con latas que cubren 5 m² cada una. ¿Cuántas latas se necesitan?</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">4 latas</div>
-        <div class="opcion" data-op="b">5 latas (4.8 redondeado a 5)</div>
-        <div class="opcion" data-op="c">5 latas (no se compran fracciones)</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-  </div>
-
-  <h2 class="seccion">7. Práctica guiada en clase</h2>
-  <div class="bloque">
-    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 1 · El plano del apartamento</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          El docente entrega tres planos de apartamentos con formas irregulares (L, T, U). En parejas, los estudiantes trazan las líneas auxiliares en lápiz, calculan el área de cada pieza y suman para obtener el área total. Comparan resultados al final.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          Las parejas reciben los tres planos en una hoja compartida con cuadrícula. Trazan las líneas auxiliares digitalmente, calculan cada pieza en columnas separadas y registran el área total. El docente revisa los planos al final del trabajo en salas.
-        </div>
-      </div>
-    </div>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 2 · Suma vs. resta</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          El docente plantea cuatro figuras compuestas. La mitad del salón usa la estrategia de adición; la otra mitad, la de sustracción. Al final se comparan los resultados para verificar que coinciden.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          Los estudiantes se dividen en dos grupos en salas distintas: «equipo adición» y «equipo sustracción». Cada equipo resuelve las cuatro figuras por su método. Al regresar al pleno, se contrastan los resultados.
-        </div>
-      </div>
-    </div>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 3 · Presupuesto de remodelación</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          Cada grupo recibe el plano de una habitación con forma irregular y un precio de alfombra por m². Calculan el área total, el costo de la alfombra y el costo si se le suma el 8% de impuesto sobre ventas. Presentan el presupuesto a la clase.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          En salas pequeñas, los grupos trabajan en una hoja compartida con el plano. Completan tres líneas: área total, costo sin impuesto, costo con impuesto incluido. Comparten al regresar al pleno.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="caja-tarea">
-    <h2>Tarea asincrónica</h2>
-    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
-    <ul>
-      <li>Cuatro figuras compuestas en forma de L o T, resueltas por adición.</li>
-      <li>Tres figuras con esquinas recortadas, resueltas por sustracción.</li>
-      <li>Tres problemas de aplicación: costo de pintura, alfombra o baldosas a partir del área.</li>
-      <li>Dos problemas inversos: dada el área total y una dimensión, hallar la otra.</li>
-    </ul>
-    <p>La plataforma ofrece retroalimentación paso a paso en cada intento. Tiempo estimado: 50 minutos.</p>
-  </div>
-
-  <div class="quiz">
-    <h2>Quiz de la lección 7.1</h2>
-    <p>Diez preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
-    <div id="quiz-cuerpo"></div>
-    <div id="resultado-quiz"></div>
-    <button class="btn" id="btn-corregir">Corregir quiz</button>
-    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
-  </div>
-
-  <div class="rubrica">
-    <h2>Rúbrica analítica de la lección</h2>
-    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
-    <table class="tabla-rubrica">
-      <thead>
-        <tr>
-          <th>Criterio</th>
-          <th>Inicial (1)</th>
-          <th>En desarrollo (2)</th>
-          <th>Competente (3)</th>
-          <th>Destacado (4)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Descomposición de la figura</td>
-          <td>No identifica cómo dividir la figura.</td>
-          <td>Descompone con apoyo.</td>
-          <td>Traza líneas auxiliares correctas sin ayuda.</td>
-          <td>Descompone y elige la estrategia más eficiente.</td>
-        </tr>
-        <tr>
-          <td>Aplicación de fórmulas</td>
-          <td>Confunde fórmulas de área entre figuras.</td>
-          <td>Aplica fórmulas con apoyo.</td>
-          <td>Aplica correctamente cada fórmula a cada pieza.</td>
-          <td>Aplica y verifica los resultados con el método inverso.</td>
-        </tr>
-        <tr>
-          <td>Suma o resta de áreas parciales</td>
-          <td>No combina las áreas correctamente.</td>
-          <td>Suma con errores ocasionales.</td>
-          <td>Suma o resta áreas parciales sin error.</td>
-          <td>Combina por ambos métodos y obtiene el mismo resultado.</td>
-        </tr>
-        <tr>
-          <td>Aplicación a contextos reales</td>
-          <td>No relaciona el área con el costo o material.</td>
-          <td>Calcula el costo con guía.</td>
-          <td>Calcula costo de materiales correctamente.</td>
-          <td>Calcula costos e incluye impuesto, redondeo o ajustes prácticos.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="cierre">
-    <h2>Cierre y enlace con la próxima lección</h2>
-    <p>En esta lección de apertura del Tema 7 se incorporó una técnica esencial de la geometría: descomponer una <strong>figura compuesta</strong> en figuras simples para calcular su área. Quedaron claras las dos estrategias —<strong>adición</strong> y <strong>sustracción</strong>— y la conexión inmediata con la vida real: planos de viviendas, presupuestos de remodelación, costos de materiales.</p>
-    <p>En la <strong>Lección 7.2 · Circunferencia del círculo</strong> entrará en juego una figura nueva, distinta a todas las anteriores: el <strong>círculo</strong>. Aparecerá el número <strong>π</strong> (pi), una constante universal que relaciona la circunferencia con el diámetro. Y se descubrirá midiendo objetos reales antes de aplicar cualquier fórmula.</p>
-  </div>
-
-  <footer>
-    Spanish ASE Math · Nivel 2 · Lección 7.1 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
-  </footer>
-
+</div>
+<div class="practica">
+<h3>Práctica interactiva 1 · ¿Adición o sustracción?</h3>
+<p>Selecciona la estrategia más cómoda para cada caso.</p>
+<div class="pregunta" data-correcta="a">
+<div class="enun">1. Una habitación en forma de L se descompone naturalmente en dos rectángulos.</div>
+<div class="opciones">
+<div class="opcion" data-op="a">Adición</div>
+<div class="opcion" data-op="b">Sustracción</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="b">
+<div class="enun">2. Un campo rectangular al que se le quitó un triángulo en una esquina.</div>
+<div class="opciones">
+<div class="opcion" data-op="a">Adición</div>
+<div class="opcion" data-op="b">Sustracción</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">3. Una casa dibujada como un rectángulo con un triángulo encima (el techo).</div>
+<div class="opciones">
+<div class="opcion" data-op="a">Adición</div>
+<div class="opcion" data-op="b">Sustracción</div>
+</div>
+<div class="fb"></div>
+</div>
+</div>
+<h2 class="seccion" id="s-5-comparacion-de-las-dos-estrategias">5. Comparación de las dos estrategias</h2>
+<div class="bloque">
+<p>En muchas figuras, las dos estrategias funcionan y conducen al mismo resultado. Vale la pena verlo en un ejemplo concreto.</p>
+<div class="estrategias">
+<div class="estrategia estrategia-suma">
+<h3>Adición ➕</h3>
+<p><strong>Se divide la figura</strong> en piezas simples y se suman sus áreas. Útil cuando las divisiones son fáciles de trazar.</p>
+<p style="font-family: 'Consolas', monospace; text-align:center; font-weight:700;">A = A₁ + A₂ + … + Aₙ</p>
+</div>
+<div class="estrategia estrategia-resta">
+<h3>Sustracción ➖</h3>
+<p><strong>Se completa la figura</strong> hasta formar un rectángulo grande y se le resta el trozo que sobra. Útil cuando lo que falta es claramente identificable.</p>
+<p style="font-family: 'Consolas', monospace; text-align:center; font-weight:700;">A = A_grande − A_faltante</p>
+</div>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 3 · Una misma figura por dos caminos</span>
+<p>Verificar que la forma de L del Ejemplo 1 (300 m²) también se obtiene por sustracción.</p>
+<div class="paso"><span class="n">1</span> Rectángulo grande imaginario: 18 × 20 = 360 m² (las medidas externas).</div>
+<div class="paso"><span class="n">2</span> Trozo faltante (el rincón superior derecho): 6 × 10 = 60 m².</div>
+<div class="paso"><span class="n">3</span> Área de la L: 360 − 60 = 300 m². ✓ Coincide con el resultado anterior.</div>
+</div>
+</div>
+<h2 class="seccion" id="s-6-aplicaciones-reales-costo-de-materiales">6. Aplicaciones reales: costo de materiales</h2>
+<div class="bloque">
+<p>Una vez calculada el área, es muy común multiplicarla por un <strong>precio unitario</strong> para conocer el costo total de un material: pintura por metro cuadrado, alfombra por metro cuadrado, baldosas por pie cuadrado.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 4 · Alfombrar la L</span>
+<p>El apartamento del Ejemplo 1 (300 m²) será alfombrado a un precio de $24 por metro cuadrado. ¿Cuánto costará en total?</p>
+<div class="paso"><span class="n">1</span> Área: 300 m².</div>
+<div class="paso"><span class="n">2</span> Precio por m²: $24.</div>
+<div class="paso"><span class="n">3</span> Costo total: 300 × 24 = $7 200.</div>
+<p><strong>Respuesta:</strong> alfombrar el apartamento costará $7 200.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 5 · Pintar una fachada</span>
+<p>Una fachada con forma de casa está compuesta por un rectángulo de 8 m × 5 m y un triángulo encima con base 8 m y altura 3 m. ¿Cuánta pintura se necesita si una lata cubre 10 m²?</p>
+<div class="paso"><span class="n">1</span> Área del rectángulo: 8 × 5 = 40 m².</div>
+<div class="paso"><span class="n">2</span> Área del triángulo: (8 × 3) ÷ 2 = 12 m².</div>
+<div class="paso"><span class="n">3</span> Área total: 40 + 12 = 52 m².</div>
+<div class="paso"><span class="n">4</span> Latas necesarias: 52 ÷ 10 = 5.2, es decir, <strong>6 latas</strong> (no se pueden comprar fracciones de lata).</div>
+<p><strong>Respuesta:</strong> hacen falta 6 latas de pintura.</p>
+</div>
+</div>
+<div class="practica">
+<h3>Práctica interactiva 2 · Calcular áreas compuestas</h3>
+<p>Escribe el área total (solo el número, sin unidades) y presiona «Verificar».</p>
+<div class="pregunta">
+<div class="enun">1. Una L: rectángulo grande 15 m × 8 m, con un trozo recortado de 6 m × 4 m. Área =</div>
+<input aria-label="Respuesta de la pregunta 1: área de la forma de L con trozo recortado" class="campo-num" id="a1" inputmode="numeric" type="text"/>
+<div class="fb" id="fb-a1"></div>
+</div>
+<div class="pregunta">
+<div class="enun">2. Una casa: rectángulo de 10 m × 6 m + triángulo de base 10 m y altura 4 m. Área =</div>
+<input aria-label="Respuesta de la pregunta 2: área de una casa con rectángulo y triángulo" class="campo-num" id="a2" inputmode="numeric" type="text"/>
+<div class="fb" id="fb-a2"></div>
+</div>
+<div class="pregunta">
+<div class="enun">3. Dos rectángulos: 20 m × 5 m y 12 m × 5 m, unidos. Área total =</div>
+<input aria-label="Respuesta de la pregunta 3: área total de dos rectángulos unidos" class="campo-num" id="a3" inputmode="numeric" type="text"/>
+<div class="fb" id="fb-a3"></div>
+</div>
+<button class="btn" id="btn-area">Verificar</button>
+</div>
+<div class="practica">
+<h3>Práctica interactiva 3 · Aplicaciones de costo</h3>
+<p>Selecciona la respuesta correcta.</p>
+<div class="pregunta" data-correcta="b">
+<div class="enun">1. Una sala de 30 m² se pinta a $8 por m². ¿Cuánto cuesta?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">$120</div>
+<div class="opcion" data-op="b">$240</div>
+<div class="opcion" data-op="c">$38</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">2. Un piso de 48 m² se cubre con alfombra a $15 por m². Total:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">$720</div>
+<div class="opcion" data-op="b">$63</div>
+<div class="opcion" data-op="c">$320</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="c">
+<div class="enun">3. Una pared de 24 m² se pinta con latas que cubren 5 m² cada una. ¿Cuántas latas se necesitan?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">4 latas</div>
+<div class="opcion" data-op="b">5 latas (4.8 redondeado a 5)</div>
+<div class="opcion" data-op="c">5 latas (no se compran fracciones)</div>
+</div>
+<div class="fb"></div>
+</div>
 </div>
 
+
+<div class="caja-tarea">
+<h2 id="s-tarea">Tarea</h2>
+<p>Para hacer por su cuenta, con el cuaderno abierto:</p>
+<ul>
+<li>Cuatro figuras compuestas en forma de L o T, resueltas por adición.</li>
+<li>Tres figuras con esquinas recortadas, resueltas por sustracción.</li>
+<li>Tres problemas de aplicación: costo de pintura, alfombra o baldosas a partir del área.</li>
+<li>Dos problemas inversos: dada el área total y una dimensión, hallar la otra.</li>
+<li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y busque los ejercicios de <em>área</em> de rectángulos y triángulos. Aquí no hallará figuras compuestas, pero necesita que las fórmulas básicas le salgan sin pensar: el trabajo de esta lección está en descomponer la figura, no en calcular cada pieza.</li></ul>
+<p>Tiempo estimado: 50 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
+</div>
+<div class="quiz">
+<h2 id="s-quiz-de-la-leccion-7-1">Quiz de la lección 7.1</h2>
+<p>Diez preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
+<div id="quiz-cuerpo"></div>
+<div id="resultado-quiz"></div>
+<button class="btn" id="btn-corregir">Corregir quiz</button>
+<button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+</div>
+<div class="rubrica">
+<h2 id="s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</h2>
+<p>Cuatro criterios evaluados en cuatro niveles de desempeño. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<table class="tabla-rubrica">
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Inicial (1)</th>
+<th>En desarrollo (2)</th>
+<th>Competente (3)</th>
+<th>Destacado (4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descomposición de la figura</td>
+<td>No identifica cómo dividir la figura.</td>
+<td>Descompone con apoyo.</td>
+<td>Traza líneas auxiliares correctas sin ayuda.</td>
+<td>Descompone y elige la estrategia más eficiente.</td>
+</tr>
+<tr>
+<td>Aplicación de fórmulas</td>
+<td>Confunde fórmulas de área entre figuras.</td>
+<td>Aplica fórmulas con apoyo.</td>
+<td>Aplica correctamente cada fórmula a cada pieza.</td>
+<td>Aplica y verifica los resultados con el método inverso.</td>
+</tr>
+<tr>
+<td>Suma o resta de áreas parciales</td>
+<td>No combina las áreas correctamente.</td>
+<td>Suma con errores ocasionales.</td>
+<td>Suma o resta áreas parciales sin error.</td>
+<td>Combina por ambos métodos y obtiene el mismo resultado.</td>
+</tr>
+<tr>
+<td>Aplicación a contextos reales</td>
+<td>No relaciona el área con el costo o material.</td>
+<td>Calcula el costo con guía.</td>
+<td>Calcula costo de materiales correctamente.</td>
+<td>Calcula costos e incluye impuesto, redondeo o ajustes prácticos.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cierre">
+<h2 id="s-cierre-y-enlace-con-la-proxima-leccion">Cierre y enlace con la próxima lección</h2>
+<p>En esta lección de apertura del Tema 7 se incorporó una técnica esencial de la geometría: descomponer una <strong>figura compuesta</strong> en figuras simples para calcular su área. Quedaron claras las dos estrategias —<strong>adición</strong> y <strong>sustracción</strong>— y la conexión inmediata con la vida real: planos de viviendas, presupuestos de remodelación, costos de materiales.</p>
+<p>En la <strong>Lección 7.2 · Circunferencia del círculo</strong> entrará en juego una figura nueva, distinta a todas las anteriores: el <strong>círculo</strong>. Aparecerá el número <strong>π</strong> (pi), una constante universal que relaciona la circunferencia con el diámetro. Y se descubrirá midiendo objetos reales antes de aplicar cualquier fórmula.</p>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 7 · Lección 7.1</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
+</div>
 <script>
 (function () {
   /* ---- Práctica de opciones ---- */

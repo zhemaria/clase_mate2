@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
+<!-- Lección 5.1 · Matemáticas Nivel 2 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lección 5.1 · Porcentajes: concepto y cálculo</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 5.1 · Porcentajes: concepto y cálculo</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root {
     --tema:   #00695c;
@@ -182,28 +185,7 @@
   }
   .btn:hover { background: var(--tema-d); }
   .btn.sec { background: #607d8b; }
-  .btn.sec:hover { background: #455a64; }
-
-  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
-  .modo {
-    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
-    font-size: 14px;
-  }
-  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
-  .modo-pres strong { color: #0d47a1; }
-  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
-  .modo-virt strong { color: #4a148c; }
-  .modo h3 { margin: 0 0 6px; font-size: 15px; }
-  .modo-pres h3 { color: #0d47a1; }
-  .modo-virt h3 { color: #4a148c; }
-
-  .actividad { margin-bottom: 18px; }
-  .actividad > .titulo-act {
-    font-weight: 700; color: var(--tema-d); font-size: 15px;
-    background: var(--tema-soft); padding: 7px 14px; border-radius: 7px;
-  }
-
-  .caja-tarea {
+  .btn.sec:hover { background: #455a64; }.caja-tarea {
     background: #ede7f6; border-left: 6px solid #5e35b1;
     padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
   }
@@ -250,401 +232,326 @@
     text-align: center; padding: 20px; color: #222222;
     font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
   }
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:#fff; border:1px solid #d8dde3; border-left:6px solid var(--tema);
+    border-radius:10px; padding:16px 20px; margin:24px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--tema-d); border:0; padding:0; background:none; }
+  .indice ol{ margin:0; padding-left:1.35em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--tema-d); text-decoration:underline; }
+  .indice a:hover{ color:var(--tema); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--tema-d); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--tema); color:#fff; }
+  footer a{ color:inherit; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
 <div class="contenedor">
-
-  <header class="principal">
-    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 5 · Porcentajes</div>
-    <h1>Lección 5.1 · Porcentajes: concepto y cálculo</h1>
-    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
-  </header>
-
-  <div class="caja-objetivos">
-    <h2>Objetivos de la lección</h2>
-    <ul>
-      <li>Interpretar un porcentaje como una razón con denominador 100.</li>
-      <li>Convertir libremente entre porcentaje, decimal y fracción.</li>
-      <li>Resolver los tres tipos de problemas de porcentaje: hallar la parte, hallar el total y hallar el porcentaje.</li>
-      <li>Calcular el cambio porcentual entre un valor inicial y un valor final.</li>
-      <li>Aplicar los porcentajes a situaciones reales: descuentos, propinas e impuestos.</li>
-    </ul>
-  </div>
-
-  <div class="bloque">
-    <p><strong>Bienvenida al Tema 5.</strong> En el Tema 4 se aprendió a comparar cantidades con razones y a predecirlas con proporciones. Esta lección abre un nuevo tema dedicado por completo a un caso particular muy especial: las razones cuyo segundo término es siempre <strong>100</strong>. Estas razones tienen un nombre familiar — <strong>porcentajes</strong> — y aparecen en descuentos, impuestos, propinas, estadísticas, intereses bancarios y prácticamente en cualquier comparación cotidiana.</p>
-  </div>
-
-  <h2 class="seccion">1. El porcentaje como razón de 100</h2>
-  <div class="bloque">
-    <p>La palabra <strong>porcentaje</strong> viene del latín <em>per centum</em>, que significa «por cada cien». Un porcentaje no es más que una razón cuyo segundo término es siempre 100.</p>
-
-    <div class="ejemplo">
-      <span class="et">Idea central</span>
-      <p style="text-align:center; font-size:18px; font-weight:700;">
-        25% &nbsp;=&nbsp; <span class="frac grande"><span class="num">25</span><span class="den">100</span></span> &nbsp;=&nbsp; 0.25
+<header class="principal">
+<div class="ruta">Spanish ASE Math · Nivel 2 · Tema 5 · Porcentajes</div>
+<h1>Lección 5.1 · Porcentajes: concepto y cálculo</h1>
+<div class="meta">Unas 4 horas, a su ritmo · NRS 2–3</div>
+</header>
+<div class="caja-objetivos">
+<h2>Objetivos de la lección</h2>
+<ul>
+<li>Interpretar un porcentaje como una razón con denominador 100.</li>
+<li>Convertir libremente entre porcentaje, decimal y fracción.</li>
+<li>Resolver los tres tipos de problemas de porcentaje: hallar la parte, hallar el total y hallar el porcentaje.</li>
+<li>Calcular el cambio porcentual entre un valor inicial y un valor final.</li>
+<li>Aplicar los porcentajes a situaciones reales: descuentos, propinas e impuestos.</li>
+</ul>
+</div><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-1-el-porcentaje-como-razon-de-100">1. El porcentaje como razón de 100</a></li><li><a href="#s-2-conversiones-entre-las-tres-formas">2. Conversiones entre las tres formas</a></li><li><a href="#s-3-los-tres-tipos-de-problemas-de-porcentaje">3. Los tres tipos de problemas de porcentaje</a></li><li><a href="#s-4-cambio-porcentual-aumento-y-disminucion">4. Cambio porcentual: aumento y disminución</a></li><li><a href="#s-5-aplicaciones-cotidianas">5. Aplicaciones cotidianas</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-la-leccion-5-1">Quiz de la lección 5.1</a></li><li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li><li><a href="#s-cierre-y-enlace-con-la-proxima-leccion">Cierre y enlace con la próxima lección</a></li></ol></nav>
+<div class="bloque">
+<p><strong>Bienvenida al Tema 5.</strong> En el Tema 4 se aprendió a comparar cantidades con razones y a predecirlas con proporciones. Esta lección abre un nuevo tema dedicado por completo a un caso particular muy especial: las razones cuyo segundo término es siempre <strong>100</strong>. Estas razones tienen un nombre familiar — <strong>porcentajes</strong> — y aparecen en descuentos, impuestos, propinas, estadísticas, intereses bancarios y prácticamente en cualquier comparación cotidiana.</p>
+</div>
+<h2 class="seccion" id="s-1-el-porcentaje-como-razon-de-100">1. El porcentaje como razón de 100</h2>
+<div class="bloque">
+<p>La palabra <strong>porcentaje</strong> viene del latín <em>per centum</em>, que significa «por cada cien». Un porcentaje no es más que una razón cuyo segundo término es siempre 100.</p>
+<div class="ejemplo">
+<span class="et">Idea central</span>
+<p style="text-align:center; font-size:18px; font-weight:700;">
+        25%  =  <span class="frac grande"><span class="num">25</span><span class="den">100</span></span>  =  0.25
       </p>
-      <p>Las tres formas representan exactamente lo mismo: 25 partes de cada 100. Solo cambia la notación.</p>
+<p>Las tres formas representan exactamente lo mismo: 25 partes de cada 100. Solo cambia la notación.</p>
+</div>
+<p>La visualización con una rejilla de 100 celdas ayuda a ver el porcentaje como una <strong>cantidad coloreada del total</strong>:</p>
+<div aria-label="Rejilla de cien celdas, veinticinco coloreadas" class="grid100" id="grid25"></div>
+<p class="grid-titulo">25% = 25 celdas coloreadas de las 100 totales</p>
+</div>
+<h2 class="seccion" id="s-2-conversiones-entre-las-tres-formas">2. Conversiones entre las tres formas</h2>
+<div class="bloque">
+<p>Cualquier porcentaje se puede expresar como decimal o como fracción, y viceversa. Las reglas son sencillas:</p>
+<table class="equiv-tabla">
+<thead>
+<tr><th>Conversión</th><th>Procedimiento</th><th>Ejemplo</th></tr>
+</thead>
+<tbody>
+<tr><td>Porcentaje → decimal</td><td>Dividir entre 100 (mover el punto decimal dos lugares a la izquierda).</td><td>45% = 0.45</td></tr>
+<tr><td>Decimal → porcentaje</td><td>Multiplicar por 100 (mover el punto decimal dos lugares a la derecha).</td><td>0.07 = 7%</td></tr>
+<tr><td>Porcentaje → fracción</td><td>Escribir como n/100 y simplificar.</td><td>40% = 40/100 = 2/5</td></tr>
+<tr><td>Fracción → porcentaje</td><td>Dividir y multiplicar el resultado por 100.</td><td>3/4 = 0.75 = 75%</td></tr>
+</tbody>
+</table>
+<div class="caja-tip">
+<strong>Atajo mental:</strong> los porcentajes más comunes conviene memorizarlos. 50% = 1/2 = 0.5. 25% = 1/4 = 0.25. 10% = 1/10 = 0.1. 75% = 3/4 = 0.75. 1% = 1/100 = 0.01. Reconocerlos al vuelo acelera muchos cálculos sin necesidad de calculadora.
     </div>
-
-    <p>La visualización con una rejilla de 100 celdas ayuda a ver el porcentaje como una <strong>cantidad coloreada del total</strong>:</p>
-
-    <div class="grid100" id="grid25" aria-label="Rejilla de cien celdas, veinticinco coloreadas"></div>
-    <p class="grid-titulo">25% = 25 celdas coloreadas de las 100 totales</p>
-  </div>
-
-  <h2 class="seccion">2. Conversiones entre las tres formas</h2>
-  <div class="bloque">
-    <p>Cualquier porcentaje se puede expresar como decimal o como fracción, y viceversa. Las reglas son sencillas:</p>
-
-    <table class="equiv-tabla">
-      <thead>
-        <tr><th>Conversión</th><th>Procedimiento</th><th>Ejemplo</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Porcentaje → decimal</td><td>Dividir entre 100 (mover el punto decimal dos lugares a la izquierda).</td><td>45% = 0.45</td></tr>
-        <tr><td>Decimal → porcentaje</td><td>Multiplicar por 100 (mover el punto decimal dos lugares a la derecha).</td><td>0.07 = 7%</td></tr>
-        <tr><td>Porcentaje → fracción</td><td>Escribir como n/100 y simplificar.</td><td>40% = 40/100 = 2/5</td></tr>
-        <tr><td>Fracción → porcentaje</td><td>Dividir y multiplicar el resultado por 100.</td><td>3/4 = 0.75 = 75%</td></tr>
-      </tbody>
-    </table>
-
-    <div class="caja-tip">
-      <strong>Atajo mental:</strong> los porcentajes más comunes conviene memorizarlos. 50% = 1/2 = 0.5. 25% = 1/4 = 0.25. 10% = 1/10 = 0.1. 75% = 3/4 = 0.75. 1% = 1/100 = 0.01. Reconocerlos al vuelo acelera muchos cálculos sin necesidad de calculadora.
+<div class="caja-atencion">
+<strong>Error frecuente:</strong> confundir 0.5 con 5%. Son cosas distintas: 0.5 = 50%, mientras que 5% = 0.05. La regla del punto decimal de dos lugares evita este error.
     </div>
-
-    <div class="caja-atencion">
-      <strong>Error frecuente:</strong> confundir 0.5 con 5%. Son cosas distintas: 0.5 = 50%, mientras que 5% = 0.05. La regla del punto decimal de dos lugares evita este error.
+</div>
+<div class="practica">
+<h3>Práctica interactiva 1 · Convertir entre formas</h3>
+<p>Selecciona la conversión correcta.</p>
+<div class="pregunta" data-correcta="b">
+<div class="enun">1. 60% como decimal es:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">6.0</div>
+<div class="opcion" data-op="b">0.6</div>
+<div class="opcion" data-op="c">0.06</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="c">
+<div class="enun">2. 0.08 como porcentaje es:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">0.8%</div>
+<div class="opcion" data-op="b">80%</div>
+<div class="opcion" data-op="c">8%</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">3. 20% como fracción simplificada es:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">1/5</div>
+<div class="opcion" data-op="b">20/10</div>
+<div class="opcion" data-op="c">2/5</div>
+</div>
+<div class="fb"></div>
+</div>
+</div>
+<h2 class="seccion" id="s-3-los-tres-tipos-de-problemas-de-porcentaje">3. Los tres tipos de problemas de porcentaje</h2>
+<div class="bloque">
+<p>Todo problema de porcentaje tiene tres elementos: <strong>la parte</strong>, <strong>el total</strong> y <strong>el porcentaje</strong>. Cuando se conocen dos, el tercero se calcula. Por eso hay <strong>tres tipos</strong> de problemas, según cuál sea el desconocido.</p>
+<div class="triangulo">
+<div class="tres-tipos">
+<div class="formula">parte = total × <span class="frac"><span class="num">%</span><span class="den">100</span></span></div>
+<div class="leyenda">Una sola fórmula. Despejando lo desconocido se resuelven los tres tipos.</div>
+</div>
+</div>
+<h3>Tipo 1 · Hallar la parte (conocidos el total y el %)</h3>
+<div class="ejemplo">
+<span class="et">Ejemplo 1</span>
+<p>¿Cuánto es el 15% de $80?</p>
+<div class="paso"><span class="n">1</span> Se conoce el total ($80) y el porcentaje (15%). Se busca la parte.</div>
+<div class="paso"><span class="n">2</span> Se aplica la fórmula: parte = 80 × (15/100) = 80 × 0.15.</div>
+<div class="paso"><span class="n">3</span> Se calcula: 80 × 0.15 = 12.</div>
+<p><strong>Respuesta:</strong> el 15% de $80 es $12.</p>
+</div>
+<h3>Tipo 2 · Hallar el total (conocidos la parte y el %)</h3>
+<div class="ejemplo">
+<span class="et">Ejemplo 2</span>
+<p>El 30% de un número es 45. ¿Cuál es ese número?</p>
+<div class="paso"><span class="n">1</span> Se conoce la parte (45) y el porcentaje (30%). Se busca el total.</div>
+<div class="paso"><span class="n">2</span> Se despeja: total = parte ÷ (% / 100) = 45 ÷ 0.30.</div>
+<div class="paso"><span class="n">3</span> Se calcula: 45 ÷ 0.30 = 150.</div>
+<p><strong>Respuesta:</strong> el número es 150. Verificación: 150 × 0.30 = 45. ✓</p>
+</div>
+<h3>Tipo 3 · Hallar el porcentaje (conocidos la parte y el total)</h3>
+<div class="ejemplo">
+<span class="et">Ejemplo 3</span>
+<p>De 50 estudiantes, 32 aprobaron el examen. ¿Qué porcentaje aprobó?</p>
+<div class="paso"><span class="n">1</span> Se conoce la parte (32) y el total (50). Se busca el porcentaje.</div>
+<div class="paso"><span class="n">2</span> Se despeja: % = (parte ÷ total) × 100 = (32 ÷ 50) × 100.</div>
+<div class="paso"><span class="n">3</span> Se calcula: 32 ÷ 50 = 0.64; 0.64 × 100 = 64.</div>
+<p><strong>Respuesta:</strong> aprobó el 64% de los estudiantes.</p>
+</div>
+<div class="caja-tip">
+<strong>Estrategia universal:</strong> identificar primero cuáles dos elementos se conocen y cuál se busca. Una vez claro el tipo, el cálculo es directo. No hay tres fórmulas distintas que memorizar: hay una sola, aplicada de tres maneras.
     </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 1 · Convertir entre formas</h3>
-    <p>Selecciona la conversión correcta.</p>
-
-    <div class="pregunta" data-correcta="b">
-      <div class="enun">1. 60% como decimal es:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">6.0</div>
-        <div class="opcion" data-op="b">0.6</div>
-        <div class="opcion" data-op="c">0.06</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="c">
-      <div class="enun">2. 0.08 como porcentaje es:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">0.8%</div>
-        <div class="opcion" data-op="b">80%</div>
-        <div class="opcion" data-op="c">8%</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="a">
-      <div class="enun">3. 20% como fracción simplificada es:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">1/5</div>
-        <div class="opcion" data-op="b">20/10</div>
-        <div class="opcion" data-op="c">2/5</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-  </div>
-
-  <h2 class="seccion">3. Los tres tipos de problemas de porcentaje</h2>
-  <div class="bloque">
-    <p>Todo problema de porcentaje tiene tres elementos: <strong>la parte</strong>, <strong>el total</strong> y <strong>el porcentaje</strong>. Cuando se conocen dos, el tercero se calcula. Por eso hay <strong>tres tipos</strong> de problemas, según cuál sea el desconocido.</p>
-
-    <div class="triangulo">
-      <div class="tres-tipos">
-        <div class="formula">parte = total × <span class="frac"><span class="num">%</span><span class="den">100</span></span></div>
-        <div class="leyenda">Una sola fórmula. Despejando lo desconocido se resuelven los tres tipos.</div>
-      </div>
-    </div>
-
-    <h3>Tipo 1 · Hallar la parte (conocidos el total y el %)</h3>
-    <div class="ejemplo">
-      <span class="et">Ejemplo 1</span>
-      <p>¿Cuánto es el 15% de $80?</p>
-      <div class="paso"><span class="n">1</span> Se conoce el total ($80) y el porcentaje (15%). Se busca la parte.</div>
-      <div class="paso"><span class="n">2</span> Se aplica la fórmula: parte = 80 × (15/100) = 80 × 0.15.</div>
-      <div class="paso"><span class="n">3</span> Se calcula: 80 × 0.15 = 12.</div>
-      <p><strong>Respuesta:</strong> el 15% de $80 es $12.</p>
-    </div>
-
-    <h3>Tipo 2 · Hallar el total (conocidos la parte y el %)</h3>
-    <div class="ejemplo">
-      <span class="et">Ejemplo 2</span>
-      <p>El 30% de un número es 45. ¿Cuál es ese número?</p>
-      <div class="paso"><span class="n">1</span> Se conoce la parte (45) y el porcentaje (30%). Se busca el total.</div>
-      <div class="paso"><span class="n">2</span> Se despeja: total = parte ÷ (% / 100) = 45 ÷ 0.30.</div>
-      <div class="paso"><span class="n">3</span> Se calcula: 45 ÷ 0.30 = 150.</div>
-      <p><strong>Respuesta:</strong> el número es 150. Verificación: 150 × 0.30 = 45. ✓</p>
-    </div>
-
-    <h3>Tipo 3 · Hallar el porcentaje (conocidos la parte y el total)</h3>
-    <div class="ejemplo">
-      <span class="et">Ejemplo 3</span>
-      <p>De 50 estudiantes, 32 aprobaron el examen. ¿Qué porcentaje aprobó?</p>
-      <div class="paso"><span class="n">1</span> Se conoce la parte (32) y el total (50). Se busca el porcentaje.</div>
-      <div class="paso"><span class="n">2</span> Se despeja: % = (parte ÷ total) × 100 = (32 ÷ 50) × 100.</div>
-      <div class="paso"><span class="n">3</span> Se calcula: 32 ÷ 50 = 0.64; 0.64 × 100 = 64.</div>
-      <p><strong>Respuesta:</strong> aprobó el 64% de los estudiantes.</p>
-    </div>
-
-    <div class="caja-tip">
-      <strong>Estrategia universal:</strong> identificar primero cuáles dos elementos se conocen y cuál se busca. Una vez claro el tipo, el cálculo es directo. No hay tres fórmulas distintas que memorizar: hay una sola, aplicada de tres maneras.
-    </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 2 · Los tres tipos</h3>
-    <p>Escribe el resultado (solo el número) y presiona «Verificar».</p>
-    <div class="pregunta">
-      <div class="enun">1. ¿Cuánto es el 25% de 240?</div>
-      <input type="text" class="campo-texto" id="p1" inputmode="numeric" aria-label="Respuesta de la pregunta 1: veinticinco por ciento de doscientos cuarenta" />
-      <div class="fb" id="fb-p1"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">2. El 40% de un número es 80. El número es:</div>
-      <input type="text" class="campo-texto" id="p2" inputmode="numeric" aria-label="Respuesta de la pregunta 2: el cuarenta por ciento de un número es ochenta, hallar el número" />
-      <div class="fb" id="fb-p2"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">3. ¿Qué porcentaje es 18 de 60?</div>
-      <input type="text" class="campo-texto" id="p3" inputmode="numeric" aria-label="Respuesta de la pregunta 3: dieciocho es qué porcentaje de sesenta" />
-      <div class="fb" id="fb-p3"></div>
-    </div>
-    <button class="btn" id="btn-tipos">Verificar</button>
-  </div>
-
-  <h2 class="seccion">4. Cambio porcentual: aumento y disminución</h2>
-  <div class="bloque">
-    <p>El <strong>cambio porcentual</strong> mide cuánto creció o disminuyó una cantidad, expresado como un porcentaje del valor original. Es la herramienta para decir frases como «el precio subió un 12%» o «la población bajó un 3%».</p>
-
-    <p style="text-align:center; font-size:17px; font-weight:700; color: var(--tema-d);">
+</div>
+<div class="practica">
+<h3>Práctica interactiva 2 · Los tres tipos</h3>
+<p>Escribe el resultado (solo el número) y presiona «Verificar».</p>
+<div class="pregunta">
+<div class="enun">1. ¿Cuánto es el 25% de 240?</div>
+<input aria-label="Respuesta de la pregunta 1: veinticinco por ciento de doscientos cuarenta" class="campo-texto" id="p1" inputmode="numeric" type="text"/>
+<div class="fb" id="fb-p1"></div>
+</div>
+<div class="pregunta">
+<div class="enun">2. El 40% de un número es 80. El número es:</div>
+<input aria-label="Respuesta de la pregunta 2: el cuarenta por ciento de un número es ochenta, hallar el número" class="campo-texto" id="p2" inputmode="numeric" type="text"/>
+<div class="fb" id="fb-p2"></div>
+</div>
+<div class="pregunta">
+<div class="enun">3. ¿Qué porcentaje es 18 de 60?</div>
+<input aria-label="Respuesta de la pregunta 3: dieciocho es qué porcentaje de sesenta" class="campo-texto" id="p3" inputmode="numeric" type="text"/>
+<div class="fb" id="fb-p3"></div>
+</div>
+<button class="btn" id="btn-tipos">Verificar</button>
+</div>
+<h2 class="seccion" id="s-4-cambio-porcentual-aumento-y-disminucion">4. Cambio porcentual: aumento y disminución</h2>
+<div class="bloque">
+<p>El <strong>cambio porcentual</strong> mide cuánto creció o disminuyó una cantidad, expresado como un porcentaje del valor original. Es la herramienta para decir frases como «el precio subió un 12%» o «la población bajó un 3%».</p>
+<p style="text-align:center; font-size:17px; font-weight:700; color: var(--tema-d);">
       cambio % = <span class="frac"><span class="num">valor final − valor inicial</span><span class="den">valor inicial</span></span> × 100
     </p>
-
-    <p>Si el resultado es positivo, hubo <strong>aumento</strong>. Si es negativo, hubo <strong>disminución</strong>. El valor inicial siempre va abajo, porque es el punto de referencia.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 4 · Aumento de precio</span>
-      <p>Un café costaba $4.00 y ahora cuesta $5.00. ¿Cuál fue el aumento porcentual?</p>
-      <div class="paso"><span class="n">1</span> Cambio en valor absoluto: 5.00 − 4.00 = 1.00.</div>
-      <div class="paso"><span class="n">2</span> Se divide entre el inicial: 1.00 ÷ 4.00 = 0.25.</div>
-      <div class="paso"><span class="n">3</span> Se multiplica por 100: 0.25 × 100 = 25.</div>
-      <p><strong>Respuesta:</strong> el precio aumentó un 25%.</p>
+<p>Si el resultado es positivo, hubo <strong>aumento</strong>. Si es negativo, hubo <strong>disminución</strong>. El valor inicial siempre va abajo, porque es el punto de referencia.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 4 · Aumento de precio</span>
+<p>Un café costaba $4.00 y ahora cuesta $5.00. ¿Cuál fue el aumento porcentual?</p>
+<div class="paso"><span class="n">1</span> Cambio en valor absoluto: 5.00 − 4.00 = 1.00.</div>
+<div class="paso"><span class="n">2</span> Se divide entre el inicial: 1.00 ÷ 4.00 = 0.25.</div>
+<div class="paso"><span class="n">3</span> Se multiplica por 100: 0.25 × 100 = 25.</div>
+<p><strong>Respuesta:</strong> el precio aumentó un 25%.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 5 · Disminución</span>
+<p>Una camisa rebajada pasó de $40 a $34. ¿Qué porcentaje de descuento se aplicó?</p>
+<div class="paso"><span class="n">1</span> Cambio: 34 − 40 = −6 (negativo: indica disminución).</div>
+<div class="paso"><span class="n">2</span> Se divide entre el inicial: −6 ÷ 40 = −0.15.</div>
+<div class="paso"><span class="n">3</span> Se multiplica por 100: −0.15 × 100 = −15.</div>
+<p><strong>Respuesta:</strong> el descuento fue del 15%.</p>
+</div>
+<div class="caja-atencion">
+<strong>Atención:</strong> el porcentaje de aumento y el porcentaje de disminución <strong>no son inversos</strong>. Si un precio sube 10% y luego baja 10%, no vuelve al original. Es un error común. Conviene calcular cada cambio sobre el valor vigente en ese momento.
     </div>
+</div>
+<h2 class="seccion" id="s-5-aplicaciones-cotidianas">5. Aplicaciones cotidianas</h2>
+<div class="bloque">
+<h3>Descuentos en la tienda</h3>
+<div class="ejemplo">
+<span class="et">Ejemplo 6</span>
+<p>Unos zapatos cuestan $85 y tienen un descuento del 20%. ¿Cuál es el precio final?</p>
+<div class="paso"><span class="n">1</span> Se calcula el descuento: 85 × 0.20 = $17.</div>
+<div class="paso"><span class="n">2</span> Se resta del precio original: 85 − 17 = $68.</div>
+<p><strong>Respuesta:</strong> el precio final es $68.</p>
+</div>
+<h3>Impuestos sobre la venta</h3>
+<div class="ejemplo">
+<span class="et">Ejemplo 7</span>
+<p>Una compra de $120 tiene un impuesto sobre la venta del 8%. ¿Cuál es el total a pagar?</p>
+<div class="paso"><span class="n">1</span> Se calcula el impuesto: 120 × 0.08 = $9.60.</div>
+<div class="paso"><span class="n">2</span> Se suma al precio: 120 + 9.60 = $129.60.</div>
+<p><strong>Respuesta:</strong> el total es $129.60.</p>
+</div>
+<h3>Propinas</h3>
+<div class="ejemplo">
+<span class="et">Ejemplo 8</span>
+<p>La cuenta de un restaurante es de $48. Se quiere dejar una propina del 15%. ¿Cuánto se paga en total?</p>
+<div class="paso"><span class="n">1</span> Se calcula la propina: 48 × 0.15 = $7.20.</div>
+<div class="paso"><span class="n">2</span> Se suma al total: 48 + 7.20 = $55.20.</div>
+<p><strong>Respuesta:</strong> el pago final es de $55.20.</p>
+</div>
+</div>
+<div class="practica">
+<h3>Práctica interactiva 3 · Aplicaciones cotidianas</h3>
+<p>Selecciona la respuesta correcta.</p>
+<div class="pregunta" data-correcta="b">
+<div class="enun">1. Un suéter de $60 tiene un 30% de descuento. El precio rebajado es:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">$30</div>
+<div class="opcion" data-op="b">$42</div>
+<div class="opcion" data-op="c">$78</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">2. Una factura de $200 tiene un impuesto del 7%. El total a pagar es:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">$214</div>
+<div class="opcion" data-op="b">$186</div>
+<div class="opcion" data-op="c">$207</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="c">
+<div class="enun">3. Un libro pasó de $25 a $20. El descuento fue del:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">5%</div>
+<div class="opcion" data-op="b">10%</div>
+<div class="opcion" data-op="c">20%</div>
+</div>
+<div class="fb"></div>
+</div>
+</div>
+<div class="caja-tarea">
+<h2 id="s-tarea">Tarea</h2><p>El Tema 5 es una sola lección, pero larga: conviene partirla en <strong>tres bloques</strong> y hacer uno por sesión, en este orden. No pase al siguiente hasta que el anterior le salga sin titubear.</p><p><strong>Bloque A · El porcentaje: conversiones y los tres casos fundamentales</strong></p><ul><li>Seis ejercicios de convertir entre porcentaje, decimal y fracción, en los dos sentidos.</li><li>Cinco ejercicios de los tres tipos de problema: hallar la parte, hallar el total y hallar el porcentaje. Escriba en cada uno cuál de los tres es <em>antes</em> de calcular.</li></ul><p><strong>Bloque B · Cambio porcentual: aumento y disminución</strong></p><ul><li>Cuatro ejercicios de cambio porcentual, dos de aumento y dos de disminución, calculando siempre sobre la cantidad <strong>inicial</strong>.</li><li>Dos casos que se prestan a error: un aumento del 20 % seguido de una rebaja del 20 % no devuelve el precio original. Compruébelo con números y explique por qué.</li></ul><p><strong>Bloque C · Descuento, impuesto, propina y aplicaciones mixtas</strong></p><ul><li>Cinco aplicaciones reales: un descuento de tienda, el impuesto de venta de Chicago, una propina de restaurante y dos situaciones que combinen dos de ellas.</li><li>Un recibo real de su casa: recalcule el impuesto a partir del subtotal y compruebe que coincide con lo que le cobraron.</li><li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y busque los ejercicios de <em>porcentajes</em>. Haga una tanda después de cada bloque, no todas al final.</li></ul><p>Tiempo estimado: unos 55 minutos por bloque. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
 
-    <div class="ejemplo">
-      <span class="et">Ejemplo 5 · Disminución</span>
-      <p>Una camisa rebajada pasó de $40 a $34. ¿Qué porcentaje de descuento se aplicó?</p>
-      <div class="paso"><span class="n">1</span> Cambio: 34 − 40 = −6 (negativo: indica disminución).</div>
-      <div class="paso"><span class="n">2</span> Se divide entre el inicial: −6 ÷ 40 = −0.15.</div>
-      <div class="paso"><span class="n">3</span> Se multiplica por 100: −0.15 × 100 = −15.</div>
-      <p><strong>Respuesta:</strong> el descuento fue del 15%.</p>
-    </div>
 
-    <div class="caja-atencion">
-      <strong>Atención:</strong> el porcentaje de aumento y el porcentaje de disminución <strong>no son inversos</strong>. Si un precio sube 10% y luego baja 10%, no vuelve al original. Es un error común. Conviene calcular cada cambio sobre el valor vigente en ese momento.
-    </div>
-  </div>
-
-  <h2 class="seccion">5. Aplicaciones cotidianas</h2>
-  <div class="bloque">
-    <h3>Descuentos en la tienda</h3>
-    <div class="ejemplo">
-      <span class="et">Ejemplo 6</span>
-      <p>Unos zapatos cuestan $85 y tienen un descuento del 20%. ¿Cuál es el precio final?</p>
-      <div class="paso"><span class="n">1</span> Se calcula el descuento: 85 × 0.20 = $17.</div>
-      <div class="paso"><span class="n">2</span> Se resta del precio original: 85 − 17 = $68.</div>
-      <p><strong>Respuesta:</strong> el precio final es $68.</p>
-    </div>
-
-    <h3>Impuestos sobre la venta</h3>
-    <div class="ejemplo">
-      <span class="et">Ejemplo 7</span>
-      <p>Una compra de $120 tiene un impuesto sobre la venta del 8%. ¿Cuál es el total a pagar?</p>
-      <div class="paso"><span class="n">1</span> Se calcula el impuesto: 120 × 0.08 = $9.60.</div>
-      <div class="paso"><span class="n">2</span> Se suma al precio: 120 + 9.60 = $129.60.</div>
-      <p><strong>Respuesta:</strong> el total es $129.60.</p>
-    </div>
-
-    <h3>Propinas</h3>
-    <div class="ejemplo">
-      <span class="et">Ejemplo 8</span>
-      <p>La cuenta de un restaurante es de $48. Se quiere dejar una propina del 15%. ¿Cuánto se paga en total?</p>
-      <div class="paso"><span class="n">1</span> Se calcula la propina: 48 × 0.15 = $7.20.</div>
-      <div class="paso"><span class="n">2</span> Se suma al total: 48 + 7.20 = $55.20.</div>
-      <p><strong>Respuesta:</strong> el pago final es de $55.20.</p>
-    </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 3 · Aplicaciones cotidianas</h3>
-    <p>Selecciona la respuesta correcta.</p>
-
-    <div class="pregunta" data-correcta="b">
-      <div class="enun">1. Un suéter de $60 tiene un 30% de descuento. El precio rebajado es:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">$30</div>
-        <div class="opcion" data-op="b">$42</div>
-        <div class="opcion" data-op="c">$78</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="a">
-      <div class="enun">2. Una factura de $200 tiene un impuesto del 7%. El total a pagar es:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">$214</div>
-        <div class="opcion" data-op="b">$186</div>
-        <div class="opcion" data-op="c">$207</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="c">
-      <div class="enun">3. Un libro pasó de $25 a $20. El descuento fue del:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">5%</div>
-        <div class="opcion" data-op="b">10%</div>
-        <div class="opcion" data-op="c">20%</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-  </div>
-
-  <h2 class="seccion">6. Práctica guiada en clase</h2>
-  <div class="bloque">
-    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 1 · Las tres caras del porcentaje</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          El docente escribe nueve cantidades en la pizarra (tres porcentajes, tres decimales, tres fracciones). Los estudiantes las convierten a las otras dos formas en su cuaderno y comparten resultados al final.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          En una hoja compartida con tres columnas («%», «decimal», «fracción»), los estudiantes completan las nueve filas. Una vez completas, se revisan en conjunto los casos que generaron dudas.
-        </div>
-      </div>
-    </div>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 2 · Identificar el tipo</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          El docente lee diez problemas de porcentaje. Antes de resolverlos, los estudiantes los clasifican: tipo 1 (parte), tipo 2 (total) o tipo 3 (porcentaje). Luego, en parejas, los resuelven todos.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          Las diez situaciones aparecen en una encuesta de selección («tipo 1», «tipo 2» o «tipo 3»). Tras clasificarlas, los estudiantes resuelven en una hoja compartida y comparan respuestas.
-        </div>
-      </div>
-    </div>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 3 · Compras simuladas</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          Cada grupo recibe una «lista de compras» con precios y porcentajes de descuento o impuesto. Calculan el precio final de cada artículo y el total general. Comparan resultados y discuten estrategias mentales rápidas.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          En salas pequeñas, los grupos trabajan en una hoja compartida con la lista. Calculan precios finales con descuento e impuesto y entregan el total al regresar al pleno.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="caja-tarea">
-    <h2>Tarea asincrónica</h2>
-    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
-    <ul>
-      <li>Seis ejercicios de convertir entre porcentaje, decimal y fracción.</li>
-      <li>Cinco ejercicios de los tres tipos de problemas de porcentaje (parte, total, porcentaje).</li>
-      <li>Cuatro ejercicios de cambio porcentual (aumento y disminución).</li>
-      <li>Cinco aplicaciones reales: descuentos, propinas e impuestos.</li>
-    </ul>
-    <p>La plataforma ofrece retroalimentación paso a paso en cada intento. Tiempo estimado: 55 minutos.</p>
-  </div>
-
-  <div class="quiz">
-    <h2>Quiz de la lección 5.1</h2>
-    <p>Doce preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 8 respuestas correctas.</p>
-    <div id="quiz-cuerpo"></div>
-    <div id="resultado-quiz"></div>
-    <button class="btn" id="btn-corregir">Corregir quiz</button>
-    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
-  </div>
-
-  <div class="rubrica">
-    <h2>Rúbrica analítica de la lección</h2>
-    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
-    <table class="tabla-rubrica">
-      <thead>
-        <tr>
-          <th>Criterio</th>
-          <th>Inicial (1)</th>
-          <th>En desarrollo (2)</th>
-          <th>Competente (3)</th>
-          <th>Destacado (4)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Conversiones entre formas</td>
-          <td>Confunde decimales con porcentajes.</td>
-          <td>Convierte con apoyo.</td>
-          <td>Convierte entre las tres formas sin ayuda.</td>
-          <td>Convierte con fluidez y memoriza los porcentajes clave.</td>
-        </tr>
-        <tr>
-          <td>Tres tipos de problemas</td>
-          <td>No identifica cuál tipo se está resolviendo.</td>
-          <td>Identifica el tipo con apoyo.</td>
-          <td>Identifica y resuelve los tres tipos correctamente.</td>
-          <td>Resuelve, verifica y explica usando una sola fórmula.</td>
-        </tr>
-        <tr>
-          <td>Cambio porcentual</td>
-          <td>Confunde aumento con disminución.</td>
-          <td>Calcula con apoyo en casos simples.</td>
-          <td>Calcula aumento y disminución correctamente.</td>
-          <td>Calcula e interpreta el signo en cualquier contexto.</td>
-        </tr>
-        <tr>
-          <td>Aplicaciones reales</td>
-          <td>No completa cálculos de descuento o impuesto.</td>
-          <td>Calcula descuentos simples con ayuda.</td>
-          <td>Resuelve descuentos, propinas e impuestos correctamente.</td>
-          <td>Resuelve y combina descuento con impuesto en una misma compra.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="cierre">
-    <h2>Cierre y enlace con la próxima lección</h2>
-    <p>En esta lección las proporciones de la 4.2 se aplicaron al caso particular más usado en la vida cotidiana: las razones <strong>por cada 100</strong>. Quedaron dominadas las conversiones entre porcentaje, decimal y fracción; los <strong>tres tipos</strong> de problemas con una sola fórmula; el <strong>cambio porcentual</strong>; y las aplicaciones a descuentos, propinas e impuestos.</p>
-    <p>En la <strong>Lección 6.1 · Matemáticas financieras: interés simple y depreciación</strong> se abrirá el Tema 6 con un contenido <strong>NUEVO</strong>: el uso de los porcentajes a lo largo del tiempo. El interés simple muestra cómo crece un capital con una tasa fija anual; la depreciación, cómo pierde valor un activo con una tasa fija anual. Las dos ideas comparten la misma fórmula, solo cambia el signo del cambio.</p>
-  </div>
-
-  <footer>
-    Spanish ASE Math · Nivel 2 · Lección 5.1 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
-  </footer>
 
 </div>
-
+<div class="quiz">
+<h2 id="s-quiz-de-la-leccion-5-1">Quiz de la lección 5.1</h2>
+<p>Doce preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+<div id="quiz-cuerpo"></div>
+<div id="resultado-quiz"></div>
+<button class="btn" id="btn-corregir">Corregir quiz</button>
+<button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+</div>
+<div class="rubrica">
+<h2 id="s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</h2>
+<p>Cuatro criterios evaluados en cuatro niveles de desempeño. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<table class="tabla-rubrica">
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Inicial (1)</th>
+<th>En desarrollo (2)</th>
+<th>Competente (3)</th>
+<th>Destacado (4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversiones entre formas</td>
+<td>Confunde decimales con porcentajes.</td>
+<td>Convierte con apoyo.</td>
+<td>Convierte entre las tres formas sin ayuda.</td>
+<td>Convierte con fluidez y memoriza los porcentajes clave.</td>
+</tr>
+<tr>
+<td>Tres tipos de problemas</td>
+<td>No identifica cuál tipo se está resolviendo.</td>
+<td>Identifica el tipo con apoyo.</td>
+<td>Identifica y resuelve los tres tipos correctamente.</td>
+<td>Resuelve, verifica y explica usando una sola fórmula.</td>
+</tr>
+<tr>
+<td>Cambio porcentual</td>
+<td>Confunde aumento con disminución.</td>
+<td>Calcula con apoyo en casos simples.</td>
+<td>Calcula aumento y disminución correctamente.</td>
+<td>Calcula e interpreta el signo en cualquier contexto.</td>
+</tr>
+<tr>
+<td>Aplicaciones reales</td>
+<td>No completa cálculos de descuento o impuesto.</td>
+<td>Calcula descuentos simples con ayuda.</td>
+<td>Resuelve descuentos, propinas e impuestos correctamente.</td>
+<td>Resuelve y combina descuento con impuesto en una misma compra.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cierre">
+<h2 id="s-cierre-y-enlace-con-la-proxima-leccion">Cierre y enlace con la próxima lección</h2>
+<p>En esta lección las proporciones de la 4.2 se aplicaron al caso particular más usado en la vida cotidiana: las razones <strong>por cada 100</strong>. Quedaron dominadas las conversiones entre porcentaje, decimal y fracción; los <strong>tres tipos</strong> de problemas con una sola fórmula; el <strong>cambio porcentual</strong>; y las aplicaciones a descuentos, propinas e impuestos.</p>
+<p>En la <strong>Lección 6.1 · Matemáticas financieras: interés simple y depreciación</strong> se abrirá el Tema 6 con un contenido <strong>NUEVO</strong>: el uso de los porcentajes a lo largo del tiempo. El interés simple muestra cómo crece un capital con una tasa fija anual; la depreciación, cómo pierde valor un activo con una tasa fija anual. Las dos ideas comparten la misma fórmula, solo cambia el signo del cambio.</p>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 5 · Lección 5.1</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
+</div>
 <script>
 (function () {
   /* ---- Generar la rejilla 10x10 con 25 celdas llenas ---- */

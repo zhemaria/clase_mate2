@@ -1,14 +1,17 @@
 <!DOCTYPE html>
+<!-- Lección 6.3 · Matemáticas Nivel 2 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <!-- Lección 6.3 · Conversiones entre el sistema inglés y el métrico · Spanish ASE Math, Nivel 2 · © José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago. Licencia Creative Commons CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es) -->
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Lección 6.3 · Conversiones entre el sistema inglés y el métrico</title>
-<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
-<meta name="license" content="CC BY-NC-SA 4.0">
-<meta name="dcterms.license" content="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
-<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<meta content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago" name="author"/>
+<meta content="CC BY-NC-SA 4.0" name="license"/>
+<meta content="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" name="dcterms.license"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root {
     --tema:   #00695c;
@@ -164,30 +167,7 @@
   }
   .btn:hover { background: var(--tema-d); }
   .btn.sec { background: #546e7a; }
-  .btn.sec:hover { background: #37474f; }
-
-  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
-  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 12px 16px; font-size: 15px; }
-  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
-  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
-  .modo h4 { margin: 0 0 6px; font-size: 15px; }
-  .modo-pres h4 { color: #0d47a1; }
-  .modo-virt h4 { color: #4a148c; }
-
-  .actividad { margin-bottom: 22px; }
-  .actividad > h3 {
-    color: var(--tema-d); font-size: 16px; margin: 0 0 8px;
-    background: var(--tema-soft); padding: 7px 14px; border-radius: 7px;
-  }
-
-  details.docente {
-    background: #ede7f6; border-left: 5px solid #5e35b1; border-radius: 0 8px 8px 0;
-    padding: 8px 16px; margin: 12px 0; font-size: 15px;
-  }
-  details.docente summary { cursor: pointer; font-weight: 700; color: #4527a0; }
-  details.docente[open] summary { margin-bottom: 6px; }
-
-  .enlace-act {
+  .btn.sec:hover { background: #37474f; }.enlace-act {
     display: inline-block; background: #fff; border: 2px solid var(--tema);
     color: var(--tema-d); font-weight: 700; padding: 8px 16px; border-radius: 8px;
     text-decoration: none; margin: 6px 8px 6px 0;
@@ -249,357 +229,284 @@
   }
   @media print {
     body { background: #fff; }
-    .btn, .practica .fb { display: none; }
-    details.docente { display: none; }
+    .btn, .practica .fb { display: none; }}
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:#fff; border:1px solid #d8dde3; border-left:6px solid var(--tema);
+    border-radius:10px; padding:16px 20px; margin:24px 0;
   }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--tema-d); border:0; padding:0; background:none; }
+  .indice ol{ margin:0; padding-left:1.35em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--tema-d); text-decoration:underline; }
+  .indice a:hover{ color:var(--tema); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--tema-d); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--tema); color:#fff; }
+  footer a{ color:inherit; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
 <div class="contenedor">
-  <header class="principal">
-    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 6 · Matemáticas financieras y conversiones de medidas</div>
-    <h1>Lección 6.3 · Conversiones entre el sistema inglés y el métrico</h1>
-    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
-  </header>
-
-  <div class="caja-objetivos">
-    <h2>Objetivos de la lección</h2>
-    <ul>
-      <li>Convertir longitudes, pesos y capacidades entre el sistema inglés y el métrico con los factores de conversión más usados.</li>
-      <li>Aplicar el método de la fracción de conversión: multiplicar por 1 y cancelar unidades.</li>
-      <li>Resolver conversiones de varios pasos, por ejemplo, de pies a metros o de millas a metros.</li>
-      <li>Convertir temperaturas entre grados Fahrenheit y Celsius.</li>
-      <li>Aplicar las conversiones en situaciones de salud, trabajo y viaje, con una aproximación razonable.</li>
-    </ul>
-  </div>
-
-  <div class="bloque">
-    <p><strong>Conexión con las lecciones anteriores.</strong> En el Tema 4 se trabajó con razones y proporciones; en las Lecciones 6.1 y 6.2, con cantidades que cambian en una proporción fija. Convertir unidades es otra forma de razonamiento proporcional: una medida se multiplica por una razón de equivalencia, el <strong>factor de conversión</strong>.</p>
-  </div>
-
-  <h2 class="seccion">1. En el consultorio y en la farmacia</h2>
-  <div class="bloque">
-    <p>En la consulta, el médico anotó el peso de la señora Morales: <strong>165 libras</strong>. Pero el formulario de la farmacia pide el peso en <strong>kilogramos</strong>. ¿Cómo se convierte?</p>
-    <p>En Estados Unidos se usa el sistema inglés (llamado oficialmente <em>U.S. customary system</em>): pulgadas, pies, millas, libras, galones. En casi todo el resto del mundo, incluidos México y los demás países de América Latina, se usa el sistema métrico: centímetros, metros, kilómetros, gramos, litros. Quien vive entre los dos mundos necesita pasar de uno a otro.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 1 · El peso para la farmacia</span>
-      <p>Convertir 165 lb a kilogramos, sabiendo que 1 lb ≈ 454 g y que 1 kg = 1,000 g.</p>
-      <div class="paso"><span class="n">1</span> De libras a gramos: 165 × 454 = 74,910 g.</div>
-      <div class="paso"><span class="n">2</span> De gramos a kilogramos: 74,910 ÷ 1,000 = 74.91 kg.</div>
-      <div class="paso"><span class="n">3</span> Comprobación con la regla práctica «1 kg es un poco más de 2 lb»: 165 ÷ 2.2 = 75. ✔</div>
-      <p><strong>Respuesta:</strong> la señora Morales pesa unos 74.9 kg.</p>
+<header class="principal">
+<div class="ruta">Spanish ASE Math · Nivel 2 · Tema 6 · Matemáticas financieras y conversiones de medidas</div>
+<h1>Lección 6.3 · Conversiones entre el sistema inglés y el métrico</h1>
+<div class="meta">Unas 4 horas, a su ritmo · NRS 2–3</div>
+</header>
+<div class="caja-objetivos">
+<h2>Objetivos de la lección</h2>
+<ul>
+<li>Convertir longitudes, pesos y capacidades entre el sistema inglés y el métrico con los factores de conversión más usados.</li>
+<li>Aplicar el método de la fracción de conversión: multiplicar por 1 y cancelar unidades.</li>
+<li>Resolver conversiones de varios pasos, por ejemplo, de pies a metros o de millas a metros.</li>
+<li>Convertir temperaturas entre grados Fahrenheit y Celsius.</li>
+<li>Aplicar las conversiones en situaciones de salud, trabajo y viaje, con una aproximación razonable.</li>
+</ul>
+</div><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-1-en-el-consultorio-y-en-la-farmacia">1. En el consultorio y en la farmacia</a></li><li><a href="#s-2-la-tabla-de-factores-de-conversion">2. La tabla de factores de conversión</a></li><li><a href="#s-3-el-metodo-de-la-fraccion-de-conversion">3. El método de la fracción de conversión</a></li><li><a href="#s-4-la-temperatura-un-caso-especial">4. La temperatura: un caso especial</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-la-leccion-6-3">Quiz de la lección 6.3</a></li><li><a href="#s-rubrica-de-conversiones">Rúbrica de conversiones</a></li><li><a href="#s-cierre-de-la-leccion-6-3-y-del-tema-6">Cierre de la lección 6.3 y del Tema 6</a></li></ol></nav>
+<div class="bloque">
+<p><strong>Conexión con las lecciones anteriores.</strong> En el Tema 4 se trabajó con razones y proporciones; en las Lecciones 6.1 y 6.2, con cantidades que cambian en una proporción fija. Convertir unidades es otra forma de razonamiento proporcional: una medida se multiplica por una razón de equivalencia, el <strong>factor de conversión</strong>.</p>
+</div>
+<h2 class="seccion" id="s-1-en-el-consultorio-y-en-la-farmacia">1. En el consultorio y en la farmacia</h2>
+<div class="bloque">
+<p>En la consulta, el médico anotó el peso de la señora Morales: <strong>165 libras</strong>. Pero el formulario de la farmacia pide el peso en <strong>kilogramos</strong>. ¿Cómo se convierte?</p>
+<p>En Estados Unidos se usa el sistema inglés (llamado oficialmente <em>U.S. customary system</em>): pulgadas, pies, millas, libras, galones. En casi todo el resto del mundo, incluidos México y los demás países de América Latina, se usa el sistema métrico: centímetros, metros, kilómetros, gramos, litros. Quien vive entre los dos mundos necesita pasar de uno a otro.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 1 · El peso para la farmacia</span>
+<p>Convertir 165 lb a kilogramos, sabiendo que 1 lb ≈ 454 g y que 1 kg = 1,000 g.</p>
+<div class="paso"><span class="n">1</span> De libras a gramos: 165 × 454 = 74,910 g.</div>
+<div class="paso"><span class="n">2</span> De gramos a kilogramos: 74,910 ÷ 1,000 = 74.91 kg.</div>
+<div class="paso"><span class="n">3</span> Comprobación con la regla práctica «1 kg es un poco más de 2 lb»: 165 ÷ 2.2 = 75. ✔</div>
+<p><strong>Respuesta:</strong> la señora Morales pesa unos 74.9 kg.</p>
+</div>
+</div>
+<h2 class="seccion" id="s-2-la-tabla-de-factores-de-conversion">2. La tabla de factores de conversión</h2>
+<div class="bloque">
+<div class="comparacion">
+<div class="tabla-wrap" style="flex:1;min-width:270px;">
+<table class="tabla-fin">
+<caption>Entre los dos sistemas</caption>
+<thead><tr><th scope="col">Magnitud</th><th scope="col">Equivalencia</th></tr></thead>
+<tbody>
+<tr><td>Longitud</td><td>1 in = 2.54 cm</td></tr>
+<tr><td>Longitud</td><td>1 mi ≈ 1.609 km</td></tr>
+<tr><td>Peso</td><td>1 lb ≈ 454 g</td></tr>
+<tr><td>Capacidad</td><td>1 gal ≈ 3.785 L</td></tr>
+</tbody>
+</table>
+</div>
+<div class="tabla-wrap" style="flex:1;min-width:270px;">
+<table class="tabla-fin">
+<caption>Dentro de cada sistema</caption>
+<thead><tr><th scope="col">Sistema inglés</th><th scope="col">Sistema métrico</th></tr></thead>
+<tbody>
+<tr><td>1 ft = 12 in</td><td>1 m = 100 cm</td></tr>
+<tr><td>1 yd = 3 ft</td><td>1 km = 1,000 m</td></tr>
+<tr><td>1 mi = 5,280 ft</td><td>1 kg = 1,000 g</td></tr>
+<tr><td>1 lb = 16 oz · 1 gal = 4 qt</td><td>1 L = 1,000 mL</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tabla-wrap">
+<table class="tabla-fin bilingue">
+<caption>Vocabulario bilingüe de las unidades</caption>
+<thead><tr><th scope="col">Español (abreviatura)</th><th scope="col">Inglés</th></tr></thead>
+<tbody>
+<tr><td>pulgada (in) · pie (ft) · yarda (yd) · milla (mi)</td><td>inch · foot · yard · mile</td></tr>
+<tr><td>libra (lb) · onza (oz)</td><td>pound · ounce</td></tr>
+<tr><td>galón (gal) · cuarto (qt)</td><td>gallon · quart</td></tr>
+<tr><td>factor de conversión</td><td>conversion factor</td></tr>
+</tbody>
+</table>
+</div>
+<div class="caja-tip">
+<strong>Reglas prácticas para estimar:</strong> un metro es un poco más que una yarda · un kilogramo es un poco más de 2 libras · un litro es un poco más que un cuarto de galón · un kilómetro es un poco más de media milla (unas 0.6 mi). Sirven para comprobar si un resultado tiene sentido.
     </div>
-  </div>
-
-  <h2 class="seccion">2. La tabla de factores de conversión</h2>
-  <div class="bloque">
-    <div class="comparacion">
-      <div class="tabla-wrap" style="flex:1;min-width:270px;">
-        <table class="tabla-fin">
-          <caption>Entre los dos sistemas</caption>
-          <thead><tr><th scope="col">Magnitud</th><th scope="col">Equivalencia</th></tr></thead>
-          <tbody>
-            <tr><td>Longitud</td><td>1 in = 2.54 cm</td></tr>
-            <tr><td>Longitud</td><td>1 mi ≈ 1.609 km</td></tr>
-            <tr><td>Peso</td><td>1 lb ≈ 454 g</td></tr>
-            <tr><td>Capacidad</td><td>1 gal ≈ 3.785 L</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="tabla-wrap" style="flex:1;min-width:270px;">
-        <table class="tabla-fin">
-          <caption>Dentro de cada sistema</caption>
-          <thead><tr><th scope="col">Sistema inglés</th><th scope="col">Sistema métrico</th></tr></thead>
-          <tbody>
-            <tr><td>1 ft = 12 in</td><td>1 m = 100 cm</td></tr>
-            <tr><td>1 yd = 3 ft</td><td>1 km = 1,000 m</td></tr>
-            <tr><td>1 mi = 5,280 ft</td><td>1 kg = 1,000 g</td></tr>
-            <tr><td>1 lb = 16 oz · 1 gal = 4 qt</td><td>1 L = 1,000 mL</td></tr>
-          </tbody>
-        </table>
-      </div>
+</div>
+<h2 class="seccion" id="s-3-el-metodo-de-la-fraccion-de-conversion">3. El método de la fracción de conversión</h2>
+<div class="bloque">
+<p>Como 1 in y 2.54 cm son <strong>la misma longitud</strong>, las fracciones siguientes valen exactamente 1:</p>
+<div class="formulas-tres">
+<div class="formula-card"><div class="formula">2.54 cm / 1 in</div><div class="leyenda">Para pasar de pulgadas a centímetros</div></div>
+<div class="formula-card"><div class="formula">1 in / 2.54 cm</div><div class="leyenda">Para pasar de centímetros a pulgadas</div></div>
+</div>
+<p>Multiplicar por 1 no cambia la cantidad, solo la unidad en que se expresa. La clave está en elegir la fracción correcta.</p>
+<div class="caja-tip">
+<strong>Regla de oro:</strong> la unidad que se quiere eliminar va <strong>abajo</strong> en la fracción. Así se cancela con la unidad de arriba, y queda la unidad que se busca.
     </div>
-
-    <div class="tabla-wrap">
-      <table class="tabla-fin bilingue">
-        <caption>Vocabulario bilingüe de las unidades</caption>
-        <thead><tr><th scope="col">Español (abreviatura)</th><th scope="col">Inglés</th></tr></thead>
-        <tbody>
-          <tr><td>pulgada (in) · pie (ft) · yarda (yd) · milla (mi)</td><td>inch · foot · yard · mile</td></tr>
-          <tr><td>libra (lb) · onza (oz)</td><td>pound · ounce</td></tr>
-          <tr><td>galón (gal) · cuarto (qt)</td><td>gallon · quart</td></tr>
-          <tr><td>factor de conversión</td><td>conversion factor</td></tr>
-        </tbody>
-      </table>
+<div class="ejemplo">
+<span class="et">Ejemplo 2 · De pulgadas a centímetros</span>
+<p>Una regla escolar mide 12 in. ¿Cuántos centímetros son?</p>
+<div class="paso"><span class="n">1</span> Se quiere eliminar «in», así que va abajo: 12 in × (2.54 cm / 1 in).</div>
+<div class="paso"><span class="n">2</span> Se cancelan las pulgadas: 12 × 2.54 = 30.48 cm.</div>
+<p><strong>Respuesta:</strong> 30.48 cm.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 3 · De kilómetros a millas</span>
+<p>Una carrera de 10 km, ¿cuántas millas mide?</p>
+<div class="paso"><span class="n">1</span> Se quiere eliminar «km», así que va abajo: 10 km × (1 mi / 1.609 km).</div>
+<div class="paso"><span class="n">2</span> 10 ÷ 1.609 ≈ 6.2 mi.</div>
+<div class="paso"><span class="n">3</span> Comprobación: 1 km ≈ 0.6 mi, así que 10 km ≈ 6 mi. ✔</div>
+<p><strong>Respuesta:</strong> unas 6.2 millas.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 4 · De galones a litros</span>
+<p>Un garrafón de agua de 3 gal, ¿cuántos litros contiene?</p>
+<div class="paso"><span class="n">1</span> 3 gal × (3.785 L / 1 gal) = 11.355 L.</div>
+<p><strong>Respuesta:</strong> unos 11.4 L.</p>
+</div>
+<h3>Conversiones de varios pasos</h3>
+<p>Cuando no hay un factor directo, se encadenan fracciones. Cada una cancela una unidad, hasta llegar a la que se busca.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 5 · De pies a metros</span>
+<p>Una persona mide 6 ft. ¿Cuántos metros son?</p>
+<div class="paso"><span class="n">1</span> Camino: pies → pulgadas → centímetros → metros.</div>
+<div class="paso"><span class="n">2</span> 6 ft × (12 in / 1 ft) × (2.54 cm / 1 in) × (1 m / 100 cm).</div>
+<div class="paso"><span class="n">3</span> 6 × 12 = 72 in; 72 × 2.54 = 182.88 cm; 182.88 ÷ 100 = 1.8288 m.</div>
+<p><strong>Respuesta:</strong> unos 1.83 m.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 6 · De millas a metros</span>
+<p>¿Cuántos metros hay en 2 millas?</p>
+<div class="paso"><span class="n">1</span> Primer paso: 2 mi × (1.609 km / 1 mi) = 3.218 km.</div>
+<div class="paso"><span class="n">2</span> Segundo paso: 3.218 km × (1,000 m / 1 km) = 3,218 m.</div>
+<p><strong>Respuesta:</strong> 3,218 m.</p>
+</div>
+<div class="caja-atencion">
+<strong>Error frecuente:</strong> poner la fracción al revés. Convertir 10 km a millas multiplicando por 1.609 da 16.09 «millas», un número mayor, cuando las millas son más largas que los kilómetros. Si la unidad nueva es más grande, el número debe salir más pequeño.
     </div>
+</div>
+<h2 class="seccion" id="s-4-la-temperatura-un-caso-especial">4. La temperatura: un caso especial</h2>
+<div class="bloque">
+<p>La temperatura no se convierte con un solo factor, porque los dos sistemas no empiezan en el mismo cero: el agua se congela a 0 °C, que equivalen a 32 °F. Por eso primero se resta 32 (dentro del paréntesis, como en PEMDAS del Tema 3) y después se multiplica.</p>
+<div class="formulas-tres">
+<div class="formula-card"><div class="formula">°C = (°F − 32) × 5 ÷ 9</div><div class="leyenda">De Fahrenheit a Celsius</div></div>
+<div class="formula-card"><div class="formula">°F = °C × 9 ÷ 5 + 32</div><div class="leyenda">De Celsius a Fahrenheit</div></div>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 7 · La temperatura del cuerpo</span>
+<p>El termómetro marca 98.6 °F. ¿Cuántos grados Celsius son?</p>
+<div class="paso"><span class="n">1</span> Paréntesis: 98.6 − 32 = 66.6.</div>
+<div class="paso"><span class="n">2</span> 66.6 × 5 ÷ 9 = 333 ÷ 9 = 37.</div>
+<p><strong>Respuesta:</strong> 37 °C, la temperatura normal del cuerpo.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 8 · Un día agradable</span>
+<p>El pronóstico anuncia 20 °C. ¿Cuántos grados Fahrenheit son?</p>
+<div class="paso"><span class="n">1</span> 20 × 9 ÷ 5 = 36.</div>
+<div class="paso"><span class="n">2</span> 36 + 32 = 68.</div>
+<p><strong>Respuesta:</strong> 68 °F.</p>
+</div>
+<div class="practica" id="prac-1">
+<h3>Práctica interactiva 1 · Convertir</h3>
+<p>Escribe solo el número, redondeado a una o dos cifras decimales, y presiona «Verificar».</p>
+<div class="fila-num">1. 20 in = <input aria-label="Pregunta 1: centímetros" class="campo-texto" data-ans="50.8" data-pista="20 × 2.54." data-tol="0.1" id="c1" inputmode="decimal" type="text"/> cm
+        <div aria-live="polite" class="fb" id="fb-c1"></div></div>
+<div class="fila-num">2. 5 mi = <input aria-label="Pregunta 2: kilómetros" class="campo-texto" data-ans="8.045" data-pista="5 × 1.609." data-tol="0.06" id="c2" inputmode="decimal" type="text"/> km
+        <div aria-live="polite" class="fb" id="fb-c2"></div></div>
+<div class="fila-num">3. 150 lb = <input aria-label="Pregunta 3: kilogramos" class="campo-texto" data-ans="68.1" data-pista="150 × 454 da gramos; luego divide entre 1,000." data-tol="0.1" id="c3" inputmode="decimal" type="text"/> kg
+        <div aria-live="polite" class="fb" id="fb-c3"></div></div>
+<div class="fila-num">4. 4 gal = <input aria-label="Pregunta 4: litros" class="campo-texto" data-ans="15.14" data-pista="4 × 3.785." data-tol="0.1" id="c4" inputmode="decimal" type="text"/> L
+        <div aria-live="polite" class="fb" id="fb-c4"></div></div>
+<div class="fila-num">5. 10 ft = <input aria-label="Pregunta 5: metros" class="campo-texto" data-ans="3.048" data-pista="pies → pulgadas → centímetros → metros." data-tol="0.02" id="c5" inputmode="decimal" type="text"/> m
+        <div aria-live="polite" class="fb" id="fb-c5"></div></div>
+<div class="fila-num">6. 86 °F = <input aria-label="Pregunta 6: grados Celsius" class="campo-texto" data-ans="30" data-pista="primero 86 − 32; después × 5 ÷ 9." data-tol="0.1" id="c6" inputmode="decimal" type="text"/> °C
+        <div aria-live="polite" class="fb" id="fb-c6"></div></div>
+<button class="btn" data-verificar="prac-1" type="button">Verificar</button>
+</div>
+<div class="practica">
+<h3>Práctica interactiva 2 · Pensar antes de calcular</h3>
+<p>Selecciona la respuesta correcta. Puedes usar el teclado: tabulador para moverte y Enter para elegir.</p>
+<div class="pregunta" data-correcta="b" data-pista="La unidad que se quiere eliminar va abajo.">
+<div class="enun">1. Para convertir 50 km a millas, ¿por qué fracción se multiplica?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">1.609 km / 1 mi</div>
+<div class="opcion" data-op="b">1 mi / 1.609 km</div>
+<div class="opcion" data-op="c">1 km / 1.609 mi</div>
+</div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="b" data-pista="Un kilogramo es un poco más de 2 libras.">
+<div class="enun">2. ¿Cuál es la estimación más razonable para 10 kg?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">Unas 5 lb</div>
+<div class="opcion" data-op="b">Unas 22 lb</div>
+<div class="opcion" data-op="c">Unas 100 lb</div>
+</div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="b" data-pista="Un galón tiene unos 3.8 litros.">
+<div class="enun">3. Una botella de refresco de 2 L contiene…</div>
+<div class="opciones">
+<div class="opcion" data-op="a">más de un galón.</div>
+<div class="opcion" data-op="b">un poco más de medio galón.</div>
+<div class="opcion" data-op="c">un cuarto de galón.</div>
+</div>
+<div aria-live="polite" class="fb"></div>
+</div>
+</div>
+</div>
 
-    <div class="caja-tip">
-      <strong>Reglas prácticas para estimar:</strong> un metro es un poco más que una yarda · un kilogramo es un poco más de 2 libras · un litro es un poco más que un cuarto de galón · un kilómetro es un poco más de media milla (unas 0.6 mi). Sirven para comprobar si un resultado tiene sentido.
-    </div>
-  </div>
 
-  <h2 class="seccion">3. El método de la fracción de conversión</h2>
-  <div class="bloque">
-    <p>Como 1 in y 2.54 cm son <strong>la misma longitud</strong>, las fracciones siguientes valen exactamente 1:</p>
-    <div class="formulas-tres">
-      <div class="formula-card"><div class="formula">2.54 cm / 1 in</div><div class="leyenda">Para pasar de pulgadas a centímetros</div></div>
-      <div class="formula-card"><div class="formula">1 in / 2.54 cm</div><div class="leyenda">Para pasar de centímetros a pulgadas</div></div>
-    </div>
-    <p>Multiplicar por 1 no cambia la cantidad, solo la unidad en que se expresa. La clave está en elegir la fracción correcta.</p>
-    <div class="caja-tip">
-      <strong>Regla de oro:</strong> la unidad que se quiere eliminar va <strong>abajo</strong> en la fracción. Así se cancela con la unidad de arriba, y queda la unidad que se busca.
-    </div>
+<div class="caja-tarea">
+<h2 id="s-tarea">Tarea</h2><p>Para hacer por su cuenta, con el cuaderno abierto:</p><ul><li>Diez conversiones inglés ↔ métrico de longitud, peso y capacidad. En cada una escriba la <strong>fracción de conversión completa</strong>, no solo el resultado: la unidad que se elimina va abajo.</li><li>Cuatro conversiones de varios pasos, en las que hace falta encadenar dos fracciones de conversión.</li><li>Cuatro conversiones de temperatura, dos en cada sentido, con las dos fórmulas.</li><li>Dos situaciones de farmacia o consultorio: una estatura en pies y pulgadas pasada a centímetros, y un peso en libras pasado a kilogramos para calcular una dosis.</li><li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y busque los ejercicios de <em>medidas</em> y <em>conversión de unidades</em>. Practique primero dentro de un mismo sistema y después entre los dos.</li></ul><p>Tiempo estimado: 60 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
 
-    <div class="ejemplo">
-      <span class="et">Ejemplo 2 · De pulgadas a centímetros</span>
-      <p>Una regla escolar mide 12 in. ¿Cuántos centímetros son?</p>
-      <div class="paso"><span class="n">1</span> Se quiere eliminar «in», así que va abajo: 12 in × (2.54 cm / 1 in).</div>
-      <div class="paso"><span class="n">2</span> Se cancelan las pulgadas: 12 × 2.54 = 30.48 cm.</div>
-      <p><strong>Respuesta:</strong> 30.48 cm.</p>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 3 · De kilómetros a millas</span>
-      <p>Una carrera de 10 km, ¿cuántas millas mide?</p>
-      <div class="paso"><span class="n">1</span> Se quiere eliminar «km», así que va abajo: 10 km × (1 mi / 1.609 km).</div>
-      <div class="paso"><span class="n">2</span> 10 ÷ 1.609 ≈ 6.2 mi.</div>
-      <div class="paso"><span class="n">3</span> Comprobación: 1 km ≈ 0.6 mi, así que 10 km ≈ 6 mi. ✔</div>
-      <p><strong>Respuesta:</strong> unas 6.2 millas.</p>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 4 · De galones a litros</span>
-      <p>Un garrafón de agua de 3 gal, ¿cuántos litros contiene?</p>
-      <div class="paso"><span class="n">1</span> 3 gal × (3.785 L / 1 gal) = 11.355 L.</div>
-      <p><strong>Respuesta:</strong> unos 11.4 L.</p>
-    </div>
-
-    <h3>Conversiones de varios pasos</h3>
-    <p>Cuando no hay un factor directo, se encadenan fracciones. Cada una cancela una unidad, hasta llegar a la que se busca.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 5 · De pies a metros</span>
-      <p>Una persona mide 6 ft. ¿Cuántos metros son?</p>
-      <div class="paso"><span class="n">1</span> Camino: pies → pulgadas → centímetros → metros.</div>
-      <div class="paso"><span class="n">2</span> 6 ft × (12 in / 1 ft) × (2.54 cm / 1 in) × (1 m / 100 cm).</div>
-      <div class="paso"><span class="n">3</span> 6 × 12 = 72 in; 72 × 2.54 = 182.88 cm; 182.88 ÷ 100 = 1.8288 m.</div>
-      <p><strong>Respuesta:</strong> unos 1.83 m.</p>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 6 · De millas a metros</span>
-      <p>¿Cuántos metros hay en 2 millas?</p>
-      <div class="paso"><span class="n">1</span> Primer paso: 2 mi × (1.609 km / 1 mi) = 3.218 km.</div>
-      <div class="paso"><span class="n">2</span> Segundo paso: 3.218 km × (1,000 m / 1 km) = 3,218 m.</div>
-      <p><strong>Respuesta:</strong> 3,218 m.</p>
-    </div>
-
-    <div class="caja-atencion">
-      <strong>Error frecuente:</strong> poner la fracción al revés. Convertir 10 km a millas multiplicando por 1.609 da 16.09 «millas», un número mayor, cuando las millas son más largas que los kilómetros. Si la unidad nueva es más grande, el número debe salir más pequeño.
-    </div>
-  </div>
-
-  <h2 class="seccion">4. La temperatura: un caso especial</h2>
-  <div class="bloque">
-    <p>La temperatura no se convierte con un solo factor, porque los dos sistemas no empiezan en el mismo cero: el agua se congela a 0 °C, que equivalen a 32 °F. Por eso primero se resta 32 (dentro del paréntesis, como en PEMDAS del Tema 3) y después se multiplica.</p>
-    <div class="formulas-tres">
-      <div class="formula-card"><div class="formula">°C = (°F − 32) × 5 ÷ 9</div><div class="leyenda">De Fahrenheit a Celsius</div></div>
-      <div class="formula-card"><div class="formula">°F = °C × 9 ÷ 5 + 32</div><div class="leyenda">De Celsius a Fahrenheit</div></div>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 7 · La temperatura del cuerpo</span>
-      <p>El termómetro marca 98.6 °F. ¿Cuántos grados Celsius son?</p>
-      <div class="paso"><span class="n">1</span> Paréntesis: 98.6 − 32 = 66.6.</div>
-      <div class="paso"><span class="n">2</span> 66.6 × 5 ÷ 9 = 333 ÷ 9 = 37.</div>
-      <p><strong>Respuesta:</strong> 37 °C, la temperatura normal del cuerpo.</p>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 8 · Un día agradable</span>
-      <p>El pronóstico anuncia 20 °C. ¿Cuántos grados Fahrenheit son?</p>
-      <div class="paso"><span class="n">1</span> 20 × 9 ÷ 5 = 36.</div>
-      <div class="paso"><span class="n">2</span> 36 + 32 = 68.</div>
-      <p><strong>Respuesta:</strong> 68 °F.</p>
-    </div>
-
-    <div class="practica" id="prac-1">
-      <h3>Práctica interactiva 1 · Convertir</h3>
-      <p>Escribe solo el número, redondeado a una o dos cifras decimales, y presiona «Verificar».</p>
-      <div class="fila-num">1. 20 in = <input type="text" class="campo-texto" id="c1" inputmode="decimal" data-ans="50.8" data-tol="0.1" data-pista="20 × 2.54." aria-label="Pregunta 1: centímetros"> cm
-        <div class="fb" id="fb-c1" aria-live="polite"></div></div>
-      <div class="fila-num">2. 5 mi = <input type="text" class="campo-texto" id="c2" inputmode="decimal" data-ans="8.045" data-tol="0.06" data-pista="5 × 1.609." aria-label="Pregunta 2: kilómetros"> km
-        <div class="fb" id="fb-c2" aria-live="polite"></div></div>
-      <div class="fila-num">3. 150 lb = <input type="text" class="campo-texto" id="c3" inputmode="decimal" data-ans="68.1" data-tol="0.1" data-pista="150 × 454 da gramos; luego divide entre 1,000." aria-label="Pregunta 3: kilogramos"> kg
-        <div class="fb" id="fb-c3" aria-live="polite"></div></div>
-      <div class="fila-num">4. 4 gal = <input type="text" class="campo-texto" id="c4" inputmode="decimal" data-ans="15.14" data-tol="0.1" data-pista="4 × 3.785." aria-label="Pregunta 4: litros"> L
-        <div class="fb" id="fb-c4" aria-live="polite"></div></div>
-      <div class="fila-num">5. 10 ft = <input type="text" class="campo-texto" id="c5" inputmode="decimal" data-ans="3.048" data-tol="0.02" data-pista="pies → pulgadas → centímetros → metros." aria-label="Pregunta 5: metros"> m
-        <div class="fb" id="fb-c5" aria-live="polite"></div></div>
-      <div class="fila-num">6. 86 °F = <input type="text" class="campo-texto" id="c6" inputmode="decimal" data-ans="30" data-tol="0.1" data-pista="primero 86 − 32; después × 5 ÷ 9." aria-label="Pregunta 6: grados Celsius"> °C
-        <div class="fb" id="fb-c6" aria-live="polite"></div></div>
-      <button type="button" class="btn" data-verificar="prac-1">Verificar</button>
-    </div>
-
-    <div class="practica">
-      <h3>Práctica interactiva 2 · Pensar antes de calcular</h3>
-      <p>Selecciona la respuesta correcta. Puedes usar el teclado: tabulador para moverte y Enter para elegir.</p>
-      <div class="pregunta" data-correcta="b" data-pista="La unidad que se quiere eliminar va abajo.">
-        <div class="enun">1. Para convertir 50 km a millas, ¿por qué fracción se multiplica?</div>
-        <div class="opciones">
-          <div class="opcion" data-op="a">1.609 km / 1 mi</div>
-          <div class="opcion" data-op="b">1 mi / 1.609 km</div>
-          <div class="opcion" data-op="c">1 km / 1.609 mi</div>
-        </div>
-        <div class="fb" aria-live="polite"></div>
-      </div>
-      <div class="pregunta" data-correcta="b" data-pista="Un kilogramo es un poco más de 2 libras.">
-        <div class="enun">2. ¿Cuál es la estimación más razonable para 10 kg?</div>
-        <div class="opciones">
-          <div class="opcion" data-op="a">Unas 5 lb</div>
-          <div class="opcion" data-op="b">Unas 22 lb</div>
-          <div class="opcion" data-op="c">Unas 100 lb</div>
-        </div>
-        <div class="fb" aria-live="polite"></div>
-      </div>
-      <div class="pregunta" data-correcta="b" data-pista="Un galón tiene unos 3.8 litros.">
-        <div class="enun">3. Una botella de refresco de 2 L contiene…</div>
-        <div class="opciones">
-          <div class="opcion" data-op="a">más de un galón.</div>
-          <div class="opcion" data-op="b">un poco más de medio galón.</div>
-          <div class="opcion" data-op="c">un cuarto de galón.</div>
-        </div>
-        <div class="fb" aria-live="polite"></div>
-      </div>
-    </div>
-  </div>
-
-  <h2 class="seccion">5. Práctica guiada en clase</h2>
-  <div class="bloque">
-    <p>Las tres actividades se realizan durante las horas sincrónicas, en doble modalidad. Cada estudiante tiene a mano la tabla de factores de la sección 2.</p>
-
-    <div class="actividad">
-      <h3>Actividad 1 · El viaje a México</h3>
-      <p>La familia Ramírez viaja de Chicago a Guadalajara. Los padres van en carro; la abuela, en avión. Conviertan cada dato paso a paso con el método de la fracción de conversión.</p>
-      <ol>
-        <li><strong>Distancia:</strong> supongan que el recorrido por carretera es de 2,100 millas. ¿Cuántos kilómetros son?</li>
-        <li><strong>Velocidad:</strong> en la carretera mexicana, una señal indica «Velocidad máxima 110 km/h». ¿Cuántas millas por hora son?</li>
-        <li><strong>Gasolina:</strong> en México la gasolina se vende por litros. El tanque del carro es de 15 galones. ¿Cuántos litros hay que pedir para llenarlo?</li>
-        <li><strong>Temperatura:</strong> al salir, en Chicago hace 41 °F; en Guadalajara se esperan 27 °C. Expresen las dos temperaturas en la misma escala. ¿Qué ropa conviene llevar?</li>
-        <li><strong>Equipaje:</strong> la aerolínea permite maletas de hasta 23 kg. La maleta de la abuela pesa 48 lb y la de regalos, 55 lb. ¿Cuál cumple el límite?</li>
-      </ol>
-      <div class="modalidad">
-        <div class="modo modo-pres"><h4><span aria-hidden="true">🏫</span> Presencial</h4>En grupos de tres, cada grupo resuelve el viaje completo en una hoja grande, mostrando las fracciones de conversión y las unidades canceladas. Al final, cada grupo explica un inciso a la clase.</div>
-        <div class="modo modo-virt"><h4><span aria-hidden="true">💻</span> En línea</h4>En salas pequeñas (Breakout rooms), los grupos resuelven en un documento compartido (Google Docs u otro editor colaborativo). En el pleno, cada sala presenta un inciso compartiendo pantalla.</div>
-      </div>
-      <details class="docente">
-        <summary>Para el docente: respuestas de la actividad 1</summary>
-        <p>1. 2,100 × 1.609 ≈ 3,379 km. · 2. 110 ÷ 1.609 ≈ 68.4 mi/h. · 3. 15 × 3.785 ≈ 56.8 L. · 4. 41 °F = (41 − 32) × 5 ÷ 9 = 5 °C; 27 °C = 27 × 9 ÷ 5 + 32 = 80.6 °F. Hay que llevar abrigo para la salida y ropa ligera para la llegada. · 5. 48 lb × 454 = 21,792 g ≈ 21.8 kg (cumple); 55 lb × 454 = 24,970 g ≈ 25.0 kg (no cumple).</p>
-        <p>En el inciso 2 conviene preguntar por qué esta vez se divide: se quiere eliminar «km», que va abajo en la fracción.</p>
-      </details>
-    </div>
-
-    <div class="actividad">
-      <h3>Actividad 2 · Medidas en el trabajo</h3>
-      <p>Cada pareja elige la tarjeta más cercana a su experiencia laboral y convierte la medida al sistema métrico, mostrando la cadena de fracciones:</p>
-      <ul>
-        <li>Carpintería: una tabla de 8 ft, en metros.</li>
-        <li>Costura: 3 yd de tela, en metros.</li>
-        <li>Cocina: una bolsa de harina de 5 lb, en kilogramos.</li>
-        <li>Mecánica: 5 qt de aceite para motor, en litros.</li>
-        <li>Jardinería: una manguera de 50 ft, en metros.</li>
-      </ul>
-      <div class="modalidad">
-        <div class="modo modo-pres"><h4><span aria-hidden="true">🏫</span> Presencial</h4>Cada pareja escribe su cadena de fracciones en la pizarra, sin el resultado; otra pareja la completa y verifica.</div>
-        <div class="modo modo-virt"><h4><span aria-hidden="true">💻</span> En línea</h4>Cada pareja publica su cadena en un muro colaborativo (Padlet u otro); otra pareja la completa y verifica en los comentarios.</div>
-      </div>
-      <details class="docente">
-        <summary>Para el docente: respuestas de la actividad 2</summary>
-        <p>8 ft = 96 in × 2.54 = 243.84 cm ≈ 2.44 m. · 3 yd = 108 in × 2.54 = 274.32 cm ≈ 2.74 m. · 5 lb × 454 = 2,270 g = 2.27 kg. · 5 qt = 1.25 gal × 3.785 ≈ 4.73 L. · 50 ft = 600 in × 2.54 = 1,524 cm = 15.24 m.</p>
-      </details>
-    </div>
-
-    <div class="actividad">
-      <h3>Actividad 3 · Estimar antes de calcular</h3>
-      <p>Para cada medida, primero se da una estimación con las reglas prácticas y después se calcula el valor con la tabla. ¿Qué tan cerca estuvo la estimación?</p>
-      <ul>
-        <li>Una carrera de 5 km, en millas.</li>
-        <li>Una persona de 60 kg, en libras.</li>
-        <li>Un campo de fútbol americano de 100 yd, en metros.</li>
-        <li>Una botella de 2 L, en galones.</li>
-      </ul>
-      <div class="modalidad">
-        <div class="modo modo-pres"><h4><span aria-hidden="true">🏫</span> Presencial</h4>Cada estudiante escribe su estimación en una mini pizarra y la levanta; después se calcula el valor en grupo.</div>
-        <div class="modo modo-virt"><h4><span aria-hidden="true">💻</span> En línea</h4>Las estimaciones se recogen con una encuesta en vivo (Zoom Polls, Mentimeter u otra); después se calcula el valor en grupo.</div>
-      </div>
-      <details class="docente">
-        <summary>Para el docente: respuestas de la actividad 3</summary>
-        <p>5 km ≈ 3 mi (cálculo: 5 ÷ 1.609 ≈ 3.1 mi). · 60 kg ≈ 120–132 lb (cálculo: 60,000 ÷ 454 ≈ 132.2 lb). · 100 yd: un poco menos de 100 m (cálculo: 3,600 in × 2.54 = 9,144 cm = 91.44 m). · 2 L: un poco más de medio galón (cálculo: 2 ÷ 3.785 ≈ 0.53 gal).</p>
-      </details>
-    </div>
-  </div>
-
-  <div class="caja-tarea">
-    <h2>Tarea asincrónica</h2>
-    <p>Diez ejercicios individuales de conversiones inglés ↔ métrico en MyOpenMath: longitud, peso, capacidad, conversiones de varios pasos y temperatura. La plataforma ofrece retroalimentación en cada intento. Tiempo estimado: 60 minutos.</p>
-  </div>
-
-  <div class="quiz">
-    <h2>Quiz de la lección 6.3</h2>
-    <p class="ficha">10 preguntas · 20 minutos · se permite consultar la tabla de factores de la sección 2. Tres preguntas de longitud, tres de peso, dos de capacidad y dos de conversión de dos pasos (de millas a metros). Para aprobar se necesitan al menos 7 respuestas correctas; se puede reintentar.</p>
-    <div id="quiz-cont"></div>
-    <div id="resultado-quiz" aria-live="polite"></div>
-    <button type="button" class="btn" id="btn-corregir">Corregir quiz</button>
-    <button type="button" class="btn sec" id="btn-reintentar">Intentar de nuevo</button>
-  </div>
-
-  <div class="rubrica">
-    <h2>Rúbrica de conversiones</h2>
-    <div class="tabla-wrap">
-      <table class="tabla-rubrica">
-        <caption>Tres criterios evaluados en cuatro niveles de desempeño.</caption>
-        <thead>
-          <tr><th scope="col">Criterio</th><th scope="col">Inicial (1)</th><th scope="col">En desarrollo (2)</th><th scope="col">Competente (3)</th><th scope="col">Destacado (4)</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Selecciona el factor de conversión</th>
-            <td>Elige un factor de otra magnitud (por ejemplo, de longitud para un peso).</td>
-            <td>Elige el factor correcto con apoyo de la tabla, pero a veces lo usa al revés.</td>
-            <td>Elige el factor correcto en todos los casos, incluidos los de varios pasos.</td>
-            <td>Además planea la cadena de conversión antes de calcular y la explica.</td>
-          </tr>
-          <tr>
-            <th scope="row">Aplica el método de la fracción de conversión</th>
-            <td>Multiplica o divide sin escribir las unidades.</td>
-            <td>Escribe las fracciones, pero comete errores al cancelar unidades o al operar.</td>
-            <td>Multiplica correctamente y cancela las unidades en cada paso.</td>
-            <td>Además resuelve conversiones de varios pasos y de temperatura sin errores.</td>
-          </tr>
-          <tr>
-            <th scope="row">Expresa el resultado</th>
-            <td>Da un número sin unidad o con una unidad equivocada.</td>
-            <td>Escribe la unidad correcta, pero redondea de forma poco razonable.</td>
-            <td>Expresa el resultado en la unidad pedida con una aproximación razonable.</td>
-            <td>Además comprueba el resultado con una estimación práctica.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="cierre">
-    <h2>Cierre de la lección 6.3 y del Tema 6</h2>
-    <p>Convertir unidades es multiplicar por 1 escrito de forma inteligente: la <strong>fracción de conversión</strong>. La regla de oro, poner abajo la unidad que se quiere eliminar, sirve igual para la farmacia, el taller o la carretera.</p>
-    <p>Así se cierra el Tema 6: interés simple, depreciación y conversiones, tres aplicaciones del razonamiento proporcional a la vida diaria. El <strong>Tema 7</strong> entra en la geometría de las figuras compuestas y el círculo, donde las unidades de medida vuelven a ser protagonistas.</p>
-  </div>
-
-  <footer>
-    Spanish ASE Math · Nivel 2 · Lección 6.3<br>
-    José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago.<br>
-    Material bajo licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer license">Creative Commons CC BY-NC-SA 4.0</a>.
-  </footer>
+</div>
+<div class="quiz">
+<h2 id="s-quiz-de-la-leccion-6-3">Quiz de la lección 6.3</h2>
+<p class="ficha">10 preguntas · 20 minutos · se permite consultar la tabla de factores de la sección 2. Tres preguntas de longitud, tres de peso, dos de capacidad y dos de conversión de dos pasos (de millas a metros). Para aprobar se necesitan al menos 7 respuestas correctas; se puede reintentar.</p>
+<div id="quiz-cont"></div>
+<div aria-live="polite" id="resultado-quiz"></div>
+<button class="btn" id="btn-corregir" type="button">Corregir quiz</button>
+<button class="btn sec" id="btn-reintentar" type="button">Intentar de nuevo</button>
+</div>
+<div class="rubrica">
+<h2 id="s-rubrica-de-conversiones">Rúbrica de conversiones</h2>
+<div class="tabla-wrap">
+<table class="tabla-rubrica">
+<caption>Tres criterios evaluados en cuatro niveles de desempeño.</caption>
+<thead>
+<tr><th scope="col">Criterio</th><th scope="col">Inicial (1)</th><th scope="col">En desarrollo (2)</th><th scope="col">Competente (3)</th><th scope="col">Destacado (4)</th></tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Selecciona el factor de conversión</th>
+<td>Elige un factor de otra magnitud (por ejemplo, de longitud para un peso).</td>
+<td>Elige el factor correcto con apoyo de la tabla, pero a veces lo usa al revés.</td>
+<td>Elige el factor correcto en todos los casos, incluidos los de varios pasos.</td>
+<td>Además planea la cadena de conversión antes de calcular y la explica.</td>
+</tr>
+<tr>
+<th scope="row">Aplica el método de la fracción de conversión</th>
+<td>Multiplica o divide sin escribir las unidades.</td>
+<td>Escribe las fracciones, pero comete errores al cancelar unidades o al operar.</td>
+<td>Multiplica correctamente y cancela las unidades en cada paso.</td>
+<td>Además resuelve conversiones de varios pasos y de temperatura sin errores.</td>
+</tr>
+<tr>
+<th scope="row">Expresa el resultado</th>
+<td>Da un número sin unidad o con una unidad equivocada.</td>
+<td>Escribe la unidad correcta, pero redondea de forma poco razonable.</td>
+<td>Expresa el resultado en la unidad pedida con una aproximación razonable.</td>
+<td>Además comprueba el resultado con una estimación práctica.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cierre">
+<h2 id="s-cierre-de-la-leccion-6-3-y-del-tema-6">Cierre de la lección 6.3 y del Tema 6</h2>
+<p>Convertir unidades es multiplicar por 1 escrito de forma inteligente: la <strong>fracción de conversión</strong>. La regla de oro, poner abajo la unidad que se quiere eliminar, sirve igual para la farmacia, el taller o la carretera. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<p>Así se cierra el Tema 6: interés simple, depreciación y conversiones, tres aplicaciones del razonamiento proporcional a la vida diaria. El <strong>Tema 7</strong> entra en la geometría de las figuras compuestas y el círculo, donde las unidades de medida vuelven a ser protagonistas.</p>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 6 · Lección 6.3</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 </div>
 <script>
 var QUIZ_MINIMO = 7;

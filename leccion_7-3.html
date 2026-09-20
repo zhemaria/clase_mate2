@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- Lección 7.3 · Matemáticas Nivel 2 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lección 7.3 · Área del círculo y figuras compuestas con semicírculos</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 7.3 · Área del círculo y figuras compuestas con semicírculos</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root {
     --tema:   #37474f;
@@ -158,28 +161,7 @@
   }
   .btn:hover { background: var(--tema-d); }
   .btn.sec { background: #607d8b; }
-  .btn.sec:hover { background: #455a64; }
-
-  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
-  .modo {
-    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
-    font-size: 14px;
-  }
-  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
-  .modo-pres strong { color: #0d47a1; }
-  .modo-virt { background: #e0f2f1; border-left: 5px solid #00695c; }
-  .modo-virt strong { color: #004d40; }
-  .modo h3 { margin: 0 0 6px; font-size: 15px; }
-  .modo-pres h3 { color: #0d47a1; }
-  .modo-virt h3 { color: #004d40; }
-
-  .actividad { margin-bottom: 18px; }
-  .actividad > .titulo-act {
-    font-weight: 700; color: var(--tema-d); font-size: 15px;
-    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
-  }
-
-  .caja-tarea {
+  .btn.sec:hover { background: #455a64; }.caja-tarea {
     background: #ede7f6; border-left: 6px solid #5e35b1;
     padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
   }
@@ -226,401 +208,335 @@
     text-align: center; padding: 20px; color: #222222;
     font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
   }
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:#fff; border:1px solid #d8dde3; border-left:6px solid var(--tema);
+    border-radius:10px; padding:16px 20px; margin:24px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--tema-d); border:0; padding:0; background:none; }
+  .indice ol{ margin:0; padding-left:1.35em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--tema-d); text-decoration:underline; }
+  .indice a:hover{ color:var(--tema); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--tema-d); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--tema); color:#fff; }
+  footer a{ color:inherit; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
 <div class="contenedor">
-
-  <header class="principal">
-    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 7 · Geometría transicional</div>
-    <h1>Lección 7.3 · Área del círculo y figuras compuestas con semicírculos</h1>
-    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
-  </header>
-
-  <div class="caja-objetivos">
-    <h2>Objetivos de la lección</h2>
-    <ul>
-      <li>Calcular el área de un círculo usando la fórmula A = π · r².</li>
-      <li>Distinguir cuándo usar circunferencia (borde) y cuándo usar área (superficie).</li>
-      <li>Despejar el radio cuando se conoce el área del círculo.</li>
-      <li>Calcular el área de figuras compuestas que combinan rectángulos con semicírculos.</li>
-      <li>Aplicar el área del círculo al cálculo de superficies reales (jardines, piscinas, pistas).</li>
-    </ul>
-  </div>
-
-  <div class="bloque">
-    <p><strong>Conexión con la lección anterior.</strong> En la Lección 7.2 se midió el <strong>borde</strong> del círculo: su circunferencia. Esta lección completa el estudio del círculo midiendo su <strong>superficie interior</strong>: cuánta área cabe dentro de él. Una nueva fórmula entra en escena, y se aprende también a combinar el círculo con figuras simples para formar diseños reales como la pista de atletismo o el área verde con un parterre circular.</p>
-  </div>
-
-  <h2 class="seccion">1. La fórmula del área del círculo</h2>
-  <div class="bloque">
-    <p>El área de un círculo se calcula con una fórmula muy compacta que también usa π:</p>
-
-    <div class="formula-card">
-      <div class="formula">A = π · r²</div>
-      <div class="leyenda">El área es π multiplicado por el <strong>cuadrado del radio</strong>. Importante: el cuadrado solo afecta al radio, no a π.</div>
+<header class="principal">
+<div class="ruta">Spanish ASE Math · Nivel 2 · Tema 7 · Geometría transicional</div>
+<h1>Lección 7.3 · Área del círculo y figuras compuestas con semicírculos</h1>
+<div class="meta">Unas 4 horas, a su ritmo · NRS 2–3</div>
+</header>
+<div class="caja-objetivos">
+<h2>Objetivos de la lección</h2>
+<ul>
+<li>Calcular el área de un círculo usando la fórmula A = π · r².</li>
+<li>Distinguir cuándo usar circunferencia (borde) y cuándo usar área (superficie).</li>
+<li>Despejar el radio cuando se conoce el área del círculo.</li>
+<li>Calcular el área de figuras compuestas que combinan rectángulos con semicírculos.</li>
+<li>Aplicar el área del círculo al cálculo de superficies reales (jardines, piscinas, pistas).</li>
+</ul>
+</div><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-1-la-formula-del-area-del-circulo">1. La fórmula del área del círculo</a></li><li><a href="#s-2-circunferencia-vs-area-cual-usar">2. Circunferencia vs. área: ¿cuál usar?</a></li><li><a href="#s-3-el-problema-inverso-hallar-el-radio-a-partir-del-area">3. El problema inverso: hallar el radio a partir del área</a></li><li><a href="#s-4-figuras-compuestas-con-semicirculos">4. Figuras compuestas con semicírculos</a></li><li><a href="#s-5-aplicaciones-reales">5. Aplicaciones reales</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-la-leccion-7-3">Quiz de la lección 7.3</a></li><li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li><li><a href="#s-cierre-del-tema-7-y-enlace-con-el-tema-8">Cierre del Tema 7 y enlace con el Tema 8</a></li></ol></nav>
+<div class="bloque">
+<p><strong>Conexión con la lección anterior.</strong> En la Lección 7.2 se midió el <strong>borde</strong> del círculo: su circunferencia. Esta lección completa el estudio del círculo midiendo su <strong>superficie interior</strong>: cuánta área cabe dentro de él. Una nueva fórmula entra en escena, y se aprende también a combinar el círculo con figuras simples para formar diseños reales como la pista de atletismo o el área verde con un parterre circular.</p>
+</div>
+<h2 class="seccion" id="s-1-la-formula-del-area-del-circulo">1. La fórmula del área del círculo</h2>
+<div class="bloque">
+<p>El área de un círculo se calcula con una fórmula muy compacta que también usa π:</p>
+<div class="formula-card">
+<div class="formula">A = π · r²</div>
+<div class="leyenda">El área es π multiplicado por el <strong>cuadrado del radio</strong>. Importante: el cuadrado solo afecta al radio, no a π.</div>
+</div>
+<h3>De dónde viene la fórmula</h3>
+<p>Si se divide el círculo en muchos sectores muy delgados y se reagrupan alternando arriba y abajo, se forma una figura parecida a un <strong>paralelogramo</strong>. Su base equivale a la mitad de la circunferencia (πr) y su altura equivale al radio (r). Multiplicando base × altura se obtiene πr · r = πr². Así, la fórmula no es un capricho: es la mejor aproximación al área del círculo al cortarlo en piezas.</p>
+<div class="svg-wrap">
+<svg aria-label="Demostración visual: el círculo dividido en sectores se reagrupa formando un paralelogramo" height="200" role="img" viewbox="0 0 540 200" width="540" xmlns="http://www.w3.org/2000/svg">
+<!-- circulo a la izquierda -->
+<circle cx="100" cy="100" fill="#eceff1" r="70" stroke="#37474f" stroke-width="2"></circle>
+<!-- sectores -->
+<g fill="none" stroke="#37474f" stroke-width="1.2">
+<line x1="100" x2="170" y1="100" y2="100"></line>
+<line x1="100" x2="135" y1="100" y2="40"></line>
+<line x1="100" x2="65" y1="100" y2="40"></line>
+<line x1="100" x2="30" y1="100" y2="100"></line>
+<line x1="100" x2="65" y1="100" y2="160"></line>
+<line x1="100" x2="135" y1="100" y2="160"></line>
+</g>
+<!-- flecha -->
+<line stroke="#1c2a30" stroke-width="3" x1="190" x2="230" y1="100" y2="100"></line>
+<polygon fill="#1c2a30" points="230,100 220,94 220,106"></polygon>
+<text fill="#1c2a30" font-family="Segoe UI, sans-serif" font-size="12" text-anchor="middle" x="210" y="86">reagrupar</text>
+<!-- paralelogramo a la derecha -->
+<polygon fill="#eceff1" points="260,140 470,140 510,60 300,60" stroke="#37474f" stroke-width="2"></polygon>
+<!-- triangulitos internos -->
+<g fill="none" stroke="#37474f" stroke-width="1.2">
+<line x1="295" x2="320" y1="60" y2="140"></line>
+<line x1="335" x2="360" y1="60" y2="140"></line>
+<line x1="375" x2="400" y1="60" y2="140"></line>
+<line x1="415" x2="440" y1="60" y2="140"></line>
+<line x1="455" x2="480" y1="60" y2="140"></line>
+</g>
+<!-- etiquetas -->
+<text fill="#37474f" font-family="Segoe UI, sans-serif" font-size="13" text-anchor="middle" x="385" y="160">base ≈ π · r</text>
+<text fill="#37474f" font-family="Segoe UI, sans-serif" font-size="13" x="520" y="100">altura ≈ r</text>
+</svg>
+</div>
+<div class="caja-atencion">
+<strong>Atención al orden de operaciones:</strong> en A = πr², el cuadrado se aplica <strong>solo al radio</strong>. Es decir, se calcula primero r² y luego se multiplica por π. PEMDAS manda: exponente antes que multiplicación. Por ejemplo, si r = 5, entonces r² = 25 y A = π × 25.
     </div>
-
-    <h3>De dónde viene la fórmula</h3>
-    <p>Si se divide el círculo en muchos sectores muy delgados y se reagrupan alternando arriba y abajo, se forma una figura parecida a un <strong>paralelogramo</strong>. Su base equivale a la mitad de la circunferencia (πr) y su altura equivale al radio (r). Multiplicando base × altura se obtiene πr · r = πr². Así, la fórmula no es un capricho: es la mejor aproximación al área del círculo al cortarlo en piezas.</p>
-
-    <div class="svg-wrap">
-      <svg width="540" height="200" viewBox="0 0 540 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Demostración visual: el círculo dividido en sectores se reagrupa formando un paralelogramo">
-        <!-- circulo a la izquierda -->
-        <circle cx="100" cy="100" r="70" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
-        <!-- sectores -->
-        <g stroke="#37474f" stroke-width="1.2" fill="none">
-          <line x1="100" y1="100" x2="170" y2="100"/>
-          <line x1="100" y1="100" x2="135" y2="40"/>
-          <line x1="100" y1="100" x2="65" y2="40"/>
-          <line x1="100" y1="100" x2="30" y2="100"/>
-          <line x1="100" y1="100" x2="65" y2="160"/>
-          <line x1="100" y1="100" x2="135" y2="160"/>
-        </g>
-        <!-- flecha -->
-        <line x1="190" y1="100" x2="230" y2="100" stroke="#1c2a30" stroke-width="3"/>
-        <polygon points="230,100 220,94 220,106" fill="#1c2a30"/>
-        <text x="210" y="86" font-family="Segoe UI, sans-serif" font-size="12" fill="#1c2a30" text-anchor="middle">reagrupar</text>
-        <!-- paralelogramo a la derecha -->
-        <polygon points="260,140 470,140 510,60 300,60" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
-        <!-- triangulitos internos -->
-        <g stroke="#37474f" stroke-width="1.2" fill="none">
-          <line x1="295" y1="60" x2="320" y2="140"/>
-          <line x1="335" y1="60" x2="360" y2="140"/>
-          <line x1="375" y1="60" x2="400" y2="140"/>
-          <line x1="415" y1="60" x2="440" y2="140"/>
-          <line x1="455" y1="60" x2="480" y2="140"/>
-        </g>
-        <!-- etiquetas -->
-        <text x="385" y="160" font-family="Segoe UI, sans-serif" font-size="13" fill="#37474f" text-anchor="middle">base ≈ π · r</text>
-        <text x="520" y="100" font-family="Segoe UI, sans-serif" font-size="13" fill="#37474f">altura ≈ r</text>
-      </svg>
+<div class="ejemplo">
+<span class="et">Ejemplo 1 · Área directa</span>
+<p>Calcular el área de un círculo de radio 6 cm. Usar π ≈ 3.14.</p>
+<div class="paso"><span class="n">1</span> Aplicar la fórmula: A = π · r² = 3.14 × 6².</div>
+<div class="paso"><span class="n">2</span> Calcular el cuadrado primero: 6² = 36.</div>
+<div class="paso"><span class="n">3</span> Multiplicar: 3.14 × 36 = 113.04.</div>
+<p><strong>Respuesta:</strong> el área del círculo es aproximadamente 113.04 cm².</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 2 · Solo conozco el diámetro</span>
+<p>Calcular el área de un círculo de diámetro 10 m.</p>
+<div class="paso"><span class="n">1</span> Primero, hallar el radio: r = d ÷ 2 = 10 ÷ 2 = 5 m.</div>
+<div class="paso"><span class="n">2</span> Cuadrado del radio: 5² = 25.</div>
+<div class="paso"><span class="n">3</span> Aplicar la fórmula: A = 3.14 × 25 = 78.5.</div>
+<p><strong>Respuesta:</strong> el área del círculo es aproximadamente 78.5 m².</p>
+</div>
+</div>
+<h2 class="seccion" id="s-2-circunferencia-vs-area-cual-usar">2. Circunferencia vs. área: ¿cuál usar?</h2>
+<div class="bloque">
+<p>El círculo es la única figura del Nivel 2 que tiene dos «medidas» distintas en este tema, cada una con su fórmula. Confundirlas es uno de los errores más comunes. La regla es sencilla: depende de qué se quiera medir, el <strong>borde</strong> o la <strong>superficie</strong>.</p>
+<div class="contraste">
+<div class="col-c">
+<h3>Circunferencia (borde) ⭕</h3>
+<p><strong>Cuándo usarla:</strong> cuando se mide el <strong>contorno</strong> — cuánta cerca rodea un jardín, cuánto cordón cubre el borde de un sombrero, qué avanza una rueda en una vuelta.</p>
+<p><strong>Fórmula:</strong> C = π · d  o  C = 2 · π · r</p>
+<p><strong>Unidades:</strong> lineales (m, cm, pies).</p>
+</div>
+<div class="col-a">
+<h3>Área (superficie) 🟣</h3>
+<p><strong>Cuándo usarla:</strong> cuando se mide la <strong>superficie interior</strong> — cuánto césped cubre un jardín, cuánta pizza hay para comer, cuánta agua cabe en el fondo de una piscina circular.</p>
+<p><strong>Fórmula:</strong> A = π · r²</p>
+<p><strong>Unidades:</strong> cuadradas (m², cm², pies²).</p>
+</div>
+</div>
+<div class="caja-tip">
+<strong>Pista lingüística:</strong> palabras como «rodear», «cerca», «borde», «contorno» piden circunferencia. Palabras como «cubrir», «pintar», «sembrar», «alfombrar», «llenar la superficie» piden área. Y las unidades nunca mienten: si la respuesta debe ir en metros, es circunferencia; en metros cuadrados, es área.
     </div>
-
-    <div class="caja-atencion">
-      <strong>Atención al orden de operaciones:</strong> en A = πr², el cuadrado se aplica <strong>solo al radio</strong>. Es decir, se calcula primero r² y luego se multiplica por π. PEMDAS manda: exponente antes que multiplicación. Por ejemplo, si r = 5, entonces r² = 25 y A = π × 25.
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 1 · Área directa</span>
-      <p>Calcular el área de un círculo de radio 6 cm. Usar π ≈ 3.14.</p>
-      <div class="paso"><span class="n">1</span> Aplicar la fórmula: A = π · r² = 3.14 × 6².</div>
-      <div class="paso"><span class="n">2</span> Calcular el cuadrado primero: 6² = 36.</div>
-      <div class="paso"><span class="n">3</span> Multiplicar: 3.14 × 36 = 113.04.</div>
-      <p><strong>Respuesta:</strong> el área del círculo es aproximadamente 113.04 cm².</p>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 2 · Solo conozco el diámetro</span>
-      <p>Calcular el área de un círculo de diámetro 10 m.</p>
-      <div class="paso"><span class="n">1</span> Primero, hallar el radio: r = d ÷ 2 = 10 ÷ 2 = 5 m.</div>
-      <div class="paso"><span class="n">2</span> Cuadrado del radio: 5² = 25.</div>
-      <div class="paso"><span class="n">3</span> Aplicar la fórmula: A = 3.14 × 25 = 78.5.</div>
-      <p><strong>Respuesta:</strong> el área del círculo es aproximadamente 78.5 m².</p>
-    </div>
-  </div>
-
-  <h2 class="seccion">2. Circunferencia vs. área: ¿cuál usar?</h2>
-  <div class="bloque">
-    <p>El círculo es la única figura del Nivel 2 que tiene dos «medidas» distintas en este tema, cada una con su fórmula. Confundirlas es uno de los errores más comunes. La regla es sencilla: depende de qué se quiera medir, el <strong>borde</strong> o la <strong>superficie</strong>.</p>
-
-    <div class="contraste">
-      <div class="col-c">
-        <h3>Circunferencia (borde) ⭕</h3>
-        <p><strong>Cuándo usarla:</strong> cuando se mide el <strong>contorno</strong> — cuánta cerca rodea un jardín, cuánto cordón cubre el borde de un sombrero, qué avanza una rueda en una vuelta.</p>
-        <p><strong>Fórmula:</strong> C = π · d &nbsp;o&nbsp; C = 2 · π · r</p>
-        <p><strong>Unidades:</strong> lineales (m, cm, pies).</p>
-      </div>
-      <div class="col-a">
-        <h3>Área (superficie) 🟣</h3>
-        <p><strong>Cuándo usarla:</strong> cuando se mide la <strong>superficie interior</strong> — cuánto césped cubre un jardín, cuánta pizza hay para comer, cuánta agua cabe en el fondo de una piscina circular.</p>
-        <p><strong>Fórmula:</strong> A = π · r²</p>
-        <p><strong>Unidades:</strong> cuadradas (m², cm², pies²).</p>
-      </div>
-    </div>
-
-    <div class="caja-tip">
-      <strong>Pista lingüística:</strong> palabras como «rodear», «cerca», «borde», «contorno» piden circunferencia. Palabras como «cubrir», «pintar», «sembrar», «alfombrar», «llenar la superficie» piden área. Y las unidades nunca mienten: si la respuesta debe ir en metros, es circunferencia; en metros cuadrados, es área.
-    </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 1 · ¿Circunferencia o área?</h3>
-    <p>Selecciona qué medida del círculo conviene calcular en cada situación.</p>
-
-    <div class="pregunta" data-correcta="b">
-      <div class="enun">1. ¿Cuánta cerca se necesita para rodear un jardín circular?</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">Área (πr²)</div>
-        <div class="opcion" data-op="b">Circunferencia (πd)</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="a">
-      <div class="enun">2. ¿Cuánto césped cubre el mismo jardín circular?</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">Área (πr²)</div>
-        <div class="opcion" data-op="b">Circunferencia (πd)</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="a">
-      <div class="enun">3. ¿Cuánta pizza queda en una pizza redonda de 14 in de diámetro?</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">Área (πr²)</div>
-        <div class="opcion" data-op="b">Circunferencia (πd)</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="b">
-      <div class="enun">4. ¿Qué distancia avanza una rueda en una vuelta?</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">Área (πr²)</div>
-        <div class="opcion" data-op="b">Circunferencia (πd)</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-  </div>
-
-  <h2 class="seccion">3. El problema inverso: hallar el radio a partir del área</h2>
-  <div class="bloque">
-    <p>Cuando se conoce el área y se quiere encontrar el radio, hay que <strong>despejar</strong> la fórmula. Como el radio está al cuadrado, hace falta la <strong>raíz cuadrada</strong> al final.</p>
-
-    <p style="text-align:center; font-size:17px; font-weight:700; color: var(--tema-d);">
-      Si A = π · r², entonces r² = A ÷ π &nbsp;&nbsp;y&nbsp;&nbsp; r = √(A ÷ π).
+</div>
+<div class="practica">
+<h3>Práctica interactiva 1 · ¿Circunferencia o área?</h3>
+<p>Selecciona qué medida del círculo conviene calcular en cada situación.</p>
+<div class="pregunta" data-correcta="b">
+<div class="enun">1. ¿Cuánta cerca se necesita para rodear un jardín circular?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">Área (πr²)</div>
+<div class="opcion" data-op="b">Circunferencia (πd)</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">2. ¿Cuánto césped cubre el mismo jardín circular?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">Área (πr²)</div>
+<div class="opcion" data-op="b">Circunferencia (πd)</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">3. ¿Cuánta pizza queda en una pizza redonda de 14 in de diámetro?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">Área (πr²)</div>
+<div class="opcion" data-op="b">Circunferencia (πd)</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="b">
+<div class="enun">4. ¿Qué distancia avanza una rueda en una vuelta?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">Área (πr²)</div>
+<div class="opcion" data-op="b">Circunferencia (πd)</div>
+</div>
+<div class="fb"></div>
+</div>
+</div>
+<h2 class="seccion" id="s-3-el-problema-inverso-hallar-el-radio-a-partir-del-area">3. El problema inverso: hallar el radio a partir del área</h2>
+<div class="bloque">
+<p>Cuando se conoce el área y se quiere encontrar el radio, hay que <strong>despejar</strong> la fórmula. Como el radio está al cuadrado, hace falta la <strong>raíz cuadrada</strong> al final.</p>
+<p style="text-align:center; font-size:17px; font-weight:700; color: var(--tema-d);">
+      Si A = π · r², entonces r² = A ÷ π   y   r = √(A ÷ π).
     </p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 3 · De área a radio</span>
-      <p>Un jardín circular tiene un área de 78.5 m². ¿Cuál es su radio?</p>
-      <div class="paso"><span class="n">1</span> Datos: A = 78.5. Se busca r.</div>
-      <div class="paso"><span class="n">2</span> Dividir entre π: r² = 78.5 ÷ 3.14 = 25.</div>
-      <div class="paso"><span class="n">3</span> Sacar raíz cuadrada: r = √25 = 5.</div>
-      <p><strong>Respuesta:</strong> el radio del jardín es de 5 metros.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 3 · De área a radio</span>
+<p>Un jardín circular tiene un área de 78.5 m². ¿Cuál es su radio?</p>
+<div class="paso"><span class="n">1</span> Datos: A = 78.5. Se busca r.</div>
+<div class="paso"><span class="n">2</span> Dividir entre π: r² = 78.5 ÷ 3.14 = 25.</div>
+<div class="paso"><span class="n">3</span> Sacar raíz cuadrada: r = √25 = 5.</div>
+<p><strong>Respuesta:</strong> el radio del jardín es de 5 metros.</p>
+</div>
+<div class="caja-tip">
+<strong>Conexión con el Tema 2:</strong> aquí se aprovecha lo aprendido en la Lección 2.3 sobre raíces de cuadrados perfectos. Cuando el cociente A ÷ π da un cuadrado perfecto (25, 36, 49, 100…), el radio sale «redondo» y el cálculo es inmediato. Por eso conviene tener bien memorizada esa tabla.
     </div>
+</div>
+<h2 class="seccion" id="s-4-figuras-compuestas-con-semicirculos">4. Figuras compuestas con semicírculos</h2>
+<div class="bloque">
+<p>Un <strong>semicírculo</strong> es la mitad de un círculo. Su área es, naturalmente, <strong>la mitad</strong> del área del círculo completo:</p>
+<div class="formula-card">
+<div class="formula">A_semicírculo = (π · r²) / 2</div>
+<div class="leyenda">Mitad del área del círculo.</div>
+</div>
+<p>Los semicírculos aparecen en muchas figuras reales combinados con rectángulos: la pista de atletismo, la ventana en forma de arco, el escenario con frente curvo.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 4 · La pista de atletismo</span>
+<p>Una pista de atletismo está formada por un rectángulo central de 100 m × 60 m y dos semicírculos, uno en cada extremo corto, cada uno con un diámetro de 60 m. ¿Cuál es el área total de la pista?</p>
+<div class="svg-wrap">
+<svg aria-label="Pista de atletismo: rectángulo central con un semicírculo en cada extremo" height="200" role="img" viewbox="0 0 460 200" width="460" xmlns="http://www.w3.org/2000/svg">
+<!-- semicirculo izq -->
+<path d="M 80,30 A 70,70 0 0 0 80,170 Z" fill="#dde3e6" stroke="#37474f" stroke-width="2"></path>
+<!-- rectangulo central -->
+<rect fill="#eceff1" height="140" stroke="#37474f" stroke-width="2" width="280" x="80" y="30"></rect>
+<!-- semicirculo der -->
+<path d="M 360,30 A 70,70 0 0 1 360,170 Z" fill="#dde3e6" stroke="#37474f" stroke-width="2"></path>
+<!-- etiquetas -->
+<text fill="#1c2a30" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="220" y="105">Rectángulo: 100 m × 60 m</text>
+<text fill="#1c2a30" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="40" y="105">Semi.</text>
+<text fill="#1c2a30" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="400" y="105">Semi.</text>
+<text fill="#37474f" font-family="Segoe UI, sans-serif" font-size="12" text-anchor="middle" x="220" y="195">Cada semicírculo: diámetro 60 m → radio 30 m</text>
 
-    <div class="caja-tip">
-      <strong>Conexión con el Tema 2:</strong> aquí se aprovecha lo aprendido en la Lección 2.3 sobre raíces de cuadrados perfectos. Cuando el cociente A ÷ π da un cuadrado perfecto (25, 36, 49, 100…), el radio sale «redondo» y el cálculo es inmediato. Por eso conviene tener bien memorizada esa tabla.
+</svg>
+</div>
+<div class="paso"><span class="n">1</span> Área del rectángulo: 100 × 60 = 6 000 m².</div>
+<div class="paso"><span class="n">2</span> Dos semicírculos = un círculo completo. Radio: r = 60 ÷ 2 = 30 m.</div>
+<div class="paso"><span class="n">3</span> Área del círculo equivalente: π · 30² = 3.14 × 900 = 2 826 m².</div>
+<div class="paso"><span class="n">4</span> Área total: 6 000 + 2 826 = 8 826 m².</div>
+<p><strong>Respuesta:</strong> la pista tiene un área total de 8 826 m².</p>
+</div>
+<div class="caja-tip">
+<strong>Atajo útil:</strong> cuando una figura tiene dos semicírculos del mismo tamaño, conviene unirlos mentalmente para formar un círculo completo. Eso evita dividir entre 2 dos veces y reduce las posibilidades de error.
     </div>
-  </div>
-
-  <h2 class="seccion">4. Figuras compuestas con semicírculos</h2>
-  <div class="bloque">
-    <p>Un <strong>semicírculo</strong> es la mitad de un círculo. Su área es, naturalmente, <strong>la mitad</strong> del área del círculo completo:</p>
-
-    <div class="formula-card">
-      <div class="formula">A_semicírculo = (π · r²) / 2</div>
-      <div class="leyenda">Mitad del área del círculo.</div>
-    </div>
-
-    <p>Los semicírculos aparecen en muchas figuras reales combinados con rectángulos: la pista de atletismo, la ventana en forma de arco, el escenario con frente curvo.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 4 · La pista de atletismo</span>
-      <p>Una pista de atletismo está formada por un rectángulo central de 100 m × 60 m y dos semicírculos, uno en cada extremo corto, cada uno con un diámetro de 60 m. ¿Cuál es el área total de la pista?</p>
-
-      <div class="svg-wrap">
-        <svg width="460" height="200" viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pista de atletismo: rectángulo central con un semicírculo en cada extremo">
-          <!-- semicirculo izq -->
-          <path d="M 80,30 A 70,70 0 0 0 80,170 Z" fill="#dde3e6" stroke="#37474f" stroke-width="2"/>
-          <!-- rectangulo central -->
-          <rect x="80" y="30" width="280" height="140" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
-          <!-- semicirculo der -->
-          <path d="M 360,30 A 70,70 0 0 1 360,170 Z" fill="#dde3e6" stroke="#37474f" stroke-width="2"/>
-          <!-- etiquetas -->
-          <text x="220" y="105" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1c2a30" text-anchor="middle">Rectángulo: 100 m × 60 m</text>
-          <text x="40" y="105" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1c2a30" text-anchor="middle">Semi.</text>
-          <text x="400" y="105" font-family="Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#1c2a30" text-anchor="middle">Semi.</text>
-          <text x="220" y="195" font-family="Segoe UI, sans-serif" font-size="12" fill="#37474f" text-anchor="middle">Cada semicírculo: diámetro 60 m → radio 30 m</text>
-        </g>
-        </svg>
-      </div>
-
-      <div class="paso"><span class="n">1</span> Área del rectángulo: 100 × 60 = 6 000 m².</div>
-      <div class="paso"><span class="n">2</span> Dos semicírculos = un círculo completo. Radio: r = 60 ÷ 2 = 30 m.</div>
-      <div class="paso"><span class="n">3</span> Área del círculo equivalente: π · 30² = 3.14 × 900 = 2 826 m².</div>
-      <div class="paso"><span class="n">4</span> Área total: 6 000 + 2 826 = 8 826 m².</div>
-      <p><strong>Respuesta:</strong> la pista tiene un área total de 8 826 m².</p>
-    </div>
-
-    <div class="caja-tip">
-      <strong>Atajo útil:</strong> cuando una figura tiene dos semicírculos del mismo tamaño, conviene unirlos mentalmente para formar un círculo completo. Eso evita dividir entre 2 dos veces y reduce las posibilidades de error.
-    </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 2 · Áreas de círculo</h3>
-    <p>Usa π ≈ 3.14. Escribe el resultado (solo el número, con decimales si hace falta) y presiona «Verificar».</p>
-    <div class="pregunta">
-      <div class="enun">1. r = 4 cm. Área del círculo =</div>
-      <input type="text" class="campo-num" id="ar1" inputmode="decimal" aria-label="Respuesta de la pregunta 1: área de un círculo de radio cuatro centímetros" />
-      <div class="fb" id="fb-ar1"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">2. d = 12 m. Área del círculo =</div>
-      <input type="text" class="campo-num" id="ar2" inputmode="decimal" aria-label="Respuesta de la pregunta 2: área de un círculo de diámetro doce metros" />
-      <div class="fb" id="fb-ar2"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">3. r = 8 pulgadas. Área del semicírculo =</div>
-      <input type="text" class="campo-num" id="ar3" inputmode="decimal" aria-label="Respuesta de la pregunta 3: área de un semicírculo de radio ocho pulgadas" />
-      <div class="fb" id="fb-ar3"></div>
-    </div>
-    <button class="btn" id="btn-area">Verificar</button>
-  </div>
-
-  <h2 class="seccion">5. Aplicaciones reales</h2>
-  <div class="bloque">
-    <p>Calcular el área del círculo aparece en situaciones cotidianas: sembrar césped, comprar pintura para una pared circular, cubrir el fondo de una piscina, repartir una pizza.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 5 · Sembrar césped</span>
-      <p>Un parterre circular tiene 4 m de radio. El césped se vende a $8 por m². ¿Cuánto cuesta cubrirlo todo?</p>
-      <div class="paso"><span class="n">1</span> Área: A = 3.14 × 4² = 3.14 × 16 = 50.24 m².</div>
-      <div class="paso"><span class="n">2</span> Costo: 50.24 × 8 = $401.92.</div>
-      <p><strong>Respuesta:</strong> sembrar el parterre cuesta aproximadamente $401.92.</p>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 6 · Mesa con dos terminaciones</span>
-      <p>Una mesa de comedor está formada por un rectángulo de 1.8 m × 1 m y dos semicírculos en cada extremo corto (diámetro 1 m). ¿Cuál es su área total?</p>
-      <div class="paso"><span class="n">1</span> Área del rectángulo: 1.8 × 1 = 1.8 m².</div>
-      <div class="paso"><span class="n">2</span> Dos semicírculos = un círculo. Radio: 1 ÷ 2 = 0.5 m. Área = 3.14 × 0.5² = 3.14 × 0.25 = 0.785 m².</div>
-      <div class="paso"><span class="n">3</span> Área total: 1.8 + 0.785 = 2.585 m².</div>
-      <p><strong>Respuesta:</strong> la mesa tiene un área de aproximadamente 2.59 m².</p>
-    </div>
-  </div>
-
-  <h2 class="seccion">6. Práctica guiada en clase</h2>
-  <div class="bloque">
-    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 1 · La pizza compartida</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          El docente trae una caja de pizza (vacía o un dibujo) con un diámetro de 14 pulgadas. En parejas, los estudiantes calculan el área total y luego dividen entre 8 porciones para obtener el área de cada porción. Discuten si vale más una pizza de 14 in o dos de 7 in.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          El mismo problema en una hoja compartida. Las parejas calculan ambas opciones (una pizza grande vs. dos pequeñas) y argumentan en el foro cuál conviene si el precio por área es lo que importa. Comparten resultados al volver al pleno.
-        </div>
-      </div>
-    </div>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 2 · ¿Borde o superficie?</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          El docente lee diez situaciones reales: «cerca de un estanque», «pintar el fondo de una piscina circular», «cordón decorativo de un sombrero», «agua para regar un cantero», etc. Los estudiantes levantan una tarjeta «C» o una «A». Justifican su elección al final.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          Las diez situaciones aparecen en una encuesta con opciones C o A. Tras la votación, el docente revela las respuestas y los estudiantes comentan en el chat los casos donde dudaron. Se subraya la pista lingüística (rodear, cubrir).
-        </div>
-      </div>
-    </div>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 3 · Diseñar una pista</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          Cada grupo recibe dimensiones para una pista de atletismo (rectángulo + dos semicírculos). Calculan el área total y la circunferencia (perímetro) total. Presentan al resto las dos medidas, distinguiendo claramente cuál sirve para sembrar césped y cuál para colocar la valla perimetral.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          En salas pequeñas, los grupos resuelven la pista en una hoja compartida con dos columnas: «valla (perímetro)» y «césped (área)». Comparten al regresar al pleno y comentan en qué unidades va cada respuesta (m vs. m²).
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="caja-tarea">
-    <h2>Tarea asincrónica</h2>
-    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
-    <ul>
-      <li>Cinco ejercicios de calcular el área dado el radio.</li>
-      <li>Tres ejercicios de calcular el área dado el diámetro (primero hallar el radio).</li>
-      <li>Tres ejercicios de hallar el radio dado el área (incluyendo cuadrados perfectos).</li>
-      <li>Cuatro figuras compuestas que combinan rectángulos con semicírculos.</li>
-      <li>Tres ejercicios de selección: ¿circunferencia o área?</li>
-    </ul>
-    <p>La plataforma ofrece retroalimentación paso a paso en cada intento. Tiempo estimado: 60 minutos.</p>
-  </div>
-
-  <div class="quiz">
-    <h2>Quiz de la lección 7.3</h2>
-    <p>Doce preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 8 respuestas correctas.</p>
-    <div id="quiz-cuerpo"></div>
-    <div id="resultado-quiz"></div>
-    <button class="btn" id="btn-corregir">Corregir quiz</button>
-    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
-  </div>
-
-  <div class="rubrica">
-    <h2>Rúbrica analítica de la lección</h2>
-    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
-    <table class="tabla-rubrica">
-      <thead>
-        <tr>
-          <th>Criterio</th>
-          <th>Inicial (1)</th>
-          <th>En desarrollo (2)</th>
-          <th>Competente (3)</th>
-          <th>Destacado (4)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Aplicación de A = πr²</td>
-          <td>Confunde r² con 2r.</td>
-          <td>Aplica la fórmula con apoyo.</td>
-          <td>Aplica A = πr² correctamente con r o con d.</td>
-          <td>Aplica la fórmula, verifica y explica el orden de operaciones.</td>
-        </tr>
-        <tr>
-          <td>Distinción circunferencia vs. área</td>
-          <td>Usa una fórmula por la otra sin criterio.</td>
-          <td>Elige con apoyo según las palabras clave.</td>
-          <td>Distingue correctamente las dos medidas y usa la fórmula adecuada.</td>
-          <td>Distingue, justifica con las unidades y aplica ambas en problemas mixtos.</td>
-        </tr>
-        <tr>
-          <td>Problema inverso</td>
-          <td>No despeja el radio del área.</td>
-          <td>Despeja con apoyo.</td>
-          <td>Despeja r usando raíz cuadrada cuando el resultado es entero.</td>
-          <td>Despeja y verifica el resultado calculando hacia atrás.</td>
-        </tr>
-        <tr>
-          <td>Figuras compuestas con semicírculos</td>
-          <td>No reconoce el semicírculo como mitad de un círculo.</td>
-          <td>Calcula con apoyo en casos sencillos.</td>
-          <td>Calcula áreas de rectángulo + dos semicírculos correctamente.</td>
-          <td>Usa el atajo (dos semicírculos = un círculo) y resuelve con fluidez.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="cierre">
-    <h2>Cierre del Tema 7 y enlace con el Tema 8</h2>
-    <p>Con esta lección se cierra el <strong>Tema 7 · Geometría transicional</strong>. Quedaron dominadas el área de figuras compuestas, la <strong>circunferencia</strong> y el <strong>área</strong> del círculo, y la combinación de rectángulos con semicírculos en diseños reales. El número <strong>π</strong>, descubierto en la 7.2, se volvió una herramienta familiar.</p>
-    <p>El <strong>Tema 8 · Estadística descriptiva, gráficos circulares y probabilidad</strong> cambia el terreno por última vez en el Nivel 2. La <strong>Lección 8.1 · Media, mediana, moda, rango y media ponderada</strong> abrirá el tema con las medidas básicas para resumir un conjunto de datos en un único número representativo. Lo aprendido aquí sobre el círculo será aprovechado en la <strong>Lección 8.2</strong> con los gráficos circulares.</p>
-  </div>
-
-  <footer>
-    Spanish ASE Math · Nivel 2 · Lección 7.3 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
-  </footer>
-
+</div>
+<div class="practica">
+<h3>Práctica interactiva 2 · Áreas de círculo</h3>
+<p>Usa π ≈ 3.14. Escribe el resultado (solo el número, con decimales si hace falta) y presiona «Verificar».</p>
+<div class="pregunta">
+<div class="enun">1. r = 4 cm. Área del círculo =</div>
+<input aria-label="Respuesta de la pregunta 1: área de un círculo de radio cuatro centímetros" class="campo-num" id="ar1" inputmode="decimal" type="text"/>
+<div class="fb" id="fb-ar1"></div>
+</div>
+<div class="pregunta">
+<div class="enun">2. d = 12 m. Área del círculo =</div>
+<input aria-label="Respuesta de la pregunta 2: área de un círculo de diámetro doce metros" class="campo-num" id="ar2" inputmode="decimal" type="text"/>
+<div class="fb" id="fb-ar2"></div>
+</div>
+<div class="pregunta">
+<div class="enun">3. r = 8 pulgadas. Área del semicírculo =</div>
+<input aria-label="Respuesta de la pregunta 3: área de un semicírculo de radio ocho pulgadas" class="campo-num" id="ar3" inputmode="decimal" type="text"/>
+<div class="fb" id="fb-ar3"></div>
+</div>
+<button class="btn" id="btn-area">Verificar</button>
+</div>
+<h2 class="seccion" id="s-5-aplicaciones-reales">5. Aplicaciones reales</h2>
+<div class="bloque">
+<p>Calcular el área del círculo aparece en situaciones cotidianas: sembrar césped, comprar pintura para una pared circular, cubrir el fondo de una piscina, repartir una pizza.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 5 · Sembrar césped</span>
+<p>Un parterre circular tiene 4 m de radio. El césped se vende a $8 por m². ¿Cuánto cuesta cubrirlo todo?</p>
+<div class="paso"><span class="n">1</span> Área: A = 3.14 × 4² = 3.14 × 16 = 50.24 m².</div>
+<div class="paso"><span class="n">2</span> Costo: 50.24 × 8 = $401.92.</div>
+<p><strong>Respuesta:</strong> sembrar el parterre cuesta aproximadamente $401.92.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 6 · Mesa con dos terminaciones</span>
+<p>Una mesa de comedor está formada por un rectángulo de 1.8 m × 1 m y dos semicírculos en cada extremo corto (diámetro 1 m). ¿Cuál es su área total?</p>
+<div class="paso"><span class="n">1</span> Área del rectángulo: 1.8 × 1 = 1.8 m².</div>
+<div class="paso"><span class="n">2</span> Dos semicírculos = un círculo. Radio: 1 ÷ 2 = 0.5 m. Área = 3.14 × 0.5² = 3.14 × 0.25 = 0.785 m².</div>
+<div class="paso"><span class="n">3</span> Área total: 1.8 + 0.785 = 2.585 m².</div>
+<p><strong>Respuesta:</strong> la mesa tiene un área de aproximadamente 2.59 m².</p>
+</div>
 </div>
 
+
+<div class="caja-tarea">
+<h2 id="s-tarea">Tarea</h2>
+<p>Para hacer por su cuenta, con el cuaderno abierto:</p>
+<ul>
+<li>Cinco ejercicios de calcular el área dado el radio.</li>
+<li>Tres ejercicios de calcular el área dado el diámetro (primero hallar el radio).</li>
+<li>Tres ejercicios de hallar el radio dado el área (incluyendo cuadrados perfectos).</li>
+<li>Cuatro figuras compuestas que combinan rectángulos con semicírculos.</li>
+<li>Tres ejercicios de selección: ¿circunferencia o área?</li>
+<li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y haga una tanda mezclada de <em>círculos</em>: circunferencia y área en el mismo bloque. Mezclarlas es la única forma de entrenar lo que de verdad se evalúa, que es decidir cuál de las dos pide el problema.</li></ul>
+<p>Tiempo estimado: 60 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
+</div>
+<div class="quiz">
+<h2 id="s-quiz-de-la-leccion-7-3">Quiz de la lección 7.3</h2>
+<p>Doce preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+<div id="quiz-cuerpo"></div>
+<div id="resultado-quiz"></div>
+<button class="btn" id="btn-corregir">Corregir quiz</button>
+<button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+</div>
+<div class="rubrica">
+<h2 id="s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</h2>
+<p>Cuatro criterios evaluados en cuatro niveles de desempeño. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<table class="tabla-rubrica">
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Inicial (1)</th>
+<th>En desarrollo (2)</th>
+<th>Competente (3)</th>
+<th>Destacado (4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aplicación de A = πr²</td>
+<td>Confunde r² con 2r.</td>
+<td>Aplica la fórmula con apoyo.</td>
+<td>Aplica A = πr² correctamente con r o con d.</td>
+<td>Aplica la fórmula, verifica y explica el orden de operaciones.</td>
+</tr>
+<tr>
+<td>Distinción circunferencia vs. área</td>
+<td>Usa una fórmula por la otra sin criterio.</td>
+<td>Elige con apoyo según las palabras clave.</td>
+<td>Distingue correctamente las dos medidas y usa la fórmula adecuada.</td>
+<td>Distingue, justifica con las unidades y aplica ambas en problemas mixtos.</td>
+</tr>
+<tr>
+<td>Problema inverso</td>
+<td>No despeja el radio del área.</td>
+<td>Despeja con apoyo.</td>
+<td>Despeja r usando raíz cuadrada cuando el resultado es entero.</td>
+<td>Despeja y verifica el resultado calculando hacia atrás.</td>
+</tr>
+<tr>
+<td>Figuras compuestas con semicírculos</td>
+<td>No reconoce el semicírculo como mitad de un círculo.</td>
+<td>Calcula con apoyo en casos sencillos.</td>
+<td>Calcula áreas de rectángulo + dos semicírculos correctamente.</td>
+<td>Usa el atajo (dos semicírculos = un círculo) y resuelve con fluidez.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cierre">
+<h2 id="s-cierre-del-tema-7-y-enlace-con-el-tema-8">Cierre del Tema 7 y enlace con el Tema 8</h2>
+<p>Con esta lección se cierra el <strong>Tema 7 · Geometría transicional</strong>. Quedaron dominadas el área de figuras compuestas, la <strong>circunferencia</strong> y el <strong>área</strong> del círculo, y la combinación de rectángulos con semicírculos en diseños reales. El número <strong>π</strong>, descubierto en la 7.2, se volvió una herramienta familiar.</p>
+<p>El <strong>Tema 8 · Estadística descriptiva, gráficos circulares y probabilidad</strong> cambia el terreno por última vez en el Nivel 2. La <strong>Lección 8.1 · Media, mediana, moda, rango y media ponderada</strong> abrirá el tema con las medidas básicas para resumir un conjunto de datos en un único número representativo. Lo aprendido aquí sobre el círculo será aprovechado en la <strong>Lección 8.2</strong> con los gráficos circulares.</p>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 7 · Lección 7.3</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
+</div>
 <script>
 (function () {
   /* ---- Práctica de opciones ---- */

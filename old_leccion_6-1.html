@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<!-- Lección 6.1 · Interés simple: la fórmula I = P × r × t · Spanish ASE Math, Nivel 2 · © José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago. Licencia Creative Commons CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es) -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 6.1 · Interés simple: la fórmula I = P × r × t</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<meta name="dcterms.license" content="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root {
+    --tema:   #00695c;
+    --tema-d: #004d40;
+    --tema-bg:#b2dfdb;
+    --tema-bg2:#e6f3f1;
+    --tema-soft:#e0f2f1;
+    --txt:    #222;
+    --bg:     #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0; background: var(--bg); color: var(--txt);
+    line-height: 1.6; font-size: 16px;
+  }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+  a { color: #00574b; }
+  :focus-visible { outline: 3px solid #1565c0; outline-offset: 2px; }
+
+  header.principal {
+    background: #00695c;
+    background: linear-gradient(135deg, #004d40 0%, #00695c 60%, #00796b 100%);
+    color: #fff; padding: 30px 30px; border-radius: 14px;
+    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(0,77,64,.28);
+  }
+  header.principal .ruta { font-size: 13px; letter-spacing: .3px; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; line-height: 1.3; }
+  header.principal .meta { font-size: 14px; }
+
+  h2.seccion {
+    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
+    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
+  }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos {
+    background: var(--tema-soft); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
+  }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque {
+    background: #fff; border-radius: 10px; padding: 6px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
+  }
+  p { margin: 10px 0; }
+
+  .ejemplo {
+    background: #fafafa; border: 1px solid #e3e3e3;
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+  }
+  .ejemplo .et {
+    display: inline-block; background: var(--tema); color: #fff;
+    font-size: 13px; font-weight: 700; padding: 3px 12px;
+    border-radius: 12px; margin-bottom: 6px;
+  }
+  .paso { margin: 7px 0; padding-left: 32px; position: relative; }
+  .paso .n {
+    position: absolute; left: 0; top: 1px;
+    background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%;
+    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
+  }
+
+  .caja-tip {
+    background: #e8f5e9; border-left: 5px solid #2e7d32;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    color: #1b5e20; font-size: 15px;
+  }
+  .caja-atencion {
+    background: #fff8e1; border-left: 5px solid #f9a825;
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    font-size: 15px; color: #5C3900;
+  }
+  .caja-atencion strong { color: #5C3900; }
+
+  .formula-card {
+    background: var(--tema-soft); border: 2px solid var(--tema);
+    border-radius: 12px; padding: 16px; margin: 14px 0; text-align: center;
+  }
+  .formula-card .formula {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 24px; font-weight: 700; color: var(--tema-d); margin: 6px 0;
+  }
+  .formula-card .leyenda { font-size: 14px; color: #333; margin-top: 8px; }
+  .formula-card .leyenda strong { color: var(--tema-d); }
+  .formulas-tres { display: flex; gap: 12px; flex-wrap: wrap; margin: 14px 0; }
+  .formulas-tres .formula-card { flex: 1; min-width: 200px; margin: 0; }
+  .formulas-tres .formula { font-size: 20px; }
+
+  .tabla-wrap { overflow-x: auto; }
+  table.tabla-fin {
+    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; background: #fff;
+  }
+  table.tabla-fin caption {
+    caption-side: top; text-align: left; font-weight: 600; color: var(--tema-d);
+    padding: 4px 0 8px; font-size: 14px;
+  }
+  table.tabla-fin th, table.tabla-fin td {
+    border: 1px solid #d6d6d6; padding: 8px 11px; text-align: center;
+  }
+  table.tabla-fin th { background: var(--tema); color: #fff; }
+  table.tabla-fin td:first-child { background: var(--tema-soft); font-weight: 600; color: var(--tema-d); }
+  table.tabla-fin tr.destacada td { background: #e8f5e9; font-weight: 700; }
+  table.tabla-fin td.izq { text-align: left; }
+
+  .comparacion { display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0; }
+  .tipo-fin { flex: 1; min-width: 260px; border-radius: 10px; padding: 14px 16px; }
+  .tipo-crece { background: #e8f5e9; border-left: 5px solid #2e7d32; }
+  .tipo-crece h3 { color: #1b5e20; margin-top: 0; }
+  .tipo-baja { background: #fff3e0; border-left: 5px solid #bf360c; }
+  .tipo-baja h3 { color: #5C3900; margin-top: 0; }
+
+  .grafico-wrap { text-align: center; margin: 16px 0; overflow-x: auto; }
+  .grafico-wrap svg { max-width: 100%; height: auto; }
+  .grafico-wrap .pie-graf { font-size: 14px; color: #444; text-align: left; }
+
+  .practica {
+    background: var(--tema-bg2); border: 1px dashed var(--tema);
+    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
+  }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion {
+    background: #fff; border: 2px solid #d0d0d0; border-radius: 8px;
+    padding: 9px 14px; cursor: pointer;
+  }
+  .opcion:hover { border-color: var(--tema); }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); background: #f1f8f7; font-weight: 600; }
+  .fb { margin-top: 6px; font-size: 14px; font-weight: 600; }
+  .fb:empty { display: none; }
+  .fb.ok { color: #1b5e20; }
+  .fb.no { color: #b71c1c; }
+
+  .fila-num { margin: 12px 0; }
+  .campo-texto {
+    font-size: 16px; padding: 6px 10px; border: 2px solid #9e9e9e;
+    border-radius: 7px; width: 130px; font-family: inherit;
+  }
+  .campo-texto:focus { border-color: var(--tema); }
+  table.tabla-fin .campo-texto { width: 110px; }
+  .btn {
+    background: var(--tema); color: #fff; border: none;
+    padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px;
+  }
+  .btn:hover { background: var(--tema-d); }
+  .btn.sec { background: #546e7a; }
+  .btn.sec:hover { background: #37474f; }
+
+  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
+  .modo { flex: 1; min-width: 230px; border-radius: 9px; padding: 12px 16px; font-size: 15px; }
+  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+  .modo h4 { margin: 0 0 6px; font-size: 15px; }
+  .modo-pres h4 { color: #0d47a1; }
+  .modo-virt h4 { color: #4a148c; }
+
+  .actividad { margin-bottom: 22px; }
+  .actividad > h3 {
+    color: var(--tema-d); font-size: 16px; margin: 0 0 8px;
+    background: var(--tema-soft); padding: 7px 14px; border-radius: 7px;
+  }
+
+  details.docente {
+    background: #ede7f6; border-left: 5px solid #5e35b1; border-radius: 0 8px 8px 0;
+    padding: 8px 16px; margin: 12px 0; font-size: 15px;
+  }
+  details.docente summary { cursor: pointer; font-weight: 700; color: #4527a0; }
+  details.docente[open] summary { margin-bottom: 6px; }
+
+  .enlace-act {
+    display: inline-block; background: #fff; border: 2px solid var(--tema);
+    color: var(--tema-d); font-weight: 700; padding: 8px 16px; border-radius: 8px;
+    text-decoration: none; margin: 6px 8px 6px 0;
+  }
+  .enlace-act:hover { background: var(--tema-soft); }
+
+  .caja-tarea {
+    background: #ede7f6; border-left: 6px solid #5e35b1;
+    padding: 14px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
+  }
+  .caja-tarea h2 { margin-top: 4px; color: #4527a0; }
+
+  .quiz {
+    background: #fff; border: 2px solid var(--tema);
+    border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0;
+  }
+  .quiz h2 { color: var(--tema-d); }
+  .quiz .ficha { font-size: 14px; color: #333; }
+  #resultado-quiz {
+    font-size: 17px; font-weight: 700; margin: 14px 0;
+    padding: 12px; border-radius: 8px; text-align: center;
+  }
+  #resultado-quiz:empty { display: none; }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica {
+    width: 100%; border-collapse: collapse; font-size: 14px; background: #fff;
+  }
+  table.tabla-rubrica caption { text-align: left; padding-bottom: 8px; color: #333; font-size: 14px; }
+  table.tabla-rubrica th, table.tabla-rubrica td {
+    border: 1px solid #d6d6d6; padding: 8px 10px; vertical-align: top;
+  }
+  table.tabla-rubrica thead th { background: var(--tema); color: #fff; font-size: 13px; }
+  table.tabla-rubrica tbody th { background: var(--tema-soft); color: var(--tema-d); text-align: left; }
+
+  .bilingue { font-size: 14px; }
+  .bilingue td:first-child { text-align: left; }
+  .bilingue td { text-align: left !important; }
+  .bilingue td:last-child { font-style: italic; }
+
+  .cierre {
+    background: #263238; color: #eceff1; border-radius: 12px;
+    padding: 20px 26px; margin: 24px 0 10px;
+  }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer {
+    text-align: center; padding: 20px; color: #333;
+    font-size: 13px; border-top: 1px solid #ccc; margin-top: 20px;
+  }
+  @media (max-width: 600px) {
+    .contenedor { padding: 14px; }
+    .bloque { padding: 4px 14px 14px; }
+    header.principal h1 { font-size: 21px; }
+  }
+  @media print {
+    body { background: #fff; }
+    .btn, .practica .fb { display: none; }
+    details.docente { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="contenedor">
+  <header class="principal">
+    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 6 · Matemáticas financieras y conversiones de medidas</div>
+    <h1>Lección 6.1 · Interés simple: la fórmula I = P × r × t</h1>
+    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
+  </header>
+
+  <div class="caja-objetivos">
+    <h2>Objetivos de la lección</h2>
+    <ul>
+      <li>Interpretar el significado del principal, la tasa, el tiempo y el interés en situaciones de ahorro y de préstamo.</li>
+      <li>Convertir la tasa de porcentaje a decimal y el tiempo a años antes de usar la fórmula.</li>
+      <li>Calcular el interés simple con la fórmula I = P × r × t.</li>
+      <li>Calcular el monto total A = P + I.</li>
+      <li>Despejar el principal (P), la tasa (r) o el tiempo (t) cuando se conocen las otras tres cantidades.</li>
+    </ul>
+  </div>
+
+  <div class="bloque">
+    <p><strong>Conexión con la lección anterior.</strong> En la Lección 5.3 se aplicaron los porcentajes a situaciones de un solo momento: un descuento, un impuesto, una propina. Esta lección, primera del Tema 6, da el paso siguiente: aplicar un porcentaje <strong>a lo largo del tiempo</strong>. Cada año que el dinero pasa en una cuenta o en un préstamo, se aplica otra vez el mismo porcentaje.</p>
+  </div>
+
+  <h2 class="seccion">1. El banco y yo: dos caras del interés</h2>
+  <div class="bloque">
+    <p>Antes de ver ninguna fórmula, conviene mirar dos situaciones conocidas. En ambas aparece el interés, pero desde lados opuestos.</p>
+
+    <div class="comparacion">
+      <div class="tipo-fin tipo-crece">
+        <h3>Cuando yo ahorro</h3>
+        <p>Guadalupe deposita <strong>$1,500</strong> en una cuenta de ahorro que paga el <strong>4% anual</strong>. Cada año el banco le paga el 4% de $1,500, es decir, <strong>$60</strong>. En 3 años recibe 60 + 60 + 60 = <strong>$180</strong>.</p>
+        <p>El banco me paga a mí por usar mi dinero.</p>
+      </div>
+      <div class="tipo-fin tipo-baja">
+        <h3>Cuando yo pido prestado</h3>
+        <p>Ernesto pide un préstamo de <strong>$3,000</strong> al <strong>10% anual</strong> por 6 meses. En un año completo pagaría el 10% de $3,000, es decir, $300. Como el plazo es medio año, paga la mitad: <strong>$150</strong>.</p>
+        <p>Yo le pago al banco por usar su dinero.</p>
+      </div>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Idea esencial:</strong> sin fórmula, ya se calculó interés simple. Primero se halló el porcentaje del dinero inicial para <strong>un año</strong>; después se multiplicó por <strong>el número de años</strong>. La fórmula de la sección 3 solo escribe esta idea con letras.
+    </div>
+  </div>
+
+  <h2 class="seccion">2. Vocabulario financiero</h2>
+  <div class="bloque">
+    <p>Toda situación de interés simple gira en torno a cinco cantidades. Las letras son las mismas que aparecen en la hoja de fórmulas del examen GED.</p>
+    <ul>
+      <li><strong>P · principal (o capital):</strong> el dinero inicial que se deposita o se presta.</li>
+      <li><strong>r · tasa de interés:</strong> el porcentaje que se cobra o se paga por cada período, casi siempre por año. En la fórmula se escribe en <strong>decimal</strong>.</li>
+      <li><strong>t · tiempo (o plazo):</strong> cuánto dura el ahorro o el préstamo, medido en la misma unidad que la tasa (normalmente, años).</li>
+      <li><strong>I · interés:</strong> el dinero adicional. En un ahorro es la ganancia; en un préstamo es el costo.</li>
+      <li><strong>A · monto total:</strong> el principal más el interés. En un ahorro es lo que se retira al final; en un préstamo es lo que se devuelve en total.</li>
+    </ul>
+
+    <div class="tabla-wrap">
+      <table class="tabla-fin bilingue">
+        <caption>Vocabulario bilingüe: así aparecen estos términos en documentos en inglés</caption>
+        <thead><tr><th scope="col">Español</th><th scope="col">Inglés</th></tr></thead>
+        <tbody>
+          <tr><td>principal o capital</td><td>principal</td></tr>
+          <tr><td>interés simple</td><td>simple interest</td></tr>
+          <tr><td>tasa de interés anual</td><td>annual interest rate</td></tr>
+          <tr><td>plazo</td><td>term</td></tr>
+          <tr><td>monto total</td><td>total amount</td></tr>
+          <tr><td>préstamo / cuenta de ahorro</td><td>loan / savings account</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2 class="seccion">3. La fórmula del interés simple</h2>
+  <div class="bloque">
+    <div class="formula-card">
+      <div class="formula">I = P × r × t</div>
+      <div class="leyenda">
+        <strong>I</strong> = interés &nbsp;|&nbsp; <strong>P</strong> = principal &nbsp;|&nbsp;
+        <strong>r</strong> = tasa anual en decimal &nbsp;|&nbsp; <strong>t</strong> = tiempo en años
+      </div>
+    </div>
+    <div class="formula-card">
+      <div class="formula">A = P + I</div>
+      <div class="leyenda">El monto total es el principal más el interés.</div>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 1 · Calcular el interés</span>
+      <p>¿Cuánto interés genera un ahorro de $3,500 al 4% de interés simple anual durante 6 años?</p>
+      <div class="paso"><span class="n">1</span> Datos: P = 3,500; r = 4% = 0.04; t = 6.</div>
+      <div class="paso"><span class="n">2</span> Fórmula: I = 3,500 × 0.04 × 6.</div>
+      <div class="paso"><span class="n">3</span> Por partes: 3,500 × 0.04 = 140 (interés de un año); 140 × 6 = 840.</div>
+      <p><strong>Respuesta:</strong> el interés es de $840.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 2 · Monto total de un ahorro</span>
+      <p>Con los datos del Ejemplo 1, ¿cuánto dinero hay en la cuenta al final de los 6 años?</p>
+      <div class="paso"><span class="n">1</span> A = P + I.</div>
+      <div class="paso"><span class="n">2</span> A = 3,500 + 840 = 4,340.</div>
+      <p><strong>Respuesta:</strong> al final hay $4,340 en la cuenta.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 3 · Monto total de un préstamo</span>
+      <p>Un préstamo de $1,800 tiene un interés simple del 12% anual y se paga en 2 años. ¿Cuánto se devuelve en total?</p>
+      <div class="paso"><span class="n">1</span> Interés: I = 1,800 × 0.12 × 2 = 432.</div>
+      <div class="paso"><span class="n">2</span> Monto total: A = 1,800 + 432 = 2,232.</div>
+      <p><strong>Respuesta:</strong> se devuelven $2,232. El préstamo cuesta $432.</p>
+    </div>
+  </div>
+
+  <h2 class="seccion">4. La tasa y el tiempo, en la misma unidad</h2>
+  <div class="bloque">
+    <p>La fórmula solo funciona si la tasa está en decimal y si la tasa y el tiempo usan <strong>la misma unidad</strong>. Si la tasa es anual, el tiempo debe estar en años. Esta es la parte donde ocurren más errores.</p>
+
+    <h3>De porcentaje a decimal</h3>
+    <p>Se divide entre 100, es decir, se corre el punto decimal dos lugares a la izquierda: 3% = 0.03 · 4.5% = 0.045 · 12% = 0.12 · 0.5% = 0.005.</p>
+
+    <div class="comparacion">
+      <div class="tabla-wrap" style="flex:1;min-width:250px;">
+        <table class="tabla-fin">
+          <caption>Del tiempo en meses al tiempo en años (se divide entre 12)</caption>
+          <thead><tr><th scope="col">Meses</th><th scope="col">Años</th></tr></thead>
+          <tbody>
+            <tr><td>3</td><td>0.25</td></tr>
+            <tr><td>6</td><td>0.5</td></tr>
+            <tr><td>9</td><td>0.75</td></tr>
+            <tr><td>18</td><td>1.5</td></tr>
+            <tr><td>30</td><td>2.5</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tabla-wrap" style="flex:1;min-width:250px;">
+        <table class="tabla-fin">
+          <caption>De la tasa mensual a la tasa anual (se multiplica por 12)</caption>
+          <thead><tr><th scope="col">Tasa mensual</th><th scope="col">Tasa anual</th></tr></thead>
+          <tbody>
+            <tr><td>0.5%</td><td>6%</td></tr>
+            <tr><td>1%</td><td>12%</td></tr>
+            <tr><td>1.5%</td><td>18%</td></tr>
+            <tr><td>2%</td><td>24%</td></tr>
+            <tr><td>2.5%</td><td>30%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p>Cuando el tiempo viene en <strong>días</strong>, se divide entre 365. Algunos bancos usan el llamado año comercial de 360 días; el problema debe indicar cuál se usa.</p>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 4 · Tiempo en meses</span>
+      <p>Un préstamo de $4,000 al 6% anual se paga en 9 meses. ¿Cuánto interés se paga?</p>
+      <div class="paso"><span class="n">1</span> Convertir el tiempo: 9 ÷ 12 = 0.75 años.</div>
+      <div class="paso"><span class="n">2</span> I = 4,000 × 0.06 × 0.75 = 180.</div>
+      <p><strong>Respuesta:</strong> se pagan $180 de interés.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Error frecuente:</strong> usar t = 9 sin convertir da I = 4,000 × 0.06 × 9 = $2,160, más de la mitad del préstamo en solo 9 meses. Antes de dar una respuesta, conviene preguntarse si el resultado tiene sentido.
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 5 · Tasa mensual</span>
+      <p>Una tienda financia una compra de $1,200 al 2% <strong>mensual</strong> durante 6 meses. ¿Cuánto interés se paga?</p>
+      <div class="paso"><span class="n">1</span> Camino A: la tasa es mensual y el tiempo está en meses; ya coinciden. I = 1,200 × 0.02 × 6 = 144.</div>
+      <div class="paso"><span class="n">2</span> Camino B: tasa anual = 2% × 12 = 24%; tiempo = 6 ÷ 12 = 0.5 años. I = 1,200 × 0.24 × 0.5 = 144.</div>
+      <p><strong>Respuesta:</strong> $144 por cualquiera de los dos caminos. Lo importante es que la tasa y el tiempo coincidan.</p>
+    </div>
+  </div>
+
+  <h2 class="seccion">5. Crecimiento año tras año</h2>
+  <div class="bloque">
+    <p>En el interés <strong>simple</strong>, el interés de cada año es <strong>siempre el mismo</strong>, porque se calcula sobre el principal original. Por eso el dinero crece en escalones iguales: un crecimiento <strong>lineal</strong>.</p>
+
+    <div class="tabla-wrap">
+      <table class="tabla-fin">
+        <caption>Principal de $1,000 al 8% de interés simple anual</caption>
+        <thead>
+          <tr><th scope="col">Año</th><th scope="col">Interés del año ($)</th><th scope="col">Interés acumulado ($)</th><th scope="col">Monto total ($)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0</td><td>—</td><td>0</td><td>1,000</td></tr>
+          <tr><td>1</td><td>80</td><td>80</td><td>1,080</td></tr>
+          <tr><td>2</td><td>80</td><td>160</td><td>1,160</td></tr>
+          <tr><td>3</td><td>80</td><td>240</td><td>1,240</td></tr>
+          <tr class="destacada"><td>5</td><td>80</td><td>400</td><td>1,400</td></tr>
+          <tr><td>10</td><td>80</td><td>800</td><td>1,800</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grafico-wrap">
+      <svg width="560" height="250" viewBox="0 0 560 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica de barras: el principal de 1,000 dólares se mantiene igual y el interés acumulado crece 80 dólares por año, hasta un monto total de 1,800 dólares en el año 10.">
+        <g font-family="Segoe UI, sans-serif" font-size="12" fill="#333">
+          <line x1="70" y1="210" x2="530" y2="210" stroke="#444" stroke-width="2"/>
+          <line x1="70" y1="20" x2="70" y2="210" stroke="#444" stroke-width="2"/>
+          <line x1="70" y1="110" x2="530" y2="110" stroke="#ccc" stroke-dasharray="4 4"/>
+          <line x1="70" y1="30" x2="530" y2="30" stroke="#ccc" stroke-dasharray="4 4"/>
+          <text x="62" y="214" text-anchor="end">$0</text>
+          <text x="62" y="114" text-anchor="end">$1,000</text>
+          <text x="62" y="34" text-anchor="end">$1,800</text>
+          <text x="300" y="242" text-anchor="middle">Años</text>
+          <rect x="95" y="110" width="44" height="100" fill="#00695c"/>
+          <text x="117" y="226" text-anchor="middle">0</text>
+          <rect x="165" y="110" width="44" height="100" fill="#00695c"/><rect x="165" y="102" width="44" height="8" fill="#81c784"/>
+          <text x="187" y="226" text-anchor="middle">1</text>
+          <rect x="235" y="110" width="44" height="100" fill="#00695c"/><rect x="235" y="94" width="44" height="16" fill="#81c784"/>
+          <text x="257" y="226" text-anchor="middle">2</text>
+          <rect x="305" y="110" width="44" height="100" fill="#00695c"/><rect x="305" y="86" width="44" height="24" fill="#81c784"/>
+          <text x="327" y="226" text-anchor="middle">3</text>
+          <rect x="375" y="110" width="44" height="100" fill="#00695c"/><rect x="375" y="70" width="44" height="40" fill="#81c784"/>
+          <text x="397" y="226" text-anchor="middle">5</text>
+          <rect x="445" y="110" width="44" height="100" fill="#00695c"/><rect x="445" y="30" width="44" height="80" fill="#81c784"/>
+          <text x="467" y="226" text-anchor="middle">10</text>
+          <rect x="360" y="4" width="14" height="14" fill="#00695c"/><text x="380" y="15">Principal</text>
+          <rect x="450" y="4" width="14" height="14" fill="#81c784"/><text x="470" y="15">Interés</text>
+        </g>
+      </svg>
+      <p class="pie-graf">La parte verde oscuro (el principal) no cambia. La parte verde clara (el interés acumulado) crece $80 cada año.</p>
+    </div>
+
+    <div class="caja-atencion">
+      <strong>Para saber más:</strong> en el interés <em>compuesto</em>, cada año el interés se calcula sobre el monto del año anterior, y el dinero crece más rápido. En este nivel se estudia solo el interés simple.
+    </div>
+
+    <div class="practica" id="prac-1">
+      <h3>Práctica interactiva 1 · Calcular el interés y el monto total</h3>
+      <p>Escribe solo el número, sin el signo de dólar, y presiona «Verificar».</p>
+      <div class="fila-num">1. P = $500, r = 6% anual, t = 2 años. I = $
+        <input type="text" class="campo-texto" id="p1a" inputmode="decimal" data-ans="60" data-pista="0.06 × 500 = 30 por año." aria-label="Pregunta 1: interés">
+        <div class="fb" id="fb-p1a" aria-live="polite"></div></div>
+      <div class="fila-num">2. P = $1,200, r = 4% anual, t = 5 años. I = $
+        <input type="text" class="campo-texto" id="p1b" inputmode="decimal" data-ans="240" data-pista="primero el interés de un año: 1,200 × 0.04." aria-label="Pregunta 2: interés">
+        <div class="fb" id="fb-p1b" aria-live="polite"></div></div>
+      <div class="fila-num">3. P = $800, r = 3% anual, t = 4 años. Monto total A = $
+        <input type="text" class="campo-texto" id="p1c" inputmode="decimal" data-ans="896" data-pista="calcula I y súmalo al principal." aria-label="Pregunta 3: monto total">
+        <div class="fb" id="fb-p1c" aria-live="polite"></div></div>
+      <div class="fila-num">4. P = $3,000, r = 5% anual, t = 8 meses. I = $
+        <input type="text" class="campo-texto" id="p1d" inputmode="decimal" data-ans="100" data-pista="convierte 8 meses a años: 8 ÷ 12." aria-label="Pregunta 4: interés">
+        <div class="fb" id="fb-p1d" aria-live="polite"></div></div>
+      <button type="button" class="btn" data-verificar="prac-1">Verificar</button>
+    </div>
+  </div>
+
+  <h2 class="seccion">6. Despejar P, r o t</h2>
+  <div class="bloque">
+    <p>A veces lo que se desconoce no es el interés, sino otro dato: ¿cuánto hay que depositar?, ¿qué tasa cobra el préstamo?, ¿cuánto tiempo hay que esperar? La fórmula I = P × r × t permite encontrar cualquiera de las cuatro cantidades si se conocen las otras tres.</p>
+
+    <div class="formulas-tres">
+      <div class="formula-card"><div class="formula">P = I ÷ (r × t)</div><div class="leyenda">Buscar el principal</div></div>
+      <div class="formula-card"><div class="formula">r = I ÷ (P × t)</div><div class="leyenda">Buscar la tasa</div></div>
+      <div class="formula-card"><div class="formula">t = I ÷ (P × r)</div><div class="leyenda">Buscar el tiempo</div></div>
+    </div>
+
+    <div class="caja-tip">
+      <strong>Una sola regla para las tres:</strong> se divide el interés entre el producto de los otros dos datos. Si el problema da el monto total A en lugar del interés, primero se calcula I = A − P.
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 6 · Buscar la tasa</span>
+      <p>Un préstamo de $2,000 a 4 años generó $560 de interés. ¿Qué tasa anual se cobró?</p>
+      <div class="paso"><span class="n">1</span> r = I ÷ (P × t) = 560 ÷ (2,000 × 4) = 560 ÷ 8,000.</div>
+      <div class="paso"><span class="n">2</span> r = 0.07. De decimal a porcentaje se multiplica por 100: 7%.</div>
+      <p><strong>Respuesta:</strong> la tasa es del 7% anual.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 7 · Buscar el tiempo</span>
+      <p>¿Cuánto tiempo deben estar $1,200 al 5% anual para ganar $150 de interés?</p>
+      <div class="paso"><span class="n">1</span> t = I ÷ (P × r) = 150 ÷ (1,200 × 0.05) = 150 ÷ 60.</div>
+      <div class="paso"><span class="n">2</span> t = 2.5 años, es decir, 2 años y 6 meses.</div>
+      <p><strong>Respuesta:</strong> 2.5 años.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 8 · Buscar el principal</span>
+      <p>¿Cuánto hay que depositar al 4% anual para ganar $360 en 3 años?</p>
+      <div class="paso"><span class="n">1</span> P = I ÷ (r × t) = 360 ÷ (0.04 × 3) = 360 ÷ 0.12.</div>
+      <div class="paso"><span class="n">2</span> P = 3,000.</div>
+      <div class="paso"><span class="n">3</span> Comprobación: 3,000 × 0.04 × 3 = 360. ✔</div>
+      <p><strong>Respuesta:</strong> hay que depositar $3,000.</p>
+    </div>
+
+    <div class="ejemplo">
+      <span class="et">Ejemplo 9 · Cuando el dato es el monto total</span>
+      <p>Por un préstamo de $4,000 se devolvieron $4,960 en total al cabo de 2 años. ¿Qué tasa anual se cobró?</p>
+      <div class="paso"><span class="n">1</span> Primero el interés: I = A − P = 4,960 − 4,000 = 960.</div>
+      <div class="paso"><span class="n">2</span> r = 960 ÷ (4,000 × 2) = 960 ÷ 8,000 = 0.12.</div>
+      <p><strong>Respuesta:</strong> la tasa es del 12% anual.</p>
+    </div>
+
+    <div class="practica" id="prac-2">
+      <h3>Práctica interactiva 2 · Despejar</h3>
+      <p>Escribe solo el número y presiona «Verificar».</p>
+      <div class="fila-num">1. Un ahorro al 4% anual ganó $96 en 3 años. P = $
+        <input type="text" class="campo-texto" id="p2a" inputmode="decimal" data-ans="800" data-pista="P = 96 ÷ (0.04 × 3)." aria-label="Pregunta 1: principal">
+        <div class="fb" id="fb-p2a" aria-live="polite"></div></div>
+      <div class="fila-num">2. Un préstamo de $2,500 a 2 años generó $275 de interés. r =
+        <input type="text" class="campo-texto" id="p2b" inputmode="decimal" data-ans="5.5" data-pista="r = 275 ÷ (2,500 × 2); luego multiplica por 100." aria-label="Pregunta 2: tasa en porcentaje"> %
+        <div class="fb" id="fb-p2b" aria-live="polite"></div></div>
+      <div class="fila-num">3. $1,600 al 5% anual ganaron $200 de interés. t =
+        <input type="text" class="campo-texto" id="p2c" inputmode="decimal" data-ans="2.5" data-pista="t = 200 ÷ (1,600 × 0.05)." aria-label="Pregunta 3: tiempo en años"> años
+        <div class="fb" id="fb-p2c" aria-live="polite"></div></div>
+      <button type="button" class="btn" data-verificar="prac-2">Verificar</button>
+    </div>
+  </div>
+
+  <h2 class="seccion">7. Práctica guiada en clase</h2>
+  <div class="bloque">
+    <p>Las tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: para el aula presencial y para la sesión en línea.</p>
+
+    <div class="actividad">
+      <h3>Actividad 1 · Identificar los datos (25–30 minutos)</h3>
+      <p>Diez situaciones financieras en las que el principal, la tasa y el tiempo no siempre vienen «servidos»: hay meses, días, fechas, tasas mensuales y datos que se deducen.</p>
+      <div class="modalidad">
+        <div class="modo modo-pres"><h4><span aria-hidden="true">🏫</span> Presencial</h4>El docente proyecta las diez situaciones. En parejas, los estudiantes anotan en el cuaderno las columnas P, r y t, y marcan con una bandera los casos dudosos.</div>
+        <div class="modo modo-virt"><h4><span aria-hidden="true">💻</span> En línea</h4>Las parejas trabajan en salas pequeñas (Breakout rooms) y completan una hoja compartida (Google Sheets u otro editor colaborativo) con las mismas columnas.</div>
+      </div>
+      <a class="enlace-act" href="leccion_6-1_actividad_datos.html" target="_blank" rel="noopener noreferrer">Abrir la actividad «Identificar los datos»</a>
+      <details class="docente">
+        <summary>Para el docente</summary>
+        <p>La clave de respuestas está en un archivo aparte, que no debe publicarse para los estudiantes: <a href="leccion_6-1_clave_docente.html" target="_blank" rel="noopener noreferrer">clave de la actividad 1</a>.</p>
+      </details>
+    </div>
+
+    <div class="actividad">
+      <h3>Actividad 2 · El banco y yo</h3>
+      <p><strong>Parte A.</strong> Calcular el interés y el monto total en dos situaciones:</p>
+      <ol>
+        <li>Una cuenta de ahorro de $2,000 al 3% anual durante 2 años.</li>
+        <li>Un préstamo de $5,000 al 8% anual durante 18 meses.</li>
+      </ol>
+      <p><strong>Parte B.</strong> Despejar el dato desconocido:</p>
+      <ol start="3">
+        <li>¿Qué principal hay que depositar al 3% anual para ganar $90 en 2 años?</li>
+        <li>Un préstamo al 8% anual generó $480 de interés en 18 meses. ¿De cuánto fue el préstamo?</li>
+        <li>¿Cuántos años deben estar $2,000 al 3% anual para ganar $300?</li>
+        <li>¿En cuánto tiempo un préstamo de $5,000 al 8% anual acumula $1,000 de interés?</li>
+      </ol>
+      <div class="modalidad">
+        <div class="modo modo-pres"><h4><span aria-hidden="true">🏫</span> Presencial</h4>Cada estudiante tiene su tarjeta con la fórmula I = P × r × t y la calculadora TI-30XS. Resuelven en parejas y, en la pizarra, cada pareja explica uno de los despejes.</div>
+        <div class="modo modo-virt"><h4><span aria-hidden="true">💻</span> En línea</h4>Resuelven en salas pequeñas (Breakout rooms). Al volver al pleno, cada sala escribe un despeje en una pizarra colaborativa (Zoom Whiteboard, Microsoft Whiteboard u otra) y lo explica.</div>
+      </div>
+      <details class="docente">
+        <summary>Para el docente: respuestas de la actividad 2</summary>
+        <p>1. I = 2,000 × 0.03 × 2 = $120; A = $2,120. · 2. t = 1.5 años; I = 5,000 × 0.08 × 1.5 = $600; A = $5,600 (total a devolver).<br>
+        3. P = 90 ÷ (0.03 × 2) = 90 ÷ 0.06 = $1,500. · 4. P = 480 ÷ (0.08 × 1.5) = 480 ÷ 0.12 = $4,000.<br>
+        5. t = 300 ÷ (2,000 × 0.03) = 300 ÷ 60 = 5 años. · 6. t = 1,000 ÷ (5,000 × 0.08) = 1,000 ÷ 400 = 2.5 años.</p>
+        <p>Conviene destacar que los problemas 3 a 6 reutilizan los datos de la Parte A: el mismo banco, visto desde otra pregunta.</p>
+      </details>
+    </div>
+
+    <div class="actividad">
+      <h3>Actividad 3 · ¿Qué oferta me conviene?</h3>
+      <p>Una familia tiene $3,000 para ahorrar y compara tres ofertas de interés simple:</p>
+      <ul>
+        <li><strong>Banco A:</strong> 4% anual durante 3 años.</li>
+        <li><strong>Cooperativa B:</strong> 0.35% mensual durante 36 meses.</li>
+        <li><strong>Banco C:</strong> 5% anual durante 2 años.</li>
+      </ul>
+      <p>Para cada oferta calculan el interés y el monto total. Después deciden cuál elegirían y justifican su decisión con números: ¿basta con mirar la tasa más alta?</p>
+      <div class="modalidad">
+        <div class="modo modo-pres"><h4><span aria-hidden="true">🏫</span> Presencial</h4>En grupos de tres, cada grupo recibe las tres tarjetas de oferta, completa una tabla en papel y presenta su elección al resto de la clase.</div>
+        <div class="modo modo-virt"><h4><span aria-hidden="true">💻</span> En línea</h4>En salas pequeñas (Breakout rooms), los grupos completan la tabla en una hoja compartida (Google Sheets u otro editor colaborativo) y presentan su elección en el pleno.</div>
+      </div>
+      <details class="docente">
+        <summary>Para el docente: respuestas de la actividad 3</summary>
+        <p>A: I = 3,000 × 0.04 × 3 = $360; A = $3,360. · B: I = 3,000 × 0.0035 × 36 = $378; A = $3,378. · C: I = 3,000 × 0.05 × 2 = $300; A = $3,300.</p>
+        <p>La tasa más alta (C, 5%) no produce el mayor interés, porque su plazo es más corto. La cooperativa B gana más en 3 años, aunque su tasa esté escrita en meses (equivale a 4.2% anual). Una respuesta de nivel destacado reconoce que C devuelve el dinero un año antes y que eso también puede importar a la familia.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="caja-tarea">
+    <h2>Tarea asincrónica</h2>
+    <p>Diez ejercicios individuales de interés simple en MyOpenMath, antes de la próxima sesión:</p>
+    <ul>
+      <li>Cuatro de calcular el interés I (dos de ellos con el tiempo en meses).</li>
+      <li>Tres de calcular el monto total A = P + I, en ahorros y en préstamos.</li>
+      <li>Tres de despejar el principal, la tasa o el tiempo.</li>
+    </ul>
+    <p>La plataforma ofrece retroalimentación en cada intento. Tiempo estimado: 60 minutos.</p>
+  </div>
+
+  <div class="quiz">
+    <h2>Quiz de la lección 6.1</h2>
+    <p class="ficha">10 preguntas · 20 minutos · se permite calculadora. Cuatro preguntas de calcular I, tres de calcular A y tres de despejar P, r o t. Para aprobar se necesitan al menos 7 respuestas correctas; se puede reintentar.</p>
+    <div id="quiz-cont"></div>
+    <div id="resultado-quiz" aria-live="polite"></div>
+    <button type="button" class="btn" id="btn-corregir">Corregir quiz</button>
+    <button type="button" class="btn sec" id="btn-reintentar">Intentar de nuevo</button>
+  </div>
+
+  <div class="rubrica">
+    <h2>Rúbrica de interés simple</h2>
+    <div class="tabla-wrap">
+      <table class="tabla-rubrica">
+        <caption>Tres criterios evaluados en cuatro niveles de desempeño.</caption>
+        <thead>
+          <tr><th scope="col">Criterio</th><th scope="col">Inicial (1)</th><th scope="col">En desarrollo (2)</th><th scope="col">Competente (3)</th><th scope="col">Destacado (4)</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Convierte la tasa y el tiempo</th>
+            <td>Usa el porcentaje sin convertir o deja el tiempo en meses o días.</td>
+            <td>Convierte la tasa a decimal, pero se equivoca con el tiempo (o al revés).</td>
+            <td>Convierte la tasa a decimal y el tiempo a años en todos los casos.</td>
+            <td>Además reconoce cuándo no hace falta convertir (tasa mensual con tiempo en meses) y lo explica.</td>
+          </tr>
+          <tr>
+            <th scope="row">Aplica la fórmula I = P × r × t</th>
+            <td>Confunde las variables o no multiplica los tres factores.</td>
+            <td>Calcula el interés en casos directos; comete errores en el monto total.</td>
+            <td>Calcula el interés y el monto total sin errores.</td>
+            <td>Además verifica el resultado con una estimación y lo interpreta en contexto de ahorro o de préstamo.</td>
+          </tr>
+          <tr>
+            <th scope="row">Despeja la variable pedida</th>
+            <td>No identifica qué dato se busca.</td>
+            <td>Plantea el despeje con apoyo; hay errores de cálculo o faltan las unidades.</td>
+            <td>Despeja P, r o t y da el resultado con su unidad ($, %, años).</td>
+            <td>Además comprueba sustituyendo en la fórmula y resuelve casos que parten del monto total A.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="cierre">
+    <h2>Cierre de la lección 6.1</h2>
+    <p>El interés simple es un porcentaje del principal que se repite cada año: por eso el dinero crece en <strong>cantidades iguales</strong>. Con una sola fórmula, I = P × r × t, se calcula el interés, el monto total o cualquier dato que falte.</p>
+    <p>En la <strong>Lección 6.2</strong> se estudia el proceso contrario: bienes como un carro, una computadora o una herramienta de trabajo, que <strong>pierden</strong> una cantidad igual de valor cada año. Esa pérdida se llama depreciación lineal y se organiza con la misma lógica de tablas año por año.</p>
+  </div>
+
+  <footer>
+    Spanish ASE Math · Nivel 2 · Lección 6.1<br>
+    José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago.<br>
+    Material bajo licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer license">Creative Commons CC BY-NC-SA 4.0</a>.
+  </footer>
+</div>
+<script>
+var QUIZ_MINIMO = 7;
+var QUIZ = [
+  { enun: 'Se depositan $1,000 al 5% de interés simple anual durante 1 año. ¿Cuánto interés se gana?',
+    ops: ['$5', '$50', '$500', '$1,050'], correcta: 1,
+    exp: 'I = 1,000 × 0.05 × 1 = $50.' },
+  { enun: 'Un ahorro de $2,000 al 6% anual durante 3 años. ¿Cuánto interés genera?',
+    ops: ['$36', '$120', '$360', '$2,360'], correcta: 2,
+    exp: 'I = 2,000 × 0.06 × 3 = $360. La opción $2,360 es el monto total, no el interés.' },
+  { enun: 'Un préstamo de $4,800 al 5% anual se paga en 6 meses. ¿Cuánto interés se paga?',
+    ops: ['$120', '$240', '$1,440', '$14,400'], correcta: 0,
+    exp: '6 meses = 0.5 años. I = 4,800 × 0.05 × 0.5 = $120. Si no se convierte el tiempo, sale $1,440.' },
+  { enun: 'Una tarjeta cobra 1.5% de interés simple mensual sobre un saldo de $900 durante 4 meses. ¿Cuánto interés se paga?',
+    ops: ['$13.50', '$54', '$162', '$648'], correcta: 1,
+    exp: 'La tasa es mensual y el tiempo está en meses: I = 900 × 0.015 × 4 = $54.' },
+  { enun: 'Se ahorran $1,500 al 4% anual durante 3 años. ¿Cuál es el monto total al final?',
+    ops: ['$180', '$1,320', '$1,680', '$1,980'], correcta: 2,
+    exp: 'I = 1,500 × 0.04 × 3 = $180; A = 1,500 + 180 = $1,680.' },
+  { enun: 'Un préstamo de $6,000 al 9% anual se paga en 2 años. ¿Cuánto se devuelve en total?',
+    ops: ['$1,080', '$6,540', '$7,080', '$7,200'], correcta: 2,
+    exp: 'I = 6,000 × 0.09 × 2 = $1,080; A = 6,000 + 1,080 = $7,080.' },
+  { enun: 'Se ahorran $2,400 al 2.5% anual durante 18 meses. ¿Cuál es el monto total?',
+    ops: ['$2,490', '$2,460', '$3,480', '$90'], correcta: 0,
+    exp: '18 meses = 1.5 años. I = 2,400 × 0.025 × 1.5 = $90; A = 2,400 + 90 = $2,490.' },
+  { enun: 'Un préstamo de $5,000 a 2 años generó $700 de interés. ¿Qué tasa anual se cobró?',
+    ops: ['3.5%', '7%', '14%', '70%'], correcta: 1,
+    exp: 'r = 700 ÷ (5,000 × 2) = 700 ÷ 10,000 = 0.07 = 7%.' },
+  { enun: '¿Cuántos años deben estar $2,000 al 6% anual para ganar $300 de interés?',
+    ops: ['1.5 años', '2 años', '2.5 años', '25 años'], correcta: 2,
+    exp: 't = 300 ÷ (2,000 × 0.06) = 300 ÷ 120 = 2.5 años.' },
+  { enun: '¿Cuánto hay que depositar al 3% anual para ganar $240 de interés en 4 años?',
+    ops: ['$28.80', '$800', '$2,000', '$8,000'], correcta: 2,
+    exp: 'P = 240 ÷ (0.03 × 4) = 240 ÷ 0.12 = $2,000.' }
+];
+
+</script>
+<script>
+(function () {
+  function activar(el, fn) {
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('click', fn);
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fn(); }
+    });
+  }
+
+  /* ---- Práctica de opción múltiple (retroalimentación inmediata) ---- */
+  document.querySelectorAll('.practica .pregunta[data-correcta]').forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    var pista = preg.getAttribute('data-pista') || 'Revisa el procedimiento.';
+    opciones.forEach(function (op) {
+      op.setAttribute('role', 'button');
+      activar(op, function () {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); o.setAttribute('aria-pressed', 'false'); });
+        op.setAttribute('aria-pressed', 'true');
+        if (op.getAttribute('data-op') === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! Bien razonado.'; fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          fb.textContent = 'Todavía no. ' + pista + ' Inténtalo otra vez.'; fb.className = 'fb no';
+        }
+      });
+    });
+  });
+
+  /* ---- Práctica numérica ---- */
+  function leerNumero(txt) {
+    var limpio = txt.trim().replace(/\s/g, '').replace(/,/g, '').replace(/^\$/, '').replace(/%$/, '');
+    return limpio === '' ? NaN : Number(limpio);
+  }
+  document.querySelectorAll('[data-verificar]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var grupo = document.getElementById(btn.getAttribute('data-verificar'));
+      grupo.querySelectorAll('input.campo-texto').forEach(function (campo) {
+        var fb = document.getElementById('fb-' + campo.id);
+        var val = leerNumero(campo.value);
+        var ans = Number(campo.getAttribute('data-ans'));
+        var tol = Number(campo.getAttribute('data-tol') || '0.01');
+        if (isNaN(val)) {
+          fb.textContent = 'Escribe solo el número (sin unidades).'; fb.className = 'fb no';
+        } else if (Math.abs(val - ans) <= tol) {
+          fb.textContent = '¡Correcto!'; fb.className = 'fb ok';
+        } else {
+          fb.textContent = 'Revisa: ' + (campo.getAttribute('data-pista') || 'repasa los pasos del ejemplo.'); fb.className = 'fb no';
+        }
+      });
+    });
+  });
+
+  /* ---- Quiz ---- */
+  var cont = document.getElementById('quiz-cont');
+  if (cont && window.QUIZ) {
+    var elegidas = {};
+    window.QUIZ.forEach(function (q, i) {
+      var div = document.createElement('div');
+      div.className = 'pregunta';
+      var enun = document.createElement('div');
+      enun.className = 'enun'; enun.id = 'q' + i + '-enun';
+      enun.textContent = (i + 1) + '. ' + q.enun;
+      div.appendChild(enun);
+      var ops = document.createElement('div');
+      ops.className = 'opciones'; ops.setAttribute('role', 'group');
+      ops.setAttribute('aria-labelledby', enun.id);
+      q.ops.forEach(function (t, j) {
+        var o = document.createElement('div');
+        o.className = 'opcion'; o.textContent = String.fromCharCode(65 + j) + ') ' + t;
+        o.setAttribute('role', 'button'); o.setAttribute('aria-pressed', 'false');
+        activar(o, function () {
+          ops.querySelectorAll('.opcion').forEach(function (x) { x.classList.remove('elegida', 'correcta', 'incorrecta'); x.setAttribute('aria-pressed', 'false'); });
+          o.classList.add('elegida'); o.setAttribute('aria-pressed', 'true');
+          elegidas[i] = j;
+        });
+        ops.appendChild(o);
+      });
+      div.appendChild(ops);
+      var fb = document.createElement('div');
+      fb.className = 'fb'; fb.id = 'fbq' + i; fb.setAttribute('aria-live', 'polite');
+      div.appendChild(fb);
+      cont.appendChild(div);
+    });
+    var res = document.getElementById('resultado-quiz');
+    var minimo = window.QUIZ_MINIMO || 7;
+    document.getElementById('btn-corregir').addEventListener('click', function () {
+      var aciertos = 0;
+      window.QUIZ.forEach(function (q, i) {
+        var ops = cont.querySelectorAll('.pregunta')[i].querySelectorAll('.opcion');
+        var fb = document.getElementById('fbq' + i);
+        ops.forEach(function (x) { x.classList.remove('correcta', 'incorrecta'); });
+        if (elegidas[i] === undefined) {
+          fb.textContent = 'Sin responder.'; fb.className = 'fb no';
+        } else if (elegidas[i] === q.correcta) {
+          aciertos++; ops[q.correcta].classList.add('correcta');
+          fb.textContent = 'Correcto. ' + (q.exp || ''); fb.className = 'fb ok';
+        } else {
+          ops[elegidas[i]].classList.add('incorrecta');
+          fb.textContent = 'Incorrecto. ' + (q.exp || ''); fb.className = 'fb no';
+        }
+      });
+      res.textContent = 'Resultado: ' + aciertos + ' de ' + window.QUIZ.length + ' respuestas correctas. ' +
+        (aciertos >= minimo ? '¡Aprobado!' : 'Se necesitan al menos ' + minimo + '. Repasa las explicaciones e inténtalo de nuevo.');
+      res.className = aciertos >= minimo ? 'aprob' : 'repro';
+    });
+    document.getElementById('btn-reintentar').addEventListener('click', function () {
+      elegidas = {};
+      cont.querySelectorAll('.opcion').forEach(function (x) { x.classList.remove('elegida', 'correcta', 'incorrecta'); x.setAttribute('aria-pressed', 'false'); });
+      cont.querySelectorAll('.fb').forEach(function (f) { f.textContent = ''; f.className = 'fb'; });
+      res.textContent = ''; res.className = '';
+    });
+  }
+})();
+</script>
+</body>
+</html>

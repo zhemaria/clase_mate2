@@ -1,279 +1,558 @@
 <!DOCTYPE html>
-<html lang="es"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 1.3 · Multiplicación y división de enteros; aplicaciones</title>
+<!-- Lección 1.3 · Matemáticas Nivel 2 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 1.3 · Multiplicación y división de enteros; aplicaciones</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
-  :root {
-    --tema:   #b71c1c;
-    --tema-d: #7f1414;
-    --tema-bg:#ffebee;
-    --tema-bg2:#fce4e6;
-    --acento: #00695c;
-    --txt:    #222;
-    --bg:     #f5f7fa;
-  }
-  * { box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    margin: 0; background: var(--bg); color: var(--txt);
-    line-height: 1.6; font-size: 16px;
-  }
-  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+      :root {
+        --tema: #b71c1c;
+        --tema-d: #7f1414;
+        --tema-bg: #ffebee;
+        --tema-bg2: #fce4e6;
+        --acento: #00695c;
+        --txt: #222;
+        --bg: #f5f7fa;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        margin: 0;
+        background: var(--bg);
+        color: var(--txt);
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      .contenedor {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 24px;
+      }
 
-  header.principal {
-    background: var(--tema);
-    background: linear-gradient(135deg, #7f1414 0%, #b71c1c 55%, #d32f2f 100%);
-    color: #fff; padding: 32px 30px; border-radius: 14px;
-    margin-bottom: 22px; box-shadow: 0 4px 14px rgba(127,20,20,.28);
-  }
-  header.principal .ruta { font-size: 13px; opacity: .92; letter-spacing: .4px; text-transform: uppercase; }
-  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; }
-  header.principal .meta { font-size: 14px; opacity: .94; }
+      header.principal {
+        background: var(--tema);
+        background: linear-gradient(135deg, #7f1414 0%, #b71c1c 55%, #d32f2f 100%);
+        color: #fff;
+        padding: 32px 30px;
+        border-radius: 14px;
+        margin-bottom: 22px;
+        box-shadow: 0 4px 14px rgba(127, 20, 20, 0.28);
+      }
+      header.principal .ruta {
+        font-size: 13px;
+        opacity: 0.92;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+      }
+      header.principal h1 {
+        margin: 8px 0 6px;
+        font-size: 25px;
+        font-weight: 700;
+      }
+      header.principal .meta {
+        font-size: 14px;
+        opacity: 0.94;
+      }
 
-  h2.seccion {
-    color: var(--tema-d); font-size: 21px; margin: 34px 0 12px;
-    padding-bottom: 6px; border-bottom: 3px solid var(--tema-bg);
-  }
-  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+      h2.seccion {
+        color: var(--tema-d);
+        font-size: 21px;
+        margin: 34px 0 12px;
+        padding-bottom: 6px;
+        border-bottom: 3px solid var(--tema-bg);
+      }
+      h3 {
+        color: var(--tema-d);
+        font-size: 17px;
+        margin: 20px 0 8px;
+      }
 
-  .caja-objetivos {
-    background: var(--tema-bg); border-left: 6px solid var(--tema);
-    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 22px;
-  }
-  .caja-objetivos h2 {
-    margin: 0 0 10px; color: var(--tema-d); font-size: 19px;
-  }
-  .caja-objetivos ul { margin: 0; padding-left: 22px; }
-  .caja-objetivos li { margin: 5px 0; }
+      .caja-objetivos {
+        background: var(--tema-bg);
+        border-left: 6px solid var(--tema);
+        padding: 18px 22px;
+        border-radius: 0 10px 10px 0;
+        margin-bottom: 22px;
+      }
+      .caja-objetivos h2 {
+        margin: 0 0 10px;
+        color: var(--tema-d);
+        font-size: 19px;
+      }
+      .caja-objetivos ul {
+        margin: 0;
+        padding-left: 22px;
+      }
+      .caja-objetivos li {
+        margin: 5px 0;
+      }
 
-  .bloque {
-    background: #fff; border-radius: 10px; padding: 4px 24px 18px;
-    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px;
-  }
+      .bloque {
+        background: #fff;
+        border-radius: 10px;
+        padding: 4px 24px 18px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
+        margin-bottom: 18px;
+      }
 
-  p { margin: 10px 0; }
+      p {
+        margin: 10px 0;
+      }
 
-  .ejemplo {
-    background: #fafafa; border: 1px solid #e3e3e3;
-    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
-  }
-  .ejemplo .et {
-    display: inline-block; background: var(--tema); color: #fff;
-    font-size: 12px; font-weight: 700; padding: 3px 12px;
-    border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px;
-  }
-  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
-  .paso .n {
-    position: absolute; left: 0; top: 0;
-    background: var(--tema-bg); color: var(--tema-d);
-    width: 22px; height: 22px; border-radius: 50%;
-    font-size: 13px; font-weight: 700; text-align: center; line-height: 22px;
-  }
+      .ejemplo {
+        background: #fafafa;
+        border: 1px solid #e3e3e3;
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin: 14px 0;
+      }
+      .ejemplo .et {
+        display: inline-block;
+        background: var(--tema);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 12px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+        letter-spacing: 0.4px;
+      }
+      .paso {
+        margin: 7px 0;
+        padding-left: 30px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: var(--tema-bg);
+        color: var(--tema-d);
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        text-align: center;
+        line-height: 22px;
+      }
 
-  .caja-tip {
-    background: #e8f5e9; border-left: 5px solid #2e7d32;
-    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
-    color: #1b5e20; font-size: 15px;
-  }
-  .caja-tip strong { color: #1b5e20; }
+      .caja-tip {
+        background: #e8f5e9;
+        border-left: 5px solid #2e7d32;
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 14px 0;
+        color: #1b5e20;
+        font-size: 15px;
+      }
+      .caja-tip strong {
+        color: #1b5e20;
+      }
 
-  .caja-atencion {
-    background: #fff8e1; border-left: 5px solid #f9a825;
-    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0;
-    font-size: 15px; color: #5a3d00;
-  }
-  .caja-atencion strong { color: #c54500; }
+      .caja-atencion {
+        background: #fff8e1;
+        border-left: 5px solid #f9a825;
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        margin: 14px 0;
+        font-size: 15px;
+        color: #5a3d00;
+      }
+      .caja-atencion strong {
+        color: #c54500;
+      }
 
-  .etiqueta {
-    display: inline-block; font-size: 12px; font-weight: 700;
-    padding: 2px 10px; border-radius: 10px; margin-right: 4px;
-  }
-  .et-ambar { background: #ffe082; color: #000; }
-  .et-rojo  { background: var(--tema); color: #fff; }
+      .etiqueta {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 2px 10px;
+        border-radius: 10px;
+        margin-right: 4px;
+      }
+      .et-ambar {
+        background: #ffe082;
+        color: #000;
+      }
+      .et-rojo {
+        background: var(--tema);
+        color: #fff;
+      }
 
-  .reglas {
-    width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px;
-  }
-  .reglas th, .reglas td {
-    border: 1px solid #e0e0e0; padding: 9px 12px; text-align: center;
-  }
-  .reglas th { background: var(--tema); color: #fff; }
-  .reglas td.caso { background: var(--tema-bg); font-weight: 600; color: var(--tema-d); }
-  .reglas td.pos { background: #e8f5e9; color: #1b5e20; font-weight: 700; }
-  .reglas td.neg { background: #ffebee; color: #b71c1c; font-weight: 700; }
+      .reglas {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .reglas th,
+      .reglas td {
+        border: 1px solid #e0e0e0;
+        padding: 9px 12px;
+        text-align: center;
+      }
+      .reglas th {
+        background: var(--tema);
+        color: #fff;
+      }
+      .reglas td.caso {
+        background: var(--tema-bg);
+        font-weight: 600;
+        color: var(--tema-d);
+      }
+      .reglas td.pos {
+        background: #e8f5e9;
+        color: #1b5e20;
+        font-weight: 700;
+      }
+      .reglas td.neg {
+        background: #ffebee;
+        color: #b71c1c;
+        font-weight: 700;
+      }
 
-  .practica {
-    background: var(--tema-bg2); border: 1px dashed var(--tema);
-    border-radius: 10px; padding: 16px 20px; margin: 18px 0;
-  }
-  .practica h3 { margin-top: 0; color: var(--tema-d); }
-  .pregunta { margin: 14px 0; }
-  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
-  .opciones { display: flex; flex-direction: column; gap: 7px; }
-  .opcion {
-    background: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
-    padding: 9px 14px; cursor: pointer; transition: all .15s;
-  }
-  .opcion:hover { border-color: var(--tema); }
-  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
-  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
-  .opcion.elegida { border-color: var(--tema); }
-  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
-  .fb.ok { color: #1b5e20; }
-  .fb.no { color: #b71c1c; }
+      .practica {
+        background: var(--tema-bg2);
+        border: 1px dashed var(--tema);
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin: 18px 0;
+      }
+      .practica h3 {
+        margin-top: 0;
+        color: var(--tema-d);
+      }
+      .pregunta {
+        margin: 14px 0;
+      }
+      .pregunta .enun {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .opcion {
+        background: #fff;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 9px 14px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .opcion:hover {
+        border-color: var(--tema);
+      }
+      .opcion.correcta {
+        border-color: #2e7d32;
+        background: #e8f5e9;
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: #c62828;
+        background: #ffebee;
+      }
+      .opcion.elegida {
+        border-color: var(--tema);
+      }
+      .fb {
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        display: none;
+      }
+      .fb.ok {
+        color: #1b5e20;
+      }
+      .fb.no {
+        color: #b71c1c;
+      }
 
-  .campo-num {
-    font-size: 16px; padding: 7px 10px; border: 2px solid #cfcfcf;
-    border-radius: 7px; width: 110px; font-family: inherit;
-  }
-  .campo-num:focus { border-color: var(--tema); outline: none; }
-  .btn {
-    background: var(--tema); color: #fff; border: none;
-    padding: 9px 20px; border-radius: 8px; font-size: 14px;
-    font-weight: 700; cursor: pointer; font-family: inherit;
-    margin-top: 8px;
-  }
-  .btn:hover { background: var(--tema-d); }
-  .btn.sec { background: #607d8b; }
-  .btn.sec:hover { background: #455a64; }
+      .campo-num {
+        font-size: 16px;
+        padding: 7px 10px;
+        border: 2px solid #cfcfcf;
+        border-radius: 7px;
+        width: 110px;
+        font-family: inherit;
+      }
+      .campo-num:focus {
+        border-color: var(--tema);
+        outline: none;
+      }
+      .btn {
+        background: var(--tema);
+        color: #fff;
+        border: none;
+        padding: 9px 20px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: inherit;
+        margin-top: 8px;
+      }
+      .btn:hover {
+        background: var(--tema-d);
+      }
+      .btn.sec {
+        background: #607d8b;
+      }
+      .btn.sec:hover {
+        background: #455a64;
+      }.caja-tarea {
+        background: #ede7f6;
+        border-left: 6px solid #5e35b1;
+        padding: 16px 20px;
+        border-radius: 0 10px 10px 0;
+        margin: 20px 0;
+      }
+      .caja-tarea h2 {
+        margin-top: 0;
+        color: #4527a0;
+      }
 
-  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
-  .modo {
-    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
-    font-size: 14px;
-  }
-  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
-  .modo-pres strong { color: #0d47a1; }
-  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
-  .modo-virt strong { color: #4a148c; }
-  .modo h3 { margin: 0 0 6px; font-size: 15px; }
-  .modo-pres h3 { color: #0d47a1; }
-  .modo-virt h3 { color: #4a148c; }
+      .quiz {
+        background: #fff;
+        border: 2px solid var(--tema);
+        border-radius: 12px;
+        padding: 8px 24px 20px;
+        margin: 22px 0;
+      }
+      .quiz h2 {
+        color: var(--tema-d);
+      }
+      #resultado-quiz {
+        font-size: 17px;
+        font-weight: 700;
+        margin: 14px 0;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        display: none;
+      }
+      #resultado-quiz.aprob {
+        background: #e8f5e9;
+        color: #1b5e20;
+      }
+      #resultado-quiz.repro {
+        background: #ffebee;
+        color: #b71c1c;
+      }
 
-  .actividad { margin-bottom: 18px; }
-  .actividad > .titulo-act {
-    font-weight: 700; color: var(--tema-d); font-size: 15px;
-    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
-  }
+      .rubrica {
+        margin: 22px 0;
+        overflow-x: auto;
+      }
+      .rubrica h2 {
+        color: var(--tema-d);
+      }
+      table.tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+      }
+      table.tabla-rubrica th,
+      table.tabla-rubrica td {
+        border: 1px solid #e0e0e0;
+        padding: 8px 10px;
+        vertical-align: top;
+      }
+      table.tabla-rubrica th {
+        background: var(--tema);
+        color: #fff;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+      table.tabla-rubrica td:first-child {
+        background: var(--tema-bg);
+        font-weight: 600;
+        color: var(--tema-d);
+      }
 
-  .caja-tarea {
-    background: #ede7f6; border-left: 6px solid #5e35b1;
-    padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
-  }
-  .caja-tarea h2 { margin-top: 0; color: #4527a0; }
+      .cierre {
+        background: #263238;
+        color: #eceff1;
+        border-radius: 12px;
+        padding: 22px 26px;
+        margin: 24px 0 10px;
+      }
+      .cierre h2 {
+        color: #fff;
+        margin-top: 0;
+      }
+      .cierre strong {
+        color: #9bff8f;
+      }
 
-  .quiz {
-    background: #fff; border: 2px solid var(--tema);
-    border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0;
-  }
-  .quiz h2 { color: var(--tema-d); }
-  #resultado-quiz {
-    font-size: 17px; font-weight: 700; margin: 14px 0;
-    padding: 12px; border-radius: 8px; text-align: center; display: none;
-  }
-  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
-  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: #222222;
+        font-size: 13px;
+        border-top: 1px solid #ddd;
+        margin-top: 20px;
+      }
+      /* ── CONTENEDOR DE ENLACES A INTERACTIVOS ── */
+      .interactivos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+      .interactivos .titulo-grupo {
+        grid-column: 1 / -1;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: var(--tema-d);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 2px;
+      }
+      .interactivos .titulo-grupo::before {
+        content: '';
+        width: 26px;
+        height: 3px;
+        background: var(--tema);
+        border-radius: 3px;
+      }
 
-  .rubrica { margin: 22px 0; overflow-x: auto; }
-  .rubrica h2 { color: var(--tema-d); }
-  table.tabla-rubrica {
-    width: 100%; border-collapse: collapse; font-size: 13px;
-    background: #fff; border-radius: 8px; overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,.07);
-  }
-  table.tabla-rubrica th, table.tabla-rubrica td {
-    border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top;
-  }
-  table.tabla-rubrica th {
-    background: var(--tema); color: #fff; font-size: 12px;
-    text-transform: uppercase; letter-spacing: .3px;
-  }
-  table.tabla-rubrica td:first-child {
-    background: var(--tema-bg); font-weight: 600; color: var(--tema-d);
-  }
+      .enlace-int {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        color: var(--txt);
+        background: #fff;
+        border: 1px solid #e3e3e3;
+        border-left: 5px solid var(--tema);
+        border-radius: 11px;
+        padding: 15px 18px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
+        transition:
+          transform 0.18s,
+          box-shadow 0.18s,
+          border-color 0.18s;
+      }
+      .enlace-int:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 7px 20px rgba(0, 77, 64, 0.18);
+      }
+      .enlace-int .ico-int {
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        background: var(--tema-soft);
+      }
+      .enlace-int .txt-int {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .enlace-int .titulo-int {
+        font-weight: 700;
+        color: var(--tema-d);
+        font-size: 16px;
+        line-height: 1.3;
+      }
+      .enlace-int .desc-int {
+        font-size: 13px;
+        color: #546e7a;
+        margin-top: 3px;
+        line-height: 1.4;
+      }
+      .enlace-int .flecha-int {
+        margin-left: auto;
+        flex-shrink: 0;
+        font-size: 20px;
+        color: var(--tema);
+        transition: transform 0.18s;
+      }
+      .enlace-int:hover .flecha-int {
+        transform: translateX(4px);
+      }
 
-  .cierre {
-    background: #263238; color: #eceff1; border-radius: 12px;
-    padding: 22px 26px; margin: 24px 0 10px;
+      /* Variantes opcionales (usan tus variables ya definidas) */
+      .enlace-int.int-verde {
+        border-left-color: var(--verde);
+      }
+      .enlace-int.int-verde .ico-int {
+        background: var(--verde-cl);
+      }
+      .enlace-int.int-verde .titulo-int,
+      .enlace-int.int-verde .flecha-int {
+        color: var(--verde);
+      }
+
+      .enlace-int.int-ambar {
+        border-left-color: var(--ambar);
+      }
+      .enlace-int.int-ambar .ico-int {
+        background: var(--ambar-cl);
+      }
+      .enlace-int.int-ambar .titulo-int,
+      .enlace-int.int-ambar .flecha-int {
+        color: var(--ambar);
+      }
+
+      @media (max-width: 560px) {
+        .interactivos {
+          grid-template-columns: 1fr;
+        }
+      }
+      .interactivos:has(.enlace-int:only-of-type) {
+        grid-template-columns: 1fr;
+      }
+    
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:#fff; border:1px solid #d8dde3; border-left:6px solid var(--tema);
+    border-radius:10px; padding:16px 20px; margin:24px 0;
   }
-  .cierre h2 { color: #fff; margin-top: 0; }
-  .cierre strong { color: #9BFF8F; }
-
-  footer {
-    text-align: center; padding: 20px; color: #222222;
-    font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--tema-d); border:0; padding:0; background:none; }
+  .indice ol{ margin:0; padding-left:1.35em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--tema-d); text-decoration:underline; }
+  .indice a:hover{ color:var(--tema); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--tema-d); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
   }
-/* ── CONTENEDOR DE ENLACES A INTERACTIVOS ── */
-.interactivos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
-  margin: 20px 0;
-}
-.interactivos .titulo-grupo {
-  grid-column: 1 / -1;
-  font-size: 14px; font-weight: 700;
-  letter-spacing: .5px; text-transform: uppercase;
-  color: var(--tema-d);
-  display: flex; align-items: center; gap: 9px;
-  margin-bottom: 2px;
-}
-.interactivos .titulo-grupo::before {
-  content: ''; width: 26px; height: 3px;
-  background: var(--tema); border-radius: 3px;
-}
-
-.enlace-int {
-  display: flex; align-items: center; gap: 14px;
-  text-decoration: none; color: var(--txt);
-  background: #fff;
-  border: 1px solid #e3e3e3;
-  border-left: 5px solid var(--tema);
-  border-radius: 11px;
-  padding: 15px 18px;
-  box-shadow: 0 1px 5px rgba(0,0,0,.06);
-  transition: transform .18s, box-shadow .18s, border-color .18s;
-}
-.enlace-int:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 7px 20px rgba(0,77,64,.18);
-}
-.enlace-int .ico-int {
-  flex-shrink: 0; width: 50px; height: 50px;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px;
-  background: var(--tema-soft);
-}
-.enlace-int .txt-int { display: flex; flex-direction: column; min-width: 0; }
-.enlace-int .titulo-int { font-weight: 700; color: var(--tema-d); font-size: 16px; line-height: 1.3; }
-.enlace-int .desc-int { font-size: 13px; color: #546e7a; margin-top: 3px; line-height: 1.4; }
-.enlace-int .flecha-int {
-  margin-left: auto; flex-shrink: 0;
-  font-size: 20px; color: var(--tema);
-  transition: transform .18s;
-}
-.enlace-int:hover .flecha-int { transform: translateX(4px); }
-
-/* Variantes opcionales (usan tus variables ya definidas) */
-.enlace-int.int-verde { border-left-color: var(--verde); }
-.enlace-int.int-verde .ico-int { background: var(--verde-cl); }
-.enlace-int.int-verde .titulo-int,
-.enlace-int.int-verde .flecha-int { color: var(--verde); }
-
-.enlace-int.int-ambar { border-left-color: var(--ambar); }
-.enlace-int.int-ambar .ico-int { background: var(--ambar-cl); }
-.enlace-int.int-ambar .titulo-int,
-.enlace-int.int-ambar .flecha-int { color: var(--ambar); }
-
-@media (max-width: 560px) { .interactivos { grid-template-columns: 1fr; } }
-.interactivos:has(.enlace-int:only-of-type) { grid-template-columns: 1fr; }
+  .volver-indice:hover{ background:var(--tema); color:#fff; }
+  footer a{ color:inherit; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
-</head><body><div class="contenedor"><header class="principal">
+</head>
+<body>
+<div class="contenedor">
+<header class="principal">
 <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 1 · Enteros con signo</div>
 <h1>Lección 1.3 · Multiplicación y división de enteros; aplicaciones</h1>
-<div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
+<div class="meta">Unas 4 horas, a su ritmo · NRS 2–3</div>
 </header>
 <div class="caja-objetivos">
 <h2>Objetivos de la lección</h2>
@@ -284,13 +563,26 @@
 <li>Resolver expresiones que combinan las cuatro operaciones con enteros.</li>
 <li>Interpretar el resultado de un problema de contexto real con su signo correcto.</li>
 </ul>
-</div>
+</div><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-1-la-regla-de-los-signos-en-la-multiplicacion">1. La regla de los signos en la multiplicación</a></li><li><a href="#s-2-por-que-negativo-por-negativo-da-positivo">2. ¿Por qué negativo por negativo da positivo?</a></li><li><a href="#s-3-la-division-de-enteros">3. La división de enteros</a></li><li><a href="#s-4-expresiones-con-las-cuatro-operaciones">4. Expresiones con las cuatro operaciones</a></li><li><a href="#s-5-aplicaciones-a-contextos-reales">5. Aplicaciones a contextos reales</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-la-leccion-1-3">Quiz de la lección 1.3</a></li><li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li><li><a href="#s-cierre-del-tema-1-y-enlace-con-el-tema-2">Cierre del Tema 1 y enlace con el Tema 2</a></li></ol></nav>
 <div class="bloque">
-<p><strong>Conexión con la lección anterior.</strong> En la Lección 1.2 se dominaron la suma y la resta de enteros, y se aprendió que restar es sumar el opuesto. Esta lección cierra el Tema 1 con las dos operaciones restantes: la <strong>multiplicación</strong> y la <strong>división</strong>. La buena noticia es que ambas comparten una única regla de los signos, más corta y directa que la de la suma.</p>
+<p>
+<strong>Conexión con la lección anterior.</strong>
+          En la Lección 1.2 se dominaron la suma y la resta de enteros, y se aprendió que restar es sumar el opuesto. Esta lección cierra el Tema 1 con las dos operaciones restantes: la
+          <strong>multiplicación</strong>
+          y la
+          <strong>división</strong>
+          . La buena noticia es que ambas comparten una única regla de los signos, más corta y directa que la de la suma.
+        </p>
 </div>
-<h2 class="seccion">1. La regla de los signos en la multiplicación</h2>
+<h2 class="seccion" id="s-1-la-regla-de-los-signos-en-la-multiplicacion">1. La regla de los signos en la multiplicación</h2>
 <div class="bloque">
-<p>Al multiplicar dos enteros, el <strong>valor absoluto</strong> del resultado se obtiene multiplicando los valores absolutos como siempre. Lo que cambia es el <strong>signo</strong>, que depende solo de los signos de los dos factores.</p>
+<p>
+          Al multiplicar dos enteros, el
+          <strong>valor absoluto</strong>
+          del resultado se obtiene multiplicando los valores absolutos como siempre. Lo que cambia es el
+          <strong>signo</strong>
+          , que depende solo de los signos de los dos factores.
+        </p>
 <table class="reglas">
 <thead>
 <tr>
@@ -322,35 +614,99 @@
 </tr>
 </tbody>
 </table>
-<div class="caja-tip"><strong>Regla breve:</strong> signos <strong>iguales</strong> dan producto <strong>positivo</strong>; signos <strong>distintos</strong> dan producto <strong>negativo</strong>. Una sola frase resume las cuatro filas de la tabla.</div>
-<div class="ejemplo"><span class="et">Ejemplo 1</span>
+<div class="caja-tip">
+<strong>Regla breve:</strong>
+          signos
+          <strong>iguales</strong>
+          dan producto
+          <strong>positivo</strong>
+          ; signos
+          <strong>distintos</strong>
+          dan producto
+          <strong>negativo</strong>
+          . Una sola frase resume las cuatro filas de la tabla.
+        </div>
+<div class="ejemplo">
+<span class="et">Ejemplo 1</span>
 <p>Resolver (−7) × (−6).</p>
-<div class="paso"><span class="n">1</span> Se multiplican los valores absolutos: 7 × 6 = 42.</div>
-<div class="paso"><span class="n">2</span> Los dos factores son negativos: signos iguales.</div>
-<div class="paso"><span class="n">3</span> Signos iguales → producto positivo.</div>
-<p><strong>Respuesta:</strong> (−7) × (−6) = 42.</p>
+<div class="paso">
+<span class="n">1</span>
+            Se multiplican los valores absolutos: 7 × 6 = 42.
+          </div>
+<div class="paso">
+<span class="n">2</span>
+            Los dos factores son negativos: signos iguales.
+          </div>
+<div class="paso">
+<span class="n">3</span>
+            Signos iguales → producto positivo.
+          </div>
+<p>
+<strong>Respuesta:</strong>
+            (−7) × (−6) = 42.
+          </p>
 </div>
-<div class="ejemplo"><span class="et">Ejemplo 2</span>
+<div class="ejemplo">
+<span class="et">Ejemplo 2</span>
 <p>Resolver 9 × (−4).</p>
-<div class="paso"><span class="n">1</span> Se multiplican los valores absolutos: 9 × 4 = 36.</div>
-<div class="paso"><span class="n">2</span> Un factor positivo y uno negativo: signos distintos.</div>
-<div class="paso"><span class="n">3</span> Signos distintos → producto negativo.</div>
-<p><strong>Respuesta:</strong> 9 × (−4) = −36.</p>
+<div class="paso">
+<span class="n">1</span>
+            Se multiplican los valores absolutos: 9 × 4 = 36.
+          </div>
+<div class="paso">
+<span class="n">2</span>
+            Un factor positivo y uno negativo: signos distintos.
+          </div>
+<div class="paso">
+<span class="n">3</span>
+            Signos distintos → producto negativo.
+          </div>
+<p>
+<strong>Respuesta:</strong>
+            9 × (−4) = −36.
+          </p>
 </div>
 </div>
-<h2 class="seccion">2. ¿Por qué negativo por negativo da positivo?</h2>
+<h2 class="seccion" id="s-2-por-que-negativo-por-negativo-da-positivo">2. ¿Por qué negativo por negativo da positivo?</h2>
 <div class="bloque">
-<p>La regla «negativo por negativo da positivo» no es un capricho: se puede <strong>descubrir</strong> observando un patrón. Si se multiplica −2 por una lista de números que va bajando de uno en uno, cada producto aumenta exactamente 2 unidades:</p>
-<div class="ejemplo"><span class="et">El patrón revelador</span>
+<p>
+          La regla «negativo por negativo da positivo» no es un capricho: se puede
+          <strong>descubrir</strong>
+          observando un patrón. Si se multiplica −2 por una lista de números que va bajando de uno en uno, cada producto aumenta exactamente 2 unidades:
+        </p>
+<div class="ejemplo">
+<span class="et">El patrón revelador</span>
 <p>3 × (−2) = −6</p>
-<p>2 × (−2) = −4 &nbsp;&nbsp;<em>(aumentó 2)</em></p>
-<p>1 × (−2) = −2 &nbsp;&nbsp;<em>(aumentó 2)</em></p>
-<p>0 × (−2) = &nbsp;0 &nbsp;&nbsp;<em>(aumentó 2)</em></p>
-<p>(−1) × (−2) = &nbsp;2 &nbsp;&nbsp;<em>(el patrón obliga a que aumente 2 → debe ser positivo)</em></p>
-<p>(−2) × (−2) = &nbsp;4 &nbsp;&nbsp;<em>(aumentó 2 otra vez)</em></p>
+<p>
+            2 × (−2) = −4   
+            <em>(aumentó 2)</em>
+</p>
+<p>
+            1 × (−2) = −2   
+            <em>(aumentó 2)</em>
+</p>
+<p>
+            0 × (−2) =  0   
+            <em>(aumentó 2)</em>
+</p>
+<p>
+            (−1) × (−2) =  2   
+            <em>(el patrón obliga a que aumente 2 → debe ser positivo)</em>
+</p>
+<p>
+            (−2) × (−2) =  4   
+            <em>(aumentó 2 otra vez)</em>
+</p>
 </div>
-<p>Para que el patrón sea consistente, el producto de dos negativos <strong>tiene que</strong> ser positivo. No hay otra forma de continuar la secuencia sin romperla.</p>
-<div class="caja-atencion"><strong>Atención:</strong> esta justificación con patrón solo busca dar sentido a la regla. En la práctica, basta con aplicar la regla breve: signos iguales, positivo; signos distintos, negativo.</div>
+<p>
+          Para que el patrón sea consistente, el producto de dos negativos
+          <strong>tiene que</strong>
+          ser positivo. No hay otra forma de continuar la secuencia sin romperla.
+        </p>
+<div class="caja-atencion">
+<strong>Atención:</strong>
+          esta justificación con patrón solo busca dar sentido a la regla. En la práctica, basta con aplicar la regla breve: signos iguales, positivo; signos distintos, negativo.
+        </div>
 </div>
 <div class="practica">
 <h3>Práctica interactiva 1 · Multiplicar enteros</h3>
@@ -383,73 +739,164 @@
 <div class="fb"></div>
 </div>
 </div>
-<h2 class="seccion">3. La división de enteros</h2>
+<h2 class="seccion" id="s-3-la-division-de-enteros">3. La división de enteros</h2>
 <div class="bloque">
-<p>La división de enteros usa <strong>exactamente la misma regla de los signos</strong> que la multiplicación. No hay nada nuevo que memorizar: signos iguales dan cociente positivo; signos distintos dan cociente negativo.</p>
-<div class="ejemplo"><span class="et">Ejemplo 3</span>
+<p>
+          La división de enteros usa
+          <strong>exactamente la misma regla de los signos</strong>
+          que la multiplicación. No hay nada nuevo que memorizar: signos iguales dan cociente positivo; signos distintos dan cociente negativo.
+        </p>
+<div class="ejemplo">
+<span class="et">Ejemplo 3</span>
 <p>Resolver (−45) ÷ (−9).</p>
-<div class="paso"><span class="n">1</span> Se dividen los valores absolutos: 45 ÷ 9 = 5.</div>
-<div class="paso"><span class="n">2</span> Los dos números son negativos: signos iguales.</div>
-<div class="paso"><span class="n">3</span> Signos iguales → cociente positivo.</div>
-<p><strong>Respuesta:</strong> (−45) ÷ (−9) = 5.</p>
+<div class="paso">
+<span class="n">1</span>
+            Se dividen los valores absolutos: 45 ÷ 9 = 5.
+          </div>
+<div class="paso">
+<span class="n">2</span>
+            Los dos números son negativos: signos iguales.
+          </div>
+<div class="paso">
+<span class="n">3</span>
+            Signos iguales → cociente positivo.
+          </div>
+<p>
+<strong>Respuesta:</strong>
+            (−45) ÷ (−9) = 5.
+          </p>
 </div>
-<div class="ejemplo"><span class="et">Ejemplo 4</span>
+<div class="ejemplo">
+<span class="et">Ejemplo 4</span>
 <p>Resolver (−56) ÷ 8.</p>
-<div class="paso"><span class="n">1</span> Se dividen los valores absolutos: 56 ÷ 8 = 7.</div>
-<div class="paso"><span class="n">2</span> Un número negativo y uno positivo: signos distintos.</div>
-<div class="paso"><span class="n">3</span> Signos distintos → cociente negativo.</div>
-<p><strong>Respuesta:</strong> (−56) ÷ 8 = −7.</p>
+<div class="paso">
+<span class="n">1</span>
+            Se dividen los valores absolutos: 56 ÷ 8 = 7.
+          </div>
+<div class="paso">
+<span class="n">2</span>
+            Un número negativo y uno positivo: signos distintos.
+          </div>
+<div class="paso">
+<span class="n">3</span>
+            Signos distintos → cociente negativo.
+          </div>
+<p>
+<strong>Respuesta:</strong>
+            (−56) ÷ 8 = −7.
+          </p>
 </div>
-<div class="caja-tip"><strong>Relación con la multiplicación:</strong> la división se puede comprobar multiplicando. Si (−45) ÷ (−9) = 5, entonces 5 × (−9) debe dar −45. La verificación confirma tanto el valor como el signo.</div>
+<div class="caja-tip">
+<strong>Relación con la multiplicación:</strong>
+          la división se puede comprobar multiplicando. Si (−45) ÷ (−9) = 5, entonces 5 × (−9) debe dar −45. La verificación confirma tanto el valor como el signo.
+        </div>
 </div>
 <div class="practica">
 <h3>Práctica interactiva 2 · Dividir enteros</h3>
 <p>Escribe el cociente de cada división y presiona «Verificar».</p>
 <div class="pregunta">
 <div class="enun">1. (−48) ÷ 6 =</div>
-<input type="text" class="campo-num" id="d1" inputmode="numeric" aria-label="Respuesta de la pregunta 1: menos cuarenta y ocho dividido entre seis">
+<input aria-label="Respuesta de la pregunta 1: menos cuarenta y ocho dividido entre seis" class="campo-num" id="d1" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-d1"></div>
 </div>
 <div class="pregunta">
 <div class="enun">2. (−54) ÷ (−9) =</div>
-<input type="text" class="campo-num" id="d2" inputmode="numeric" aria-label="Respuesta de la pregunta 2: menos cincuenta y cuatro dividido entre menos nueve">
+<input aria-label="Respuesta de la pregunta 2: menos cincuenta y cuatro dividido entre menos nueve" class="campo-num" id="d2" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-d2"></div>
 </div>
 <div class="pregunta">
 <div class="enun">3. 72 ÷ (−8) =</div>
-<input type="text" class="campo-num" id="d3" inputmode="numeric" aria-label="Respuesta de la pregunta 3: setenta y dos dividido entre menos ocho">
+<input aria-label="Respuesta de la pregunta 3: setenta y dos dividido entre menos ocho" class="campo-num" id="d3" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-d3"></div>
 </div>
-<button class="btn" id="btn-div">Verificar</button></div>
-<h2 class="seccion">4. Expresiones con las cuatro operaciones</h2>
+<button class="btn" id="btn-div">Verificar</button>
+</div>
+<h2 class="seccion" id="s-4-expresiones-con-las-cuatro-operaciones">4. Expresiones con las cuatro operaciones</h2>
 <div class="bloque">
-<p>Muchas expresiones combinan suma, resta, multiplicación y división de enteros. Por ahora, sin paréntesis ni potencias, se respeta una regla sencilla: <strong>primero las multiplicaciones y divisiones, de izquierda a derecha; luego las sumas y restas, de izquierda a derecha</strong>. El orden completo de operaciones se estudiará a fondo en el Tema 3.</p>
-<div class="ejemplo"><span class="et">Ejemplo 5</span>
+<p>
+          Muchas expresiones combinan suma, resta, multiplicación y división de enteros. Por ahora, sin paréntesis ni potencias, se respeta una regla sencilla:
+          <strong>primero las multiplicaciones y divisiones, de izquierda a derecha; luego las sumas y restas, de izquierda a derecha</strong>
+          . El orden completo de operaciones se estudiará a fondo en el Tema 3.
+        </p>
+<div class="ejemplo">
+<span class="et">Ejemplo 5</span>
 <p>Resolver (−4) × 3 + (−10) ÷ 2.</p>
-<div class="paso"><span class="n">1</span> Se resuelve la multiplicación: (−4) × 3 = −12.</div>
-<div class="paso"><span class="n">2</span> Se resuelve la división: (−10) ÷ 2 = −5.</div>
-<div class="paso"><span class="n">3</span> Queda una suma de enteros: −12 + (−5) = −17.</div>
-<p><strong>Respuesta:</strong> (−4) × 3 + (−10) ÷ 2 = −17.</p>
+<div class="paso">
+<span class="n">1</span>
+            Se resuelve la multiplicación: (−4) × 3 = −12.
+          </div>
+<div class="paso">
+<span class="n">2</span>
+            Se resuelve la división: (−10) ÷ 2 = −5.
+          </div>
+<div class="paso">
+<span class="n">3</span>
+            Queda una suma de enteros: −12 + (−5) = −17.
+          </div>
+<p>
+<strong>Respuesta:</strong>
+            (−4) × 3 + (−10) ÷ 2 = −17.
+          </p>
 </div>
-<div class="caja-atencion"><strong>Error frecuente:</strong> resolver de izquierda a derecha sin respetar la prioridad. En el ejemplo anterior, sumar −4 y 3 antes de multiplicar daría un resultado incorrecto. La multiplicación y la división van primero.</div>
-<div class="interactivos"><span class="titulo-grupo">Practica en línea</span> <a class="enlace-int" href="https://zhemaria.github.io/interactivos/regla_producto/" target="_blank" rel="noopener"> <span class="ico-int" aria-hidden="true">🧮</span> <span class="txt-int"> <span class="titulo-int">Regla de los Signos multiplicación y división</span> <span class="desc-int">Practica la regla de los signos para la multiplicación y división</span> </span> <span class="flecha-int" aria-hidden="true">→</span> </a></div>
+<div class="caja-atencion">
+<strong>Error frecuente:</strong>
+          resolver de izquierda a derecha sin respetar la prioridad. En el ejemplo anterior, sumar −4 y 3 antes de multiplicar daría un resultado incorrecto. La multiplicación y la división van
+          primero.
+        </div>
+<div class="interactivos">
+<span class="titulo-grupo">Practica en línea</span>
+<a class="enlace-int" href="https://zhemaria.github.io/interactivos/regla_producto/" rel="noopener" target="_blank">
+<span aria-hidden="true" class="ico-int">🧮</span>
+<span class="txt-int">
+<span class="titulo-int">Regla de los Signos multiplicación y división</span>
+<span class="desc-int">Practica la regla de los signos para la multiplicación y división</span>
+</span>
+<span aria-hidden="true" class="flecha-int">→</span>
+</a>
 </div>
-<h2 class="seccion">5. Aplicaciones a contextos reales</h2>
+</div>
+<h2 class="seccion" id="s-5-aplicaciones-a-contextos-reales">5. Aplicaciones a contextos reales</h2>
 <div class="bloque">
 <p>La multiplicación y la división de enteros aparecen siempre que una cantidad con signo se repite o se reparte.</p>
-<div class="ejemplo"><span class="et">Ejemplo 6 · Descenso de temperatura</span>
+<div class="ejemplo">
+<span class="et">Ejemplo 6 · Descenso de temperatura</span>
 <p>La temperatura de una cámara frigorífica baja 3 °F cada hora. Si el descenso es constante, ¿cuánto habrá cambiado la temperatura después de 5 horas?</p>
-<div class="paso"><span class="n">1</span> «Baja 3 °F» se representa con −3 por hora.</div>
-<div class="paso"><span class="n">2</span> Cinco horas: se multiplica (−3) × 5.</div>
-<div class="paso"><span class="n">3</span> Signos distintos → producto negativo: −15.</div>
-<p><strong>Respuesta:</strong> la temperatura habrá bajado 15 °F, es decir, un cambio de −15 °F.</p>
+<div class="paso">
+<span class="n">1</span>
+            «Baja 3 °F» se representa con −3 por hora.
+          </div>
+<div class="paso">
+<span class="n">2</span>
+            Cinco horas: se multiplica (−3) × 5.
+          </div>
+<div class="paso">
+<span class="n">3</span>
+            Signos distintos → producto negativo: −15.
+          </div>
+<p>
+<strong>Respuesta:</strong>
+            la temperatura habrá bajado 15 °F, es decir, un cambio de −15 °F.
+          </p>
 </div>
-<div class="ejemplo"><span class="et">Ejemplo 7 · Pérdida repartida</span>
+<div class="ejemplo">
+<span class="et">Ejemplo 7 · Pérdida repartida</span>
 <p>Una pequeña empresa registró una pérdida total de $84 durante 7 días, con la misma pérdida cada día. ¿Cuál fue la pérdida diaria?</p>
-<div class="paso"><span class="n">1</span> La pérdida total se representa con −84; los días son 7.</div>
-<div class="paso"><span class="n">2</span> Se divide: (−84) ÷ 7.</div>
-<div class="paso"><span class="n">3</span> Signos distintos → cociente negativo: −12.</div>
-<p><strong>Respuesta:</strong> la pérdida diaria fue de $12, es decir, −$12 por día.</p>
+<div class="paso">
+<span class="n">1</span>
+            La pérdida total se representa con −84; los días son 7.
+          </div>
+<div class="paso">
+<span class="n">2</span>
+            Se divide: (−84) ÷ 7.
+          </div>
+<div class="paso">
+<span class="n">3</span>
+            Signos distintos → cociente negativo: −12.
+          </div>
+<p>
+<strong>Respuesta:</strong>
+            la pérdida diaria fue de $12, es decir, −$12 por día.
+          </p>
 </div>
 </div>
 <div class="practica">
@@ -483,61 +930,24 @@
 <div class="fb"></div>
 </div>
 </div>
-<h2 class="seccion">6. Práctica guiada en clase</h2>
-<div class="bloque">
-<p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
-<div class="actividad">
-<div class="titulo-act">Actividad 1 · El detective de signos</div>
-<div class="modalidad">
-<div class="modo modo-pres">
-<h3>🏫 Presencial</h3>
-El docente escribe doce productos y cocientes en la pizarra. Para cada uno, los estudiantes primero <strong>predicen</strong> el signo del resultado en voz alta, luego lo calculan y por último lo verifican. La predicción anticipada refuerza la regla.</div>
-<div class="modo modo-virt">
-<h3>💻 En línea</h3>
-El docente comparte una hoja con doce operaciones en tres columnas: «signo previsto», «resultado» y «verificación». Los estudiantes la completan y comparan sus predicciones con el resultado real.</div>
-</div>
-</div>
-<div class="actividad">
-<div class="titulo-act">Actividad 2 · Construir el patrón</div>
-<div class="modalidad">
-<div class="modo modo-pres">
-<h3>🏫 Presencial</h3>
-En grupos, los estudiantes completan la secuencia de productos de −2 (desde 3 × (−2) hacia abajo) y descubren por sí mismos que negativo por negativo debe dar positivo. Cada grupo explica el patrón a la clase.</div>
-<div class="modo modo-virt">
-<h3>💻 En línea</h3>
-En salas pequeñas, los grupos completan la secuencia en una pizarra compartida y graban una breve explicación de por qué el patrón obliga a que el resultado sea positivo.</div>
-</div>
-</div>
-<div class="actividad">
-<div class="titulo-act">Actividad 3 · Historias de números con signo</div>
-<div class="modalidad">
-<div class="modo modo-pres">
-<h3>🏫 Presencial</h3>
-Cada grupo inventa una breve historia real que use una multiplicación o división de enteros negativos (temperatura, elevación, finanzas) y plantea la operación correspondiente. Los demás grupos la resuelven.</div>
-<div class="modo modo-virt">
-<h3>💻 En línea</h3>
-Cada grupo publica su historia en el foro junto con la operación planteada. Otro grupo responde con la solución y la interpretación del signo del resultado en el contexto.</div>
-</div>
-</div>
-</div>
+
+
 <div class="caja-tarea">
-<h2>Tarea asincrónica</h2>
-<p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
-<ul>
-<li><strong><a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou=181788&amp;type=content&amp;rcode=2c645c4cc8a44d1a8649fcdc-36" target="_blank" rel="noopener">myOpenMath&nbsp; &nbsp;Multiplicacion&nbsp;</a>&nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; <a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou=181788&amp;type=content&amp;rcode=2c645c4cc8a44d1a8649fcdc-38" target="_blank" rel="noopener">myOpenMath&nbsp; &nbsp;Division&nbsp;</a></strong></li>
-<li><strong><a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou=181788&amp;type=content&amp;rcode=ccc-8765890" target="_blank" rel="noopener">Brightspace-Quiz Multiplicacion</a> &nbsp; &nbsp;| &nbsp; &nbsp;<a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou=181788&amp;type=content&amp;rcode=ccc-8765891" target="_blank" rel="noopener">Brightspace-Quiz Division</a></strong></li>
-<li><strong><a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou=181788&amp;type=content&amp;rcode=ccc-8765892" target="_blank" rel="noopener">Brightspace-Quiz Problemas</a></strong></li>
-</ul>
+<h2 id="s-tarea">Tarea</h2><p>Para hacer por su cuenta, con el cuaderno abierto:</p><ul><li>Diez productos y cocientes de enteros con signo: prediga el signo <strong>antes</strong> de calcular y después verifique el valor.</li><li>Cinco expresiones con las cuatro operaciones y enteros negativos, resueltas paso a paso.</li><li>Tres problemas de contexto real —un descenso de temperatura repartido en varias horas, una deuda dividida en cuotas, una profundidad multiplicada— en los que hay que justificar el signo del resultado.</li><li>Cinco divisiones en las que el cociente no es exacto: diga qué signo lleva y por qué.</li><li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique <em>multiplicación y división de enteros</em> con signo. Cuando le salgan con soltura, haga una tanda con las cuatro operaciones mezcladas.</li></ul><p>Tiempo estimado: 50 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
+
+
 </div>
 <div class="quiz">
-<h2>Quiz de la lección 1.3</h2>
+<h2 id="s-quiz-de-la-leccion-1-3">Quiz de la lección 1.3</h2>
 <p>Doce preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 8 respuestas correctas.</p>
 <div id="quiz-cuerpo"></div>
 <div id="resultado-quiz"></div>
-<button class="btn" id="btn-corregir">Corregir quiz</button> <button class="btn sec" id="btn-reintentar" style="display: none;">Intentar de nuevo</button></div>
+<button class="btn" id="btn-corregir">Corregir quiz</button>
+<button class="btn sec" id="btn-reintentar" style="display: none">Intentar de nuevo</button>
+</div>
 <div class="rubrica">
-<h2>Rúbrica analítica de la lección</h2>
-<p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
+<h2 id="s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</h2>
+<p>Cuatro criterios evaluados en cuatro niveles de desempeño. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
 <table class="tabla-rubrica">
 <thead>
 <tr>
@@ -581,178 +991,203 @@ Cada grupo publica su historia en el foro junto con la operación planteada. Otr
 </table>
 </div>
 <div class="cierre">
-<h2>Cierre del Tema 1 y enlace con el Tema 2</h2>
-<p>Con esta lección se completa el <strong>Tema 1</strong>: el sistema de los números enteros con signo está dominado en sus cuatro operaciones. Quedó clara una idea unificadora: la multiplicación y la división comparten una <strong>única regla de los signos</strong> —iguales dan positivo, distintos dan negativo—.</p>
-<p>El <strong>Tema 2 · Fracciones complejas, exponentes y raíces cuadradas perfectas</strong> abre con la <strong>Lección 2.1 · Fracciones complejas con coeficientes negativos</strong>. Allí, la regla de los signos aprendida aquí se aplicará a las fracciones: el mismo principio que rige los enteros negativos regirá los numeradores y denominadores con signo.</p>
+<h2 id="s-cierre-del-tema-1-y-enlace-con-el-tema-2">Cierre del Tema 1 y enlace con el Tema 2</h2>
+<p>
+          Con esta lección se completa el
+          <strong>Tema 1</strong>
+          : el sistema de los números enteros con signo está dominado en sus cuatro operaciones. Quedó clara una idea unificadora: la multiplicación y la división comparten una
+          <strong>única regla de los signos</strong>
+          —iguales dan positivo, distintos dan negativo—.
+        </p>
+<p>
+          El
+          <strong>Tema 2 · Fracciones complejas, exponentes y raíces cuadradas perfectas</strong>
+          abre con la
+          <strong>Lección 2.1 · Fracciones complejas con coeficientes negativos</strong>
+          . Allí, la regla de los signos aprendida aquí se aplicará a las fracciones: el mismo principio que rige los enteros negativos regirá los numeradores y denominadores con signo.
+        </p>
 </div>
-<footer>Spanish ASE Math · Nivel 2 · Lección 1.3 — Preparado por Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L</footer></div>
-<p><script>
-(function () {
-  /* ---- Práctica de opciones ---- */
-  var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta]');
-  preguntasOp.forEach(function (preg) {
-    var correcta = preg.getAttribute('data-correcta');
-    var opciones = preg.querySelectorAll('.opcion');
-    var fb = preg.querySelector('.fb');
-    opciones.forEach(function (op) {
-      op.addEventListener('click', function () {
-        opciones.forEach(function (o) {
-          o.classList.remove('correcta', 'incorrecta', 'elegida');
-        });
-        var elegida = op.getAttribute('data-op');
-        if (elegida === correcta) {
-          op.classList.add('correcta');
-          fb.textContent = '¡Correcto! Bien razonado.';
-          fb.className = 'fb ok';
-        } else {
-          op.classList.add('incorrecta');
-          opciones.forEach(function (o) {
-            if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 1 · Lección 1.3</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
+</div>
+<p>
+<script>
+        (function () {
+          /* ---- Práctica de opciones ---- */
+          var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta]');
+          preguntasOp.forEach(function (preg) {
+            var correcta = preg.getAttribute('data-correcta');
+            var opciones = preg.querySelectorAll('.opcion');
+            var fb = preg.querySelector('.fb');
+            opciones.forEach(function (op) {
+              op.addEventListener('click', function () {
+                opciones.forEach(function (o) {
+                  o.classList.remove('correcta', 'incorrecta', 'elegida');
+                });
+                var elegida = op.getAttribute('data-op');
+                if (elegida === correcta) {
+                  op.classList.add('correcta');
+                  fb.textContent = '¡Correcto! Bien razonado.';
+                  fb.className = 'fb ok';
+                } else {
+                  op.classList.add('incorrecta');
+                  opciones.forEach(function (o) {
+                    if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
+                  });
+                  fb.textContent = 'Revisa: la opción marcada en verde es la correcta.';
+                  fb.className = 'fb no';
+                }
+                fb.style.display = 'block';
+              });
+            });
           });
-          fb.textContent = 'Revisa: la opción marcada en verde es la correcta.';
-          fb.className = 'fb no';
-        }
-        fb.style.display = 'block';
-      });
-    });
-  });
 
-  /* ---- Práctica de divisiones ---- */
-  var clavesDiv = { d1: -8, d2: 6, d3: -9 };
-  document.getElementById('btn-div').addEventListener('click', function () {
-    Object.keys(clavesDiv).forEach(function (id) {
-      var campo = document.getElementById(id);
-      var fb = document.getElementById('fb-' + id);
-      var limpio = campo.value.trim().replace(/\s/g, '');
-      var val = parseInt(limpio, 10);
-      if (limpio === '' || isNaN(val)) {
-        fb.textContent = 'Escribe un número (puede ser negativo).';
-        fb.className = 'fb no';
-      } else if (val === clavesDiv[id]) {
-        fb.textContent = '¡Correcto!';
-        fb.className = 'fb ok';
-      } else {
-        fb.textContent = 'Revisa: signos iguales dan cociente positivo; distintos, negativo.';
-        fb.className = 'fb no';
-      }
-      fb.style.display = 'block';
-    });
-  });
+          /* ---- Práctica de divisiones ---- */
+          var clavesDiv = {d1: -8, d2: 6, d3: -9};
+          document.getElementById('btn-div').addEventListener('click', function () {
+            Object.keys(clavesDiv).forEach(function (id) {
+              var campo = document.getElementById(id);
+              var fb = document.getElementById('fb-' + id);
+              var limpio = campo.value.trim().replace(/\s/g, '');
+              var val = parseInt(limpio, 10);
+              if (limpio === '' || isNaN(val)) {
+                fb.textContent = 'Escribe un número (puede ser negativo).';
+                fb.className = 'fb no';
+              } else if (val === clavesDiv[id]) {
+                fb.textContent = '¡Correcto!';
+                fb.className = 'fb ok';
+              } else {
+                fb.textContent = 'Revisa: signos iguales dan cociente positivo; distintos, negativo.';
+                fb.className = 'fb no';
+              }
+              fb.style.display = 'block';
+            });
+          });
 
-  /* ---- Quiz ---- */
-  var preguntasQuiz = [
-    { enun: '1. Resuelve: (−9) × 4.', ops: ['36', '−36', '−5', '5'], correcta: 1 },
-    { enun: '2. Resuelve: (−7) × (−8).', ops: ['−56', '56', '−15', '15'], correcta: 1 },
-    { enun: '3. Resuelve: (−63) ÷ (−7).', ops: ['−9', '9', '−56', '56'], correcta: 1 },
-    { enun: '4. Resuelve: 40 ÷ (−5).', ops: ['8', '−8', '−35', '35'], correcta: 1 },
-    { enun: '5. Al multiplicar dos enteros de signos iguales, el producto es:', ops: ['Negativo', 'Positivo', 'Cero', 'Depende del tamaño'], correcta: 1 },
-    { enun: '6. Al dividir dos enteros de signos distintos, el cociente es:', ops: ['Positivo', 'Negativo', 'Cero', 'No se puede dividir'], correcta: 1 },
-    { enun: '7. Resuelve: (−6) × 2 + 5.', ops: ['−7', '7', '−17', '17'], correcta: 0 },
-    { enun: '8. Resuelve: 18 ÷ (−3) − 4.', ops: ['2', '−2', '−10', '10'], correcta: 2 },
-    { enun: '9. La temperatura baja 4 °F por hora durante 6 horas. El cambio total es:', ops: ['+24 °F', '−24 °F', '−10 °F', '+10 °F'], correcta: 1 },
-    { enun: '10. Una pérdida de $90 se reparte por igual en 6 días. La pérdida diaria es:', ops: ['−$15', '$15', '−$84', '$96'], correcta: 0 },
-    { enun: '11. ¿Cuál afirmación es verdadera?', ops: ['Negativo por negativo da negativo', 'Positivo por negativo da positivo', 'Negativo por negativo da positivo', 'Cero por negativo da negativo'], correcta: 2 },
-    { enun: '12. En la expresión (−3) × 5 + 8, ¿qué se resuelve primero?', ops: ['La suma 5 + 8', 'La multiplicación (−3) × 5', 'De izquierda a derecha sin prioridad', 'No importa el orden'], correcta: 1 }
-  ];
+          /* ---- Quiz ---- */
+          var preguntasQuiz = [
+            {enun: '1. Resuelve: (−9) × 4.', ops: ['36', '−36', '−5', '5'], correcta: 1},
+            {enun: '2. Resuelve: (−7) × (−8).', ops: ['−56', '56', '−15', '15'], correcta: 1},
+            {enun: '3. Resuelve: (−63) ÷ (−7).', ops: ['−9', '9', '−56', '56'], correcta: 1},
+            {enun: '4. Resuelve: 40 ÷ (−5).', ops: ['8', '−8', '−35', '35'], correcta: 1},
+            {enun: '5. Al multiplicar dos enteros de signos iguales, el producto es:', ops: ['Negativo', 'Positivo', 'Cero', 'Depende del tamaño'], correcta: 1},
+            {enun: '6. Al dividir dos enteros de signos distintos, el cociente es:', ops: ['Positivo', 'Negativo', 'Cero', 'No se puede dividir'], correcta: 1},
+            {enun: '7. Resuelve: (−6) × 2 + 5.', ops: ['−7', '7', '−17', '17'], correcta: 0},
+            {enun: '8. Resuelve: 18 ÷ (−3) − 4.', ops: ['2', '−2', '−10', '10'], correcta: 2},
+            {enun: '9. La temperatura baja 4 °F por hora durante 6 horas. El cambio total es:', ops: ['+24 °F', '−24 °F', '−10 °F', '+10 °F'], correcta: 1},
+            {enun: '10. Una pérdida de $90 se reparte por igual en 6 días. La pérdida diaria es:', ops: ['−$15', '$15', '−$84', '$96'], correcta: 0},
+            {
+              enun: '11. ¿Cuál afirmación es verdadera?',
+              ops: ['Negativo por negativo da negativo', 'Positivo por negativo da positivo', 'Negativo por negativo da positivo', 'Cero por negativo da negativo'],
+              correcta: 2
+            },
+            {
+              enun: '12. En la expresión (−3) × 5 + 8, ¿qué se resuelve primero?',
+              ops: ['La suma 5 + 8', 'La multiplicación (−3) × 5', 'De izquierda a derecha sin prioridad', 'No importa el orden'],
+              correcta: 1
+            }
+          ];
 
-  var cuerpo = document.getElementById('quiz-cuerpo');
-  preguntasQuiz.forEach(function (p, i) {
-    var div = document.createElement('div');
-    div.className = 'pregunta';
-    div.setAttribute('data-idx', i);
-    var enun = document.createElement('div');
-    enun.className = 'enun';
-    enun.textContent = p.enun;
-    div.appendChild(enun);
-    var cont = document.createElement('div');
-    cont.className = 'opciones';
-    p.ops.forEach(function (texto, j) {
-      var op = document.createElement('div');
-      op.className = 'opcion';
-      op.setAttribute('data-j', j);
-      op.textContent = texto;
-      op.addEventListener('click', function () {
-        if (div.getAttribute('data-bloqueado') === 'si') return;
-        cont.querySelectorAll('.opcion').forEach(function (o) {
-          o.classList.remove('elegida');
-        });
-        op.classList.add('elegida');
-        div.setAttribute('data-elegida', j);
-      });
-      cont.appendChild(op);
-    });
-    div.appendChild(cont);
-    var fb = document.createElement('div');
-    fb.className = 'fb';
-    div.appendChild(fb);
-    cuerpo.appendChild(div);
-  });
+          var cuerpo = document.getElementById('quiz-cuerpo');
+          preguntasQuiz.forEach(function (p, i) {
+            var div = document.createElement('div');
+            div.className = 'pregunta';
+            div.setAttribute('data-idx', i);
+            var enun = document.createElement('div');
+            enun.className = 'enun';
+            enun.textContent = p.enun;
+            div.appendChild(enun);
+            var cont = document.createElement('div');
+            cont.className = 'opciones';
+            p.ops.forEach(function (texto, j) {
+              var op = document.createElement('div');
+              op.className = 'opcion';
+              op.setAttribute('data-j', j);
+              op.textContent = texto;
+              op.addEventListener('click', function () {
+                if (div.getAttribute('data-bloqueado') === 'si') return;
+                cont.querySelectorAll('.opcion').forEach(function (o) {
+                  o.classList.remove('elegida');
+                });
+                op.classList.add('elegida');
+                div.setAttribute('data-elegida', j);
+              });
+              cont.appendChild(op);
+            });
+            div.appendChild(cont);
+            var fb = document.createElement('div');
+            fb.className = 'fb';
+            div.appendChild(fb);
+            cuerpo.appendChild(div);
+          });
 
-  var btnCorregir = document.getElementById('btn-corregir');
-  var btnReintentar = document.getElementById('btn-reintentar');
-  var resultado = document.getElementById('resultado-quiz');
+          var btnCorregir = document.getElementById('btn-corregir');
+          var btnReintentar = document.getElementById('btn-reintentar');
+          var resultado = document.getElementById('resultado-quiz');
 
-  btnCorregir.addEventListener('click', function () {
-    var aciertos = 0;
-    var divs = cuerpo.querySelectorAll('.pregunta');
-    divs.forEach(function (div, i) {
-      var elegida = div.getAttribute('data-elegida');
-      var fb = div.querySelector('.fb');
-      var opciones = div.querySelectorAll('.opcion');
-      div.setAttribute('data-bloqueado', 'si');
-      opciones.forEach(function (o) {
-        o.classList.remove('correcta', 'incorrecta');
-      });
-      if (elegida === null) {
-        fb.textContent = 'No se respondió esta pregunta.';
-        fb.className = 'fb no';
-        fb.style.display = 'block';
-        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
-        return;
-      }
-      var idxElegida = parseInt(elegida, 10);
-      if (idxElegida === preguntasQuiz[i].correcta) {
-        aciertos++;
-        opciones[idxElegida].classList.add('correcta');
-        fb.textContent = '¡Correcto!';
-        fb.className = 'fb ok';
-      } else {
-        opciones[idxElegida].classList.add('incorrecta');
-        opciones[preguntasQuiz[i].correcta].classList.add('correcta');
-        fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
-        fb.className = 'fb no';
-      }
-      fb.style.display = 'block';
-    });
+          btnCorregir.addEventListener('click', function () {
+            var aciertos = 0;
+            var divs = cuerpo.querySelectorAll('.pregunta');
+            divs.forEach(function (div, i) {
+              var elegida = div.getAttribute('data-elegida');
+              var fb = div.querySelector('.fb');
+              var opciones = div.querySelectorAll('.opcion');
+              div.setAttribute('data-bloqueado', 'si');
+              opciones.forEach(function (o) {
+                o.classList.remove('correcta', 'incorrecta');
+              });
+              if (elegida === null) {
+                fb.textContent = 'No se respondió esta pregunta.';
+                fb.className = 'fb no';
+                fb.style.display = 'block';
+                opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+                return;
+              }
+              var idxElegida = parseInt(elegida, 10);
+              if (idxElegida === preguntasQuiz[i].correcta) {
+                aciertos++;
+                opciones[idxElegida].classList.add('correcta');
+                fb.textContent = '¡Correcto!';
+                fb.className = 'fb ok';
+              } else {
+                opciones[idxElegida].classList.add('incorrecta');
+                opciones[preguntasQuiz[i].correcta].classList.add('correcta');
+                fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
+                fb.className = 'fb no';
+              }
+              fb.style.display = 'block';
+            });
 
-    resultado.style.display = 'block';
-    if (aciertos >= 8) {
-      resultado.className = 'aprob';
-      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. ¡Aprobado! Has completado el Tema 1. Puedes continuar al Tema 2.';
-    } else {
-      resultado.className = 'repro';
-      resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repasa la lección e intenta de nuevo (se requieren 8).';
-    }
-    btnCorregir.style.display = 'none';
-    btnReintentar.style.display = 'inline-block';
-  });
+            resultado.style.display = 'block';
+            if (aciertos >= 8) {
+              resultado.className = 'aprob';
+              resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. ¡Aprobado! Has completado el Tema 1. Puedes continuar al Tema 2.';
+            } else {
+              resultado.className = 'repro';
+              resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repasa la lección e intenta de nuevo (se requieren 8).';
+            }
+            btnCorregir.style.display = 'none';
+            btnReintentar.style.display = 'inline-block';
+          });
 
-  btnReintentar.addEventListener('click', function () {
-    var divs = cuerpo.querySelectorAll('.pregunta');
-    divs.forEach(function (div) {
-      div.removeAttribute('data-elegida');
-      div.removeAttribute('data-bloqueado');
-      div.querySelectorAll('.opcion').forEach(function (o) {
-        o.classList.remove('correcta', 'incorrecta', 'elegida');
-      });
-      var fb = div.querySelector('.fb');
-      fb.style.display = 'none';
-      fb.textContent = '';
-    });
-    resultado.style.display = 'none';
-    btnReintentar.style.display = 'none';
-    btnCorregir.style.display = 'inline-block';
-    window.scrollTo({ top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth' });
-  });
-})();
-</script></p></body></html>
+          btnReintentar.addEventListener('click', function () {
+            var divs = cuerpo.querySelectorAll('.pregunta');
+            divs.forEach(function (div) {
+              div.removeAttribute('data-elegida');
+              div.removeAttribute('data-bloqueado');
+              div.querySelectorAll('.opcion').forEach(function (o) {
+                o.classList.remove('correcta', 'incorrecta', 'elegida');
+              });
+              var fb = div.querySelector('.fb');
+              fb.style.display = 'none';
+              fb.textContent = '';
+            });
+            resultado.style.display = 'none';
+            btnReintentar.style.display = 'none';
+            btnCorregir.style.display = 'inline-block';
+            window.scrollTo({top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth'});
+          });
+        })();
+      </script>
+</p>
+</body>
+</html>

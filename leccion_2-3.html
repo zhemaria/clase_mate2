@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- Lección 2.3 · Matemáticas Nivel 2 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lección 2.3 · Raíces cuadradas de cuadrados perfectos</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 2.3 · Raíces cuadradas de cuadrados perfectos</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root {
     --tema:   #4a148c;
@@ -137,28 +140,7 @@
   }
   .btn:hover { background: var(--tema-d); }
   .btn.sec { background: #607d8b; }
-  .btn.sec:hover { background: #455a64; }
-
-  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
-  .modo {
-    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
-    font-size: 14px;
-  }
-  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
-  .modo-pres strong { color: #0d47a1; }
-  .modo-virt { background: #e0f2f1; border-left: 5px solid #00695c; }
-  .modo-virt strong { color: #004d40; }
-  .modo h3 { margin: 0 0 6px; font-size: 15px; }
-  .modo-pres h3 { color: #0d47a1; }
-  .modo-virt h3 { color: #004d40; }
-
-  .actividad { margin-bottom: 18px; }
-  .actividad > .titulo-act {
-    font-weight: 700; color: var(--tema-d); font-size: 15px;
-    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
-  }
-
-  .caja-tarea {
+  .btn.sec:hover { background: #455a64; }.caja-tarea {
     background: #ede7f6; border-left: 6px solid #5e35b1;
     padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
   }
@@ -205,363 +187,302 @@
     text-align: center; padding: 20px; color: #222222;
     font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
   }
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:#fff; border:1px solid #d8dde3; border-left:6px solid var(--tema);
+    border-radius:10px; padding:16px 20px; margin:24px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--tema-d); border:0; padding:0; background:none; }
+  .indice ol{ margin:0; padding-left:1.35em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--tema-d); text-decoration:underline; }
+  .indice a:hover{ color:var(--tema); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--tema-d); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--tema); color:#fff; }
+  footer a{ color:inherit; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
 <div class="contenedor">
-
-  <header class="principal">
-    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 2 · Fracciones, exponentes y raíces</div>
-    <h1>Lección 2.3 · Raíces cuadradas de cuadrados perfectos</h1>
-    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
-  </header>
-
-  <div class="caja-objetivos">
-    <h2>Objetivos de la lección</h2>
-    <ul>
-      <li>Calcular la raíz cuadrada de cuadrados perfectos hasta 225 sin calculadora.</li>
-      <li>Reconocer que la raíz cuadrada y el cuadrado son operaciones inversas.</li>
-      <li>Estimar la raíz cuadrada de un número no perfecto entre dos enteros consecutivos.</li>
-      <li>Usar la calculadora TI-30XS para verificar raíces cuadradas.</li>
-      <li>Interpretar la raíz cuadrada como el lado de un cuadrado de área conocida.</li>
-    </ul>
-  </div>
-
-  <div class="bloque">
-    <p><strong>Conexión con la lección anterior.</strong> En la Lección 2.2 se aprendió a elevar números al cuadrado y se memorizaron los <strong>quince cuadrados perfectos</strong> del 1 al 225. Esta lección presenta la operación <strong>inversa</strong>: la raíz cuadrada. Así como restar deshace sumar, la raíz cuadrada deshace el elevar al cuadrado. Toda la memorización de la lección anterior se convertirá aquí en una herramienta de cálculo directo.</p>
-  </div>
-
-  <h2 class="seccion">1. La raíz cuadrada como operación inversa</h2>
-  <div class="bloque">
-    <p>La <strong>raíz cuadrada</strong> de un número responde a la pregunta: «¿qué número, multiplicado por sí mismo, da este resultado?». Se escribe con el símbolo radical: √.</p>
-
-    <div class="ejemplo">
-      <span class="et">Idea central</span>
-      <p style="text-align:center; font-size:20px; font-weight:700;">
+<header class="principal">
+<div class="ruta">Spanish ASE Math · Nivel 2 · Tema 2 · Fracciones, exponentes y raíces</div>
+<h1>Lección 2.3 · Raíces cuadradas de cuadrados perfectos</h1>
+<div class="meta">Unas 4 horas, a su ritmo · NRS 2–3</div>
+</header>
+<div class="caja-objetivos">
+<h2>Objetivos de la lección</h2>
+<ul>
+<li>Calcular la raíz cuadrada de cuadrados perfectos hasta 225 sin calculadora.</li>
+<li>Reconocer que la raíz cuadrada y el cuadrado son operaciones inversas.</li>
+<li>Estimar la raíz cuadrada de un número no perfecto entre dos enteros consecutivos.</li>
+<li>Usar la calculadora TI-30XS para verificar raíces cuadradas.</li>
+<li>Interpretar la raíz cuadrada como el lado de un cuadrado de área conocida.</li>
+</ul>
+</div><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-1-la-raiz-cuadrada-como-operacion-inversa">1. La raíz cuadrada como operación inversa</a></li><li><a href="#s-2-la-raiz-cuadrada-como-lado-de-un-cuadrado">2. La raíz cuadrada como lado de un cuadrado</a></li><li><a href="#s-3-estimar-raices-de-numeros-no-perfectos">3. Estimar raíces de números no perfectos</a></li><li><a href="#s-4-verificacion-con-la-calculadora-ti-30xs">4. Verificación con la calculadora TI-30XS</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-la-leccion-2-3">Quiz de la lección 2.3</a></li><li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li><li><a href="#s-cierre-del-tema-2-y-enlace-con-el-tema-3">Cierre del Tema 2 y enlace con el Tema 3</a></li></ol></nav>
+<div class="bloque">
+<p><strong>Conexión con la lección anterior.</strong> En la Lección 2.2 se aprendió a elevar números al cuadrado y se memorizaron los <strong>quince cuadrados perfectos</strong> del 1 al 225. Esta lección presenta la operación <strong>inversa</strong>: la raíz cuadrada. Así como restar deshace sumar, la raíz cuadrada deshace el elevar al cuadrado. Toda la memorización de la lección anterior se convertirá aquí en una herramienta de cálculo directo.</p>
+</div>
+<h2 class="seccion" id="s-1-la-raiz-cuadrada-como-operacion-inversa">1. La raíz cuadrada como operación inversa</h2>
+<div class="bloque">
+<p>La <strong>raíz cuadrada</strong> de un número responde a la pregunta: «¿qué número, multiplicado por sí mismo, da este resultado?». Se escribe con el símbolo radical: √.</p>
+<div class="ejemplo">
+<span class="et">Idea central</span>
+<p style="text-align:center; font-size:20px; font-weight:700;">
         Si 7<sup>2</sup> = 49, entonces √49 = 7
       </p>
-      <p>Elevar al cuadrado y sacar la raíz cuadrada son operaciones <strong>inversas</strong>: una deshace a la otra. Por eso reconocer los cuadrados perfectos permite calcular raíces de inmediato.</p>
+<p>Elevar al cuadrado y sacar la raíz cuadrada son operaciones <strong>inversas</strong>: una deshace a la otra. Por eso reconocer los cuadrados perfectos permite calcular raíces de inmediato.</p>
+</div>
+<p>El número que está dentro del símbolo radical se llama <strong>radicando</strong>. Si el radicando es un cuadrado perfecto, su raíz cuadrada es un número entero exacto.</p>
+<table class="reglas">
+<thead>
+<tr><th>Porque…</th><th>…se cumple que</th></tr>
+</thead>
+<tbody>
+<tr><td class="caso">5 × 5 = 25</td><td>√25 = 5</td></tr>
+<tr><td class="caso">9 × 9 = 81</td><td>√81 = 9</td></tr>
+<tr><td class="caso">12 × 12 = 144</td><td>√144 = 12</td></tr>
+<tr><td class="caso">15 × 15 = 225</td><td>√225 = 15</td></tr>
+</tbody>
+</table>
+<div class="caja-tip">
+<strong>Estrategia directa:</strong> para calcular la raíz cuadrada de un cuadrado perfecto, basta con recordar qué número elevado al cuadrado lo produjo. Por eso la tabla de cuadrados perfectos memorizada en la Lección 2.2 sirve también, leída al revés, como tabla de raíces.
     </div>
-
-    <p>El número que está dentro del símbolo radical se llama <strong>radicando</strong>. Si el radicando es un cuadrado perfecto, su raíz cuadrada es un número entero exacto.</p>
-
-    <table class="reglas">
-      <thead>
-        <tr><th>Porque…</th><th>…se cumple que</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="caso">5 × 5 = 25</td><td>√25 = 5</td></tr>
-        <tr><td class="caso">9 × 9 = 81</td><td>√81 = 9</td></tr>
-        <tr><td class="caso">12 × 12 = 144</td><td>√144 = 12</td></tr>
-        <tr><td class="caso">15 × 15 = 225</td><td>√225 = 15</td></tr>
-      </tbody>
-    </table>
-
-    <div class="caja-tip">
-      <strong>Estrategia directa:</strong> para calcular la raíz cuadrada de un cuadrado perfecto, basta con recordar qué número elevado al cuadrado lo produjo. Por eso la tabla de cuadrados perfectos memorizada en la Lección 2.2 sirve también, leída al revés, como tabla de raíces.
+</div>
+<h2 class="seccion" id="s-2-la-raiz-cuadrada-como-lado-de-un-cuadrado">2. La raíz cuadrada como lado de un cuadrado</h2>
+<div class="bloque">
+<p>La raíz cuadrada tiene un significado <strong>geométrico</strong> muy claro. El área de un cuadrado se calcula elevando su lado al cuadrado. Por lo tanto, si se conoce el área, la raíz cuadrada del área devuelve la medida del lado.</p>
+<div class="recta-wrap">
+<svg aria-label="Cuadrado de área treinta y seis con lado seis" height="200" role="img" viewbox="0 0 320 200" width="320" xmlns="http://www.w3.org/2000/svg">
+<!-- cuadricula 6x6 -->
+<g fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.5">
+<rect height="150" width="150" x="60" y="30"></rect>
+</g>
+<g stroke="#b39ddb" stroke-width="1">
+<line x1="85" x2="85" y1="30" y2="180"></line>
+<line x1="110" x2="110" y1="30" y2="180"></line>
+<line x1="135" x2="135" y1="30" y2="180"></line>
+<line x1="160" x2="160" y1="30" y2="180"></line>
+<line x1="185" x2="185" y1="30" y2="180"></line>
+<line x1="60" x2="210" y1="55" y2="55"></line>
+<line x1="60" x2="210" y1="80" y2="80"></line>
+<line x1="60" x2="210" y1="105" y2="105"></line>
+<line x1="60" x2="210" y1="130" y2="130"></line>
+<line x1="60" x2="210" y1="155" y2="155"></line>
+</g>
+<g font-family="Segoe UI, sans-serif" text-anchor="middle">
+<text fill="#38106b" font-size="16" font-weight="700" x="135" y="108">Área = 36</text>
+<text fill="#38106b" font-size="14" font-weight="700" x="135" y="197">lado = √36 = 6</text>
+<text fill="#38106b" font-size="14" font-weight="700" x="245" y="110">6 unidades</text>
+</g>
+</svg>
+</div>
+<p>Un cuadrado de 36 unidades cuadradas de área tiene exactamente 6 cuadritos por lado, porque 6 × 6 = 36. Así, √36 = 6 «se ve»: es la longitud del lado.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 1</span>
+<p>Un jardín cuadrado tiene un área de 121 metros cuadrados. ¿Cuánto mide cada lado?</p>
+<div class="paso"><span class="n">1</span> El lado es la raíz cuadrada del área: √121.</div>
+<div class="paso"><span class="n">2</span> Se busca el número que al cuadrado da 121: 11 × 11 = 121.</div>
+<p><strong>Respuesta:</strong> cada lado del jardín mide 11 metros.</p>
+</div>
+</div>
+<div class="practica">
+<h3>Práctica interactiva 1 · Raíces exactas</h3>
+<p>Escribe la raíz cuadrada de cada cuadrado perfecto y presiona «Verificar».</p>
+<div class="pregunta">
+<div class="enun">1. √64 =</div>
+<input aria-label="Respuesta de la pregunta 1: raíz cuadrada de sesenta y cuatro" class="campo-num" id="r1" inputmode="numeric" type="text"/>
+<div class="fb" id="fb-r1"></div>
+</div>
+<div class="pregunta">
+<div class="enun">2. √169 =</div>
+<input aria-label="Respuesta de la pregunta 2: raíz cuadrada de ciento sesenta y nueve" class="campo-num" id="r2" inputmode="numeric" type="text"/>
+<div class="fb" id="fb-r2"></div>
+</div>
+<div class="pregunta">
+<div class="enun">3. √196 =</div>
+<input aria-label="Respuesta de la pregunta 3: raíz cuadrada de ciento noventa y seis" class="campo-num" id="r3" inputmode="numeric" type="text"/>
+<div class="fb" id="fb-r3"></div>
+</div>
+<button class="btn" id="btn-raiz">Verificar</button>
+</div>
+<h2 class="seccion" id="s-3-estimar-raices-de-numeros-no-perfectos">3. Estimar raíces de números no perfectos</h2>
+<div class="bloque">
+<p>No todos los números son cuadrados perfectos. La raíz cuadrada de un número como 50 no es un entero, pero sí se puede <strong>estimar</strong> ubicándola entre dos cuadrados perfectos consecutivos.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 2</span>
+<p>Estimar √50 entre dos enteros consecutivos.</p>
+<div class="paso"><span class="n">1</span> Se buscan los cuadrados perfectos más cercanos a 50: 49 y 64.</div>
+<div class="paso"><span class="n">2</span> Como 49 &lt; 50 &lt; 64, entonces √49 &lt; √50 &lt; √64.</div>
+<div class="paso"><span class="n">3</span> Es decir: 7 &lt; √50 &lt; 8. Como 50 está muy cerca de 49, √50 está cerca de 7.</div>
+<p><strong>Respuesta:</strong> √50 está entre 7 y 8, más cerca de 7 (aproximadamente 7.1).</p>
+</div>
+<div class="recta-wrap">
+<svg aria-label="Recta numérica que ubica la raíz de cincuenta entre siete y ocho" height="100" role="img" viewbox="0 0 620 100" width="620" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#4a148c" stroke-width="3" x1="40" x2="580" y1="55" y2="55"></line>
+<polygon fill="#4a148c" points="580,55 566,48 566,62"></polygon>
+<g font-family="Segoe UI, sans-serif" font-size="14" text-anchor="middle">
+<line stroke="#4a148c" stroke-width="2" x1="100" x2="100" y1="46" y2="64"></line><text fill="#38106b" font-weight="700" x="100" y="84">7</text>
+<line stroke="#4a148c" stroke-width="2" x1="520" x2="520" y1="46" y2="64"></line><text fill="#38106b" font-weight="700" x="520" y="84">8</text>
+<text fill="#6a1b9a" font-size="12" x="100" y="32">√49</text>
+<text fill="#6a1b9a" font-size="12" x="520" y="32">√64</text>
+<circle cx="142" cy="55" fill="#2e7d32" r="7"></circle>
+<text fill="#2e7d32" font-size="13" font-weight="700" x="142" y="32">√50</text>
+</g>
+</svg>
+</div>
+<div class="caja-atencion">
+<strong>Atención:</strong> al estimar, conviene fijarse de qué cuadrado perfecto está más cerca el radicando. √50 está casi pegado a √49, así que su valor está apenas por encima de 7. En cambio, √60 está más cerca de 64, así que su valor se acerca a 8.
     </div>
-  </div>
-
-  <h2 class="seccion">2. La raíz cuadrada como lado de un cuadrado</h2>
-  <div class="bloque">
-    <p>La raíz cuadrada tiene un significado <strong>geométrico</strong> muy claro. El área de un cuadrado se calcula elevando su lado al cuadrado. Por lo tanto, si se conoce el área, la raíz cuadrada del área devuelve la medida del lado.</p>
-
-    <div class="recta-wrap">
-      <svg width="320" height="200" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cuadrado de área treinta y seis con lado seis">
-        <!-- cuadricula 6x6 -->
-        <g stroke="#6a1b9a" stroke-width="1.5" fill="#f3e5f5">
-          <rect x="60" y="30" width="150" height="150"/>
-        </g>
-        <g stroke="#b39ddb" stroke-width="1">
-          <line x1="85"  y1="30" x2="85"  y2="180"/>
-          <line x1="110" y1="30" x2="110" y2="180"/>
-          <line x1="135" y1="30" x2="135" y2="180"/>
-          <line x1="160" y1="30" x2="160" y2="180"/>
-          <line x1="185" y1="30" x2="185" y2="180"/>
-          <line x1="60"  y1="55"  x2="210" y2="55"/>
-          <line x1="60"  y1="80"  x2="210" y2="80"/>
-          <line x1="60"  y1="105" x2="210" y2="105"/>
-          <line x1="60"  y1="130" x2="210" y2="130"/>
-          <line x1="60"  y1="155" x2="210" y2="155"/>
-        </g>
-        <g font-family="Segoe UI, sans-serif" text-anchor="middle">
-          <text x="135" y="108" fill="#38106b" font-size="16" font-weight="700">Área = 36</text>
-          <text x="135" y="197" fill="#38106b" font-size="14" font-weight="700">lado = √36 = 6</text>
-          <text x="245" y="110" fill="#38106b" font-size="14" font-weight="700">6 unidades</text>
-        </g>
-      </svg>
+</div>
+<h2 class="seccion" id="s-4-verificacion-con-la-calculadora-ti-30xs">4. Verificación con la calculadora TI-30XS</h2>
+<div class="bloque">
+<p>La calculadora <strong>TI-30XS</strong> permite verificar raíces cuadradas con la tecla del símbolo radical (√). Es la calculadora autorizada en el examen GED, por lo que conviene familiarizarse con ella desde este nivel.</p>
+<div class="ejemplo">
+<span class="et">Procedimiento en la TI-30XS</span>
+<div class="paso"><span class="n">1</span> <strong>Limpiar la memoria</strong> antes de comenzar cualquier cálculo, como se indica siempre en este curso.</div>
+<div class="paso"><span class="n">2</span> Pulsar la tecla del símbolo radical (√), generalmente combinada con la tecla «2nd».</div>
+<div class="paso"><span class="n">3</span> Escribir el radicando —por ejemplo, 144— y pulsar «enter».</div>
+<div class="paso"><span class="n">4</span> La pantalla muestra 12, que confirma √144 = 12.</div>
+</div>
+<div class="caja-tip">
+<strong>Uso recomendado:</strong> la calculadora se usa para <strong>verificar</strong>, no para reemplazar el reconocimiento de los cuadrados perfectos. En el examen GED el tiempo es limitado; reconocer √81 = 9 «de memoria» es mucho más rápido que teclearlo. La calculadora es el respaldo, no el atajo.
     </div>
-
-    <p>Un cuadrado de 36 unidades cuadradas de área tiene exactamente 6 cuadritos por lado, porque 6 × 6 = 36. Así, √36 = 6 «se ve»: es la longitud del lado.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 1</span>
-      <p>Un jardín cuadrado tiene un área de 121 metros cuadrados. ¿Cuánto mide cada lado?</p>
-      <div class="paso"><span class="n">1</span> El lado es la raíz cuadrada del área: √121.</div>
-      <div class="paso"><span class="n">2</span> Se busca el número que al cuadrado da 121: 11 × 11 = 121.</div>
-      <p><strong>Respuesta:</strong> cada lado del jardín mide 11 metros.</p>
-    </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 1 · Raíces exactas</h3>
-    <p>Escribe la raíz cuadrada de cada cuadrado perfecto y presiona «Verificar».</p>
-    <div class="pregunta">
-      <div class="enun">1. √64 =</div>
-      <input type="text" class="campo-num" id="r1" inputmode="numeric" aria-label="Respuesta de la pregunta 1: raíz cuadrada de sesenta y cuatro" />
-      <div class="fb" id="fb-r1"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">2. √169 =</div>
-      <input type="text" class="campo-num" id="r2" inputmode="numeric" aria-label="Respuesta de la pregunta 2: raíz cuadrada de ciento sesenta y nueve" />
-      <div class="fb" id="fb-r2"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">3. √196 =</div>
-      <input type="text" class="campo-num" id="r3" inputmode="numeric" aria-label="Respuesta de la pregunta 3: raíz cuadrada de ciento noventa y seis" />
-      <div class="fb" id="fb-r3"></div>
-    </div>
-    <button class="btn" id="btn-raiz">Verificar</button>
-  </div>
-
-  <h2 class="seccion">3. Estimar raíces de números no perfectos</h2>
-  <div class="bloque">
-    <p>No todos los números son cuadrados perfectos. La raíz cuadrada de un número como 50 no es un entero, pero sí se puede <strong>estimar</strong> ubicándola entre dos cuadrados perfectos consecutivos.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 2</span>
-      <p>Estimar √50 entre dos enteros consecutivos.</p>
-      <div class="paso"><span class="n">1</span> Se buscan los cuadrados perfectos más cercanos a 50: 49 y 64.</div>
-      <div class="paso"><span class="n">2</span> Como 49 &lt; 50 &lt; 64, entonces √49 &lt; √50 &lt; √64.</div>
-      <div class="paso"><span class="n">3</span> Es decir: 7 &lt; √50 &lt; 8. Como 50 está muy cerca de 49, √50 está cerca de 7.</div>
-      <p><strong>Respuesta:</strong> √50 está entre 7 y 8, más cerca de 7 (aproximadamente 7.1).</p>
-    </div>
-
-    <div class="recta-wrap">
-      <svg width="620" height="100" viewBox="0 0 620 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Recta numérica que ubica la raíz de cincuenta entre siete y ocho">
-        <line x1="40" y1="55" x2="580" y2="55" stroke="#4a148c" stroke-width="3"/>
-        <polygon points="580,55 566,48 566,62" fill="#4a148c"/>
-        <g font-family="Segoe UI, sans-serif" font-size="14" text-anchor="middle">
-          <line x1="100" y1="46" x2="100" y2="64" stroke="#4a148c" stroke-width="2"/><text x="100" y="84" fill="#38106b" font-weight="700">7</text>
-          <line x1="520" y1="46" x2="520" y2="64" stroke="#4a148c" stroke-width="2"/><text x="520" y="84" fill="#38106b" font-weight="700">8</text>
-          <text x="100" y="32" fill="#6a1b9a" font-size="12">√49</text>
-          <text x="520" y="32" fill="#6a1b9a" font-size="12">√64</text>
-          <circle cx="142" cy="55" r="7" fill="#2e7d32"/>
-          <text x="142" y="32" fill="#2e7d32" font-size="13" font-weight="700">√50</text>
-        </g>
-      </svg>
-    </div>
-
-    <div class="caja-atencion">
-      <strong>Atención:</strong> al estimar, conviene fijarse de qué cuadrado perfecto está más cerca el radicando. √50 está casi pegado a √49, así que su valor está apenas por encima de 7. En cambio, √60 está más cerca de 64, así que su valor se acerca a 8.
-    </div>
-  </div>
-
-  <h2 class="seccion">4. Verificación con la calculadora TI-30XS</h2>
-  <div class="bloque">
-    <p>La calculadora <strong>TI-30XS</strong> permite verificar raíces cuadradas con la tecla del símbolo radical (√). Es la calculadora autorizada en el examen GED, por lo que conviene familiarizarse con ella desde este nivel.</p>
-
-    <div class="ejemplo">
-      <span class="et">Procedimiento en la TI-30XS</span>
-      <div class="paso"><span class="n">1</span> <strong>Limpiar la memoria</strong> antes de comenzar cualquier cálculo, como se indica siempre en este curso.</div>
-      <div class="paso"><span class="n">2</span> Pulsar la tecla del símbolo radical (√), generalmente combinada con la tecla «2nd».</div>
-      <div class="paso"><span class="n">3</span> Escribir el radicando —por ejemplo, 144— y pulsar «enter».</div>
-      <div class="paso"><span class="n">4</span> La pantalla muestra 12, que confirma √144 = 12.</div>
-    </div>
-
-    <div class="caja-tip">
-      <strong>Uso recomendado:</strong> la calculadora se usa para <strong>verificar</strong>, no para reemplazar el reconocimiento de los cuadrados perfectos. En el examen GED el tiempo es limitado; reconocer √81 = 9 «de memoria» es mucho más rápido que teclearlo. La calculadora es el respaldo, no el atajo.
-    </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 2 · Estimar raíces</h3>
-    <p>Selecciona entre qué dos enteros consecutivos se encuentra cada raíz.</p>
-
-    <div class="pregunta" data-correcta="b">
-      <div class="enun">1. √30 se encuentra entre:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">4 y 5</div>
-        <div class="opcion" data-op="b">5 y 6</div>
-        <div class="opcion" data-op="c">6 y 7</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="c">
-      <div class="enun">2. √90 se encuentra entre:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">8 y 9</div>
-        <div class="opcion" data-op="b">7 y 8</div>
-        <div class="opcion" data-op="c">9 y 10</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="a">
-      <div class="enun">3. √45 se encuentra entre:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">6 y 7</div>
-        <div class="opcion" data-op="b">5 y 6</div>
-        <div class="opcion" data-op="c">7 y 8</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 3 · La operación inversa</h3>
-    <p>Selecciona la respuesta correcta.</p>
-
-    <div class="pregunta" data-correcta="b">
-      <div class="enun">1. Si √x = 11, entonces x es igual a:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">22</div>
-        <div class="opcion" data-op="b">121</div>
-        <div class="opcion" data-op="c">1.1</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="c">
-      <div class="enun">2. Un cuadrado tiene un área de 100 cm². Su lado mide:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">25 cm</div>
-        <div class="opcion" data-op="b">50 cm</div>
-        <div class="opcion" data-op="c">10 cm</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="a">
-      <div class="enun">3. ¿Cuál de estas raíces NO es un número entero exacto?</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">√70</div>
-        <div class="opcion" data-op="b">√49</div>
-        <div class="opcion" data-op="c">√100</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-  </div>
-
-  <h2 class="seccion">5. Práctica guiada en clase</h2>
-  <div class="bloque">
-    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 1 · La geometría de las raíces</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          En papel cuadriculado, los estudiantes dibujan cuadrados de áreas dadas (25, 36, 49, 64, 100) y miden el lado contando cuadritos. Comprueban que el lado coincide con la raíz cuadrada del área.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          Con una cuadrícula digital compartida, los estudiantes construyen cuadrados de las áreas indicadas y registran en una tabla el área y el lado. Confirman que cada lado es la raíz cuadrada del área correspondiente.
-        </div>
-      </div>
-    </div>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 2 · Estimación entre enteros</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          El docente plantea raíces de números no perfectos. En parejas, los estudiantes identifican los dos cuadrados perfectos vecinos y ubican la raíz en una recta numérica dibujada en la pizarra.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          En salas pequeñas, las parejas completan una hoja con cuatro raíces no perfectas. Para cada una indican los dos enteros entre los que se encuentra y a cuál está más cerca, justificando su elección.
-        </div>
-      </div>
-    </div>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 3 · Verificar con la TI-30XS</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          Los estudiantes calculan primero diez raíces «de memoria» y luego las verifican con la calculadora TI-30XS, recordando limpiar la memoria al inicio. Comparan velocidad y precisión de ambos métodos.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          Cada estudiante calcula las diez raíces sin calculadora, luego las verifica con la TI-30XS o un emulador y reporta en el foro cuántas reconoció correctamente sin ayuda.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="caja-tarea">
-    <h2>Tarea asincrónica</h2>
-    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
-    <ul>
-      <li>Diez ejercicios de raíces cuadradas exactas de cuadrados perfectos hasta √225.</li>
-      <li>Cuatro ejercicios de estimar entre qué dos enteros consecutivos se encuentra una raíz no perfecta.</li>
-      <li>Dos problemas de contexto: hallar el lado de un cuadrado a partir de su área.</li>
-    </ul>
-    <p>La plataforma ofrece retroalimentación inmediata en cada intento. Tiempo estimado: 45 minutos.</p>
-  </div>
-
-  <div class="quiz">
-    <h2>Quiz de la lección 2.3</h2>
-    <p>Diez preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
-    <div id="quiz-cuerpo"></div>
-    <div id="resultado-quiz"></div>
-    <button class="btn" id="btn-corregir">Corregir quiz</button>
-    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
-  </div>
-
-  <div class="rubrica">
-    <h2>Rúbrica analítica de la lección</h2>
-    <p>Tres criterios evaluados en cuatro niveles de desempeño.</p>
-    <table class="tabla-rubrica">
-      <thead>
-        <tr>
-          <th>Criterio</th>
-          <th>Inicial (1)</th>
-          <th>En desarrollo (2)</th>
-          <th>Competente (3)</th>
-          <th>Destacado (4)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Raíces de cuadrados perfectos</td>
-          <td>No calcula raíces exactas ni con tabla.</td>
-          <td>Calcula raíces de cuadrados perfectos consultando una tabla.</td>
-          <td>Calcula raíces de cuadrados perfectos hasta 225 sin tabla.</td>
-          <td>Calcula raíces con fluidez y las usa en problemas de contexto.</td>
-        </tr>
-        <tr>
-          <td>Relación inversa cuadrado-raíz</td>
-          <td>No reconoce que el cuadrado y la raíz son inversos.</td>
-          <td>Reconoce la relación, pero no la aplica con seguridad.</td>
-          <td>Explica y aplica la relación inversa correctamente.</td>
-          <td>Aplica la relación inversa para resolver problemas y verificar.</td>
-        </tr>
-        <tr>
-          <td>Estimación de raíces no perfectas</td>
-          <td>No ubica la raíz entre dos enteros.</td>
-          <td>Ubica la raíz entre dos enteros con ayuda.</td>
-          <td>Estima la raíz entre dos enteros consecutivos sin apoyo.</td>
-          <td>Estima la raíz e indica a cuál entero está más cerca y por qué.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="cierre">
-    <h2>Cierre del Tema 2 y enlace con el Tema 3</h2>
-    <p>Con esta lección se completa el <strong>Tema 2</strong>: las fracciones con signo, las potencias y las raíces cuadradas quedan dominadas. La idea unificadora del tema fue clara: la raíz cuadrada es la <strong>operación inversa</strong> del cuadrado, y el reconocimiento de los cuadrados perfectos hace ambos cálculos inmediatos.</p>
-    <p>El <strong>Tema 3 · PEMDAS completo</strong> abre con la <strong>Lección 3.1 · Orden de operaciones: repaso y extensión a paréntesis anidados</strong>. Allí se reunirán todas las operaciones estudiadas hasta ahora —enteros con signo, fracciones, potencias y raíces— bajo un único sistema de prioridades. Todo lo aprendido en los Temas 1 y 2 será la materia prima del orden de operaciones.</p>
-  </div>
-
-  <footer>
-    Spanish ASE Math · Nivel 2 · Lección 2.3 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
-  </footer>
-
+</div>
+<div class="practica">
+<h3>Práctica interactiva 2 · Estimar raíces</h3>
+<p>Selecciona entre qué dos enteros consecutivos se encuentra cada raíz.</p>
+<div class="pregunta" data-correcta="b">
+<div class="enun">1. √30 se encuentra entre:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">4 y 5</div>
+<div class="opcion" data-op="b">5 y 6</div>
+<div class="opcion" data-op="c">6 y 7</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="c">
+<div class="enun">2. √90 se encuentra entre:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">8 y 9</div>
+<div class="opcion" data-op="b">7 y 8</div>
+<div class="opcion" data-op="c">9 y 10</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">3. √45 se encuentra entre:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">6 y 7</div>
+<div class="opcion" data-op="b">5 y 6</div>
+<div class="opcion" data-op="c">7 y 8</div>
+</div>
+<div class="fb"></div>
+</div>
+</div>
+<div class="practica">
+<h3>Práctica interactiva 3 · La operación inversa</h3>
+<p>Selecciona la respuesta correcta.</p>
+<div class="pregunta" data-correcta="b">
+<div class="enun">1. Si √x = 11, entonces x es igual a:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">22</div>
+<div class="opcion" data-op="b">121</div>
+<div class="opcion" data-op="c">1.1</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="c">
+<div class="enun">2. Un cuadrado tiene un área de 100 cm². Su lado mide:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">25 cm</div>
+<div class="opcion" data-op="b">50 cm</div>
+<div class="opcion" data-op="c">10 cm</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">3. ¿Cuál de estas raíces NO es un número entero exacto?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">√70</div>
+<div class="opcion" data-op="b">√49</div>
+<div class="opcion" data-op="c">√100</div>
+</div>
+<div class="fb"></div>
+</div>
 </div>
 
+
+<div class="caja-tarea">
+<h2 id="s-tarea">Tarea</h2>
+<p>Para hacer por su cuenta, con el cuaderno abierto:</p>
+<ul>
+<li>Diez ejercicios de raíces cuadradas exactas de cuadrados perfectos hasta √225.</li>
+<li>Cuatro ejercicios de estimar entre qué dos enteros consecutivos se encuentra una raíz no perfecta.</li>
+<li>Dos problemas de contexto: hallar el lado de un cuadrado a partir de su área.</li>
+<li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique <em>raíces cuadradas</em> de cuadrados perfectos hasta 225. Hágalas de memoria: la tabla de cuadrados perfectos tiene que estar en la cabeza antes de llegar al examen.</li></ul>
+<p>Tiempo estimado: 45 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
+</div>
+<div class="quiz">
+<h2 id="s-quiz-de-la-leccion-2-3">Quiz de la lección 2.3</h2>
+<p>Diez preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
+<div id="quiz-cuerpo"></div>
+<div id="resultado-quiz"></div>
+<button class="btn" id="btn-corregir">Corregir quiz</button>
+<button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+</div>
+<div class="rubrica">
+<h2 id="s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</h2>
+<p>Tres criterios evaluados en cuatro niveles de desempeño. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<table class="tabla-rubrica">
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Inicial (1)</th>
+<th>En desarrollo (2)</th>
+<th>Competente (3)</th>
+<th>Destacado (4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raíces de cuadrados perfectos</td>
+<td>No calcula raíces exactas ni con tabla.</td>
+<td>Calcula raíces de cuadrados perfectos consultando una tabla.</td>
+<td>Calcula raíces de cuadrados perfectos hasta 225 sin tabla.</td>
+<td>Calcula raíces con fluidez y las usa en problemas de contexto.</td>
+</tr>
+<tr>
+<td>Relación inversa cuadrado-raíz</td>
+<td>No reconoce que el cuadrado y la raíz son inversos.</td>
+<td>Reconoce la relación, pero no la aplica con seguridad.</td>
+<td>Explica y aplica la relación inversa correctamente.</td>
+<td>Aplica la relación inversa para resolver problemas y verificar.</td>
+</tr>
+<tr>
+<td>Estimación de raíces no perfectas</td>
+<td>No ubica la raíz entre dos enteros.</td>
+<td>Ubica la raíz entre dos enteros con ayuda.</td>
+<td>Estima la raíz entre dos enteros consecutivos sin apoyo.</td>
+<td>Estima la raíz e indica a cuál entero está más cerca y por qué.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cierre">
+<h2 id="s-cierre-del-tema-2-y-enlace-con-el-tema-3">Cierre del Tema 2 y enlace con el Tema 3</h2>
+<p>Con esta lección se completa el <strong>Tema 2</strong>: las fracciones con signo, las potencias y las raíces cuadradas quedan dominadas. La idea unificadora del tema fue clara: la raíz cuadrada es la <strong>operación inversa</strong> del cuadrado, y el reconocimiento de los cuadrados perfectos hace ambos cálculos inmediatos.</p>
+<p>El <strong>Tema 3 · PEMDAS completo</strong> abre con la <strong>Lección 3.1 · Orden de operaciones: repaso y extensión a paréntesis anidados</strong>. Allí se reunirán todas las operaciones estudiadas hasta ahora —enteros con signo, fracciones, potencias y raíces— bajo un único sistema de prioridades. Todo lo aprendido en los Temas 1 y 2 será la materia prima del orden de operaciones.</p>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 2 · Lección 2.3</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
+</div>
 <script>
 (function () {
   /* ---- Práctica de opciones ---- */

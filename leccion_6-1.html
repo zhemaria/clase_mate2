@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- Lección 6.1 · Matemáticas Nivel 2 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lección 6.1 · Matemáticas financieras: interés simple y depreciación</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 6.1 · Matemáticas financieras: interés simple y depreciación</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root {
     --tema:   #00695c;
@@ -179,28 +182,7 @@
   }
   .btn:hover { background: var(--tema-d); }
   .btn.sec { background: #607d8b; }
-  .btn.sec:hover { background: #455a64; }
-
-  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
-  .modo {
-    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
-    font-size: 14px;
-  }
-  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
-  .modo-pres strong { color: #0d47a1; }
-  .modo-virt { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
-  .modo-virt strong { color: #4a148c; }
-  .modo h3 { margin: 0 0 6px; font-size: 15px; }
-  .modo-pres h3 { color: #0d47a1; }
-  .modo-virt h3 { color: #4a148c; }
-
-  .actividad { margin-bottom: 18px; }
-  .actividad > .titulo-act {
-    font-weight: 700; color: var(--tema-d); font-size: 15px;
-    background: var(--tema-soft); padding: 7px 14px; border-radius: 7px;
-  }
-
-  .caja-tarea {
+  .btn.sec:hover { background: #455a64; }.caja-tarea {
     background: #ede7f6; border-left: 6px solid #5e35b1;
     padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
   }
@@ -247,431 +229,362 @@
     text-align: center; padding: 20px; color: #222222;
     font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
   }
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:#fff; border:1px solid #d8dde3; border-left:6px solid var(--tema);
+    border-radius:10px; padding:16px 20px; margin:24px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--tema-d); border:0; padding:0; background:none; }
+  .indice ol{ margin:0; padding-left:1.35em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--tema-d); text-decoration:underline; }
+  .indice a:hover{ color:var(--tema); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--tema-d); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--tema); color:#fff; }
+  footer a{ color:inherit; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
 <div class="contenedor">
-
-  <header class="principal">
-    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 6 · Matemáticas financieras y conversiones de medidas</div>
-    <h1>Lección 6.1 · Matemáticas financieras: interés simple y depreciación <span class="pildora">CONTENIDO NUEVO</span></h1>
-    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
-  </header>
-
-  <div class="caja-objetivos">
-    <h2>Objetivos de la lección</h2>
-    <ul>
-      <li>Identificar el capital principal, la tasa de interés y el tiempo en una situación financiera.</li>
-      <li>Aplicar la fórmula del interés simple I = C · r · t.</li>
-      <li>Calcular el monto final como la suma del capital y los intereses.</li>
-      <li>Aplicar la depreciación lineal para calcular el valor de un activo después de varios años.</li>
-      <li>Reconocer que interés simple y depreciación lineal comparten la misma estructura, con signo opuesto.</li>
-    </ul>
-  </div>
-
-  <div class="bloque">
-    <p><strong>Conexión con la lección anterior.</strong> En la Lección 5.3 se aplicaron los porcentajes a situaciones puntuales —un descuento, una propina, un impuesto—. Esta lección, primera del Tema 6, da el paso siguiente: aplicarlos <strong>a lo largo del tiempo</strong>. Cuando un capital genera intereses año tras año, o cuando un activo (un carro, una computadora) pierde valor año tras año, los porcentajes se vuelven una herramienta de planificación financiera.</p>
-  </div>
-
-  <h2 class="seccion">1. Vocabulario financiero</h2>
-  <div class="bloque">
-    <p>Antes de aplicar fórmulas, conviene fijar el vocabulario. Cualquier situación de interés simple gira en torno a tres cantidades:</p>
-
-    <ul>
-      <li><strong>Capital principal (C):</strong> la cantidad de dinero inicial que se invierte o se presta. También se le llama «principal».</li>
-      <li><strong>Tasa de interés (r):</strong> el porcentaje que se aplica al capital cada periodo de tiempo. Suele expresarse como tasa anual (por ejemplo, 5% al año).</li>
-      <li><strong>Tiempo (t):</strong> la duración del préstamo o inversión, medida normalmente en años.</li>
-    </ul>
-
-    <p>Con estos tres datos se calculan otras dos cantidades:</p>
-
-    <ul>
-      <li><strong>Interés (I):</strong> el dinero adicional generado por la inversión, o el costo del préstamo.</li>
-      <li><strong>Monto final (M):</strong> el dinero total al cabo del tiempo. Para una inversión, M = C + I.</li>
-    </ul>
-
-    <div class="caja-tip">
-      <strong>Idea esencial:</strong> el interés es siempre un <strong>porcentaje del capital</strong>. Si la tasa anual es 5%, el interés generado en un año es exactamente el 5% del capital. La fórmula que sigue solo formaliza esta idea.
+<header class="principal">
+<div class="ruta">Spanish ASE Math · Nivel 2 · Tema 6 · Matemáticas financieras y conversiones de medidas</div>
+<h1>Lección 6.1 · Matemáticas financieras: interés simple y depreciación <span class="pildora">CONTENIDO NUEVO</span></h1>
+<div class="meta">Unas 4 horas, a su ritmo · NRS 2–3</div>
+</header>
+<div class="caja-objetivos">
+<h2>Objetivos de la lección</h2>
+<ul>
+<li>Identificar el capital principal, la tasa de interés y el tiempo en una situación financiera.</li>
+<li>Aplicar la fórmula del interés simple I = C · r · t.</li>
+<li>Calcular el monto final como la suma del capital y los intereses.</li>
+<li>Aplicar la depreciación lineal para calcular el valor de un activo después de varios años.</li>
+<li>Reconocer que interés simple y depreciación lineal comparten la misma estructura, con signo opuesto.</li>
+</ul>
+</div><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-1-vocabulario-financiero">1. Vocabulario financiero</a></li><li><a href="#s-2-la-formula-del-interes-simple">2. La fórmula del interés simple</a></li><li><a href="#s-3-crecimiento-ano-tras-ano">3. Crecimiento año tras año</a></li><li><a href="#s-4-depreciacion-lineal-el-otro-lado-de-la-moneda">4. Depreciación lineal: el otro lado de la moneda</a></li><li><a href="#s-5-aplicaciones-combinadas">5. Aplicaciones combinadas</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-la-leccion-6-1">Quiz de la lección 6.1</a></li><li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li><li><a href="#s-cierre-de-la-leccion-6-1">Cierre de la lección 6.1</a></li></ol></nav>
+<div class="bloque">
+<p><strong>Conexión con la lección anterior.</strong> En la Lección 5.3 se aplicaron los porcentajes a situaciones puntuales —un descuento, una propina, un impuesto—. Esta lección, primera del Tema 6, da el paso siguiente: aplicarlos <strong>a lo largo del tiempo</strong>. Cuando un capital genera intereses año tras año, o cuando un activo (un carro, una computadora) pierde valor año tras año, los porcentajes se vuelven una herramienta de planificación financiera.</p>
+</div>
+<h2 class="seccion" id="s-1-vocabulario-financiero">1. Vocabulario financiero</h2>
+<div class="bloque">
+<p>Antes de aplicar fórmulas, conviene fijar el vocabulario. Cualquier situación de interés simple gira en torno a tres cantidades:</p>
+<ul>
+<li><strong>Capital principal (C):</strong> la cantidad de dinero inicial que se invierte o se presta. También se le llama «principal».</li>
+<li><strong>Tasa de interés (r):</strong> el porcentaje que se aplica al capital cada periodo de tiempo. Suele expresarse como tasa anual (por ejemplo, 5% al año).</li>
+<li><strong>Tiempo (t):</strong> la duración del préstamo o inversión, medida normalmente en años.</li>
+</ul>
+<p>Con estos tres datos se calculan otras dos cantidades:</p>
+<ul>
+<li><strong>Interés (I):</strong> el dinero adicional generado por la inversión, o el costo del préstamo.</li>
+<li><strong>Monto final (M):</strong> el dinero total al cabo del tiempo. Para una inversión, M = C + I.</li>
+</ul>
+<div class="caja-tip">
+<strong>Idea esencial:</strong> el interés es siempre un <strong>porcentaje del capital</strong>. Si la tasa anual es 5%, el interés generado en un año es exactamente el 5% del capital. La fórmula que sigue solo formaliza esta idea.
     </div>
-  </div>
-
-  <h2 class="seccion">2. La fórmula del interés simple</h2>
-  <div class="bloque">
-    <div class="formula-card">
-      <div class="formula">I = C · r · t</div>
-      <div class="leyenda">
-        <strong>I</strong> = interés generado &nbsp;|&nbsp;
-        <strong>C</strong> = capital inicial &nbsp;|&nbsp;
-        <strong>r</strong> = tasa anual (en decimal) &nbsp;|&nbsp;
+</div>
+<h2 class="seccion" id="s-2-la-formula-del-interes-simple">2. La fórmula del interés simple</h2>
+<div class="bloque">
+<div class="formula-card">
+<div class="formula">I = C · r · t</div>
+<div class="leyenda">
+<strong>I</strong> = interés generado  | 
+        <strong>C</strong> = capital inicial  | 
+        <strong>r</strong> = tasa anual (en decimal)  | 
         <strong>t</strong> = tiempo (en años)
       </div>
+</div>
+<p>La tasa <strong>r</strong> se introduce en su forma <strong>decimal</strong>, no porcentual. Una tasa del 6% se convierte en r = 0.06 antes de multiplicar. Esa conversión es el paso donde más errores ocurren.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 1 · Interés a un año</span>
+<p>Se depositan $2 000 en una cuenta que paga el 5% de interés anual simple. ¿Cuánto interés se gana al cabo de un año?</p>
+<div class="paso"><span class="n">1</span> Identificar los datos: C = 2 000, r = 0.05, t = 1.</div>
+<div class="paso"><span class="n">2</span> Aplicar la fórmula: I = 2 000 × 0.05 × 1.</div>
+<div class="paso"><span class="n">3</span> Calcular: I = $100.</div>
+<p><strong>Respuesta:</strong> el interés ganado en un año es de $100.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 2 · Interés en varios años</span>
+<p>¿Cuánto interés genera un capital de $3 500 al 4% de interés simple anual durante 6 años?</p>
+<div class="paso"><span class="n">1</span> Datos: C = 3 500, r = 0.04, t = 6.</div>
+<div class="paso"><span class="n">2</span> Fórmula: I = 3 500 × 0.04 × 6.</div>
+<div class="paso"><span class="n">3</span> Calcular paso a paso: 3 500 × 0.04 = 140 (interés anual); 140 × 6 = 840.</div>
+<p><strong>Respuesta:</strong> el interés total después de 6 años es de $840.</p>
+</div>
+<h3>El monto final</h3>
+<p>El <strong>monto final</strong> M es lo que se tiene al cabo del tiempo: el capital original más todos los intereses generados.</p>
+<div class="formula-card">
+<div class="formula">M = C + I</div>
+<div class="leyenda">El capital y el interés se suman para obtener el monto final.</div>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 3 · Monto final</span>
+<p>Continuando el Ejemplo 2: ¿cuánto dinero hay después de 6 años?</p>
+<div class="paso"><span class="n">1</span> Capital inicial: C = $3 500.</div>
+<div class="paso"><span class="n">2</span> Interés calculado: I = $840.</div>
+<div class="paso"><span class="n">3</span> Monto final: M = 3 500 + 840 = $4 340.</div>
+<p><strong>Respuesta:</strong> al cabo de 6 años se tienen $4 340.</p>
+</div>
+</div>
+<h2 class="seccion" id="s-3-crecimiento-ano-tras-ano">3. Crecimiento año tras año</h2>
+<div class="bloque">
+<p>En el interés <strong>simple</strong>, el interés que se gana cada año es <strong>siempre el mismo</strong>, porque se calcula siempre sobre el capital original. Esto produce un crecimiento <strong>lineal</strong>.</p>
+<p>Capital de $1 000 al 8% de interés simple anual:</p>
+<table class="tabla-fin">
+<thead>
+<tr><th>Año</th><th>Interés del año ($)</th><th>Interés acumulado ($)</th><th>Monto total ($)</th></tr>
+</thead>
+<tbody>
+<tr><td>0</td><td>—</td><td>0</td><td>1 000</td></tr>
+<tr><td>1</td><td>80</td><td>80</td><td>1 080</td></tr>
+<tr><td>2</td><td>80</td><td>160</td><td>1 160</td></tr>
+<tr><td>3</td><td>80</td><td>240</td><td>1 240</td></tr>
+<tr class="destacada"><td>5</td><td>80</td><td>400</td><td>1 400</td></tr>
+<tr><td>10</td><td>80</td><td>800</td><td>1 800</td></tr>
+</tbody>
+</table>
+<div class="grafico-wrap">
+<svg aria-label="Gráfica de barras del crecimiento lineal del capital con interés simple" height="220" role="img" viewbox="0 0 540 220" width="540" xmlns="http://www.w3.org/2000/svg">
+<!-- ejes -->
+<line stroke="#444" stroke-width="2" x1="50" x2="510" y1="180" y2="180"></line>
+<line stroke="#444" stroke-width="2" x1="50" x2="50" y1="20" y2="180"></line>
+<text fill="#444" font-family="Segoe UI, sans-serif" font-size="11" x="20" y="30">$</text>
+<text fill="#444" font-family="Segoe UI, sans-serif" font-size="12" text-anchor="middle" x="280" y="208">Años</text>
+<!-- barras: capital base + interés acumulado -->
+<!-- escala: 1000 = 100 px de altura -->
+<g>
+<!-- año 0 -->
+<rect fill="#00695c" height="100" width="40" x="80" y="80"></rect>
+<text fill="#444" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" x="100" y="195">0</text>
+<!-- año 1 -->
+<rect fill="#00695c" height="100" width="40" x="140" y="80"></rect>
+<rect fill="#a5d6a7" height="8" width="40" x="140" y="72"></rect>
+<text fill="#444" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" x="160" y="195">1</text>
+<!-- año 2 -->
+<rect fill="#00695c" height="100" width="40" x="200" y="80"></rect>
+<rect fill="#a5d6a7" height="16" width="40" x="200" y="64"></rect>
+<text fill="#444" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" x="220" y="195">2</text>
+<!-- año 3 -->
+<rect fill="#00695c" height="100" width="40" x="260" y="80"></rect>
+<rect fill="#a5d6a7" height="24" width="40" x="260" y="56"></rect>
+<text fill="#444" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" x="280" y="195">3</text>
+<!-- año 5 -->
+<rect fill="#00695c" height="100" width="40" x="320" y="80"></rect>
+<rect fill="#a5d6a7" height="40" width="40" x="320" y="40"></rect>
+<text fill="#444" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" x="340" y="195">5</text>
+<!-- año 10 -->
+<rect fill="#00695c" height="100" width="40" x="380" y="80"></rect>
+<rect fill="#a5d6a7" height="80" width="40" x="380" y="0"></rect>
+<text fill="#444" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" x="400" y="195">10</text>
+</g>
+<!-- leyenda -->
+<g font-family="Segoe UI, sans-serif" font-size="11">
+<rect fill="#00695c" height="14" width="14" x="450" y="25"></rect>
+<text fill="#444" x="470" y="36">Capital</text>
+<rect fill="#a5d6a7" height="14" width="14" x="450" y="48"></rect>
+<text fill="#444" x="470" y="59">Interés</text>
+</g>
+</svg>
+</div>
+<p>La parte verde oscuro (el capital) nunca cambia. La parte verde clara (el interés acumulado) crece de forma <strong>regular y constante</strong>, año tras año.</p>
+<div class="caja-atencion">
+<strong>Importante:</strong> el interés <strong>compuesto</strong> es diferente. En ese caso, cada año se calcula sobre el monto del año anterior, no sobre el capital original. Eso produce un crecimiento más rápido. En este nivel se estudia solo el interés simple; el compuesto pertenece al Nivel 4.
     </div>
-
-    <p>La tasa <strong>r</strong> se introduce en su forma <strong>decimal</strong>, no porcentual. Una tasa del 6% se convierte en r = 0.06 antes de multiplicar. Esa conversión es el paso donde más errores ocurren.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 1 · Interés a un año</span>
-      <p>Se depositan $2 000 en una cuenta que paga el 5% de interés anual simple. ¿Cuánto interés se gana al cabo de un año?</p>
-      <div class="paso"><span class="n">1</span> Identificar los datos: C = 2 000, r = 0.05, t = 1.</div>
-      <div class="paso"><span class="n">2</span> Aplicar la fórmula: I = 2 000 × 0.05 × 1.</div>
-      <div class="paso"><span class="n">3</span> Calcular: I = $100.</div>
-      <p><strong>Respuesta:</strong> el interés ganado en un año es de $100.</p>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 2 · Interés en varios años</span>
-      <p>¿Cuánto interés genera un capital de $3 500 al 4% de interés simple anual durante 6 años?</p>
-      <div class="paso"><span class="n">1</span> Datos: C = 3 500, r = 0.04, t = 6.</div>
-      <div class="paso"><span class="n">2</span> Fórmula: I = 3 500 × 0.04 × 6.</div>
-      <div class="paso"><span class="n">3</span> Calcular paso a paso: 3 500 × 0.04 = 140 (interés anual); 140 × 6 = 840.</div>
-      <p><strong>Respuesta:</strong> el interés total después de 6 años es de $840.</p>
-    </div>
-
-    <h3>El monto final</h3>
-    <p>El <strong>monto final</strong> M es lo que se tiene al cabo del tiempo: el capital original más todos los intereses generados.</p>
-
-    <div class="formula-card">
-      <div class="formula">M = C + I</div>
-      <div class="leyenda">El capital y el interés se suman para obtener el monto final.</div>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 3 · Monto final</span>
-      <p>Continuando el Ejemplo 2: ¿cuánto dinero hay después de 6 años?</p>
-      <div class="paso"><span class="n">1</span> Capital inicial: C = $3 500.</div>
-      <div class="paso"><span class="n">2</span> Interés calculado: I = $840.</div>
-      <div class="paso"><span class="n">3</span> Monto final: M = 3 500 + 840 = $4 340.</div>
-      <p><strong>Respuesta:</strong> al cabo de 6 años se tienen $4 340.</p>
-    </div>
-  </div>
-
-  <h2 class="seccion">3. Crecimiento año tras año</h2>
-  <div class="bloque">
-    <p>En el interés <strong>simple</strong>, el interés que se gana cada año es <strong>siempre el mismo</strong>, porque se calcula siempre sobre el capital original. Esto produce un crecimiento <strong>lineal</strong>.</p>
-
-    <p>Capital de $1 000 al 8% de interés simple anual:</p>
-
-    <table class="tabla-fin">
-      <thead>
-        <tr><th>Año</th><th>Interés del año ($)</th><th>Interés acumulado ($)</th><th>Monto total ($)</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>0</td><td>—</td><td>0</td><td>1 000</td></tr>
-        <tr><td>1</td><td>80</td><td>80</td><td>1 080</td></tr>
-        <tr><td>2</td><td>80</td><td>160</td><td>1 160</td></tr>
-        <tr><td>3</td><td>80</td><td>240</td><td>1 240</td></tr>
-        <tr class="destacada"><td>5</td><td>80</td><td>400</td><td>1 400</td></tr>
-        <tr><td>10</td><td>80</td><td>800</td><td>1 800</td></tr>
-      </tbody>
-    </table>
-
-    <div class="grafico-wrap">
-      <svg width="540" height="220" viewBox="0 0 540 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica de barras del crecimiento lineal del capital con interés simple">
-        <!-- ejes -->
-        <line x1="50" y1="180" x2="510" y2="180" stroke="#444" stroke-width="2"/>
-        <line x1="50" y1="20"  x2="50"  y2="180" stroke="#444" stroke-width="2"/>
-        <text x="20" y="30" font-family="Segoe UI, sans-serif" font-size="11" fill="#444">$</text>
-        <text x="280" y="208" font-family="Segoe UI, sans-serif" font-size="12" fill="#444" text-anchor="middle">Años</text>
-        <!-- barras: capital base + interés acumulado -->
-        <!-- escala: 1000 = 100 px de altura -->
-        <g>
-          <!-- año 0 -->
-          <rect x="80"  y="80"  width="40" height="100" fill="#00695c"/>
-          <text x="100" y="195" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#444">0</text>
-          <!-- año 1 -->
-          <rect x="140" y="80" width="40" height="100" fill="#00695c"/>
-          <rect x="140" y="72" width="40" height="8" fill="#a5d6a7"/>
-          <text x="160" y="195" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#444">1</text>
-          <!-- año 2 -->
-          <rect x="200" y="80" width="40" height="100" fill="#00695c"/>
-          <rect x="200" y="64" width="40" height="16" fill="#a5d6a7"/>
-          <text x="220" y="195" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#444">2</text>
-          <!-- año 3 -->
-          <rect x="260" y="80" width="40" height="100" fill="#00695c"/>
-          <rect x="260" y="56" width="40" height="24" fill="#a5d6a7"/>
-          <text x="280" y="195" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#444">3</text>
-          <!-- año 5 -->
-          <rect x="320" y="80" width="40" height="100" fill="#00695c"/>
-          <rect x="320" y="40" width="40" height="40" fill="#a5d6a7"/>
-          <text x="340" y="195" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#444">5</text>
-          <!-- año 10 -->
-          <rect x="380" y="80" width="40" height="100" fill="#00695c"/>
-          <rect x="380" y="0" width="40" height="80" fill="#a5d6a7"/>
-          <text x="400" y="195" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#444">10</text>
-        </g>
-        <!-- leyenda -->
-        <g font-family="Segoe UI, sans-serif" font-size="11">
-          <rect x="450" y="25"  width="14" height="14" fill="#00695c"/>
-          <text x="470" y="36" fill="#444">Capital</text>
-          <rect x="450" y="48" width="14" height="14" fill="#a5d6a7"/>
-          <text x="470" y="59" fill="#444">Interés</text>
-        </g>
-      </svg>
-    </div>
-
-    <p>La parte verde oscuro (el capital) nunca cambia. La parte verde clara (el interés acumulado) crece de forma <strong>regular y constante</strong>, año tras año.</p>
-
-    <div class="caja-atencion">
-      <strong>Importante:</strong> el interés <strong>compuesto</strong> es diferente. En ese caso, cada año se calcula sobre el monto del año anterior, no sobre el capital original. Eso produce un crecimiento más rápido. En este nivel se estudia solo el interés simple; el compuesto pertenece al Nivel 4.
-    </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 1 · Calcular interés simple</h3>
-    <p>Escribe el resultado en dólares (solo el número) y presiona «Verificar».</p>
-    <div class="pregunta">
-      <div class="enun">1. C = $500, r = 6%, t = 2 años. I =</div>
-      <input type="text" class="campo-texto" id="i1" inputmode="decimal" aria-label="Respuesta de la pregunta 1: interés simple sobre quinientos dólares al seis por ciento durante dos años" />
-      <div class="fb" id="fb-i1"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">2. C = $1 200, r = 4%, t = 5 años. I =</div>
-      <input type="text" class="campo-texto" id="i2" inputmode="decimal" aria-label="Respuesta de la pregunta 2: interés simple sobre mil doscientos dólares al cuatro por ciento durante cinco años" />
-      <div class="fb" id="fb-i2"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">3. C = $800, r = 3%, t = 4 años. Monto final M =</div>
-      <input type="text" class="campo-texto" id="i3" inputmode="decimal" aria-label="Respuesta de la pregunta 3: monto final con interés simple sobre ochocientos dólares al tres por ciento durante cuatro años" />
-      <div class="fb" id="fb-i3"></div>
-    </div>
-    <button class="btn" id="btn-int">Verificar</button>
-  </div>
-
-  <h2 class="seccion">4. Depreciación lineal: el otro lado de la moneda</h2>
-  <div class="bloque">
-    <p>La <strong>depreciación</strong> es el proceso por el cual un activo —un carro, una computadora, una máquina— pierde valor con el paso del tiempo. La depreciación <strong>lineal</strong> supone que la pérdida anual es <strong>la misma cada año</strong>, igual que el interés simple, pero hacia abajo.</p>
-
-    <div class="formula-card">
-      <div class="formula">V = V₀ − V₀ · r · t</div>
-      <div class="leyenda">
-        <strong>V</strong> = valor después de t años &nbsp;|&nbsp;
-        <strong>V₀</strong> = valor inicial &nbsp;|&nbsp;
-        <strong>r</strong> = tasa anual de depreciación (en decimal) &nbsp;|&nbsp;
+</div>
+<div class="practica">
+<h3>Práctica interactiva 1 · Calcular interés simple</h3>
+<p>Escribe el resultado en dólares (solo el número) y presiona «Verificar».</p>
+<div class="pregunta">
+<div class="enun">1. C = $500, r = 6%, t = 2 años. I =</div>
+<input aria-label="Respuesta de la pregunta 1: interés simple sobre quinientos dólares al seis por ciento durante dos años" class="campo-texto" id="i1" inputmode="decimal" type="text"/>
+<div class="fb" id="fb-i1"></div>
+</div>
+<div class="pregunta">
+<div class="enun">2. C = $1 200, r = 4%, t = 5 años. I =</div>
+<input aria-label="Respuesta de la pregunta 2: interés simple sobre mil doscientos dólares al cuatro por ciento durante cinco años" class="campo-texto" id="i2" inputmode="decimal" type="text"/>
+<div class="fb" id="fb-i2"></div>
+</div>
+<div class="pregunta">
+<div class="enun">3. C = $800, r = 3%, t = 4 años. Monto final M =</div>
+<input aria-label="Respuesta de la pregunta 3: monto final con interés simple sobre ochocientos dólares al tres por ciento durante cuatro años" class="campo-texto" id="i3" inputmode="decimal" type="text"/>
+<div class="fb" id="fb-i3"></div>
+</div>
+<button class="btn" id="btn-int">Verificar</button>
+</div>
+<h2 class="seccion" id="s-4-depreciacion-lineal-el-otro-lado-de-la-moneda">4. Depreciación lineal: el otro lado de la moneda</h2>
+<div class="bloque">
+<p>La <strong>depreciación</strong> es el proceso por el cual un activo —un carro, una computadora, una máquina— pierde valor con el paso del tiempo. La depreciación <strong>lineal</strong> supone que la pérdida anual es <strong>la misma cada año</strong>, igual que el interés simple, pero hacia abajo.</p>
+<div class="formula-card">
+<div class="formula">V = V₀ − V₀ · r · t</div>
+<div class="leyenda">
+<strong>V</strong> = valor después de t años  | 
+        <strong>V₀</strong> = valor inicial  | 
+        <strong>r</strong> = tasa anual de depreciación (en decimal)  | 
         <strong>t</strong> = tiempo (en años)
       </div>
+</div>
+<p>La estructura de la fórmula es <strong>idéntica</strong> a la del interés simple. Lo único que cambia es el signo: en el interés se suma; en la depreciación, se resta. Por eso conviene pensar en ambos procesos como dos caras de la misma idea.</p>
+<div class="comparacion">
+<div class="tipo-fin tipo-crece">
+<h3>Interés simple ↑</h3>
+<p>El capital <strong>crece</strong> en una cantidad fija cada año. M = C + C · r · t.</p>
+</div>
+<div class="tipo-fin tipo-baja">
+<h3>Depreciación lineal ↓</h3>
+<p>El activo <strong>pierde</strong> una cantidad fija cada año. V = V₀ − V₀ · r · t.</p>
+</div>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 4 · Carro nuevo</span>
+<p>Un carro nuevo cuesta $24 000. Se deprecia un 8% anual de su valor original. ¿Cuál será su valor al cabo de 5 años?</p>
+<div class="paso"><span class="n">1</span> Datos: V₀ = 24 000, r = 0.08, t = 5.</div>
+<div class="paso"><span class="n">2</span> Pérdida anual: 24 000 × 0.08 = $1 920 al año.</div>
+<div class="paso"><span class="n">3</span> Pérdida total en 5 años: 1 920 × 5 = $9 600.</div>
+<div class="paso"><span class="n">4</span> Valor final: 24 000 − 9 600 = $14 400.</div>
+<p><strong>Respuesta:</strong> el carro vale $14 400 al cabo de 5 años.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 5 · Computadora de oficina</span>
+<p>Una computadora se compró por $1 500 y se deprecia un 20% anual de su valor inicial. ¿Cuánto vale después de 3 años?</p>
+<div class="paso"><span class="n">1</span> V₀ = 1 500, r = 0.20, t = 3.</div>
+<div class="paso"><span class="n">2</span> Pérdida total: 1 500 × 0.20 × 3 = $900.</div>
+<div class="paso"><span class="n">3</span> Valor final: 1 500 − 900 = $600.</div>
+<p><strong>Respuesta:</strong> la computadora vale $600 después de 3 años.</p>
+</div>
+<div class="caja-tip">
+<strong>Nota práctica:</strong> en la depreciación lineal se supone que cada año se pierde el mismo porcentaje del valor <strong>original</strong>. En la vida real, muchos activos pierden un porcentaje del valor <strong>vigente</strong>, lo que produce una curva descendente más suave. Ese modelo se estudia más adelante.
     </div>
-
-    <p>La estructura de la fórmula es <strong>idéntica</strong> a la del interés simple. Lo único que cambia es el signo: en el interés se suma; en la depreciación, se resta. Por eso conviene pensar en ambos procesos como dos caras de la misma idea.</p>
-
-    <div class="comparacion">
-      <div class="tipo-fin tipo-crece">
-        <h3>Interés simple ↑</h3>
-        <p>El capital <strong>crece</strong> en una cantidad fija cada año. M = C + C · r · t.</p>
-      </div>
-      <div class="tipo-fin tipo-baja">
-        <h3>Depreciación lineal ↓</h3>
-        <p>El activo <strong>pierde</strong> una cantidad fija cada año. V = V₀ − V₀ · r · t.</p>
-      </div>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 4 · Carro nuevo</span>
-      <p>Un carro nuevo cuesta $24 000. Se deprecia un 8% anual de su valor original. ¿Cuál será su valor al cabo de 5 años?</p>
-      <div class="paso"><span class="n">1</span> Datos: V₀ = 24 000, r = 0.08, t = 5.</div>
-      <div class="paso"><span class="n">2</span> Pérdida anual: 24 000 × 0.08 = $1 920 al año.</div>
-      <div class="paso"><span class="n">3</span> Pérdida total en 5 años: 1 920 × 5 = $9 600.</div>
-      <div class="paso"><span class="n">4</span> Valor final: 24 000 − 9 600 = $14 400.</div>
-      <p><strong>Respuesta:</strong> el carro vale $14 400 al cabo de 5 años.</p>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 5 · Computadora de oficina</span>
-      <p>Una computadora se compró por $1 500 y se deprecia un 20% anual de su valor inicial. ¿Cuánto vale después de 3 años?</p>
-      <div class="paso"><span class="n">1</span> V₀ = 1 500, r = 0.20, t = 3.</div>
-      <div class="paso"><span class="n">2</span> Pérdida total: 1 500 × 0.20 × 3 = $900.</div>
-      <div class="paso"><span class="n">3</span> Valor final: 1 500 − 900 = $600.</div>
-      <p><strong>Respuesta:</strong> la computadora vale $600 después de 3 años.</p>
-    </div>
-
-    <div class="caja-tip">
-      <strong>Nota práctica:</strong> en la depreciación lineal se supone que cada año se pierde el mismo porcentaje del valor <strong>original</strong>. En la vida real, muchos activos pierden un porcentaje del valor <strong>vigente</strong>, lo que produce una curva descendente más suave. Ese modelo se estudia más adelante.
-    </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 2 · Depreciación lineal</h3>
-    <p>Selecciona la respuesta correcta.</p>
-
-    <div class="pregunta" data-correcta="b">
-      <div class="enun">1. Un televisor de $800 se deprecia al 10% anual. ¿Cuánto vale a los 4 años?</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">$400</div>
-        <div class="opcion" data-op="b">$480</div>
-        <div class="opcion" data-op="c">$720</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="a">
-      <div class="enun">2. Una máquina de $15 000 se deprecia al 5% anual. ¿Cuánto vale a los 6 años?</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">$10 500</div>
-        <div class="opcion" data-op="b">$13 500</div>
-        <div class="opcion" data-op="c">$4 500</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="c">
-      <div class="enun">3. Una bicicleta de $400 se deprecia al 15% anual. ¿Cuánto se ha depreciado en 2 años?</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">$30</div>
-        <div class="opcion" data-op="b">$60</div>
-        <div class="opcion" data-op="c">$120</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-  </div>
-
-  <h2 class="seccion">5. Aplicaciones combinadas</h2>
-  <div class="bloque">
-    <p>Muchas decisiones financieras combinan varias ideas: comparar dos cuentas de ahorro, decidir cuánto vale un activo usado, calcular el rendimiento de una inversión.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 6 · Comparar dos cuentas</span>
-      <p>El banco A ofrece 4% anual de interés simple. El banco B ofrece 5%. Con $2 500 invertidos durante 3 años en cada uno, ¿qué diferencia hay entre los dos intereses?</p>
-      <div class="paso"><span class="n">1</span> Banco A: I = 2 500 × 0.04 × 3 = $300.</div>
-      <div class="paso"><span class="n">2</span> Banco B: I = 2 500 × 0.05 × 3 = $375.</div>
-      <div class="paso"><span class="n">3</span> Diferencia: 375 − 300 = $75 más en el banco B.</div>
-      <p><strong>Respuesta:</strong> el banco B genera $75 más en 3 años. Una diferencia del 1% en la tasa se traduce, en este plazo, en 75 dólares.</p>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 7 · Comprar un carro usado</span>
-      <p>Un carro se compró nuevo por $20 000 hace 3 años. Si se deprecia al 12% anual, ¿cuál es un precio justo de reventa hoy?</p>
-      <div class="paso"><span class="n">1</span> Pérdida anual: 20 000 × 0.12 = $2 400.</div>
-      <div class="paso"><span class="n">2</span> Pérdida total en 3 años: 2 400 × 3 = $7 200.</div>
-      <div class="paso"><span class="n">3</span> Valor justo de reventa: 20 000 − 7 200 = $12 800.</div>
-      <p><strong>Respuesta:</strong> un precio justo de reventa es de $12 800.</p>
-    </div>
-  </div>
-
-  <h2 class="seccion">6. Práctica guiada en clase</h2>
-  <div class="bloque">
-    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 1 · Identificar los datos</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          El docente lee diez situaciones financieras. Los estudiantes anotan en su cuaderno tres columnas: C, r y t (o V₀, r y t para depreciación). Identificar los datos antes de calcular evita confusiones posteriores.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          En una hoja compartida con tres columnas, los estudiantes identifican los datos de cada una de las diez situaciones. Comparten al final los casos donde no encontraban la tasa o el tiempo.
-        </div>
-      </div>
-    </div>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 2 · Inversiones simuladas</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          Cada grupo recibe un capital y tres opciones de banco con distintas tasas y plazos. Calculan el monto final en cada caso y eligen la mejor opción, justificando su decisión.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          En salas pequeñas, los grupos trabajan en una hoja compartida con las opciones. Completan una tabla con interés y monto final para cada banco y comparten su elección al regresar al pleno.
-        </div>
-      </div>
-    </div>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 3 · ¿Cuánto vale tu carro?</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          Cada estudiante elige un activo (carro, computadora, electrodoméstico) con un precio nuevo realista y una tasa de depreciación dada. Calcula su valor a 1, 3 y 5 años, y dibuja un pequeño gráfico de barras que muestre la caída.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          Los estudiantes hacen el ejercicio en una hoja compartida y construyen un gráfico de barras digital. Publican su gráfico final en el foro y comentan el de un compañero.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="caja-tarea">
-    <h2>Tarea asincrónica</h2>
-    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
-    <ul>
-      <li>Cinco ejercicios de calcular el interés simple a partir de C, r y t.</li>
-      <li>Tres ejercicios de calcular el monto final M = C + I.</li>
-      <li>Cinco ejercicios de calcular el valor de un activo después de varios años de depreciación lineal.</li>
-      <li>Tres ejercicios combinados: comparar opciones financieras o calcular precios de reventa.</li>
-    </ul>
-    <p>La plataforma ofrece retroalimentación paso a paso en cada intento. Tiempo estimado: 60 minutos.</p>
-  </div>
-
-  <div class="quiz">
-    <h2>Quiz de la lección 6.1</h2>
-    <p>Doce preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 8 respuestas correctas.</p>
-    <div id="quiz-cuerpo"></div>
-    <div id="resultado-quiz"></div>
-    <button class="btn" id="btn-corregir">Corregir quiz</button>
-    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
-  </div>
-
-  <div class="rubrica">
-    <h2>Rúbrica analítica de la lección</h2>
-    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
-    <table class="tabla-rubrica">
-      <thead>
-        <tr>
-          <th>Criterio</th>
-          <th>Inicial (1)</th>
-          <th>En desarrollo (2)</th>
-          <th>Competente (3)</th>
-          <th>Destacado (4)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Identificar datos financieros</td>
-          <td>No distingue capital, tasa y tiempo.</td>
-          <td>Identifica los datos con apoyo.</td>
-          <td>Identifica C, r y t sin ayuda en cualquier situación.</td>
-          <td>Identifica y traduce la tasa porcentual a decimal sin error.</td>
-        </tr>
-        <tr>
-          <td>Aplicar la fórmula del interés simple</td>
-          <td>Confunde la fórmula o multiplica mal.</td>
-          <td>Aplica la fórmula en casos simples.</td>
-          <td>Aplica la fórmula y calcula interés y monto final.</td>
-          <td>Aplica, calcula y verifica los resultados con un cálculo alternativo.</td>
-        </tr>
-        <tr>
-          <td>Depreciación lineal</td>
-          <td>No calcula la pérdida anual.</td>
-          <td>Calcula con apoyo en casos simples.</td>
-          <td>Calcula el valor de un activo después de varios años.</td>
-          <td>Reconoce la simetría con el interés simple y la explica.</td>
-        </tr>
-        <tr>
-          <td>Aplicaciones reales</td>
-          <td>No completa problemas combinados.</td>
-          <td>Resuelve problemas combinados con ayuda.</td>
-          <td>Compara opciones financieras correctamente.</td>
-          <td>Compara, decide y justifica la elección con argumentos numéricos.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="cierre">
-    <h2>Cierre de la lección 6.1</h2>
-    <p>Con esta lección se abre el <strong>Tema 6</strong> con la <strong>matemática financiera básica</strong>: el interés simple y la depreciación lineal, dos procesos con la misma estructura matemática pero signos opuestos. El Tema 6 continúa con las conversiones entre el sistema inglés y el métrico, y el <strong>Nivel 2</strong> cierra más adelante con la geometría del círculo, la estadística descriptiva y el proyecto final integrador.</p>
-    <p>Más allá de este nivel, el <strong>Nivel 3</strong> abrirá un terreno nuevo: reglas completas de exponentes, notación científica, simplificación de radicales, números racionales e irracionales, el ingreso formal al <strong>lenguaje algebraico</strong> con sus ecuaciones e inecuaciones, y la geometría del teorema de Pitágoras. Todo lo construido en el Nivel 2 —los signos, las fracciones, las potencias, las raíces, PEMDAS, las proporciones y los porcentajes— será la materia prima de ese siguiente nivel. <strong>La victoria fue nuestra</strong>, y el camino sigue.</p>
-  </div>
-
-  <footer>
-    Spanish ASE Math · Nivel 2 · Lección 6.1 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
-  </footer>
-
+</div>
+<div class="practica">
+<h3>Práctica interactiva 2 · Depreciación lineal</h3>
+<p>Selecciona la respuesta correcta.</p>
+<div class="pregunta" data-correcta="b">
+<div class="enun">1. Un televisor de $800 se deprecia al 10% anual. ¿Cuánto vale a los 4 años?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">$400</div>
+<div class="opcion" data-op="b">$480</div>
+<div class="opcion" data-op="c">$720</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">2. Una máquina de $15 000 se deprecia al 5% anual. ¿Cuánto vale a los 6 años?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">$10 500</div>
+<div class="opcion" data-op="b">$13 500</div>
+<div class="opcion" data-op="c">$4 500</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="c">
+<div class="enun">3. Una bicicleta de $400 se deprecia al 15% anual. ¿Cuánto se ha depreciado en 2 años?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">$30</div>
+<div class="opcion" data-op="b">$60</div>
+<div class="opcion" data-op="c">$120</div>
+</div>
+<div class="fb"></div>
+</div>
+</div>
+<h2 class="seccion" id="s-5-aplicaciones-combinadas">5. Aplicaciones combinadas</h2>
+<div class="bloque">
+<p>Muchas decisiones financieras combinan varias ideas: comparar dos cuentas de ahorro, decidir cuánto vale un activo usado, calcular el rendimiento de una inversión.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 6 · Comparar dos cuentas</span>
+<p>El banco A ofrece 4% anual de interés simple. El banco B ofrece 5%. Con $2 500 invertidos durante 3 años en cada uno, ¿qué diferencia hay entre los dos intereses?</p>
+<div class="paso"><span class="n">1</span> Banco A: I = 2 500 × 0.04 × 3 = $300.</div>
+<div class="paso"><span class="n">2</span> Banco B: I = 2 500 × 0.05 × 3 = $375.</div>
+<div class="paso"><span class="n">3</span> Diferencia: 375 − 300 = $75 más en el banco B.</div>
+<p><strong>Respuesta:</strong> el banco B genera $75 más en 3 años. Una diferencia del 1% en la tasa se traduce, en este plazo, en 75 dólares.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 7 · Comprar un carro usado</span>
+<p>Un carro se compró nuevo por $20 000 hace 3 años. Si se deprecia al 12% anual, ¿cuál es un precio justo de reventa hoy?</p>
+<div class="paso"><span class="n">1</span> Pérdida anual: 20 000 × 0.12 = $2 400.</div>
+<div class="paso"><span class="n">2</span> Pérdida total en 3 años: 2 400 × 3 = $7 200.</div>
+<div class="paso"><span class="n">3</span> Valor justo de reventa: 20 000 − 7 200 = $12 800.</div>
+<p><strong>Respuesta:</strong> un precio justo de reventa es de $12 800.</p>
+</div>
 </div>
 
+
+<div class="caja-tarea">
+<h2 id="s-tarea">Tarea</h2>
+<p>Para hacer por su cuenta, con el cuaderno abierto:</p>
+<ul>
+<li>Cinco ejercicios de calcular el interés simple a partir de C, r y t.</li>
+<li>Tres ejercicios de calcular el monto final M = C + I.</li>
+<li>Cinco ejercicios de calcular el valor de un activo después de varios años de depreciación lineal.</li>
+<li>Tres ejercicios combinados: comparar opciones financieras o calcular precios de reventa.</li>
+<li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique <em>porcentajes</em> y <em>dinero</em>. No hallará interés simple como tal, pero el cálculo del porcentaje de una cantidad es la mitad de la fórmula: automatícelo y el resto es multiplicar por el tiempo.</li></ul>
+<p>Tiempo estimado: 60 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
+</div>
+<div class="quiz">
+<h2 id="s-quiz-de-la-leccion-6-1">Quiz de la lección 6.1</h2>
+<p>Doce preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+<div id="quiz-cuerpo"></div>
+<div id="resultado-quiz"></div>
+<button class="btn" id="btn-corregir">Corregir quiz</button>
+<button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+</div>
+<div class="rubrica">
+<h2 id="s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</h2>
+<p>Cuatro criterios evaluados en cuatro niveles de desempeño. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<table class="tabla-rubrica">
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Inicial (1)</th>
+<th>En desarrollo (2)</th>
+<th>Competente (3)</th>
+<th>Destacado (4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identificar datos financieros</td>
+<td>No distingue capital, tasa y tiempo.</td>
+<td>Identifica los datos con apoyo.</td>
+<td>Identifica C, r y t sin ayuda en cualquier situación.</td>
+<td>Identifica y traduce la tasa porcentual a decimal sin error.</td>
+</tr>
+<tr>
+<td>Aplicar la fórmula del interés simple</td>
+<td>Confunde la fórmula o multiplica mal.</td>
+<td>Aplica la fórmula en casos simples.</td>
+<td>Aplica la fórmula y calcula interés y monto final.</td>
+<td>Aplica, calcula y verifica los resultados con un cálculo alternativo.</td>
+</tr>
+<tr>
+<td>Depreciación lineal</td>
+<td>No calcula la pérdida anual.</td>
+<td>Calcula con apoyo en casos simples.</td>
+<td>Calcula el valor de un activo después de varios años.</td>
+<td>Reconoce la simetría con el interés simple y la explica.</td>
+</tr>
+<tr>
+<td>Aplicaciones reales</td>
+<td>No completa problemas combinados.</td>
+<td>Resuelve problemas combinados con ayuda.</td>
+<td>Compara opciones financieras correctamente.</td>
+<td>Compara, decide y justifica la elección con argumentos numéricos.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cierre">
+<h2 id="s-cierre-de-la-leccion-6-1">Cierre de la lección 6.1</h2>
+<p>Con esta lección se abre el <strong>Tema 6</strong> con la <strong>matemática financiera básica</strong>: el interés simple y la depreciación lineal, dos procesos con la misma estructura matemática pero signos opuestos. El Tema 6 continúa con las conversiones entre el sistema inglés y el métrico, y el <strong>Nivel 2</strong> cierra más adelante con la geometría del círculo, la estadística descriptiva y el proyecto final integrador.</p>
+<p>Más allá de este nivel, el <strong>Nivel 3</strong> abrirá un terreno nuevo: reglas completas de exponentes, notación científica, simplificación de radicales, números racionales e irracionales, el ingreso formal al <strong>lenguaje algebraico</strong> con sus ecuaciones e inecuaciones, y la geometría del teorema de Pitágoras. Todo lo construido en el Nivel 2 —los signos, las fracciones, las potencias, las raíces, PEMDAS, las proporciones y los porcentajes— será la materia prima de ese siguiente nivel. <strong>La victoria fue nuestra</strong>, y el camino sigue.</p>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 6 · Lección 6.1</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
+</div>
 <script>
 (function () {
   /* ---- Práctica de opciones ---- */

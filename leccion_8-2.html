@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- Lección 8.2 · Matemáticas Nivel 2 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lección 8.2 · Gráficos circulares: leer, interpretar y construir</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 8.2 · Gráficos circulares: leer, interpretar y construir</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root {
     --tema:   #33691e;
@@ -174,28 +177,7 @@
   }
   .btn:hover { background: var(--tema-d); }
   .btn.sec { background: #607d8b; }
-  .btn.sec:hover { background: #455a64; }
-
-  .modalidad { display: flex; gap: 14px; flex-wrap: wrap; margin: 12px 0; }
-  .modo {
-    flex: 1; min-width: 230px; border-radius: 9px; padding: 14px 16px;
-    font-size: 14px;
-  }
-  .modo-pres { background: #e3f2fd; border-left: 5px solid #1565c0; }
-  .modo-pres strong { color: #0d47a1; }
-  .modo-virt { background: #e0f2f1; border-left: 5px solid #00695c; }
-  .modo-virt strong { color: #004d40; }
-  .modo h3 { margin: 0 0 6px; font-size: 15px; }
-  .modo-pres h3 { color: #0d47a1; }
-  .modo-virt h3 { color: #004d40; }
-
-  .actividad { margin-bottom: 18px; }
-  .actividad > .titulo-act {
-    font-weight: 700; color: var(--tema-d); font-size: 15px;
-    background: var(--tema-bg); padding: 7px 14px; border-radius: 7px;
-  }
-
-  .caja-tarea {
+  .btn.sec:hover { background: #455a64; }.caja-tarea {
     background: #ede7f6; border-left: 6px solid #5e35b1;
     padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0;
   }
@@ -242,392 +224,328 @@
     text-align: center; padding: 20px; color: #222222;
     font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
   }
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:#fff; border:1px solid #d8dde3; border-left:6px solid var(--tema);
+    border-radius:10px; padding:16px 20px; margin:24px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--tema-d); border:0; padding:0; background:none; }
+  .indice ol{ margin:0; padding-left:1.35em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--tema-d); text-decoration:underline; }
+  .indice a:hover{ color:var(--tema); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--tema-d); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--tema); color:#fff; }
+  footer a{ color:inherit; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
 <div class="contenedor">
-
-  <header class="principal">
-    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 8 · Estadística y probabilidad</div>
-    <h1>Lección 8.2 · Gráficos circulares: leer, interpretar y construir</h1>
-    <div class="meta">4 horas (2 sincrónicas + 2 asincrónicas) · NRS 2–3 · Brightspace D2L</div>
-  </header>
-
-  <div class="caja-objetivos">
-    <h2>Objetivos de la lección</h2>
-    <ul>
-      <li>Reconocer un gráfico circular como una representación de porcentajes mediante sectores de un círculo.</li>
-      <li>Calcular el ángulo central de cada sector como 360° × (% / 100).</li>
-      <li>Convertir libremente entre porcentaje, ángulo central y valor absoluto.</li>
-      <li>Leer e interpretar gráficos circulares reales (presupuesto, demografía, distribución del tiempo).</li>
-      <li>Construir un gráfico circular sencillo a partir de un conjunto de porcentajes.</li>
-    </ul>
-  </div>
-
-  <div class="bloque">
-    <p><strong>Conexión con dos temas previos.</strong> Esta lección reúne dos hilos del Nivel 2 en un solo lugar. Del <strong>Tema 5</strong> proviene la idea de <strong>porcentaje</strong> como razón con denominador 100; del <strong>Tema 7</strong> proviene el <strong>círculo</strong> como figura geométrica. El gráfico circular es la unión natural: un círculo entero representa el 100% de los datos, y cada sector representa una parte proporcional al porcentaje que ocupa. Es una de las formas visuales más comunes para presentar datos en periódicos, informes y presentaciones.</p>
-  </div>
-
-  <h2 class="seccion">1. Qué es un gráfico circular</h2>
-  <div class="bloque">
-    <p>Un <strong>gráfico circular</strong> —llamado en inglés <em>pie chart</em>— es un círculo dividido en sectores, donde el tamaño de cada sector es proporcional al porcentaje que representa la categoría correspondiente. La regla más importante: <strong>todos los porcentajes deben sumar 100%</strong>, ya que el círculo entero representa el total.</p>
-
-    <div class="pie-layout">
-      <svg width="240" height="240" viewBox="-110 -110 220 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico circular de un presupuesto mensual con cinco sectores">
-        <!-- 35% comida (0° a 126°), 30% renta (126° a 234°), 15% transporte (234° a 288°), 10% salud (288° a 324°), 10% ocio (324° a 360°)
+<header class="principal">
+<div class="ruta">Spanish ASE Math · Nivel 2 · Tema 8 · Estadística y probabilidad</div>
+<h1>Lección 8.2 · Gráficos circulares: leer, interpretar y construir</h1>
+<div class="meta">Unas 4 horas, a su ritmo · NRS 2–3</div>
+</header>
+<div class="caja-objetivos">
+<h2>Objetivos de la lección</h2>
+<ul>
+<li>Reconocer un gráfico circular como una representación de porcentajes mediante sectores de un círculo.</li>
+<li>Calcular el ángulo central de cada sector como 360° × (% / 100).</li>
+<li>Convertir libremente entre porcentaje, ángulo central y valor absoluto.</li>
+<li>Leer e interpretar gráficos circulares reales (presupuesto, demografía, distribución del tiempo).</li>
+<li>Construir un gráfico circular sencillo a partir de un conjunto de porcentajes.</li>
+</ul>
+</div><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-1-que-es-un-grafico-circular">1. Qué es un gráfico circular</a></li><li><a href="#s-2-el-angulo-central-de-cada-sector">2. El ángulo central de cada sector</a></li><li><a href="#s-3-convertir-entre-porcentaje-angulo-y-valor">3. Convertir entre porcentaje, ángulo y valor</a></li><li><a href="#s-4-como-construir-un-grafico-circular">4. Cómo construir un gráfico circular</a></li><li><a href="#s-5-leer-e-interpretar-graficos-reales">5. Leer e interpretar gráficos reales</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-la-leccion-8-2">Quiz de la lección 8.2</a></li><li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li><li><a href="#s-cierre-y-enlace-con-la-ultima-leccion-del-nivel-2">Cierre y enlace con la última lección del Nivel 2</a></li></ol></nav>
+<div class="bloque">
+<p><strong>Conexión con dos temas previos.</strong> Esta lección reúne dos hilos del Nivel 2 en un solo lugar. Del <strong>Tema 5</strong> proviene la idea de <strong>porcentaje</strong> como razón con denominador 100; del <strong>Tema 7</strong> proviene el <strong>círculo</strong> como figura geométrica. El gráfico circular es la unión natural: un círculo entero representa el 100% de los datos, y cada sector representa una parte proporcional al porcentaje que ocupa. Es una de las formas visuales más comunes para presentar datos en periódicos, informes y presentaciones.</p>
+</div>
+<h2 class="seccion" id="s-1-que-es-un-grafico-circular">1. Qué es un gráfico circular</h2>
+<div class="bloque">
+<p>Un <strong>gráfico circular</strong> —llamado en inglés <em>pie chart</em>— es un círculo dividido en sectores, donde el tamaño de cada sector es proporcional al porcentaje que representa la categoría correspondiente. La regla más importante: <strong>todos los porcentajes deben sumar 100%</strong>, ya que el círculo entero representa el total.</p>
+<div class="pie-layout">
+<svg aria-label="Gráfico circular de un presupuesto mensual con cinco sectores" height="240" role="img" viewbox="-110 -110 220 220" width="240" xmlns="http://www.w3.org/2000/svg">
+<!-- 35% comida (0° a 126°), 30% renta (126° a 234°), 15% transporte (234° a 288°), 10% salud (288° a 324°), 10% ocio (324° a 360°)
              Centro (0,0), radio 100. Comienza en arriba (-90°). -->
-        <!-- Comida 35% : 126° de 360 -->
-        <path d="M 0,0 L 0,-100 A 100,100 0 0,1 80.9,58.78 Z" fill="#558b2f"/>
-        <!-- Renta 30% : 108° (de 126° a 234°) -->
-        <path d="M 0,0 L 80.9,58.78 A 100,100 0 0,1 -80.9,58.78 Z" fill="#8d6e63"/>
-        <!-- Transporte 15% : 54° (de 234° a 288°) -->
-        <path d="M 0,0 L -80.9,58.78 A 100,100 0 0,1 -95.1,-30.9 Z" fill="#0288d1"/>
-        <!-- Salud 10% : 36° (de 288° a 324°) -->
-        <path d="M 0,0 L -95.1,-30.9 A 100,100 0 0,1 -58.78,-80.9 Z" fill="#c62828"/>
-        <!-- Ocio 10% : 36° (de 324° a 360°) -->
-        <path d="M 0,0 L -58.78,-80.9 A 100,100 0 0,1 0,-100 Z" fill="#f9a825"/>
-        <!-- Etiquetas de porcentaje dentro -->
-        <g font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">
-          <text x="35" y="-20">35%</text>
-          <text x="0" y="50">30%</text>
-          <text x="-58" y="20">15%</text>
-          <text x="-65" y="-40">10%</text>
-          <text x="-25" y="-60">10%</text>
-        </g>
-      </svg>
-
-      <div class="pie-leyenda">
-        <h3>Presupuesto mensual</h3>
-        <ul>
-          <li><span class="swatch" style="background:#558b2f"></span> Comida — 35%</li>
-          <li><span class="swatch" style="background:#8d6e63"></span> Renta — 30%</li>
-          <li><span class="swatch" style="background:#0288d1"></span> Transporte — 15%</li>
-          <li><span class="swatch" style="background:#c62828"></span> Salud — 10%</li>
-          <li><span class="swatch" style="background:#f9a825"></span> Ocio — 10%</li>
-        </ul>
-      </div>
+<!-- Comida 35% : 126° de 360 -->
+<path d="M 0,0 L 0,-100 A 100,100 0 0,1 80.9,58.78 Z" fill="#558b2f"></path>
+<!-- Renta 30% : 108° (de 126° a 234°) -->
+<path d="M 0,0 L 80.9,58.78 A 100,100 0 0,1 -80.9,58.78 Z" fill="#8d6e63"></path>
+<!-- Transporte 15% : 54° (de 234° a 288°) -->
+<path d="M 0,0 L -80.9,58.78 A 100,100 0 0,1 -95.1,-30.9 Z" fill="#0288d1"></path>
+<!-- Salud 10% : 36° (de 288° a 324°) -->
+<path d="M 0,0 L -95.1,-30.9 A 100,100 0 0,1 -58.78,-80.9 Z" fill="#c62828"></path>
+<!-- Ocio 10% : 36° (de 324° a 360°) -->
+<path d="M 0,0 L -58.78,-80.9 A 100,100 0 0,1 0,-100 Z" fill="#f9a825"></path>
+<!-- Etiquetas de porcentaje dentro -->
+<g fill="#fff" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
+<text x="35" y="-20">35%</text>
+<text x="0" y="50">30%</text>
+<text x="-58" y="20">15%</text>
+<text x="-65" y="-40">10%</text>
+<text x="-25" y="-60">10%</text>
+</g>
+</svg>
+<div class="pie-leyenda">
+<h3>Presupuesto mensual</h3>
+<ul>
+<li><span class="swatch" style="background:#558b2f"></span> Comida — 35%</li>
+<li><span class="swatch" style="background:#8d6e63"></span> Renta — 30%</li>
+<li><span class="swatch" style="background:#0288d1"></span> Transporte — 15%</li>
+<li><span class="swatch" style="background:#c62828"></span> Salud — 10%</li>
+<li><span class="swatch" style="background:#f9a825"></span> Ocio — 10%</li>
+</ul>
+</div>
+</div>
+<p>De un vistazo se ve que la comida es la mayor categoría, seguida por la renta. Salud y ocio son los sectores más pequeños y empatados. Esa lectura visual instantánea es la gran ventaja del gráfico circular: permite comparar categorías sin leer una lista de números.</p>
+<div class="caja-tip">
+<strong>Cuándo conviene un gráfico circular:</strong> es ideal para representar la <strong>composición</strong> de un total: cómo se reparte un presupuesto, qué porcentaje de la población vive en cada barrio, cómo se distribuye un día. No es la mejor opción para comparar valores a lo largo del tiempo (eso pide gráficos de líneas) ni para muchas categorías muy pequeñas (los sectores se vuelven ilegibles).
     </div>
-
-    <p>De un vistazo se ve que la comida es la mayor categoría, seguida por la renta. Salud y ocio son los sectores más pequeños y empatados. Esa lectura visual instantánea es la gran ventaja del gráfico circular: permite comparar categorías sin leer una lista de números.</p>
-
-    <div class="caja-tip">
-      <strong>Cuándo conviene un gráfico circular:</strong> es ideal para representar la <strong>composición</strong> de un total: cómo se reparte un presupuesto, qué porcentaje de la población vive en cada barrio, cómo se distribuye un día. No es la mejor opción para comparar valores a lo largo del tiempo (eso pide gráficos de líneas) ni para muchas categorías muy pequeñas (los sectores se vuelven ilegibles).
+</div>
+<h2 class="seccion" id="s-2-el-angulo-central-de-cada-sector">2. El ángulo central de cada sector</h2>
+<div class="bloque">
+<p>Para construir un gráfico circular hace falta convertir cada porcentaje en un <strong>ángulo central</strong>: el ángulo del sector medido desde el centro del círculo. Como el círculo completo abarca <strong>360°</strong> y representa el 100% de los datos, la regla es directa:</p>
+<div class="formula-card">
+<div class="formula">ángulo = 360° × (% ÷ 100)</div>
+<div class="leyenda">Una proporción directa entre porcentaje y ángulo. Se aplica el mismo producto cruzado del Tema 4.</div>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 1 · Del porcentaje al ángulo</span>
+<p>¿Cuántos grados ocupa un sector que representa el 25%?</p>
+<div class="paso"><span class="n">1</span> Aplicar la fórmula: 360° × (25 ÷ 100) = 360° × 0.25.</div>
+<div class="paso"><span class="n">2</span> Calcular: 360° × 0.25 = 90°.</div>
+<p><strong>Respuesta:</strong> el sector del 25% ocupa un ángulo central de 90°, es decir, exactamente un cuarto del círculo.</p>
+</div>
+<div class="caja-tip">
+<strong>Atajos útiles:</strong> los porcentajes redondos tienen ángulos memorables que conviene recordar. <strong>100% = 360°</strong>; <strong>50% = 180°</strong> (media tarta); <strong>25% = 90°</strong> (un cuarto); <strong>10% = 36°</strong>; <strong>1% = 3.6°</strong>. Reconocerlos al vuelo permite verificar que un sector dibujado tiene un tamaño razonable.
     </div>
-  </div>
-
-  <h2 class="seccion">2. El ángulo central de cada sector</h2>
-  <div class="bloque">
-    <p>Para construir un gráfico circular hace falta convertir cada porcentaje en un <strong>ángulo central</strong>: el ángulo del sector medido desde el centro del círculo. Como el círculo completo abarca <strong>360°</strong> y representa el 100% de los datos, la regla es directa:</p>
-
-    <div class="formula-card">
-      <div class="formula">ángulo = 360° × (% ÷ 100)</div>
-      <div class="leyenda">Una proporción directa entre porcentaje y ángulo. Se aplica el mismo producto cruzado del Tema 4.</div>
+<h3>Tabla completa de la conversión</h3>
+<p>Para el presupuesto del ejemplo anterior, la tabla completa de las tres formas equivalentes —porcentaje, ángulo y valor absoluto— se construye así, suponiendo un ingreso mensual de $2 000:</p>
+<table class="conversiones">
+<thead>
+<tr><th>Categoría</th><th>Porcentaje</th><th>Ángulo central</th><th>Valor en $</th></tr>
+</thead>
+<tbody>
+<tr><td>Comida</td><td>35%</td><td>126°</td><td>$700</td></tr>
+<tr><td>Renta</td><td>30%</td><td>108°</td><td>$600</td></tr>
+<tr><td>Transporte</td><td>15%</td><td>54°</td><td>$300</td></tr>
+<tr><td>Salud</td><td>10%</td><td>36°</td><td>$200</td></tr>
+<tr><td>Ocio</td><td>10%</td><td>36°</td><td>$200</td></tr>
+<tr class="suma"><td>Total</td><td>100%</td><td>360°</td><td>$2 000</td></tr>
+</tbody>
+</table>
+<p>La fila «Total» es el sello de seguridad: si los porcentajes no suman 100%, si los ángulos no suman 360°, o si los valores absolutos no suman el total real, hay un error en alguna fila. Conviene calcularla siempre.</p>
+</div>
+<div class="practica">
+<h3>Práctica interactiva 1 · Porcentaje a ángulo</h3>
+<p>Escribe el ángulo central correspondiente (en grados, solo el número) y presiona «Verificar».</p>
+<div class="pregunta">
+<div class="enun">1. Un sector del 20% ocupa un ángulo de:</div>
+<input aria-label="Respuesta de la pregunta 1: ángulo central correspondiente al veinte por ciento" class="campo-num" id="a1" inputmode="numeric" type="text"/>
+<div class="fb" id="fb-a1"></div>
+</div>
+<div class="pregunta">
+<div class="enun">2. Un sector del 75% ocupa un ángulo de:</div>
+<input aria-label="Respuesta de la pregunta 2: ángulo central correspondiente al setenta y cinco por ciento" class="campo-num" id="a2" inputmode="numeric" type="text"/>
+<div class="fb" id="fb-a2"></div>
+</div>
+<div class="pregunta">
+<div class="enun">3. Un sector del 5% ocupa un ángulo de:</div>
+<input aria-label="Respuesta de la pregunta 3: ángulo central correspondiente al cinco por ciento" class="campo-num" id="a3" inputmode="numeric" type="text"/>
+<div class="fb" id="fb-a3"></div>
+</div>
+<button class="btn" id="btn-ang">Verificar</button>
+</div>
+<h2 class="seccion" id="s-3-convertir-entre-porcentaje-angulo-y-valor">3. Convertir entre porcentaje, ángulo y valor</h2>
+<div class="bloque">
+<p>Las tres formas de expresar un sector están conectadas. Conociendo cualquiera de ellas y el total real, se obtienen las otras dos.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 2 · De porcentaje a valor</span>
+<p>En el presupuesto del ejemplo, la categoría «Salud» ocupa el 10%. ¿A cuántos dólares equivale, si el total es $2 000?</p>
+<div class="paso"><span class="n">1</span> Aplicar la regla del Tema 5: valor = total × (% / 100).</div>
+<div class="paso"><span class="n">2</span> Calcular: 2 000 × 0.10 = $200.</div>
+<p><strong>Respuesta:</strong> la categoría «Salud» equivale a $200 del presupuesto mensual.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 3 · De ángulo a porcentaje</span>
+<p>Un sector de un gráfico circular tiene un ángulo central de 72°. ¿Qué porcentaje representa?</p>
+<div class="paso"><span class="n">1</span> Despejar la fórmula: % = (ángulo / 360°) × 100.</div>
+<div class="paso"><span class="n">2</span> Calcular: (72 ÷ 360) × 100 = 0.2 × 100 = 20.</div>
+<p><strong>Respuesta:</strong> el sector representa el 20% del total.</p>
+</div>
+<div class="caja-atencion">
+<strong>Atención a las unidades:</strong> ángulos van en grados (°), porcentajes en % y valores absolutos en la unidad del problema ($, personas, horas). Confundir las tres es un error frecuente. Antes de escribir la respuesta, conviene preguntarse: «¿en qué unidad debe ir esto?».
     </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 1 · Del porcentaje al ángulo</span>
-      <p>¿Cuántos grados ocupa un sector que representa el 25%?</p>
-      <div class="paso"><span class="n">1</span> Aplicar la fórmula: 360° × (25 ÷ 100) = 360° × 0.25.</div>
-      <div class="paso"><span class="n">2</span> Calcular: 360° × 0.25 = 90°.</div>
-      <p><strong>Respuesta:</strong> el sector del 25% ocupa un ángulo central de 90°, es decir, exactamente un cuarto del círculo.</p>
+</div>
+<h2 class="seccion" id="s-4-como-construir-un-grafico-circular">4. Cómo construir un gráfico circular</h2>
+<div class="bloque">
+<p>Construir un gráfico circular paso a paso con transportador y compás es un ejercicio clásico que ayuda a entender la geometría detrás. El procedimiento es siempre el mismo:</p>
+<div class="ejemplo">
+<span class="et">Procedimiento de construcción</span>
+<div class="paso"><span class="n">1</span> <strong>Verificar</strong> que los porcentajes suman 100%. Si no, corregir antes de seguir.</div>
+<div class="paso"><span class="n">2</span> <strong>Calcular el ángulo central</strong> de cada categoría con la fórmula 360° × (% / 100).</div>
+<div class="paso"><span class="n">3</span> <strong>Dibujar un círculo</strong> con compás. Marcar el centro y trazar un radio vertical hacia arriba como punto de partida (esto es opcional, pero ayuda).</div>
+<div class="paso"><span class="n">4</span> <strong>Medir el primer ángulo</strong> con el transportador desde el radio inicial, y trazar el segundo radio. Esto define el primer sector.</div>
+<div class="paso"><span class="n">5</span> <strong>Continuar acumulando ángulos</strong>: cada radio nuevo se mide desde el anterior, no desde el inicial.</div>
+<div class="paso"><span class="n">6</span> <strong>Colorear y etiquetar</strong> cada sector con el nombre de la categoría y su porcentaje.</div>
+<div class="paso"><span class="n">7</span> <strong>Comprobar</strong>: el último radio debe coincidir con el primero. Si no, hay un error de medida.</div>
+</div>
+<div class="caja-tip">
+<strong>Sugerencia visual:</strong> ordenar las categorías de mayor a menor antes de dibujar suele dar un gráfico más limpio. Las categorías más pequeñas se ubican juntas al final y son más fáciles de etiquetar afuera, con líneas guía si es necesario.
     </div>
-
-    <div class="caja-tip">
-      <strong>Atajos útiles:</strong> los porcentajes redondos tienen ángulos memorables que conviene recordar. <strong>100% = 360°</strong>; <strong>50% = 180°</strong> (media tarta); <strong>25% = 90°</strong> (un cuarto); <strong>10% = 36°</strong>; <strong>1% = 3.6°</strong>. Reconocerlos al vuelo permite verificar que un sector dibujado tiene un tamaño razonable.
-    </div>
-
-    <h3>Tabla completa de la conversión</h3>
-    <p>Para el presupuesto del ejemplo anterior, la tabla completa de las tres formas equivalentes —porcentaje, ángulo y valor absoluto— se construye así, suponiendo un ingreso mensual de $2 000:</p>
-
-    <table class="conversiones">
-      <thead>
-        <tr><th>Categoría</th><th>Porcentaje</th><th>Ángulo central</th><th>Valor en $</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Comida</td><td>35%</td><td>126°</td><td>$700</td></tr>
-        <tr><td>Renta</td><td>30%</td><td>108°</td><td>$600</td></tr>
-        <tr><td>Transporte</td><td>15%</td><td>54°</td><td>$300</td></tr>
-        <tr><td>Salud</td><td>10%</td><td>36°</td><td>$200</td></tr>
-        <tr><td>Ocio</td><td>10%</td><td>36°</td><td>$200</td></tr>
-        <tr class="suma"><td>Total</td><td>100%</td><td>360°</td><td>$2 000</td></tr>
-      </tbody>
-    </table>
-
-    <p>La fila «Total» es el sello de seguridad: si los porcentajes no suman 100%, si los ángulos no suman 360°, o si los valores absolutos no suman el total real, hay un error en alguna fila. Conviene calcularla siempre.</p>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 1 · Porcentaje a ángulo</h3>
-    <p>Escribe el ángulo central correspondiente (en grados, solo el número) y presiona «Verificar».</p>
-    <div class="pregunta">
-      <div class="enun">1. Un sector del 20% ocupa un ángulo de:</div>
-      <input type="text" class="campo-num" id="a1" inputmode="numeric" aria-label="Respuesta de la pregunta 1: ángulo central correspondiente al veinte por ciento" />
-      <div class="fb" id="fb-a1"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">2. Un sector del 75% ocupa un ángulo de:</div>
-      <input type="text" class="campo-num" id="a2" inputmode="numeric" aria-label="Respuesta de la pregunta 2: ángulo central correspondiente al setenta y cinco por ciento" />
-      <div class="fb" id="fb-a2"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">3. Un sector del 5% ocupa un ángulo de:</div>
-      <input type="text" class="campo-num" id="a3" inputmode="numeric" aria-label="Respuesta de la pregunta 3: ángulo central correspondiente al cinco por ciento" />
-      <div class="fb" id="fb-a3"></div>
-    </div>
-    <button class="btn" id="btn-ang">Verificar</button>
-  </div>
-
-  <h2 class="seccion">3. Convertir entre porcentaje, ángulo y valor</h2>
-  <div class="bloque">
-    <p>Las tres formas de expresar un sector están conectadas. Conociendo cualquiera de ellas y el total real, se obtienen las otras dos.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 2 · De porcentaje a valor</span>
-      <p>En el presupuesto del ejemplo, la categoría «Salud» ocupa el 10%. ¿A cuántos dólares equivale, si el total es $2 000?</p>
-      <div class="paso"><span class="n">1</span> Aplicar la regla del Tema 5: valor = total × (% / 100).</div>
-      <div class="paso"><span class="n">2</span> Calcular: 2 000 × 0.10 = $200.</div>
-      <p><strong>Respuesta:</strong> la categoría «Salud» equivale a $200 del presupuesto mensual.</p>
-    </div>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 3 · De ángulo a porcentaje</span>
-      <p>Un sector de un gráfico circular tiene un ángulo central de 72°. ¿Qué porcentaje representa?</p>
-      <div class="paso"><span class="n">1</span> Despejar la fórmula: % = (ángulo / 360°) × 100.</div>
-      <div class="paso"><span class="n">2</span> Calcular: (72 ÷ 360) × 100 = 0.2 × 100 = 20.</div>
-      <p><strong>Respuesta:</strong> el sector representa el 20% del total.</p>
-    </div>
-
-    <div class="caja-atencion">
-      <strong>Atención a las unidades:</strong> ángulos van en grados (°), porcentajes en % y valores absolutos en la unidad del problema ($, personas, horas). Confundir las tres es un error frecuente. Antes de escribir la respuesta, conviene preguntarse: «¿en qué unidad debe ir esto?».
-    </div>
-  </div>
-
-  <h2 class="seccion">4. Cómo construir un gráfico circular</h2>
-  <div class="bloque">
-    <p>Construir un gráfico circular paso a paso con transportador y compás es un ejercicio clásico que ayuda a entender la geometría detrás. El procedimiento es siempre el mismo:</p>
-
-    <div class="ejemplo">
-      <span class="et">Procedimiento de construcción</span>
-      <div class="paso"><span class="n">1</span> <strong>Verificar</strong> que los porcentajes suman 100%. Si no, corregir antes de seguir.</div>
-      <div class="paso"><span class="n">2</span> <strong>Calcular el ángulo central</strong> de cada categoría con la fórmula 360° × (% / 100).</div>
-      <div class="paso"><span class="n">3</span> <strong>Dibujar un círculo</strong> con compás. Marcar el centro y trazar un radio vertical hacia arriba como punto de partida (esto es opcional, pero ayuda).</div>
-      <div class="paso"><span class="n">4</span> <strong>Medir el primer ángulo</strong> con el transportador desde el radio inicial, y trazar el segundo radio. Esto define el primer sector.</div>
-      <div class="paso"><span class="n">5</span> <strong>Continuar acumulando ángulos</strong>: cada radio nuevo se mide desde el anterior, no desde el inicial.</div>
-      <div class="paso"><span class="n">6</span> <strong>Colorear y etiquetar</strong> cada sector con el nombre de la categoría y su porcentaje.</div>
-      <div class="paso"><span class="n">7</span> <strong>Comprobar</strong>: el último radio debe coincidir con el primero. Si no, hay un error de medida.</div>
-    </div>
-
-    <div class="caja-tip">
-      <strong>Sugerencia visual:</strong> ordenar las categorías de mayor a menor antes de dibujar suele dar un gráfico más limpio. Las categorías más pequeñas se ubican juntas al final y son más fáciles de etiquetar afuera, con líneas guía si es necesario.
-    </div>
-  </div>
-
-  <h2 class="seccion">5. Leer e interpretar gráficos reales</h2>
-  <div class="bloque">
-    <p>Leer un gráfico circular es la habilidad más común en el examen GED y en la vida cotidiana. Implica reconocer la categoría más grande y la más pequeña, comparar dos sectores, y a veces calcular el valor absoluto de uno de ellos.</p>
-
-    <div class="ejemplo">
-      <span class="et">Ejemplo 4 · Distribución del día</span>
-      <p>El gráfico circular muestra cómo distribuye su tiempo un trabajador en un día de 24 horas: 33% sueño, 38% trabajo, 8% comida, 13% familia, 8% ocio.</p>
-      <div class="paso"><span class="n">1</span> Verificar la suma: 33 + 38 + 8 + 13 + 8 = 100%. ✓</div>
-      <div class="paso"><span class="n">2</span> La categoría más grande es <strong>trabajo</strong> (38%).</div>
-      <div class="paso"><span class="n">3</span> Para saber cuántas horas son: 24 × 0.38 = 9.12 horas, es decir, aproximadamente 9 h 7 min.</div>
-      <p><strong>Lectura:</strong> el trabajador dedica al trabajo casi 9 horas y 7 minutos diarios, más que cualquier otra actividad.</p>
-    </div>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 2 · De porcentajes a valores</h3>
-    <p>Supón un total de $1 500 mensuales. Calcula a cuántos dólares equivale cada categoría.</p>
-    <div class="pregunta">
-      <div class="enun">1. Renta: 40%. Cantidad =</div>
-      <input type="text" class="campo-num" id="v1" inputmode="decimal" aria-label="Respuesta de la pregunta 1: cantidad correspondiente al cuarenta por ciento de mil quinientos" />
-      <div class="fb" id="fb-v1"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">2. Comida: 25%. Cantidad =</div>
-      <input type="text" class="campo-num" id="v2" inputmode="decimal" aria-label="Respuesta de la pregunta 2: cantidad correspondiente al veinticinco por ciento de mil quinientos" />
-      <div class="fb" id="fb-v2"></div>
-    </div>
-    <div class="pregunta">
-      <div class="enun">3. Transporte: 12%. Cantidad =</div>
-      <input type="text" class="campo-num" id="v3" inputmode="decimal" aria-label="Respuesta de la pregunta 3: cantidad correspondiente al doce por ciento de mil quinientos" />
-      <div class="fb" id="fb-v3"></div>
-    </div>
-    <button class="btn" id="btn-val">Verificar</button>
-  </div>
-
-  <div class="practica">
-    <h3>Práctica interactiva 3 · Interpretación</h3>
-    <p>Selecciona la respuesta correcta.</p>
-
-    <div class="pregunta" data-correcta="b">
-      <div class="enun">1. En un gráfico circular, todos los porcentajes deben sumar:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">360</div>
-        <div class="opcion" data-op="b">100%</div>
-        <div class="opcion" data-op="c">El total real</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="c">
-      <div class="enun">2. Un sector de ángulo central 180° representa:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">25%</div>
-        <div class="opcion" data-op="b">33%</div>
-        <div class="opcion" data-op="c">50%</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="a">
-      <div class="enun">3. Si un sector vale el 50% y la población total es 800 personas, el sector representa a:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">400 personas</div>
-        <div class="opcion" data-op="b">200 personas</div>
-        <div class="opcion" data-op="c">50 personas</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-
-    <div class="pregunta" data-correcta="b">
-      <div class="enun">4. Un gráfico circular es útil sobre todo para representar:</div>
-      <div class="opciones">
-        <div class="opcion" data-op="a">El cambio en el tiempo</div>
-        <div class="opcion" data-op="b">La composición de un total</div>
-        <div class="opcion" data-op="c">Diferencias entre individuos</div>
-      </div>
-      <div class="fb"></div>
-    </div>
-  </div>
-
-  <h2 class="seccion">6. Práctica guiada en clase</h2>
-  <div class="bloque">
-    <p>Las siguientes tres actividades se realizan durante las horas sincrónicas. Cada una se presenta en doble modalidad: una versión para el aula presencial y otra para la sesión en línea.</p>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 1 · Mi presupuesto en gráfico</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          Cada estudiante define un presupuesto mensual (real o simulado) con cinco categorías y sus porcentajes. Calcula los ángulos correspondientes y dibuja el gráfico circular con compás y transportador. Etiqueta los sectores con nombre y porcentaje.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          Cada estudiante completa una hoja de cálculo compartida con su presupuesto. El docente muestra una plantilla para generar el gráfico circular en la herramienta de gráficos. Cada estudiante exporta su gráfico y lo sube al foro.
-        </div>
-      </div>
-    </div>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 2 · Lectura de gráficos reales</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          El docente proyecta tres gráficos circulares reales (presupuesto familiar, composición demográfica de Chicago, distribución del tiempo de un trabajador). Las parejas responden seis preguntas de interpretación por gráfico y comparten sus conclusiones.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          Los tres gráficos aparecen en una hoja compartida con sus preguntas asociadas. Las parejas responden directamente en la hoja y, al regresar al pleno, el docente revisa las respuestas y aclara dudas.
-        </div>
-      </div>
-    </div>
-
-    <div class="actividad">
-      <div class="titulo-act">Actividad 3 · Diseñar y verificar</div>
-      <div class="modalidad">
-        <div class="modo modo-pres">
-          <h3>🏫 Presencial</h3>
-          El docente da una lista de cinco categorías y sus valores absolutos (no porcentajes). Los estudiantes deben primero convertir a porcentajes, luego calcular los ángulos centrales y finalmente dibujar el gráfico. Verifican que ángulos sumen 360° antes de cerrar.
-        </div>
-        <div class="modo modo-virt">
-          <h3>💻 En línea</h3>
-          La lista de valores absolutos aparece en una hoja compartida con tres columnas vacías para porcentaje, ángulo y verificación. Los estudiantes la completan y, al final, suben el gráfico construido.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="caja-tarea">
-    <h2>Tarea asincrónica</h2>
-    <p>Para completar de forma individual en la plataforma <strong>MyOpenMath</strong> antes de la próxima sesión:</p>
-    <ul>
-      <li>Cuatro ejercicios de calcular ángulos centrales a partir de porcentajes.</li>
-      <li>Tres ejercicios de calcular valores absolutos a partir de un porcentaje y un total.</li>
-      <li>Tres ejercicios de leer e interpretar un gráfico circular dado.</li>
-      <li>Una construcción guiada: dada una tabla de cinco categorías con valores absolutos, calcular porcentajes, ángulos y comprobar la suma.</li>
-    </ul>
-    <p>La plataforma ofrece retroalimentación paso a paso en cada intento. Tiempo estimado: 50 minutos.</p>
-  </div>
-
-  <div class="quiz">
-    <h2>Quiz de la lección 8.2</h2>
-    <p>Diez preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
-    <div id="quiz-cuerpo"></div>
-    <div id="resultado-quiz"></div>
-    <button class="btn" id="btn-corregir">Corregir quiz</button>
-    <button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
-  </div>
-
-  <div class="rubrica">
-    <h2>Rúbrica analítica de la lección</h2>
-    <p>Cuatro criterios evaluados en cuatro niveles de desempeño.</p>
-    <table class="tabla-rubrica">
-      <thead>
-        <tr>
-          <th>Criterio</th>
-          <th>Inicial (1)</th>
-          <th>En desarrollo (2)</th>
-          <th>Competente (3)</th>
-          <th>Destacado (4)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Lectura de un gráfico circular</td>
-          <td>No identifica las categorías ni sus porcentajes.</td>
-          <td>Lee porcentajes con apoyo.</td>
-          <td>Lee, compara y ordena categorías sin ayuda.</td>
-          <td>Lee, interpreta y extrae conclusiones cuantitativas.</td>
-        </tr>
-        <tr>
-          <td>Cálculo del ángulo central</td>
-          <td>No reconoce la relación 360° ↔ 100%.</td>
-          <td>Calcula con apoyo.</td>
-          <td>Calcula ángulos centrales correctamente.</td>
-          <td>Calcula y verifica que los ángulos suman 360°.</td>
-        </tr>
-        <tr>
-          <td>Conversión entre porcentaje, ángulo y valor</td>
-          <td>Confunde las tres formas.</td>
-          <td>Convierte con apoyo.</td>
-          <td>Convierte correctamente entre las tres formas.</td>
-          <td>Convierte e identifica la unidad correcta en cada respuesta.</td>
-        </tr>
-        <tr>
-          <td>Construcción de un gráfico</td>
-          <td>No traza sectores proporcionales.</td>
-          <td>Construye con apoyo y errores de medida.</td>
-          <td>Construye un gráfico circular con sectores bien medidos y etiquetados.</td>
-          <td>Construye con orden, comprueba el cierre y presenta el gráfico claro y legible.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="cierre">
-    <h2>Cierre y enlace con la última lección del Nivel 2</h2>
-    <p>En esta lección los porcentajes del <strong>Tema 5</strong> se encontraron con el círculo del <strong>Tema 7</strong> para formar el <strong>gráfico circular</strong>: el círculo entero como 100% del total y cada sector como una proporción visual. Quedaron dominadas las conversiones entre porcentaje, ángulo y valor absoluto, y el procedimiento para construir un gráfico paso a paso.</p>
-    <p>La <strong>Lección 8.3 · Probabilidad simple y proyecto final integrador</strong> cierra el Nivel 2. Introducirá la idea de <strong>probabilidad</strong> como la razón entre los casos favorables y los casos totales, y culminará con un <strong>proyecto final</strong> que reúne todo lo aprendido: medidas de tendencia central, gráficos circulares, porcentajes y operaciones básicas en una sola entrega integradora.</p>
-  </div>
-
-  <footer>
-    Spanish ASE Math · Nivel 2 · Lección 8.2 — Preparado para Prof. José M. Fernández (Truman College, CCC) · Brightspace D2L
-  </footer>
-
+</div>
+<h2 class="seccion" id="s-5-leer-e-interpretar-graficos-reales">5. Leer e interpretar gráficos reales</h2>
+<div class="bloque">
+<p>Leer un gráfico circular es la habilidad más común en el examen GED y en la vida cotidiana. Implica reconocer la categoría más grande y la más pequeña, comparar dos sectores, y a veces calcular el valor absoluto de uno de ellos.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 4 · Distribución del día</span>
+<p>El gráfico circular muestra cómo distribuye su tiempo un trabajador en un día de 24 horas: 33% sueño, 38% trabajo, 8% comida, 13% familia, 8% ocio.</p>
+<div class="paso"><span class="n">1</span> Verificar la suma: 33 + 38 + 8 + 13 + 8 = 100%. ✓</div>
+<div class="paso"><span class="n">2</span> La categoría más grande es <strong>trabajo</strong> (38%).</div>
+<div class="paso"><span class="n">3</span> Para saber cuántas horas son: 24 × 0.38 = 9.12 horas, es decir, aproximadamente 9 h 7 min.</div>
+<p><strong>Lectura:</strong> el trabajador dedica al trabajo casi 9 horas y 7 minutos diarios, más que cualquier otra actividad.</p>
+</div>
+</div>
+<div class="practica">
+<h3>Práctica interactiva 2 · De porcentajes a valores</h3>
+<p>Supón un total de $1 500 mensuales. Calcula a cuántos dólares equivale cada categoría.</p>
+<div class="pregunta">
+<div class="enun">1. Renta: 40%. Cantidad =</div>
+<input aria-label="Respuesta de la pregunta 1: cantidad correspondiente al cuarenta por ciento de mil quinientos" class="campo-num" id="v1" inputmode="decimal" type="text"/>
+<div class="fb" id="fb-v1"></div>
+</div>
+<div class="pregunta">
+<div class="enun">2. Comida: 25%. Cantidad =</div>
+<input aria-label="Respuesta de la pregunta 2: cantidad correspondiente al veinticinco por ciento de mil quinientos" class="campo-num" id="v2" inputmode="decimal" type="text"/>
+<div class="fb" id="fb-v2"></div>
+</div>
+<div class="pregunta">
+<div class="enun">3. Transporte: 12%. Cantidad =</div>
+<input aria-label="Respuesta de la pregunta 3: cantidad correspondiente al doce por ciento de mil quinientos" class="campo-num" id="v3" inputmode="decimal" type="text"/>
+<div class="fb" id="fb-v3"></div>
+</div>
+<button class="btn" id="btn-val">Verificar</button>
+</div>
+<div class="practica">
+<h3>Práctica interactiva 3 · Interpretación</h3>
+<p>Selecciona la respuesta correcta.</p>
+<div class="pregunta" data-correcta="b">
+<div class="enun">1. En un gráfico circular, todos los porcentajes deben sumar:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">360</div>
+<div class="opcion" data-op="b">100%</div>
+<div class="opcion" data-op="c">El total real</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="c">
+<div class="enun">2. Un sector de ángulo central 180° representa:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">25%</div>
+<div class="opcion" data-op="b">33%</div>
+<div class="opcion" data-op="c">50%</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">3. Si un sector vale el 50% y la población total es 800 personas, el sector representa a:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">400 personas</div>
+<div class="opcion" data-op="b">200 personas</div>
+<div class="opcion" data-op="c">50 personas</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="b">
+<div class="enun">4. Un gráfico circular es útil sobre todo para representar:</div>
+<div class="opciones">
+<div class="opcion" data-op="a">El cambio en el tiempo</div>
+<div class="opcion" data-op="b">La composición de un total</div>
+<div class="opcion" data-op="c">Diferencias entre individuos</div>
+</div>
+<div class="fb"></div>
+</div>
 </div>
 
+
+<div class="caja-tarea">
+<h2 id="s-tarea">Tarea</h2>
+<p>Para hacer por su cuenta, con el cuaderno abierto:</p>
+<ul>
+<li>Cuatro ejercicios de calcular ángulos centrales a partir de porcentajes.</li>
+<li>Tres ejercicios de calcular valores absolutos a partir de un porcentaje y un total.</li>
+<li>Tres ejercicios de leer e interpretar un gráfico circular dado.</li>
+<li>Una construcción guiada: dada una tabla de cinco categorías con valores absolutos, calcular porcentajes, ángulos y comprobar la suma.</li>
+<li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique <em>porcentajes</em> y <em>ángulos</em> por separado. El gráfico circular no es más que las dos cosas juntas: el porcentaje de cada categoría convertido en una fracción de 360°.</li></ul>
+<p>Tiempo estimado: 50 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
+</div>
+<div class="quiz">
+<h2 id="s-quiz-de-la-leccion-8-2">Quiz de la lección 8.2</h2>
+<p>Diez preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
+<div id="quiz-cuerpo"></div>
+<div id="resultado-quiz"></div>
+<button class="btn" id="btn-corregir">Corregir quiz</button>
+<button class="btn sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+</div>
+<div class="rubrica">
+<h2 id="s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</h2>
+<p>Cuatro criterios evaluados en cuatro niveles de desempeño. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<table class="tabla-rubrica">
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Inicial (1)</th>
+<th>En desarrollo (2)</th>
+<th>Competente (3)</th>
+<th>Destacado (4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lectura de un gráfico circular</td>
+<td>No identifica las categorías ni sus porcentajes.</td>
+<td>Lee porcentajes con apoyo.</td>
+<td>Lee, compara y ordena categorías sin ayuda.</td>
+<td>Lee, interpreta y extrae conclusiones cuantitativas.</td>
+</tr>
+<tr>
+<td>Cálculo del ángulo central</td>
+<td>No reconoce la relación 360° ↔ 100%.</td>
+<td>Calcula con apoyo.</td>
+<td>Calcula ángulos centrales correctamente.</td>
+<td>Calcula y verifica que los ángulos suman 360°.</td>
+</tr>
+<tr>
+<td>Conversión entre porcentaje, ángulo y valor</td>
+<td>Confunde las tres formas.</td>
+<td>Convierte con apoyo.</td>
+<td>Convierte correctamente entre las tres formas.</td>
+<td>Convierte e identifica la unidad correcta en cada respuesta.</td>
+</tr>
+<tr>
+<td>Construcción de un gráfico</td>
+<td>No traza sectores proporcionales.</td>
+<td>Construye con apoyo y errores de medida.</td>
+<td>Construye un gráfico circular con sectores bien medidos y etiquetados.</td>
+<td>Construye con orden, comprueba el cierre y presenta el gráfico claro y legible.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cierre">
+<h2 id="s-cierre-y-enlace-con-la-ultima-leccion-del-nivel-2">Cierre y enlace con la última lección del Nivel 2</h2>
+<p>En esta lección los porcentajes del <strong>Tema 5</strong> se encontraron con el círculo del <strong>Tema 7</strong> para formar el <strong>gráfico circular</strong>: el círculo entero como 100% del total y cada sector como una proporción visual. Quedaron dominadas las conversiones entre porcentaje, ángulo y valor absoluto, y el procedimiento para construir un gráfico paso a paso.</p>
+<p>La <strong>Lección 8.3 · Probabilidad simple y proyecto final integrador</strong> cierra el Nivel 2. Introducirá la idea de <strong>probabilidad</strong> como la razón entre los casos favorables y los casos totales, y culminará con un <strong>proyecto final</strong> que reúne todo lo aprendido: medidas de tendencia central, gráficos circulares, porcentajes y operaciones básicas en una sola entrega integradora.</p>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 8 · Lección 8.2</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
+</div>
 <script>
 (function () {
   /* ---- Práctica de opciones ---- */
