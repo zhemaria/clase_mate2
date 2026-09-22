@@ -1,1315 +1,613 @@
 <!DOCTYPE html>
 <!-- Lección 4.2 · Matemáticas Nivel 2 · GEDparaHispanos
      José M. Fernández · CC BY-NC-SA 4.0 -->
-
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lección 4.2 · Proporciones directas e inversas</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
+
+
+
+<title>Lección 4.2 · Proporciones directas: regla de tres y resolver proporciones</title><meta content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago" name="author"/><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
-      :root {
-        --tema: #00695c;
-        --tema-d: #004d40;
-        --tema-bg: #b2dfdb;
-        --tema-bg2: #cce8e5;
-        --tema-soft: #e0f2f1;
-        --acento: #5e35b1;
-        --txt: #222;
-        --bg: #f5f7fa;
-        --verde: #286b44;
-        --verde-cl: #e7f4ec;
-        --ambar: #5c3900;
-        --ambar-cl: #fdf3df;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        font-family: 'Segoe UI', system-ui, sans-serif;
-        margin: 0;
-        background: var(--bg);
-        color: var(--txt);
-        line-height: 1.6;
-        font-size: 16px;
-      }
-      .contenedor {
-        max-width: 880px;
-        margin: 0 auto;
-        padding: 24px;
-      }
-
-      header.principal {
-        background: var(--tema);
-        background: linear-gradient(135deg, #004d40 0%, #00695c 55%, #00897b 100%);
-        color: #fff;
-        padding: 32px 30px;
-        border-radius: 14px;
-        margin-bottom: 22px;
-        box-shadow: 0 4px 14px rgba(0, 77, 64, 0.28);
-      }
-      header.principal .ruta {
-        font-size: 13px;
-        opacity: 0.92;
-        letter-spacing: 0.4px;
-        text-transform: uppercase;
-      }
-      header.principal h1 {
-        margin: 8px 0 6px;
-        font-size: 25px;
-        font-weight: 700;
-      }
-      header.principal .meta {
-        font-size: 14px;
-        opacity: 0.94;
-      }
-
-      h2.seccion {
-        color: var(--tema-d);
-        font-size: 21px;
-        margin: 34px 0 12px;
-        padding-bottom: 6px;
-        border-bottom: 3px solid var(--tema-bg);
-      }
-      h3 {
-        color: var(--tema-d);
-        font-size: 17px;
-        margin: 20px 0 8px;
-      }
-
-      .caja-objetivos {
-        background: var(--tema-soft);
-        border-left: 6px solid var(--tema);
-        padding: 18px 22px;
-        border-radius: 0 10px 10px 0;
-        margin-bottom: 22px;
-      }
-      .caja-objetivos h2 {
-        margin: 0 0 10px;
-        color: var(--tema-d);
-        font-size: 19px;
-      }
-      .caja-objetivos ul {
-        margin: 0;
-        padding-left: 22px;
-      }
-      .caja-objetivos li {
-        margin: 5px 0;
-      }
-
-      .bloque {
-        background: #fff;
-        border-radius: 10px;
-        padding: 4px 24px 18px;
-        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
-        margin-bottom: 18px;
-      }
-
-      p {
-        margin: 10px 0;
-      }
-
-      /* fraccion visual */
-      .frac {
-        display: inline-block;
-        text-align: center;
-        vertical-align: middle;
-        margin: 0 4px;
-        font-size: 17px;
-      }
-      .frac .num {
-        display: block;
-        padding: 0 8px;
-        border-bottom: 2px solid #444;
-      }
-      .frac .den {
-        display: block;
-        padding: 0 8px;
-      }
-      .frac.grande {
-        font-size: 21px;
-      }
-
-      .ejemplo {
-        background: #fafafa;
-        border: 1px solid #e3e3e3;
-        border-radius: 8px;
-        padding: 14px 18px;
-        margin: 14px 0;
-      }
-      .ejemplo .et {
-        display: inline-block;
-        background: var(--tema);
-        color: #fff;
-        font-size: 12px;
-        font-weight: 700;
-        padding: 3px 12px;
-        border-radius: 12px;
-        margin-bottom: 8px;
-        letter-spacing: 0.4px;
-      }
-      .paso {
-        margin: 7px 0;
-        padding-left: 30px;
-        position: relative;
-      }
-      .paso .n {
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: var(--tema-bg);
-        color: var(--tema-d);
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        font-size: 13px;
-        font-weight: 700;
-        text-align: center;
-        line-height: 22px;
-      }
-
-      .caja-tip {
-        background: #e8f5e9;
-        border-left: 5px solid #2e7d32;
-        padding: 12px 16px;
-        border-radius: 0 8px 8px 0;
-        margin: 14px 0;
-        color: #1b5e20;
-        font-size: 15px;
-      }
-      .caja-tip strong {
-        color: #1b5e20;
-      }
-
-      .caja-atencion {
-        background: #fff8e1;
-        border-left: 5px solid #f9a825;
-        padding: 12px 16px;
-        border-radius: 0 8px 8px 0;
-        margin: 14px 0;
-        font-size: 15px;
-        color: #5a3d00;
-      }
-      .caja-atencion strong {
-        color: #c54500;
-      }
-
-      .etiqueta {
-        display: inline-block;
-        font-size: 12px;
-        font-weight: 700;
-        padding: 2px 10px;
-        border-radius: 10px;
-        margin-right: 4px;
-      }
-      .et-ambar {
-        background: #ffe082;
-        color: #000;
-      }
-      .et-verde {
-        background: var(--tema);
-        color: #fff;
-      }
-
-      /* comparación directa vs inversa */
-      .comparacion {
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-        margin: 14px 0;
-      }
-      .tipo-prop {
-        flex: 1;
-        min-width: 270px;
-        border-radius: 10px;
-        padding: 16px;
-      }
-      .tipo-directa {
-        background: #e3f2fd;
-        border-left: 5px solid #1565c0;
-      }
-      .tipo-directa h3 {
-        color: #0d47a1;
-        margin-top: 0;
-      }
-      .tipo-directa strong {
-        color: #0d47a1;
-      }
-      .tipo-inversa {
-        background: #fff3e0;
-        border-left: 5px solid #c54500;
-      }
-      .tipo-inversa h3 {
-        color: #bf360c;
-        margin-top: 0;
-      }
-      .tipo-inversa strong {
-        color: #bf360c;
-      }
-
-      /* tabla de proporcionalidad */
-      .tabla-prop {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 14px 0;
-        font-size: 14px;
-      }
-      .tabla-prop th,
-      .tabla-prop td {
-        border: 1px solid #e0e0e0;
-        padding: 9px 12px;
-        text-align: center;
-      }
-      .tabla-prop th {
-        background: var(--tema);
-        color: #fff;
-      }
-      .tabla-prop td:first-child {
-        background: var(--tema-soft);
-        font-weight: 600;
-        color: var(--tema-d);
-      }
-
-      /* producto cruzado con SVG */
-      .svg-wrap {
-        text-align: center;
-        margin: 16px 0;
-      }
-
-      .practica {
-        background: var(--tema-bg2);
-        border: 1px dashed var(--tema);
-        border-radius: 10px;
-        padding: 16px 20px;
-        margin: 18px 0;
-      }
-      .practica h3 {
-        margin-top: 0;
-        color: var(--tema-d);
-      }
-      .pregunta {
-        margin: 14px 0;
-      }
-      .pregunta .enun {
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-      .opciones {
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
-      }
-      .opcion {
-        background: #fff;
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 9px 14px;
-        cursor: pointer;
-        transition: all 0.15s;
-      }
-      .opcion:hover {
-        border-color: var(--tema);
-      }
-      .opcion.correcta {
-        border-color: #2e7d32;
-        background: #e8f5e9;
-        font-weight: 600;
-      }
-      .opcion.incorrecta {
-        border-color: #c62828;
-        background: #ffebee;
-      }
-      .opcion.elegida {
-        border-color: var(--tema);
-      }
-      .fb {
-        margin-top: 8px;
-        font-size: 14px;
-        font-weight: 600;
-        display: none;
-      }
-      .fb.ok {
-        color: #1b5e20;
-      }
-      .fb.no {
-        color: #b71c1c;
-      }
-
-      .campo-num {
-        font-size: 16px;
-        padding: 7px 10px;
-        border: 2px solid #cfcfcf;
-        border-radius: 7px;
-        width: 130px;
-        font-family: inherit;
-      }
-      .campo-num:focus {
-        border-color: var(--tema);
-        outline: none;
-      }
-      .btn {
-        background: var(--tema);
-        color: #fff;
-        border: none;
-        padding: 9px 20px;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: 700;
-        cursor: pointer;
-        font-family: inherit;
-        margin-top: 8px;
-      }
-      .btn:hover {
-        background: var(--tema-d);
-      }
-      .btn.sec {
-        background: #607d8b;
-      }
-      .btn.sec:hover {
-        background: #455a64;
-      }.caja-tarea {
-        background: #ede7f6;
-        border-left: 6px solid #5e35b1;
-        padding: 16px 20px;
-        border-radius: 0 10px 10px 0;
-        margin: 20px 0;
-      }
-      .caja-tarea h2 {
-        margin-top: 0;
-        color: #4527a0;
-      }
-
-      .quiz {
-        background: #fff;
-        border: 2px solid var(--tema);
-        border-radius: 12px;
-        padding: 8px 24px 20px;
-        margin: 22px 0;
-      }
-      .quiz h2 {
-        color: var(--tema-d);
-      }
-      #resultado-quiz {
-        font-size: 17px;
-        font-weight: 700;
-        margin: 14px 0;
-        padding: 12px;
-        border-radius: 8px;
-        text-align: center;
-        display: none;
-      }
-      #resultado-quiz.aprob {
-        background: #e8f5e9;
-        color: #1b5e20;
-      }
-      #resultado-quiz.repro {
-        background: #ffebee;
-        color: #b71c1c;
-      }
-
-      .rubrica {
-        margin: 22px 0;
-        overflow-x: auto;
-      }
-      .rubrica h2 {
-        color: var(--tema-d);
-      }
-      table.tabla-rubrica {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 13px;
-        background: #fff;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
-      }
-      table.tabla-rubrica th,
-      table.tabla-rubrica td {
-        border: 1px solid #e0e0e0;
-        padding: 8px 10px;
-        vertical-align: top;
-      }
-      table.tabla-rubrica th {
-        background: var(--tema);
-        color: #fff;
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.3px;
-      }
-      table.tabla-rubrica td:first-child {
-        background: var(--tema-soft);
-        font-weight: 600;
-        color: var(--tema-d);
-      }
-
-      .cierre {
-        background: #263238;
-        color: #eceff1;
-        border-radius: 12px;
-        padding: 22px 26px;
-        margin: 24px 0 10px;
-      }
-      .cierre h2 {
-        color: #fff;
-        margin-top: 0;
-      }
-      .cierre strong {
-        color: #9bff8f;
-      }
-
-      footer {
-        text-align: center;
-        padding: 20px;
-        color: #222222;
-        font-size: 13px;
-        border-top: 1px solid #ddd;
-        margin-top: 20px;
-      }
-
-      /* ── CONTENEDOR DE ENLACES A INTERACTIVOS ── */
-      .interactivos {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 16px;
-        margin: 20px 0;
-      }
-      .interactivos .titulo-grupo {
-        grid-column: 1 / -1;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        color: var(--tema-d);
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        margin-bottom: 2px;
-      }
-      .interactivos .titulo-grupo::before {
-        content: '';
-        width: 26px;
-        height: 3px;
-        background: var(--tema);
-        border-radius: 3px;
-      }
-
-      .enlace-int {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        text-decoration: none;
-        color: var(--txt);
-        background: #fff;
-        border: 1px solid #e3e3e3;
-        border-left: 5px solid var(--tema);
-        border-radius: 11px;
-        padding: 15px 18px;
-        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
-        transition:
-          transform 0.18s,
-          box-shadow 0.18s,
-          border-color 0.18s;
-      }
-      .enlace-int:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 7px 20px rgba(0, 77, 64, 0.18);
-      }
-      .enlace-int .ico-int {
-        flex-shrink: 0;
-        width: 50px;
-        height: 50px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 28px;
-        background: var(--tema-soft);
-      }
-      .enlace-int .txt-int {
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-      }
-      .enlace-int .titulo-int {
-        font-weight: 700;
-        color: var(--tema-d);
-        font-size: 16px;
-        line-height: 1.3;
-      }
-      .enlace-int .desc-int {
-        font-size: 13px;
-        color: #546e7a;
-        margin-top: 3px;
-        line-height: 1.4;
-      }
-      .enlace-int .flecha-int {
-        margin-left: auto;
-        flex-shrink: 0;
-        font-size: 20px;
-        color: var(--tema);
-        transition: transform 0.18s;
-      }
-      .enlace-int:hover .flecha-int {
-        transform: translateX(4px);
-      }
-
-      /* Variantes opcionales (usan tus variables ya definidas) */
-      .enlace-int.int-verde {
-        border-left-color: var(--verde);
-      }
-      .enlace-int.int-verde .ico-int {
-        background: var(--verde-cl);
-      }
-      .enlace-int.int-verde .titulo-int,
-      .enlace-int.int-verde .flecha-int {
-        color: var(--verde);
-      }
-
-      .enlace-int.int-ambar {
-        border-left-color: var(--ambar);
-      }
-      .enlace-int.int-ambar .ico-int {
-        background: var(--ambar-cl);
-      }
-      .enlace-int.int-ambar .titulo-int,
-      .enlace-int.int-ambar .flecha-int {
-        color: var(--ambar);
-      }
-
-      @media (max-width: 560px) {
-        .interactivos {
-          grid-template-columns: 1fr;
-        }
-      }
-      .interactivos:has(.enlace-int:only-of-type) {
-        grid-template-columns: 1fr;
-      }
-    
-  /* ── ÍNDICE DE LA LECCIÓN ── */
-  .indice{
-    background:#fff; border:1px solid #d8dde3; border-left:6px solid var(--tema);
-    border-radius:10px; padding:16px 20px; margin:24px 0;
+  :root {
+    --tema: #00695c; --tema-d: #004d40; --tema-bg: #b2dfdb; --tema-bg2: #cce8e5; --tema-soft: #e0f2f1;
+    --txt: #222; --bg: #f5f7fa;
   }
-  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--tema-d); border:0; padding:0; background:none; }
-  .indice ol{ margin:0; padding-left:1.35em; }
-  .indice li{ margin:4px 0; }
-  .indice a{ color:var(--tema-d); text-decoration:underline; }
-  .indice a:hover{ color:var(--tema); }
-  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
-  .volver-indice{
-    position:fixed; right:18px; bottom:18px; z-index:60;
-    background:var(--tema-d); color:#fff; border-radius:999px;
-    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
-    box-shadow:0 2px 10px rgba(0,0,0,.28);
-  }
-  .volver-indice:hover{ background:var(--tema); color:#fff; }
-  footer a{ color:inherit; }
-  @media print{ .indice,.volver-indice{ display:none; } }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; background: var(--bg);
+         color: var(--txt); line-height: 1.6; font-size: 16px; }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+             clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+  header.principal { background: var(--tema); background: linear-gradient(135deg, #004d40 0%, #00695c 55%, #00796b 100%); color: #fff; padding: 32px 30px;
+    border-radius: 14px; margin-bottom: 22px; box-shadow: 0 4px 14px rgba(0,77,64,.28); }
+  header.principal .ruta { font-size: 13px; letter-spacing: .4px; text-transform: uppercase; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; }
+  header.principal .meta { font-size: 14px; }
+
+  nav.indice { background: #fff; border-radius: 10px; padding: 12px 20px 14px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px; }
+  nav.indice h2 { font-size: 15px; margin: 0 0 6px; color: var(--tema-d); text-transform: uppercase; letter-spacing: .4px; }
+  nav.indice ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 28px; font-size: 14px; }
+  nav.indice li { margin: 3px 0; break-inside: avoid; }
+  nav.indice a { color: var(--tema-d); font-weight: 600; }
+  nav.indice a:hover, nav.indice a:focus { text-decoration: underline; }
+  @media (max-width: 620px) { nav.indice ol { columns: 1; } }[id] { scroll-margin-top: 14px; }
+
+  h2.seccion { color: var(--tema-d); font-size: 21px; margin: 34px 0 12px; padding-bottom: 6px;
+    border-bottom: 3px solid var(--tema-bg); }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos { background: var(--tema-soft); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 18px; }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque { background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px; }
+  p { margin: 10px 0; }
+
+  .frac { display: inline-block; text-align: center; vertical-align: middle; margin: 0 4px; font-size: 16px; }
+  .frac .num { display: block; padding: 0 7px; border-bottom: 2px solid #444; }
+  .frac .den { display: block; padding: 0 7px; }
+  .frac.grande { font-size: 20px; }
+  .formula-grande { text-align: center; font-size: 18px; font-weight: 700; color: var(--tema-d); margin: 14px 0; }
+
+  .ejemplo { background: #fafafa; border: 1px solid #e3e3e3; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+  .ejemplo .et { display: inline-block; background: var(--tema); color: #fff; font-size: 12px; font-weight: 700;
+    padding: 3px 12px; border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px; }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n { position: absolute; left: 0; top: 0; background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%; font-size: 13px; font-weight: 700; text-align: center; line-height: 22px; }
+  .expr-paso { font-family: 'Consolas', 'Courier New', monospace; background: #f5f6fa; border: 1px solid #d4d8eb;
+    padding: 9px 14px; border-radius: 6px; font-size: 16px; margin: 5px 0; overflow-x: auto; }
+  .resalta { background: #fff59d; padding: 0 3px; border-radius: 3px; font-weight: 700; color: #5a3d00; }
+
+  .caja-tip { background: #e8f5e9; border-left: 5px solid #2e7d32; padding: 12px 16px;
+    border-radius: 0 8px 8px 0; margin: 14px 0; color: #1b5e20; font-size: 15px; }
+  .caja-tip strong { color: #1b5e20; }
+  .caja-atencion { background: #fff8e1; border-left: 5px solid #f9a825; padding: 12px 16px;
+    border-radius: 0 8px 8px 0; margin: 14px 0; font-size: 15px; color: #5a3d00; }
+  .caja-atencion strong { color: #5C3900; }
+
+  .comparacion { display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0; }
+  .tipo-prop { flex: 1; min-width: 250px; border-radius: 10px; padding: 16px; }
+  .tipo-directa { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .tipo-directa h3, .tipo-directa strong { color: #0d47a1; }
+  .tipo-inversa { background: #fff3e0; border-left: 5px solid #bf360c; }
+  .tipo-inversa h3, .tipo-inversa strong { color: #8a3000; }
+  .tipo-prop h3 { margin-top: 0; }
+
+  table.tabla { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; background: #fff; }
+  table.tabla caption { caption-side: top; text-align: left; font-weight: 700; color: var(--tema-d); padding: 4px 0 6px; font-size: 14px; }
+  table.tabla th, table.tabla td { border: 1px solid #d0d0d0; padding: 9px 12px; text-align: center; }
+  table.tabla thead th { background: var(--tema); color: #fff; }
+  table.tabla tbody th { background: var(--tema-soft); color: var(--tema-d); font-weight: 600; }
+  table.tabla.izq td { text-align: left; }
+  .tabla-wrap { overflow-x: auto; }
+
+  .svg-wrap { text-align: center; margin: 16px 0; }
+  .svg-wrap svg { max-width: 100%; height: auto; }
+
+  .practica { background: var(--tema-bg2); border: 1px dashed var(--tema); border-radius: 10px; padding: 16px 20px; margin: 18px 0; }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion { background: #fff; border: 2px solid #bdbdbd; border-radius: 8px; padding: 9px 14px; cursor: pointer; transition: all .15s; }
+  .opcion:hover, .opcion:focus { border-color: var(--tema); outline: none; }
+  .opcion:focus-visible { outline: 3px solid var(--tema); outline-offset: 2px; }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); background: var(--tema-soft); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; } .fb.no { color: #b71c1c; }
+  .campo { font-size: 16px; padding: 7px 10px; border: 2px solid #9e9e9e; border-radius: 7px; width: 150px; font-family: inherit; }
+  .campo:focus { border-color: var(--tema); outline: 2px solid var(--tema); }
+  .btn { background: var(--tema); color: #fff; border: none; padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px; }
+  .btn:hover { background: var(--tema-d); }
+  .btn:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+  .btn.sec { background: #546e7a; } .btn.sec:hover { background: #37474f; }.caja-tarea { background: #ede7f6; border-left: 6px solid #5e35b1; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0; }
+  .caja-tarea h2 { margin-top: 0; color: #4527a0; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz { font-size: 17px; font-weight: 700; margin: 14px 0; padding: 12px; border-radius: 8px; text-align: center; display: none; }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica { width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+  table.tabla-rubrica caption { caption-side: top; text-align: left; font-size: 14px; color: #444; padding-bottom: 6px; }
+  table.tabla-rubrica th, table.tabla-rubrica td { border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top; text-align: left; }
+  table.tabla-rubrica thead th { background: var(--tema); color: #fff; font-size: 12px; text-transform: uppercase; letter-spacing: .3px; }
+  table.tabla-rubrica tbody th { background: var(--tema-soft); font-weight: 600; color: var(--tema-d); }
+
+  .cierre { background: #263238; color: #eceff1; border-radius: 12px; padding: 22px 26px; margin: 24px 0 10px; }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer { text-align: center; padding: 20px; color: #222; font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px; }
+  footer a { color: var(--tema-d); }
+
+  .regla3 { display: inline-grid; grid-template-columns: auto auto auto; gap: 4px 16px; font-size: 18px;
+    font-weight: 700; color: var(--tema-d); background: var(--tema-soft); border: 2px solid var(--tema);
+    border-radius: 10px; padding: 12px 22px; margin: 8px 0; }
+  .regla3 .fl { color: #555; font-weight: 400; }
+  .centro { text-align: center; }
+
+
+  .volver-indice { position: fixed; right: 18px; bottom: 18px; z-index: 60; background: var(--tema-d); color: #fff;
+    border-radius: 999px; padding: 10px 16px; font-weight: 700; font-size: .92rem; text-decoration: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,.28); }
+  .volver-indice:hover { background: var(--tema); color: #fff; }
+  .volver-indice:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+  @media print { nav.indice, .volver-indice { display: none; } }
 </style>
 </head>
 <body>
 <div class="contenedor">
 <header class="principal">
-<div class="ruta">Spanish ASE Math · Nivel 2 · Tema 4 · Razones, proporciones y porcentajes</div>
-<h1>Lección 4.2 · Proporciones directas e inversas</h1>
+<div class="ruta">Spanish ASE Math · Nivel 2 · Tema 4 · Razones, tasas unitarias y proporciones</div>
+<h1>Lección 4.2 · Proporciones directas: regla de tres y resolver proporciones</h1>
 <div class="meta">Unas 4 horas, a su ritmo · NRS 2–3</div>
 </header>
 <div class="caja-objetivos">
 <h2>Objetivos de la lección</h2>
-<ul>
-<li>Reconocer una proporción como la igualdad entre dos razones.</li>
-<li>Aplicar la regla del producto cruzado para hallar un término desconocido.</li>
-<li>Distinguir una situación de proporcionalidad directa de una de proporcionalidad inversa.</li>
-<li>Plantear y resolver problemas reales mediante proporciones directas.</li>
-<li>Plantear y resolver problemas reales mediante proporciones inversas.</li>
-</ul>
-</div><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-1-que-es-una-proporcion">1. Qué es una proporción</a></li><li><a href="#s-2-la-regla-del-producto-cruzado">2. La regla del producto cruzado</a></li><li><a href="#s-3-proporcionalidad-directa-vs-inversa">3. Proporcionalidad directa vs. inversa</a></li><li><a href="#s-4-resolver-proporciones-directas">4. Resolver proporciones directas</a></li><li><a href="#s-5-resolver-proporciones-inversas">5. Resolver proporciones inversas</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-la-leccion-4-2">Quiz de la lección 4.2</a></li><li><a href="#s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</a></li><li><a href="#s-cierre-y-enlace-con-la-proxima-leccion">Cierre y enlace con la próxima lección</a></li></ol></nav>
-<div class="bloque">
-<p>
-<strong>Conexión con la lección anterior.</strong>
-          En la Lección 4.1 se aprendió a escribir y simplificar
-          <strong>razones</strong>
-          , y a calcular
-          <strong>tasas unitarias</strong>
-          para comparar opciones. Esta lección da el paso natural: cuando dos razones representan la misma relación, forman una
-          <strong>proporción</strong>
-          . Las proporciones permiten ir más allá de comparar: permiten
-          <strong>predecir</strong>
-          cantidades desconocidas a partir de una razón conocida.
-        </p>
+<ul><li>Reconocer una proporción como la igualdad entre dos razones.</li><li>Decidir si una relación es de proporcionalidad directa mediante la prueba de la razón constante.</li><li>Aplicar el producto cruzado para hallar un término desconocido.</li><li>Usar la regla de tres directa en problemas de recetas, mapas y conversión de moneda.</li><li>Verificar la solución sustituyendo en la proporción original.</li></ul>
 </div>
-<h2 class="seccion" id="s-1-que-es-una-proporcion">1. Qué es una proporción</h2>
+<nav aria-label="Contenido de la lección" class="indice" id="indice">
+<h2>Contenido de la lección</h2>
+<ol><li><a href="#s1">Qué es una proporción</a></li><li><a href="#s2">¿Es proporcional?</a></li><li><a href="#practica1">Práctica 1</a></li><li><a href="#s3">Producto cruzado</a></li><li><a href="#practica2">Práctica 2</a></li><li><a href="#s4">Regla de tres directa</a></li><li><a href="#s5">Problemas de proporción directa</a></li><li><a href="#practica3">Práctica 3</a></li><li><a href="#tarea">Tarea</a></li><li><a href="#quiz">Quiz</a></li><li><a href="#rubrica">Rúbrica</a></li><li><a href="#cierre">Cierre</a></li></ol>
+</nav>
 <div class="bloque">
-<p>
-          Una
-          <strong>proporción</strong>
-          es una igualdad entre dos razones equivalentes. Si dos razones se simplifican al mismo resultado, son iguales y juntas forman una proporción.
-        </p>
+<p><strong>Conexión con la lección anterior.</strong> En la Lección 4.1 se aprendió a escribir <strong>razones</strong> y a calcular <strong>tasas unitarias</strong> para comparar opciones. Esta lección da el paso natural: cuando dos razones representan la misma relación, forman una <strong>proporción</strong>. Las proporciones permiten ir más allá de comparar: permiten <strong>predecir</strong> cantidades desconocidas. Aquí se estudian las proporciones <strong>directas</strong>; las inversas quedan para la Lección 4.3.</p>
+</div>
+<h2 class="seccion" id="s1">1. Qué es una proporción</h2>
+<div class="bloque">
+<p>Una <strong>proporción</strong> es una igualdad entre dos razones equivalentes. Si dos razones se simplifican al mismo resultado, son iguales y juntas forman una proporción.</p>
 <div class="ejemplo">
 <span class="et">Notación</span>
-<p style="text-align: center; font-size: 20px; font-weight: bold">
-<span class="frac grande">
-<span class="num">a</span>
-<span class="den">b</span>
-</span>
-            =
-            <span class="frac grande">
-<span class="num">c</span>
-<span class="den">d</span>
-</span>
-</p>
+<p class="formula-grande"><span class="frac grande"><span class="num">a</span><span class="den">b</span></span> = <span class="frac grande"><span class="num">c</span><span class="den">d</span></span></p>
 <p>Se lee «a es a b como c es a d». Los cuatro términos se llaman, de izquierda a derecha, primer, segundo, tercer y cuarto término.</p>
 </div>
 <div class="ejemplo">
 <span class="et">Ejemplo 1</span>
 <p>¿Forman una proporción las razones 2/3 y 8/12?</p>
-<div class="paso">
-<span class="n">1</span>
-            Se simplifica la segunda: 8/12 = 2/3 (dividiendo entre 4).
-          </div>
-<div class="paso">
-<span class="n">2</span>
-            Las dos razones se simplifican al mismo resultado.
-          </div>
-<p>
-<strong>Respuesta:</strong>
-            sí, 2/3 = 8/12 es una proporción.
-          </p>
+<div class="paso"><span class="n">1</span> Se simplifica la segunda: 8/12 = 2/3 (dividiendo entre 4).</div>
+<div class="paso"><span class="n">2</span> Las dos razones se simplifican al mismo resultado.</div>
+<p><strong>Respuesta:</strong> sí, 2/3 = 8/12 es una proporción.</p>
 </div>
 <div class="caja-tip">
-<strong>Idea clave:</strong>
-          una proporción mantiene constante la
-          <strong>razón</strong>
-          entre dos cantidades, aunque cambien sus tamaños. Por eso permite escalar: una receta para 2 personas se puede convertir en una para 10 sin alterar el sabor.
-        </div>
+<strong>Idea clave:</strong> una proporción mantiene constante la <strong>razón</strong> entre dos cantidades, aunque cambien sus tamaños. Por eso permite escalar: una receta para 2 personas se puede convertir en una para 10 sin alterar el sabor.
+    </div>
 </div>
-<h2 class="seccion" id="s-2-la-regla-del-producto-cruzado">2. La regla del producto cruzado</h2>
+
+<h2 class="seccion" id="s2">2. ¿Es proporcional? La prueba de la razón constante</h2>
 <div class="bloque">
-<p>
-          El gran poder de las proporciones está en una regla muy simple: si dos razones son iguales, entonces
-          <strong>el producto cruzado de sus términos también es igual</strong>
-          .
-        </p>
-<p style="text-align: center; font-size: 18px; font-weight: bold; color: var(--tema-d)">
-          Si
-          <span class="frac">
-<span class="num">a</span>
-<span class="den">b</span>
-</span>
-          =
-          <span class="frac">
-<span class="num">c</span>
-<span class="den">d</span>
-</span>
-          , entonces a × d = b × c.
-        </p>
+<p>Una relación entre dos cantidades es de <strong>proporcionalidad directa</strong> cuando, al aumentar una, la otra aumenta <strong>en la misma razón</strong>: si una se duplica, la otra se duplica; si una se triplica, la otra se triplica. La prueba es sencilla: se divide cada pareja de valores. Si el cociente es <strong>siempre el mismo</strong>, la relación es proporcional. Ese cociente fijo se llama <strong>constante de proporcionalidad</strong>.</p>
+<div class="tabla-wrap"><table class="tabla">
+<caption>Tabla A · Pago por horas trabajadas a $15 la hora</caption>
+<thead><tr><th scope="col">Horas</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th></tr></thead>
+<tbody><tr><th scope="row">Pago ($)</th><td>15</td><td>30</td><td>45</td><td>60</td></tr>
+<tr><th scope="row">Pago ÷ horas</th><td>15</td><td>15</td><td>15</td><td>15</td></tr></tbody>
+</table></div>
+<p>La razón es siempre 15: la Tabla A <strong>sí</strong> es proporcional.</p>
+<div class="tabla-wrap"><table class="tabla">
+<caption>Tabla B · Taxi con $3.00 fijos más $2.25 por milla</caption>
+<thead><tr><th scope="col">Millas</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th></tr></thead>
+<tbody><tr><th scope="row">Costo ($)</th><td>5.25</td><td>7.50</td><td>9.75</td><td>12.00</td></tr>
+<tr><th scope="row">Costo ÷ millas</th><td>5.25</td><td>3.75</td><td>3.25</td><td>3.00</td></tr></tbody>
+</table></div>
+<p>El costo aumenta con las millas, pero la razón <strong>cambia</strong>. La Tabla B <strong>no</strong> es proporcional: 2 millas no cuestan el doble que 1 milla.</p>
+<div class="caja-atencion">
+<strong>Contraejemplo clásico:</strong> «que las dos cantidades aumenten juntas» no basta para que haya proporción. Cualquier <strong>cargo fijo</strong> (inscripción, banderazo del taxi, cuota de un plan de teléfono) rompe la proporcionalidad, porque el costo de cero unidades no es cero.
+    </div>
+</div>
+<div class="practica" id="practica1">
+<h3>Práctica interactiva 1 · ¿Es proporcional?</h3>
+<p>Divide cada pareja de valores y decide.</p>
+<div class="pregunta" data-correcta="a" data-pista="50 ÷ 2 = 25, 100 ÷ 4 = 25 y 150 ÷ 6 = 25: la razón es constante.">
+<div class="enun">1. Galones: 2, 4, 6 → Millas: 50, 100, 150.</div>
+<div class="opciones"><div class="opcion" data-op="a">Sí es proporcional</div><div class="opcion" data-op="b">No es proporcional</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="b" data-pista="110 ÷ 5 = 22, pero 140 ÷ 10 = 14: la razón cambia.">
+<div class="enun">2. Edad de un niño: 5, 10, 15 años → Estatura: 110, 140, 160 cm.</div>
+<div class="opciones"><div class="opcion" data-op="a">Sí es proporcional</div><div class="opcion" data-op="b">No es proporcional</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a" data-pista="la razón es siempre $12 por entrada.">
+<div class="enun">3. Entradas de cine: 1, 3, 5 → Costo: $12, $36, $60.</div>
+<div class="opciones"><div class="opcion" data-op="a">Sí es proporcional</div><div class="opcion" data-op="b">No es proporcional</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="b" data-pista="30 ÷ 1 = 30, 40 ÷ 2 = 20: hay un cargo fijo de $20.">
+<div class="enun">4. Plan de datos: 1, 2, 3 GB → Costo mensual: $30, $40, $50.</div>
+<div class="opciones"><div class="opcion" data-op="a">Sí es proporcional</div><div class="opcion" data-op="b">No es proporcional</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+</div>
+
+<h2 class="seccion" id="s3">3. La regla del producto cruzado</h2>
+<div class="bloque">
+<p>El gran poder de las proporciones está en una regla muy simple: si dos razones son iguales, entonces <strong>los productos cruzados de sus términos también son iguales</strong>.</p>
+<p class="formula-grande">Si <span class="frac"><span class="num">a</span><span class="den">b</span></span> = <span class="frac"><span class="num">c</span><span class="den">d</span></span>, entonces a × d = b × c.</p>
 <div class="svg-wrap">
-<svg aria-label="Diagrama del producto cruzado en una proporción" height="160" role="img" viewbox="0 0 380 160" width="380" xmlns="http://www.w3.org/2000/svg">
+<svg aria-labelledby="svg-pc-t" height="160" role="img" viewbox="0 0 380 160" width="380" xmlns="http://www.w3.org/2000/svg">
+<title id="svg-pc-t">Diagrama del producto cruzado: a sobre b igual a c sobre d. Una línea une a con d y otra une b con c, y abajo se lee a por d igual a b por c.</title>
 <g fill="#004d40" font-family="Segoe UI, sans-serif" font-size="32" font-weight="700">
-<text x="60" y="50">a</text>
-<text x="60" y="125">b</text>
-<text x="290" y="50">c</text>
-<text x="290" y="125">d</text>
+<text x="60" y="50">a</text><text x="60" y="125">b</text><text x="290" y="50">c</text><text x="290" y="125">d</text>
 </g>
 <line stroke="#004d40" stroke-width="3" x1="40" x2="100" y1="78" y2="78"></line>
 <line stroke="#004d40" stroke-width="3" x1="270" x2="330" y1="78" y2="78"></line>
 <text fill="#004d40" font-family="Segoe UI, sans-serif" font-size="30" font-weight="700" text-anchor="middle" x="180" y="90">=</text>
 <line stroke="#c62828" stroke-dasharray="6,4" stroke-width="2.5" x1="80" x2="310" y1="55" y2="115"></line>
 <line stroke="#1565c0" stroke-dasharray="6,4" stroke-width="2.5" x1="80" x2="310" y1="115" y2="55"></line>
-                    
-            <text fill="#c62828" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="190" y="155">a × d = b × c</text>
+<text fill="#b71c1c" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="190" y="155">a × d = b × c</text>
 </svg>
 </div>
-<p>Cuando uno de los cuatro términos es desconocido, esta regla permite despejarlo de inmediato.</p>
 <div class="ejemplo">
 <span class="et">Ejemplo 2 · Hallar un término</span>
-<p>
-            Resolver:
-            <span class="frac">
-<span class="num">3</span>
-<span class="den">8</span>
-</span>
-            =
-            <span class="frac">
-<span class="num">x</span>
-<span class="den">24</span>
-</span>
-            .
-          </p>
-<div class="paso">
-<span class="n">1</span>
-            Se aplica el producto cruzado: 3 × 24 = 8 × x.
-          </div>
-<div class="paso">
-<span class="n">2</span>
-            Se calcula el lado conocido: 3 × 24 = 72, así que 72 = 8x.
-          </div>
-<div class="paso">
-<span class="n">3</span>
-            Se despeja x dividiendo entre 8: x = 72 ÷ 8 = 9.
-          </div>
-<p>
-<strong>Respuesta:</strong>
-            x = 9. Se verifica: 3/8 y 9/24 simplifican ambas a 3/8.
-          </p>
+<p>Resolver: <span class="frac"><span class="num">3</span><span class="den">8</span></span> = <span class="frac"><span class="num">x</span><span class="den">24</span></span>.</p>
+<div class="paso"><span class="n">1</span> Se aplica el producto cruzado: 3 × 24 = 8 × x.</div>
+<div class="paso"><span class="n">2</span> Se calcula el lado conocido: 72 = 8x.</div>
+<div class="paso"><span class="n">3</span> Se despeja x dividiendo entre 8: x = 72 ÷ 8 = 9.</div>
+<p><strong>Respuesta:</strong> x = 9.</p>
 </div>
 <div class="caja-atencion">
-<strong>Atención:</strong>
-          el producto cruzado funciona
-          <strong>solo cuando se tiene una igualdad de dos razones</strong>
-          . No se aplica al sumar o restar fracciones; tampoco a una sola fracción aislada. La igualdad de dos razones es el punto de partida obligatorio.
-        </div>
+<strong>Atención:</strong> el producto cruzado funciona <strong>solo cuando hay una igualdad de dos razones</strong>. No se aplica al sumar o restar fracciones, ni a una fracción aislada.
+    </div>
 </div>
-<div class="practica">
-<h3>Práctica interactiva 1 · Producto cruzado</h3>
+<div class="practica" id="practica2">
+<h3>Práctica interactiva 2 · Producto cruzado</h3>
 <p>Halla el valor de x en cada proporción y presiona «Verificar».</p>
-<div class="pregunta">
-<div class="enun">1. 4/6 = x/18 →  x =</div>
-<input aria-label="Respuesta de la pregunta 1: cuatro sextos igual a x dieciochoavos, hallar x" class="campo-num" id="pc1" inputmode="numeric" type="text"/>
-<div class="fb" id="fb-pc1"></div>
+<div class="pregunta"><div class="enun">1. 4/6 = x/18 → x =</div><input aria-label="Pregunta 2.1: cuatro sextos igual a x dieciochoavos, hallar x" autocomplete="off" class="campo" data-clave="12" data-grupo="g2" data-pista="4 × 18 = 72; 72 ÷ 6 = 12." id="pc1" type="text"/><div aria-live="polite" class="fb" id="fb-pc1"></div></div>
+<div class="pregunta"><div class="enun">2. 5/x = 15/21 → x =</div><input aria-label="Pregunta 2.2: cinco partido por x igual a quince veintiunavos, hallar x" autocomplete="off" class="campo" data-clave="7" data-grupo="g2" data-pista="5 × 21 = 105; 105 ÷ 15 = 7." id="pc2" type="text"/><div aria-live="polite" class="fb" id="fb-pc2"></div></div>
+<div class="pregunta"><div class="enun">3. 7/12 = 28/x → x =</div><input aria-label="Pregunta 2.3: siete doceavos igual a veintiocho partido por x, hallar x" autocomplete="off" class="campo" data-clave="48" data-grupo="g2" data-pista="12 × 28 = 336; 336 ÷ 7 = 48." id="pc3" type="text"/><div aria-live="polite" class="fb" id="fb-pc3"></div></div>
+<button class="btn btn-verificar" data-grupo="g2" type="button">Verificar</button>
 </div>
-<div class="pregunta">
-<div class="enun">2. 5/x = 15/21 →  x =</div>
-<input aria-label="Respuesta de la pregunta 2: cinco partido por x igual a quince veintiunavos, hallar x" class="campo-num" id="pc2" inputmode="numeric" type="text"/>
-<div class="fb" id="fb-pc2"></div>
-</div>
-<div class="pregunta">
-<div class="enun">3. 7/12 = 28/x →  x =</div>
-<input aria-label="Respuesta de la pregunta 3: siete doceavos igual a veintiocho partido por x, hallar x" class="campo-num" id="pc3" inputmode="numeric" type="text"/>
-<div class="fb" id="fb-pc3"></div>
-</div>
-<button class="btn" id="btn-pc">Verificar</button>
-</div>
-<h2 class="seccion" id="s-3-proporcionalidad-directa-vs-inversa">3. Proporcionalidad directa vs. inversa</h2>
+
+<h2 class="seccion" id="s4">4. La regla de tres directa</h2>
 <div class="bloque">
-<p>No todas las situaciones de la vida real se comportan igual cuando una cantidad crece. Hay dos grandes patrones, y reconocerlos es esencial para plantear bien una proporción.</p>
-<div class="comparacion">
-<div class="tipo-prop tipo-directa">
-<h3>
-              Proporcionalidad
-              <strong>directa</strong>
-</h3>
-<p>
-              Cuando una cantidad
-              <strong>aumenta</strong>
-              , la otra
-              <strong>aumenta</strong>
-              en la misma proporción. La razón entre ambas se mantiene constante.
-            </p>
-<p>
-<strong>Ejemplo:</strong>
-              a más libras de manzanas, más dinero pagas. Si 1 libra cuesta $2, entonces 5 libras cuestan $10.
-            </p>
-</div>
-<div class="tipo-prop tipo-inversa">
-<h3>
-              Proporcionalidad
-              <strong>inversa</strong>
-</h3>
-<p>
-              Cuando una cantidad
-              <strong>aumenta</strong>
-              , la otra
-              <strong>disminuye</strong>
-              . El producto de ambas se mantiene constante.
-            </p>
-<p>
-<strong>Ejemplo:</strong>
-              si 4 obreros tardan 6 días en hacer un trabajo, 8 obreros (el doble) tardarán solo 3 días (la mitad).
-            </p>
-</div>
-</div>
-<h3>Una tabla para ver la diferencia</h3>
-<p>
-<strong>Directa</strong>
-          — precio de la manzana ($2 por libra):
-        </p>
-<table class="tabla-prop">
-<thead>
-<tr>
-<th>Libras</th>
-<th>1</th>
-<th>2</th>
-<th>5</th>
-<th>10</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Precio ($)</td>
-<td>2</td>
-<td>4</td>
-<td>10</td>
-<td>20</td>
-</tr>
-</tbody>
-</table>
-<p>
-          Al duplicar las libras, se duplica el precio. La
-          <strong>razón</strong>
-          precio ÷ libras siempre da 2.
-        </p>
-<p>
-<strong>Inversa</strong>
-          — tiempo para terminar un trabajo:
-        </p>
-<table class="tabla-prop">
-<thead>
-<tr>
-<th>Obreros</th>
-<th>2</th>
-<th>4</th>
-<th>6</th>
-<th>12</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Días</td>
-<td>24</td>
-<td>12</td>
-<td>8</td>
-<td>4</td>
-</tr>
-</tbody>
-</table>
-<p>
-          Al duplicar los obreros, el tiempo se reduce a la mitad. El
-          <strong>producto</strong>
-          obreros × días siempre da 48.
-        </p>
-<div class="caja-tip">
-<strong>Pregunta de prueba:</strong>
-          antes de plantear cualquier proporción, conviene preguntarse «si una cantidad crece, ¿qué hace la otra?». Si crece junto a ella, es directa. Si disminuye, es inversa. Esa pregunta evita la
-          mayoría de los errores.
-        </div>
-</div>
-<h2 class="seccion" id="s-4-resolver-proporciones-directas">4. Resolver proporciones directas</h2>
-<div class="bloque">
-<p>En una situación de proporcionalidad directa, las dos razones se escriben con las mismas unidades en cada nivel. El producto cruzado resuelve la incógnita.</p>
+<p>La <strong>regla de tres</strong> es la forma tradicional de escribir una proporción cuando se conocen tres datos y se busca el cuarto. Se colocan los datos en dos filas, con las <strong>mismas unidades en la misma columna</strong>.</p>
 <div class="ejemplo">
-<span class="et">Ejemplo 3 · Receta de cocina</span>
+<span class="et">Ejemplo 3 · Compra en el mercado</span>
+<p>Si 3 libras de tomate cuestan $4.50, ¿cuánto cuestan 8 libras?</p>
+<div class="centro"><div aria-label="Regla de tres: 3 libras corresponden a 4.50 dólares; 8 libras corresponden a x dólares" class="regla3" role="img">
+<span>3 lb</span><span aria-hidden="true" class="fl">→</span><span>$4.50</span>
+<span>8 lb</span><span aria-hidden="true" class="fl">→</span><span>x</span>
+</div></div>
+<div class="paso"><span class="n">1</span> Es directa: más libras, más dinero, en la misma razón.</div>
+<div class="paso"><span class="n">2</span> Se multiplica en cruz y se divide entre el dato restante: x = (8 × 4.50) ÷ 3.</div>
+<div class="paso"><span class="n">3</span> Se calcula: 36 ÷ 3 = 12.</div>
+<p><strong>Respuesta:</strong> 8 libras cuestan $12.00. Es exactamente el producto cruzado de <span class="frac"><span class="num">3</span><span class="den">4.50</span></span> = <span class="frac"><span class="num">8</span><span class="den">x</span></span>.</p>
+</div>
+<div class="caja-tip">
+<strong>Atajo con la tasa unitaria:</strong> otra forma de pensar lo mismo es hallar primero cuánto cuesta 1 libra (4.50 ÷ 3 = $1.50) y multiplicar por 8 ($12.00). Es la tasa unitaria de la Lección 4.1 puesta a trabajar.
+    </div>
+</div>
+
+<h2 class="seccion" id="s5">5. Resolver problemas de proporción directa</h2>
+<div class="bloque">
+<p>Los problemas del GED suelen presentar proporciones directas en recetas, mapas, conversiones de moneda y mezclas. El procedimiento es siempre el mismo: <strong>plantear con las unidades alineadas, resolver y verificar</strong>.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 4 · Receta de cocina</span>
 <p>Una receta usa 4 tazas de harina para 12 galletas. ¿Cuánta harina se necesita para 30 galletas?</p>
-<div class="paso">
-<span class="n">1</span>
-            Se plantea la proporción manteniendo el mismo orden (harina arriba, galletas abajo):
-            <span class="frac">
-<span class="num">4</span>
-<span class="den">12</span>
-</span>
-            =
-            <span class="frac">
-<span class="num">x</span>
-<span class="den">30</span>
-</span>
-            .
-          </div>
-<div class="paso">
-<span class="n">2</span>
-            Producto cruzado: 4 × 30 = 12 × x, es decir 120 = 12x.
-          </div>
-<div class="paso">
-<span class="n">3</span>
-            Se despeja: x = 120 ÷ 12 = 10.
-          </div>
-<p>
-<strong>Respuesta:</strong>
-            se necesitan 10 tazas de harina.
-          </p>
-</div>
-<div class="caja-atencion">
-<strong>Error frecuente:</strong>
-          mezclar las unidades de los dos lados de la proporción. Si arriba va la harina del primer caso, arriba debe ir la harina del segundo caso. Cambiar el orden produce un resultado equivocado.
-        </div>
-</div>
-<h2 class="seccion" id="s-5-resolver-proporciones-inversas">5. Resolver proporciones inversas</h2>
-<div class="bloque">
-<p>
-          En una situación de proporcionalidad inversa, la
-          <strong>multiplicación</strong>
-          de las dos cantidades se mantiene constante. La proporción se plantea «invirtiendo» uno de los lados.
-        </p>
-<div class="ejemplo">
-<span class="et">Ejemplo 4 · Obreros y tiempo</span>
-<p>Cuatro obreros tardan 9 días en terminar una obra. ¿Cuántos días tardarían 6 obreros, trabajando al mismo ritmo?</p>
-<div class="paso">
-<span class="n">1</span>
-            Es inversa: más obreros, menos días. El producto obreros × días se mantiene constante: 4 × 9 = 36.
-          </div>
-<div class="paso">
-<span class="n">2</span>
-            Con 6 obreros: 6 × x = 36.
-          </div>
-<div class="paso">
-<span class="n">3</span>
-            Se despeja: x = 36 ÷ 6 = 6.
-          </div>
-<p>
-<strong>Respuesta:</strong>
-            6 obreros tardarían 6 días.
-          </p>
+<div class="paso"><span class="n">1</span> Harina arriba, galletas abajo en las dos razones: <span class="frac"><span class="num">4</span><span class="den">12</span></span> = <span class="frac"><span class="num">x</span><span class="den">30</span></span>.</div>
+<div class="paso"><span class="n">2</span> Producto cruzado: 4 × 30 = 12x, es decir, 120 = 12x.</div>
+<div class="paso"><span class="n">3</span> Se despeja: x = 120 ÷ 12 = 10.</div>
+<p><strong>Respuesta:</strong> 10 tazas de harina.</p>
 </div>
 <div class="ejemplo">
-<span class="et">Ejemplo 5 · Velocidad y tiempo</span>
-<p>Un autobús cubre una ruta a 60 mph en 5 horas. Si fuera a 75 mph, ¿cuánto tardaría?</p>
-<div class="paso">
-<span class="n">1</span>
-            Es inversa: a mayor velocidad, menor tiempo. Distancia = velocidad × tiempo se mantiene: 60 × 5 = 300 millas.
-          </div>
-<div class="paso">
-<span class="n">2</span>
-            A 75 mph: 75 × x = 300.
-          </div>
-<div class="paso">
-<span class="n">3</span>
-            Se despeja: x = 300 ÷ 75 = 4.
-          </div>
-<p>
-<strong>Respuesta:</strong>
-            tardaría 4 horas.
-          </p>
+<span class="et">Ejemplo 5 · Escala de un mapa</span>
+<p>En un mapa, 1 pulgada representa 25 millas. ¿Qué distancia real representan 3.5 pulgadas?</p>
+<div class="paso"><span class="n">1</span> Pulgadas arriba, millas abajo: <span class="frac"><span class="num">1</span><span class="den">25</span></span> = <span class="frac"><span class="num">3.5</span><span class="den">x</span></span>.</div>
+<div class="paso"><span class="n">2</span> Producto cruzado: 1 × x = 25 × 3.5.</div>
+<div class="paso"><span class="n">3</span> Se calcula: x = 87.5.</div>
+<p><strong>Respuesta:</strong> 87.5 millas.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 6 · Conversión de moneda</span>
+<p>Supongamos que el banco cambia 1 dólar por 18.50 pesos mexicanos. ¿Cuántos pesos se reciben por $40?</p>
+<div class="paso"><span class="n">1</span> Dólares arriba, pesos abajo: <span class="frac"><span class="num">1</span><span class="den">18.50</span></span> = <span class="frac"><span class="num">40</span><span class="den">x</span></span>.</div>
+<div class="paso"><span class="n">2</span> Se despeja: x = 40 × 18.50 = 740.</div>
+<p><strong>Respuesta:</strong> 740 pesos. (La tasa de cambio real varía cada día; aquí se usa un valor supuesto.)</p>
 </div>
 <div class="caja-tip">
-<strong>Idea unificadora:</strong>
-          en una proporción
-          <strong>directa</strong>
-          se mantiene constante la
-          <strong>razón</strong>
-          (división); en una proporción
-          <strong>inversa</strong>
-          se mantiene constante el
-          <strong>producto</strong>
-          (multiplicación). Identificar cuál cantidad permanece constante es la clave.
-        </div>
+<strong>Verificar sustituyendo:</strong> se reemplaza x por el resultado en la proporción original y se comprueba que los productos cruzados coinciden. En el Ejemplo 4: 4 × 30 = 120 y 12 × 10 = 120. ✓
+    </div>
+<div class="caja-atencion">
+<strong>Error frecuente:</strong> mezclar las unidades. Si en la primera razón la harina va arriba, en la segunda también debe ir arriba. Invertir una sola razón produce un resultado equivocado.
+    </div>
 </div>
-<div class="interactivos">
-<span class="titulo-grupo">Practica en línea</span>
-<a class="enlace-int" href="https://zhemaria.github.io/interactivos/proporcionalidad/" rel="noopener" target="_blank">
-<span aria-hidden="true" class="ico-int">🧮</span>
-<span class="txt-int">
-<span class="titulo-int">Proporcionalidad directa e inversa</span>
-<span class="desc-int">Aprende visualmente los conceptos de proporcionalidad directa e inversa</span>
-</span>
-<span aria-hidden="true" class="flecha-int">→</span>
-</a>
-</div>
-<div class="practica">
-<h3>Práctica interactiva 2 · ¿Directa o inversa?</h3>
-<p>Selecciona qué tipo de proporcionalidad describe cada situación.</p>
-<div class="pregunta" data-correcta="a">
-<div class="enun">1. A más horas trabajadas, más sueldo recibido.</div>
-<div class="opciones">
-<div class="opcion" data-op="a">Directa</div>
-<div class="opcion" data-op="b">Inversa</div>
-</div>
-<div class="fb"></div>
-</div>
-<div class="pregunta" data-correcta="b">
-<div class="enun">2. A más personas, menos pizza para cada una (la pizza es fija).</div>
-<div class="opciones">
-<div class="opcion" data-op="a">Directa</div>
-<div class="opcion" data-op="b">Inversa</div>
-</div>
-<div class="fb"></div>
-</div>
-<div class="pregunta" data-correcta="a">
-<div class="enun">3. A más galones de gasolina, más millas que se pueden recorrer.</div>
-<div class="opciones">
-<div class="opcion" data-op="a">Directa</div>
-<div class="opcion" data-op="b">Inversa</div>
-</div>
-<div class="fb"></div>
-</div>
-<div class="pregunta" data-correcta="b">
-<div class="enun">4. A mayor velocidad, menor tiempo para llegar al destino.</div>
-<div class="opciones">
-<div class="opcion" data-op="a">Directa</div>
-<div class="opcion" data-op="b">Inversa</div>
-</div>
-<div class="fb"></div>
-</div>
-</div>
-<div class="practica">
-<h3>Práctica interactiva 3 · Resolver problemas</h3>
+<div class="practica" id="practica3">
+<h3>Práctica interactiva 3 · Problemas de proporción directa</h3>
 <p>Selecciona la respuesta correcta.</p>
-<div class="pregunta" data-correcta="b">
-<div class="enun">1. Si 3 libras de tomate cuestan $4.50, ¿cuánto cuestan 8 libras?</div>
-<div class="opciones">
-<div class="opcion" data-op="a">$10.00</div>
-<div class="opcion" data-op="b">$12.00</div>
-<div class="opcion" data-op="c">$13.50</div>
+<div class="pregunta" data-correcta="c" data-pista="1.25 ÷ 5 = $0.25 por lápiz; 0.25 × 12 = $3.00.">
+<div class="enun">1. Si 5 lápices cuestan $1.25, ¿cuánto cuestan 12 lápices?</div>
+<div class="opciones"><div class="opcion" data-op="a">$2.40</div><div class="opcion" data-op="b">$2.75</div><div class="opcion" data-op="c">$3.00</div></div>
+<div aria-live="polite" class="fb"></div>
 </div>
-<div class="fb"></div>
+<div class="pregunta" data-correcta="a" data-pista="40 × 2.5 = 100.">
+<div class="enun">2. En un mapa, 1 pulgada equivale a 40 millas. ¿Cuántas millas representan 2.5 pulgadas?</div>
+<div class="opciones"><div class="opcion" data-op="a">100 millas</div><div class="opcion" data-op="b">80 millas</div><div class="opcion" data-op="c">42.5 millas</div></div>
+<div aria-live="polite" class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="a">
-<div class="enun">2. Si 8 obreros tardan 15 días en pintar un edificio, ¿cuántos días tardarían 10 obreros?</div>
-<div class="opciones">
-<div class="opcion" data-op="a">12 días</div>
-<div class="opcion" data-op="b">18 días</div>
-<div class="opcion" data-op="c">20 días</div>
-</div>
-<div class="fb"></div>
-</div>
-<div class="pregunta" data-correcta="c">
-<div class="enun">3. Si 5 lápices cuestan $1.25, ¿cuánto cuestan 12 lápices?</div>
-<div class="opciones">
-<div class="opcion" data-op="a">$2.40</div>
-<div class="opcion" data-op="b">$2.75</div>
-<div class="opcion" data-op="c">$3.00</div>
-</div>
-<div class="fb"></div>
+<div class="pregunta" data-correcta="b" data-pista="6/4 = x/10; 6 × 10 = 60; 60 ÷ 4 = 15.">
+<div class="enun">3. Una receta para 4 porciones lleva 6 onzas de queso. ¿Cuántas onzas se necesitan para 10 porciones?</div>
+<div class="opciones"><div class="opcion" data-op="a">12 onzas</div><div class="opcion" data-op="b">15 onzas</div><div class="opcion" data-op="c">24 onzas</div></div>
+<div aria-live="polite" class="fb"></div>
 </div>
 </div>
 
 
-<div class="caja-tarea">
-<h2 id="s-tarea">Tarea</h2><p>Para hacer por su cuenta, con el cuaderno abierto:</p><ul><li>Seis proporciones directas resueltas con el producto cruzado, comprobando el resultado al sustituirlo en la proporción original.</li><li>Cuatro situaciones en las que primero hay que decidir si la relación es <strong>directa o inversa</strong>. Escriba la justificación en una frase <em>antes</em> de calcular: ahí está la mitad de la nota.</li><li>Cuatro proporciones inversas —velocidad y tiempo, número de trabajadores y días, raciones y comensales— resueltas con el producto constante.</li><li>Dos problemas de escala o de receta en los que la razón se mantiene constante.</li><li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique <em>proporciones</em>. Resuelva cada una con el producto cruzado en papel y use la pantalla solo para comprobar el resultado.</li></ul><p>Tiempo estimado: 50 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
 
+
+<div class="caja-tarea" id="tarea">
+<h2>Tarea</h2>
+<p>Para hacer por su cuenta, con el cuaderno abierto:</p>
+<ul><li>Tres tablas de valores para decidir si son proporcionales. Una de ellas, hecha con precios reales de su supermercado.</li><li>Cuatro proporciones resueltas con el producto cruzado, verificando cada resultado.</li><li>Tres problemas reales de proporción directa: una receta de su casa adaptada a otro número de porciones, una distancia en un mapa y una conversión de moneda.</li><li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y busque los ejercicios de <em>razones y proporciones</em>. Si su versión no los trae, practique <em>fracciones equivalentes</em>: es la misma destreza de decidir si dos razones son iguales.</li></ul><p>Tiempo estimado: 45 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
 
 </div>
-<div class="quiz">
-<h2 id="s-quiz-de-la-leccion-4-2">Quiz de la lección 4.2</h2>
-<p>Doce preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 8 respuestas correctas.</p>
+
+<div class="quiz" id="quiz">
+<h2>Quiz de la lección 4.2</h2>
+<p>10 preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
 <div id="quiz-cuerpo"></div>
-<div id="resultado-quiz"></div>
-<button class="btn" id="btn-corregir">Corregir quiz</button>
-<button class="btn sec" id="btn-reintentar" style="display: none">Intentar de nuevo</button>
+<div aria-live="polite" id="resultado-quiz"></div>
+<button class="btn" id="btn-corregir" type="button">Corregir quiz</button>
+<button class="btn sec" id="btn-reintentar" style="display:none;" type="button">Intentar de nuevo</button>
 </div>
-<div class="rubrica">
-<h2 id="s-rubrica-analitica-de-la-leccion">Rúbrica analítica de la lección</h2>
-<p>Tres criterios evaluados en cuatro niveles de desempeño. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
-<table class="tabla-rubrica">
-<thead>
-<tr>
-<th>Criterio</th>
-<th>Inicial (1)</th>
-<th>En desarrollo (2)</th>
-<th>Competente (3)</th>
-<th>Destacado (4)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Producto cruzado</td>
-<td>No identifica los pares de productos.</td>
-<td>Aplica el producto cruzado con apoyo.</td>
-<td>Aplica el producto cruzado y despeja la incógnita sin ayuda.</td>
-<td>Aplica, despeja y verifica el resultado con la razón inicial.</td>
-</tr>
-<tr>
-<td>Clasificar directa vs. inversa</td>
-<td>No distingue ambos tipos.</td>
-<td>Clasifica casos simples con apoyo.</td>
-<td>Clasifica correctamente cualquier situación.</td>
-<td>Clasifica y explica con la pregunta «¿qué pasa con la otra cantidad?».</td>
-</tr>
-<tr>
-<td>Planteo y resolución en contextos reales</td>
-<td>No plantea la proporción correcta.</td>
-<td>Plantea con apoyo, pero comete errores de unidades.</td>
-<td>Plantea y resuelve correctamente cualquier problema.</td>
-<td>Plantea, resuelve e interpreta la respuesta en el contexto original.</td>
-</tr>
-</tbody>
-</table>
+
+<div class="rubrica" id="rubrica"><h2>Rúbrica analítica de la lección</h2><p>Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<div class="tabla-wrap"><table class="tabla-rubrica"><caption>Tres criterios evaluados en cuatro niveles de desempeño.</caption><thead><tr><th scope="col">Criterio</th><th scope="col">Inicial (1)</th><th scope="col">En desarrollo (2)</th><th scope="col">Competente (3)</th><th scope="col">Destacado (4)</th></tr></thead><tbody><tr><th scope="row">Planteo con unidades alineadas</th><td>Coloca los datos sin respetar las unidades.</td><td>Plantea con apoyo; a veces invierte una razón.</td><td>Plantea la proporción con las mismas unidades en la misma posición.</td><td>Plantea correctamente y explica por qué la relación es proporcional.</td></tr><tr><th scope="row">Producto cruzado</th><td>No identifica los pares de productos.</td><td>Aplica el producto cruzado con apoyo.</td><td>Aplica el producto cruzado y despeja la incógnita sin errores.</td><td>Aplica, despeja y resuelve también por tasa unitaria como comprobación.</td></tr><tr><th scope="row">Verificación</th><td>No verifica la solución.</td><td>Verifica solo cuando se le indica.</td><td>Verifica sustituyendo en la proporción original.</td><td>Verifica e interpreta el resultado en el contexto del problema.</td></tr></tbody></table></div></div>
+
+<div class="cierre" id="cierre">
+<h2>Cierre y enlace con la próxima lección</h2>
+<p>En esta lección las razones de la Lección 4.1 se convirtieron en una herramienta de <strong>predicción</strong>: la <strong>proporción directa</strong>, reconocida por su <strong>razón constante</strong> y resuelta con el <strong>producto cruzado</strong> o la <strong>regla de tres</strong>.</p>
+<p>En la <strong>Lección 4.3 · Proporciones inversas y aplicaciones mixtas</strong> se estudiarán las situaciones en que una cantidad <strong>aumenta</strong> mientras la otra <strong>disminuye</strong>, como más trabajadores y menos días. Allí lo constante ya no será la razón, sino el <strong>producto</strong>, y se aprenderá a decidir qué tipo de proporción corresponde a cada problema.</p>
 </div>
-<div class="cierre">
-<h2 id="s-cierre-y-enlace-con-la-proxima-leccion">Cierre y enlace con la próxima lección</h2>
-<p>
-          En esta lección las razones de la Lección 4.1 se convirtieron en una herramienta de
-          <strong>predicción</strong>
-          : la
-          <strong>proporción</strong>
-          , resuelta con el
-          <strong>producto cruzado</strong>
-          . Quedó establecida la distinción esencial entre proporcionalidad
-          <strong>directa</strong>
-          (razón constante) e
-          <strong>inversa</strong>
-          (producto constante).
-        </p>
-<p>
-          Con esto se cierra el Tema 4. En el Tema 5, la <strong>Lección 5.1 · Porcentajes: concepto y cálculo</strong>
-          se aplicará todo lo aprendido a un caso particular muy común: las razones expresadas
-          <strong>por cada 100</strong>
-          . Se estudiarán los tres tipos de problemas de porcentaje (hallar la parte, el total o el porcentaje), y se introducirá el
-          <strong>cambio porcentual</strong>
-          como una aplicación directa de las proporciones.
-        </p>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 4 · Lección 4.2</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 </div>
-<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 4 · Lección 4.2</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
-</div>
-<p>
 <script>
-        (function () {
-          /* ---- Práctica de opciones ---- */
-          var preguntasOp = document.querySelectorAll('.practica .pregunta[data-correcta]');
-          preguntasOp.forEach(function (preg) {
-            var correcta = preg.getAttribute('data-correcta');
-            var opciones = preg.querySelectorAll('.opcion');
-            var fb = preg.querySelector('.fb');
-            opciones.forEach(function (op) {
-              op.addEventListener('click', function () {
-                opciones.forEach(function (o) {
-                  o.classList.remove('correcta', 'incorrecta', 'elegida');
-                });
-                var elegida = op.getAttribute('data-op');
-                if (elegida === correcta) {
-                  op.classList.add('correcta');
-                  fb.textContent = '¡Correcto! Bien razonado.';
-                  fb.className = 'fb ok';
-                } else {
-                  op.classList.add('incorrecta');
-                  opciones.forEach(function (o) {
-                    if (o.getAttribute('data-op') === correcta) o.classList.add('correcta');
-                  });
-                  fb.textContent = 'Revisa: la opción marcada en verde es la correcta.';
-                  fb.className = 'fb no';
-                }
-                fb.style.display = 'block';
-              });
-            });
-          });
+window.QUIZ = [
+ {
+  "enun": "1. Una tienda cobra $8 por 2 camisetas, $16 por 4 y $24 por 6. La relación entre camisetas y costo es:",
+  "ops": [
+   "Proporcional: la razón siempre es $4 por camiseta",
+   "No proporcional, porque el costo cambia",
+   "Inversa",
+   "No se puede saber"
+  ],
+  "correcta": 0,
+  "exp": "8 ÷ 2 = 16 ÷ 4 = 24 ÷ 6 = 4."
+ },
+ {
+  "enun": "2. Un gimnasio cobra $20 de inscripción más $15 al mes. ¿Es proporcional el costo total al número de meses?",
+  "ops": [
+   "Sí, porque aumenta al aumentar los meses",
+   "No, porque la inscripción fija hace que la razón cambie",
+   "Sí, la razón es 15",
+   "Sí, la razón es 35"
+  ],
+  "correcta": 1,
+  "exp": "1 mes cuesta $35 y 2 meses $50: la razón no es constante."
+ },
+ {
+  "enun": "3. En la proporción 2/5 = x/20, x =",
+  "ops": [
+   "4",
+   "6",
+   "8",
+   "10"
+  ],
+  "correcta": 2,
+  "exp": "2 × 20 = 40; 40 ÷ 5 = 8."
+ },
+ {
+  "enun": "4. En la proporción 6/9 = 14/x, x =",
+  "ops": [
+   "11",
+   "21",
+   "24",
+   "27"
+  ],
+  "correcta": 1,
+  "exp": "9 × 14 = 126; 126 ÷ 6 = 21."
+ },
+ {
+  "enun": "5. En la proporción x/7 = 12/28, x =",
+  "ops": [
+   "3",
+   "4",
+   "48",
+   "2"
+  ],
+  "correcta": 0,
+  "exp": "7 × 12 = 84; 84 ÷ 28 = 3."
+ },
+ {
+  "enun": "6. En la proporción 5/x = 20/36, x =",
+  "ops": [
+   "4",
+   "9",
+   "144",
+   "15"
+  ],
+  "correcta": 1,
+  "exp": "5 × 36 = 180; 180 ÷ 20 = 9."
+ },
+ {
+  "enun": "7. En la proporción 1.5/4 = x/12, x =",
+  "ops": [
+   "3",
+   "4",
+   "4.5",
+   "6"
+  ],
+  "correcta": 2,
+  "exp": "1.5 × 12 = 18; 18 ÷ 4 = 4.5."
+ },
+ {
+  "enun": "8. Una receta para 4 porciones lleva 3 tazas de arroz. ¿Cuántas tazas se necesitan para 10 porciones?",
+  "ops": [
+   "6",
+   "7.5",
+   "9",
+   "13.3"
+  ],
+  "correcta": 1,
+  "exp": "3/4 = x/10; 30 ÷ 4 = 7.5."
+ },
+ {
+  "enun": "9. En un mapa, 1 pulgada equivale a 30 millas. ¿Cuántas millas representan 4.5 pulgadas?",
+  "ops": [
+   "34.5",
+   "120",
+   "135",
+   "150"
+  ],
+  "correcta": 2,
+  "exp": "30 × 4.5 = 135."
+ },
+ {
+  "enun": "10. Un auto recorre 150 millas en 3 horas a velocidad constante. ¿Cuántas millas recorre en 5 horas?",
+  "ops": [
+   "200",
+   "250",
+   "300",
+   "90"
+  ],
+  "correcta": 1,
+  "exp": "150 ÷ 3 = 50 mph; 50 × 5 = 250."
+ }
+];
+window.QUIZ_MIN = 7;
+window.QUIZ_SIGUE = "Puedes continuar a la Lección 4.3.";
+</script>
+<script>
+(function () {
+  function num(txt) {
+    var t = String(txt).trim().replace(/\s/g, '').replace(/[−–]/g, '-').replace(/[$%]/g, '').replace(/,/g, '');
+    if (t === '') return null;
+    var m = t.match(/^(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)$/);
+    if (m) { var d = parseFloat(m[2]); return d === 0 ? null : { v: parseFloat(m[1]) / d, dec: false }; }
+    if (/^-?\d*\.?\d+$/.test(t)) return { v: parseFloat(t), dec: t.indexOf('.') !== -1 };
+    return null;
+  }
+  window.leerNumero = num;
 
-          /* ---- Práctica de producto cruzado ---- */
-          var clavesPC = {pc1: 12, pc2: 7, pc3: 48};
-          document.getElementById('btn-pc').addEventListener('click', function () {
-            Object.keys(clavesPC).forEach(function (id) {
-              var campo = document.getElementById(id);
-              var fb = document.getElementById('fb-' + id);
-              var limpio = campo.value.trim().replace(/\s/g, '');
-              var val = parseInt(limpio, 10);
-              if (limpio === '' || isNaN(val)) {
-                fb.textContent = 'Escribe un número entero.';
-                fb.className = 'fb no';
-              } else if (val === clavesPC[id]) {
-                fb.textContent = '¡Correcto!';
-                fb.className = 'fb ok';
-              } else {
-                fb.textContent = 'Revisa: aplica el producto cruzado y despeja x.';
-                fb.className = 'fb no';
-              }
-              fb.style.display = 'block';
-            });
-          });
+  /* Práctica de opciones (clic o teclado) */
+  document.querySelectorAll('.practica .pregunta[data-correcta]').forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.setAttribute('tabindex', '0'); op.setAttribute('role', 'button');
+      function elegir() {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        if (op.getAttribute('data-op') === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! ' + (preg.getAttribute('data-ok') || 'Bien razonado.');
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) { if (o.getAttribute('data-op') === correcta) o.classList.add('correcta'); });
+          fb.textContent = 'Revisa: ' + (preg.getAttribute('data-pista') || 'la opción marcada en verde es la correcta.');
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      }
+      op.addEventListener('click', elegir);
+      op.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); elegir(); } });
+    });
+  });
 
-          /* ---- Quiz ---- */
-          var preguntasQuiz = [
-            {enun: '1. Una proporción es:', ops: ['Una resta de fracciones', 'Una igualdad entre dos razones', 'Una suma de razones', 'Una razón con denominador 100'], correcta: 1},
-            {enun: '2. ¿Forman proporción 3/4 y 9/12?', ops: ['Sí, ambas simplifican a 3/4', 'No, son diferentes', 'Solo si se invierten', 'No se puede saber'], correcta: 0},
-            {enun: '3. En la proporción 2/5 = x/20, x =', ops: ['4', '6', '8', '10'], correcta: 2},
-            {enun: '4. En la proporción 6/9 = 14/x, x =', ops: ['11', '21', '24', '27'], correcta: 1},
-            {enun: '5. «A más libras compradas, más dinero pago» es una proporcionalidad:', ops: ['Directa', 'Inversa', 'Constante', 'Ninguna'], correcta: 0},
-            {enun: '6. «Más obreros, menos tiempo para terminar» es una proporcionalidad:', ops: ['Directa', 'Inversa', 'Constante', 'Ninguna'], correcta: 1},
-            {enun: '7. En una proporción directa se mantiene constante:', ops: ['La suma', 'La resta', 'La razón (división)', 'El producto (multiplicación)'], correcta: 2},
-            {enun: '8. En una proporción inversa se mantiene constante:', ops: ['La suma', 'La razón (división)', 'La diferencia', 'El producto (multiplicación)'], correcta: 3},
-            {enun: '9. Si 5 libras de uvas cuestan $7.50, ¿cuánto cuestan 8 libras?', ops: ['$10.50', '$12.00', '$13.50', '$15.00'], correcta: 1},
-            {enun: '10. Si 4 obreros tardan 18 días, ¿cuántos días tardarán 6 obreros?', ops: ['8 días', '12 días', '15 días', '24 días'], correcta: 1},
-            {enun: '11. A 50 mph un viaje toma 6 horas. ¿Cuánto toma a 75 mph?', ops: ['3 horas', '4 horas', '5 horas', '9 horas'], correcta: 1},
-            {enun: '12. El producto cruzado se aplica cuando hay:', ops: ['Una sola fracción', 'Suma de dos fracciones', 'Igualdad de dos razones', 'Resta de dos razones'], correcta: 2}
-          ];
+  /* Práctica de respuesta abierta: acepta enteros, decimales y fracciones equivalentes */
+  document.querySelectorAll('.btn-verificar').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var grupo = btn.getAttribute('data-grupo');
+      document.querySelectorAll('input[data-grupo="' + grupo + '"]').forEach(function (campo) {
+        var fb = document.getElementById('fb-' + campo.id);
+        var r = num(campo.value);
+        var clave = num(campo.getAttribute('data-clave')).v;
+        var tol = r && r.dec ? parseFloat(campo.getAttribute('data-tol') || '0.005') : 1e-9;
+        if (r === null) {
+          fb.textContent = 'Escribe un número (entero, decimal o fracción como 3/4).';
+          fb.className = 'fb no';
+        } else if (Math.abs(r.v - clave) <= tol) {
+          fb.textContent = '¡Correcto!';
+          fb.className = 'fb ok';
+        } else {
+          fb.textContent = 'Revisa: ' + (campo.getAttribute('data-pista') || 'repasa el procedimiento paso a paso.');
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
 
-          var cuerpo = document.getElementById('quiz-cuerpo');
-          preguntasQuiz.forEach(function (p, i) {
-            var div = document.createElement('div');
-            div.className = 'pregunta';
-            div.setAttribute('data-idx', i);
-            var enun = document.createElement('div');
-            enun.className = 'enun';
-            enun.textContent = p.enun;
-            div.appendChild(enun);
-            var cont = document.createElement('div');
-            cont.className = 'opciones';
-            p.ops.forEach(function (texto, j) {
-              var op = document.createElement('div');
-              op.className = 'opcion';
-              op.setAttribute('data-j', j);
-              op.textContent = texto;
-              op.addEventListener('click', function () {
-                if (div.getAttribute('data-bloqueado') === 'si') return;
-                cont.querySelectorAll('.opcion').forEach(function (o) {
-                  o.classList.remove('elegida');
-                });
-                op.classList.add('elegida');
-                div.setAttribute('data-elegida', j);
-              });
-              cont.appendChild(op);
-            });
-            div.appendChild(cont);
-            var fb = document.createElement('div');
-            fb.className = 'fb';
-            div.appendChild(fb);
-            cuerpo.appendChild(div);
-          });
-
-          var btnCorregir = document.getElementById('btn-corregir');
-          var btnReintentar = document.getElementById('btn-reintentar');
-          var resultado = document.getElementById('resultado-quiz');
-
-          btnCorregir.addEventListener('click', function () {
-            var aciertos = 0;
-            var divs = cuerpo.querySelectorAll('.pregunta');
-            divs.forEach(function (div, i) {
-              var elegida = div.getAttribute('data-elegida');
-              var fb = div.querySelector('.fb');
-              var opciones = div.querySelectorAll('.opcion');
-              div.setAttribute('data-bloqueado', 'si');
-              opciones.forEach(function (o) {
-                o.classList.remove('correcta', 'incorrecta');
-              });
-              if (elegida === null) {
-                fb.textContent = 'No se respondió esta pregunta.';
-                fb.className = 'fb no';
-                fb.style.display = 'block';
-                opciones[preguntasQuiz[i].correcta].classList.add('correcta');
-                return;
-              }
-              var idxElegida = parseInt(elegida, 10);
-              if (idxElegida === preguntasQuiz[i].correcta) {
-                aciertos++;
-                opciones[idxElegida].classList.add('correcta');
-                fb.textContent = '¡Correcto!';
-                fb.className = 'fb ok';
-              } else {
-                opciones[idxElegida].classList.add('incorrecta');
-                opciones[preguntasQuiz[i].correcta].classList.add('correcta');
-                fb.textContent = 'Incorrecto. La respuesta correcta está marcada en verde.';
-                fb.className = 'fb no';
-              }
-              fb.style.display = 'block';
-            });
-
-            resultado.style.display = 'block';
-            if (aciertos >= 8) {
-              resultado.className = 'aprob';
-              resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. ¡Aprobado! Puedes continuar a la Lección 4.3.';
-            } else {
-              resultado.className = 'repro';
-              resultado.textContent = 'Resultado: ' + aciertos + ' de 12 correctas. Repasa la lección e intenta de nuevo (se requieren 8).';
-            }
-            btnCorregir.style.display = 'none';
-            btnReintentar.style.display = 'inline-block';
-          });
-
-          btnReintentar.addEventListener('click', function () {
-            var divs = cuerpo.querySelectorAll('.pregunta');
-            divs.forEach(function (div) {
-              div.removeAttribute('data-elegida');
-              div.removeAttribute('data-bloqueado');
-              div.querySelectorAll('.opcion').forEach(function (o) {
-                o.classList.remove('correcta', 'incorrecta', 'elegida');
-              });
-              var fb = div.querySelector('.fb');
-              fb.style.display = 'none';
-              fb.textContent = '';
-            });
-            resultado.style.display = 'none';
-            btnReintentar.style.display = 'none';
-            btnCorregir.style.display = 'inline-block';
-            window.scrollTo({top: document.querySelector('.quiz').offsetTop - 20, behavior: 'smooth'});
-          });
-        })();
-      </script>
-</p>
+  /* Quiz */
+  var Q = window.QUIZ || [], MIN = window.QUIZ_MIN || 0, cuerpo = document.getElementById('quiz-cuerpo');
+  if (!cuerpo) return;
+  Q.forEach(function (p, i) {
+    var div = document.createElement('div'); div.className = 'pregunta';
+    var enun = document.createElement('div'); enun.className = 'enun'; enun.id = 'q' + i; enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div'); cont.className = 'opciones';
+    cont.setAttribute('role', 'group'); cont.setAttribute('aria-labelledby', 'q' + i);
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div'); op.className = 'opcion'; op.textContent = texto;
+      op.setAttribute('tabindex', '0'); op.setAttribute('role', 'button');
+      function elegir() {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('elegida'); o.setAttribute('aria-pressed', 'false'); });
+        op.classList.add('elegida'); op.setAttribute('aria-pressed', 'true');
+        div.setAttribute('data-elegida', j);
+      }
+      op.addEventListener('click', elegir);
+      op.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); elegir(); } });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div'); fb.className = 'fb'; div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+  var bC = document.getElementById('btn-corregir'), bR = document.getElementById('btn-reintentar'), res = document.getElementById('resultado-quiz');
+  bC.addEventListener('click', function () {
+    var ok = 0;
+    cuerpo.querySelectorAll('.pregunta').forEach(function (div, i) {
+      var el = div.getAttribute('data-elegida'), fb = div.querySelector('.fb'), ops = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      ops[Q[i].correcta].classList.add('correcta');
+      if (el === null) { fb.textContent = 'No se respondió esta pregunta.'; fb.className = 'fb no'; }
+      else if (parseInt(el, 10) === Q[i].correcta) { ok++; fb.textContent = '¡Correcto!'; fb.className = 'fb ok'; }
+      else { ops[parseInt(el, 10)].classList.add('incorrecta'); fb.textContent = 'Incorrecto. ' + (Q[i].exp || 'La respuesta correcta está marcada en verde.'); fb.className = 'fb no'; }
+      fb.style.display = 'block';
+    });
+    res.style.display = 'block';
+    res.setAttribute('role', 'status');
+    if (ok >= MIN) { res.className = 'aprob'; res.textContent = 'Resultado: ' + ok + ' de ' + Q.length + ' correctas. ¡Aprobado! ' + (window.QUIZ_SIGUE || ''); }
+    else { res.className = 'repro'; res.textContent = 'Resultado: ' + ok + ' de ' + Q.length + ' correctas. Repasa la lección e intenta de nuevo (se requieren ' + MIN + ').'; }
+    bC.style.display = 'none'; bR.style.display = 'inline-block';
+  });
+  bR.addEventListener('click', function () {
+    cuerpo.querySelectorAll('.pregunta').forEach(function (div) {
+      div.removeAttribute('data-elegida'); div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); o.setAttribute('aria-pressed', 'false'); });
+      var fb = div.querySelector('.fb'); fb.style.display = 'none'; fb.textContent = '';
+    });
+    res.style.display = 'none'; bR.style.display = 'none'; bC.style.display = 'inline-block';
+    document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+  });
+})();
+</script>
 </body>
 </html>

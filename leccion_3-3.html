@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<!-- Lección 3.3 · Matemáticas Nivel 2 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+
+
+<title>Lección 3.3 · PEMDAS en expresiones con fracciones y contexto algebraico</title><meta content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago" name="author"/><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
+<style>
+  :root {
+    --tema: #1a237e; --tema-d: #0d144d; --tema-bg: #e8eaf6; --tema-bg2: #dfe2f1; --tema-soft: #e8eaf6;
+    --txt: #222; --bg: #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; background: var(--bg);
+         color: var(--txt); line-height: 1.6; font-size: 16px; }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+             clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+  header.principal { background: var(--tema); background: linear-gradient(135deg, #0d144d 0%, #1a237e 55%, #283593 100%); color: #fff; padding: 32px 30px;
+    border-radius: 14px; margin-bottom: 22px; box-shadow: 0 4px 14px rgba(13,20,77,.28); }
+  header.principal .ruta { font-size: 13px; letter-spacing: .4px; text-transform: uppercase; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; }
+  header.principal .meta { font-size: 14px; }
+
+  nav.indice { background: #fff; border-radius: 10px; padding: 12px 20px 14px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px; }
+  nav.indice h2 { font-size: 15px; margin: 0 0 6px; color: var(--tema-d); text-transform: uppercase; letter-spacing: .4px; }
+  nav.indice ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 28px; font-size: 14px; }
+  nav.indice li { margin: 3px 0; break-inside: avoid; }
+  nav.indice a { color: var(--tema-d); font-weight: 600; }
+  nav.indice a:hover, nav.indice a:focus { text-decoration: underline; }
+  @media (max-width: 620px) { nav.indice ol { columns: 1; } }[id] { scroll-margin-top: 14px; }
+
+  h2.seccion { color: var(--tema-d); font-size: 21px; margin: 34px 0 12px; padding-bottom: 6px;
+    border-bottom: 3px solid var(--tema-bg); }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos { background: var(--tema-soft); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 18px; }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque { background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px; }
+  p { margin: 10px 0; }
+
+  .frac { display: inline-block; text-align: center; vertical-align: middle; margin: 0 4px; font-size: 16px; }
+  .frac .num { display: block; padding: 0 7px; border-bottom: 2px solid #444; }
+  .frac .den { display: block; padding: 0 7px; }
+  .frac.grande { font-size: 20px; }
+  .formula-grande { text-align: center; font-size: 18px; font-weight: 700; color: var(--tema-d); margin: 14px 0; }
+
+  .ejemplo { background: #fafafa; border: 1px solid #e3e3e3; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+  .ejemplo .et { display: inline-block; background: var(--tema); color: #fff; font-size: 12px; font-weight: 700;
+    padding: 3px 12px; border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px; }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n { position: absolute; left: 0; top: 0; background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%; font-size: 13px; font-weight: 700; text-align: center; line-height: 22px; }
+  .expr-paso { font-family: 'Consolas', 'Courier New', monospace; background: #f5f6fa; border: 1px solid #d4d8eb;
+    padding: 9px 14px; border-radius: 6px; font-size: 16px; margin: 5px 0; overflow-x: auto; }
+  .resalta { background: #fff59d; padding: 0 3px; border-radius: 3px; font-weight: 700; color: #5a3d00; }
+
+  .caja-tip { background: #e8f5e9; border-left: 5px solid #2e7d32; padding: 12px 16px;
+    border-radius: 0 8px 8px 0; margin: 14px 0; color: #1b5e20; font-size: 15px; }
+  .caja-tip strong { color: #1b5e20; }
+  .caja-atencion { background: #fff8e1; border-left: 5px solid #f9a825; padding: 12px 16px;
+    border-radius: 0 8px 8px 0; margin: 14px 0; font-size: 15px; color: #5a3d00; }
+  .caja-atencion strong { color: #5C3900; }
+
+  .comparacion { display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0; }
+  .tipo-prop { flex: 1; min-width: 250px; border-radius: 10px; padding: 16px; }
+  .tipo-directa { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .tipo-directa h3, .tipo-directa strong { color: #0d47a1; }
+  .tipo-inversa { background: #fff3e0; border-left: 5px solid #bf360c; }
+  .tipo-inversa h3, .tipo-inversa strong { color: #8a3000; }
+  .tipo-prop h3 { margin-top: 0; }
+
+  table.tabla { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; background: #fff; }
+  table.tabla caption { caption-side: top; text-align: left; font-weight: 700; color: var(--tema-d); padding: 4px 0 6px; font-size: 14px; }
+  table.tabla th, table.tabla td { border: 1px solid #d0d0d0; padding: 9px 12px; text-align: center; }
+  table.tabla thead th { background: var(--tema); color: #fff; }
+  table.tabla tbody th { background: var(--tema-soft); color: var(--tema-d); font-weight: 600; }
+  table.tabla.izq td { text-align: left; }
+  .tabla-wrap { overflow-x: auto; }
+
+  .svg-wrap { text-align: center; margin: 16px 0; }
+  .svg-wrap svg { max-width: 100%; height: auto; }
+
+  .practica { background: var(--tema-bg2); border: 1px dashed var(--tema); border-radius: 10px; padding: 16px 20px; margin: 18px 0; }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion { background: #fff; border: 2px solid #bdbdbd; border-radius: 8px; padding: 9px 14px; cursor: pointer; transition: all .15s; }
+  .opcion:hover, .opcion:focus { border-color: var(--tema); outline: none; }
+  .opcion:focus-visible { outline: 3px solid var(--tema); outline-offset: 2px; }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); background: var(--tema-soft); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; } .fb.no { color: #b71c1c; }
+  .campo { font-size: 16px; padding: 7px 10px; border: 2px solid #9e9e9e; border-radius: 7px; width: 150px; font-family: inherit; }
+  .campo:focus { border-color: var(--tema); outline: 2px solid var(--tema); }
+  .btn { background: var(--tema); color: #fff; border: none; padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px; }
+  .btn:hover { background: var(--tema-d); }
+  .btn:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+  .btn.sec { background: #546e7a; } .btn.sec:hover { background: #37474f; }.caja-tarea { background: #ede7f6; border-left: 6px solid #5e35b1; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0; }
+  .caja-tarea h2 { margin-top: 0; color: #4527a0; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz { font-size: 17px; font-weight: 700; margin: 14px 0; padding: 12px; border-radius: 8px; text-align: center; display: none; }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica { width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+  table.tabla-rubrica caption { caption-side: top; text-align: left; font-size: 14px; color: #444; padding-bottom: 6px; }
+  table.tabla-rubrica th, table.tabla-rubrica td { border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top; text-align: left; }
+  table.tabla-rubrica thead th { background: var(--tema); color: #fff; font-size: 12px; text-transform: uppercase; letter-spacing: .3px; }
+  table.tabla-rubrica tbody th { background: var(--tema-soft); font-weight: 600; color: var(--tema-d); }
+
+  .cierre { background: #263238; color: #eceff1; border-radius: 12px; padding: 22px 26px; margin: 24px 0 10px; }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer { text-align: center; padding: 20px; color: #222; font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px; }
+  footer a { color: var(--tema-d); }
+
+
+  .volver-indice { position: fixed; right: 18px; bottom: 18px; z-index: 60; background: var(--tema-d); color: #fff;
+    border-radius: 999px; padding: 10px 16px; font-weight: 700; font-size: .92rem; text-decoration: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,.28); }
+  .volver-indice:hover { background: var(--tema); color: #fff; }
+  .volver-indice:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+  @media print { nav.indice, .volver-indice { display: none; } }
+</style>
+</head>
+<body>
+<div class="contenedor">
+<header class="principal">
+<div class="ruta">Spanish ASE Math · Nivel 2 · Tema 3 · PEMDAS completo</div>
+<h1>Lección 3.3 · PEMDAS en expresiones con fracciones y contexto algebraico</h1>
+<div class="meta">Unas 4 horas, a su ritmo · NRS 2–3</div>
+</header>
+<div class="caja-objetivos">
+<h2>Objetivos de la lección</h2>
+<ul><li>Tratar la barra de fracción como un paréntesis implícito: numerador y denominador se resuelven por separado antes de dividir.</li><li>Operar con fracciones (sumar, restar, multiplicar, dividir y elevar) respetando el orden PEMDAS.</li><li>Sustituir valores positivos, negativos y fraccionarios en expresiones algebraicas y evaluarlas.</li><li>Aplicar fórmulas de la hoja del GED a problemas con contexto.</li><li>Verificar resultados con la calculadora TI-30XS usando los paréntesis necesarios.</li></ul>
+</div>
+<nav aria-label="Contenido de la lección" class="indice" id="indice">
+<h2>Contenido de la lección</h2>
+<ol><li><a href="#s1">La barra de fracción</a></li><li><a href="#s2">Fracciones con PEMDAS</a></li><li><a href="#practica1">Práctica 1</a></li><li><a href="#s3">Sustituir y evaluar</a></li><li><a href="#practica2">Práctica 2</a></li><li><a href="#s4">Fórmulas tipo GED</a></li><li><a href="#practica3">Práctica 3</a></li><li><a href="#tarea">Tarea</a></li><li><a href="#quiz">Quiz</a></li><li><a href="#rubrica">Rúbrica</a></li><li><a href="#cierre">Cierre</a></li></ol>
+</nav>
+<div class="bloque">
+<p><strong>Conexión con la lección anterior.</strong> En la Lección 3.2 se incorporaron potencias, raíces y signos negativos a la pirámide PEMDAS, y se vio por primera vez que la barra de fracción agrupa. Esta lección cierra el Tema 3 con dos pasos más: <strong>operar con fracciones dentro de PEMDAS</strong> y <strong>pasar de los números a las letras</strong>, es decir, sustituir valores en expresiones algebraicas. Es exactamente lo que pide el GED cada vez que entrega una fórmula.</p>
+</div>
+<h2 class="seccion" id="s1">1. La barra de fracción como paréntesis implícito</h2>
+<div class="bloque">
+<p>Una fracción escrita con barra horizontal contiene <strong>dos paréntesis invisibles</strong>: uno alrededor del numerador y otro alrededor del denominador. Primero se resuelve cada parte por separado, siguiendo PEMDAS dentro de cada una; la división es el <strong>último</strong> paso.</p>
+<p class="formula-grande"><span class="frac"><span class="num">3 + 5</span><span class="den">2 × 4</span></span>  significa  (3 + 5) ÷ (2 × 4) = 8 ÷ 8 = 1</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 1 · Con potencias y signos</span>
+<p>Evaluar <span class="frac"><span class="num">12 − 2³</span><span class="den">1 − 3</span></span>.</p>
+<div class="paso"><span class="n">1</span> Numerador: E antes que S. 2³ = 8, así que 12 − 8 = 4.</div>
+<div class="paso"><span class="n">2</span> Denominador: 1 − 3 = −2.</div>
+<div class="paso"><span class="n">3</span> Se divide: 4 ÷ (−2) = −2 (signos distintos → negativo).</div>
+<p><strong>Respuesta:</strong> −2.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 2 · Fracción dentro de una expresión mayor</span>
+<p>Evaluar 5 + <span class="frac"><span class="num">18</span><span class="den">4 + 2</span></span> × 3.</p>
+<div class="expr-paso">5 + <span class="resalta">18 ÷ (4 + 2)</span> × 3</div>
+<div class="paso"><span class="n">1</span> P (implícito): 4 + 2 = 6, y la fracción vale 18 ÷ 6 = 3.</div>
+<div class="expr-paso">5 + <span class="resalta">3 × 3</span></div>
+<div class="paso"><span class="n">2</span> MD: 3 × 3 = 9.</div>
+<div class="paso"><span class="n">3</span> AS: 5 + 9 = 14.</div>
+<p><strong>Respuesta:</strong> 14.</p>
+</div>
+<div class="caja-atencion">
+<strong>Al pasar a una línea o a la calculadora:</strong> la fracción <span class="frac"><span class="num">12 − 2³</span><span class="den">1 − 3</span></span> se escribe <strong>(12 − 2³) ÷ (1 − 3)</strong>. Si se omiten los paréntesis, 12 − 2³ ÷ 1 − 3 da 1, un resultado completamente distinto.
+    </div>
+</div>
+
+<h2 class="seccion" id="s2">2. Operar con fracciones siguiendo PEMDAS</h2>
+<div class="bloque">
+<p>Las fracciones <strong>no cambian el orden</strong> de las operaciones. Lo que cambia es la forma de hacer cada operación, que ya se estudió en el Tema 2: para sumar y restar se busca un denominador común; para multiplicar, numerador por numerador y denominador por denominador; para dividir, se multiplica por el recíproco.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 3 · Primero la multiplicación</span>
+<p>Evaluar <span class="frac"><span class="num">1</span><span class="den">2</span></span> + <span class="frac"><span class="num">3</span><span class="den">4</span></span> × <span class="frac"><span class="num">2</span><span class="den">3</span></span>.</p>
+<div class="paso"><span class="n">1</span> MD antes que AS: <span class="frac"><span class="num">3</span><span class="den">4</span></span> × <span class="frac"><span class="num">2</span><span class="den">3</span></span> = <span class="frac"><span class="num">6</span><span class="den">12</span></span> = <span class="frac"><span class="num">1</span><span class="den">2</span></span>.</div>
+<div class="paso"><span class="n">2</span> AS: <span class="frac"><span class="num">1</span><span class="den">2</span></span> + <span class="frac"><span class="num">1</span><span class="den">2</span></span> = <span class="frac"><span class="num">2</span><span class="den">2</span></span> = 1.</div>
+<p><strong>Respuesta:</strong> 1. Si se hubiera sumado primero, se obtendría <span class="frac"><span class="num">5</span><span class="den">4</span></span> × <span class="frac"><span class="num">2</span><span class="den">3</span></span> = <span class="frac"><span class="num">5</span><span class="den">6</span></span>, que es incorrecto.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 4 · Potencia y división de fracciones</span>
+<p>Evaluar (<span class="frac"><span class="num">2</span><span class="den">3</span></span>)² − <span class="frac"><span class="num">1</span><span class="den">9</span></span> ÷ <span class="frac"><span class="num">1</span><span class="den">3</span></span>.</p>
+<div class="paso"><span class="n">1</span> E: (<span class="frac"><span class="num">2</span><span class="den">3</span></span>)² = <span class="frac"><span class="num">2 × 2</span><span class="den">3 × 3</span></span> = <span class="frac"><span class="num">4</span><span class="den">9</span></span>.</div>
+<div class="paso"><span class="n">2</span> MD: <span class="frac"><span class="num">1</span><span class="den">9</span></span> ÷ <span class="frac"><span class="num">1</span><span class="den">3</span></span> = <span class="frac"><span class="num">1</span><span class="den">9</span></span> × <span class="frac"><span class="num">3</span><span class="den">1</span></span> = <span class="frac"><span class="num">3</span><span class="den">9</span></span>.</div>
+<div class="paso"><span class="n">3</span> AS: <span class="frac"><span class="num">4</span><span class="den">9</span></span> − <span class="frac"><span class="num">3</span><span class="den">9</span></span> = <span class="frac"><span class="num">1</span><span class="den">9</span></span>.</div>
+<p><strong>Respuesta:</strong> <span class="frac"><span class="num">1</span><span class="den">9</span></span>.</p>
+</div>
+<div class="caja-atencion">
+<strong>Cuidado con el exponente:</strong> (<span class="frac"><span class="num">2</span><span class="den">3</span></span>)² = <span class="frac"><span class="num">4</span><span class="den">9</span></span>, porque el paréntesis eleva la fracción completa. En cambio, <span class="frac"><span class="num">2²</span><span class="den">3</span></span> = <span class="frac"><span class="num">4</span><span class="den">3</span></span>, porque el exponente solo afecta al 2. Es la misma idea de (−5)² frente a −5²: el exponente alcanza únicamente lo que tiene inmediatamente a su izquierda.
+    </div>
+</div>
+<div class="practica" id="practica1">
+<h3>Práctica interactiva 1 · Fracciones y PEMDAS</h3>
+<p>Escribe el resultado como número entero o como fracción (por ejemplo, <em>5/6</em>) y presiona «Verificar». Se aceptan fracciones equivalentes.</p>
+<div class="pregunta"><div class="enun">1. (8 + 4) ÷ (9 − 5) =</div><input aria-label="Pregunta 1: paréntesis ocho más cuatro, dividido entre paréntesis nueve menos cinco" autocomplete="off" class="campo" data-clave="3" data-grupo="g1" data-pista="resuelve numerador y denominador por separado y después divide." id="a1" type="text"/><div aria-live="polite" class="fb" id="fb-a1"></div></div>
+<div class="pregunta"><div class="enun">2. 1/3 + 2/3 × 3/4 =</div><input aria-label="Pregunta 2: un tercio más dos tercios por tres cuartos" autocomplete="off" class="campo" data-clave="5/6" data-grupo="g1" data-pista="multiplica 2/3 × 3/4 antes de sumar; luego usa denominador común." data-tol="0.005" id="a2" type="text"/><div aria-live="polite" class="fb" id="fb-a2"></div></div>
+<div class="pregunta"><div class="enun">3. (3/4)² × 16 =</div><input aria-label="Pregunta 3: tres cuartos al cuadrado, por dieciséis" autocomplete="off" class="campo" data-clave="9" data-grupo="g1" data-pista="primero eleva la fracción completa: 9/16; después multiplica por 16." id="a3" type="text"/><div aria-live="polite" class="fb" id="fb-a3"></div></div>
+<button class="btn btn-verificar" data-grupo="g1" type="button">Verificar</button>
+</div>
+
+<h2 class="seccion" id="s3">3. Del número a la letra: sustituir y evaluar</h2>
+<div class="bloque">
+<p>Una <strong>variable</strong> es una letra que ocupa el lugar de un número. <strong>Evaluar</strong> una expresión algebraica significa reemplazar cada letra por el valor indicado y calcular con PEMDAS. El procedimiento tiene dos reglas de oro:</p>
+<div class="caja-tip">
+<strong>Regla 1 · Sustituir siempre entre paréntesis.</strong> Si x = −2, se escribe (−2) en cada lugar donde aparece x. El paréntesis protege el signo del número.<br/>
+<strong>Regla 2 · La letra pegada a un número indica multiplicación.</strong> 3x significa 3 × x; 2ab significa 2 × a × b.
+    </div>
+<div class="ejemplo">
+<span class="et">Ejemplo 5</span>
+<p>Evaluar 4x − 7 para x = 3.</p>
+<div class="expr-paso">4<span class="resalta">(3)</span> − 7</div>
+<div class="paso"><span class="n">1</span> MD: 4 × 3 = 12.</div>
+<div class="paso"><span class="n">2</span> AS: 12 − 7 = 5.</div>
+<p><strong>Respuesta:</strong> 5.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 6 · Valor negativo</span>
+<p>Evaluar x² − 3x + 2 para x = −2.</p>
+<div class="expr-paso"><span class="resalta">(−2)</span>² − 3<span class="resalta">(−2)</span> + 2</div>
+<div class="paso"><span class="n">1</span> E: (−2)² = 4. Gracias al paréntesis, el signo también se eleva al cuadrado.</div>
+<div class="expr-paso">4 − 3(−2) + 2</div>
+<div class="paso"><span class="n">2</span> MD: 3 × (−2) = −6, y restar −6 equivale a sumar 6.</div>
+<div class="expr-paso">4 + 6 + 2</div>
+<div class="paso"><span class="n">3</span> AS: 4 + 6 + 2 = 12.</div>
+<p><strong>Respuesta:</strong> 12.</p>
+</div>
+<div class="caja-atencion">
+<strong>El error más frecuente del GED:</strong> evaluar −x² para x = −3. Como el exponente solo afecta a la x, se calcula −(−3)² = −(9) = <strong>−9</strong>, no 9. Primero se eleva el valor sustituido; después se aplica el signo que estaba delante.
+    </div>
+<div class="ejemplo">
+<span class="et">Ejemplo 7 · Dos variables y barra de fracción</span>
+<p>Evaluar <span class="frac"><span class="num">a + b</span><span class="den">a − b</span></span> para a = 5 y b = −3.</p>
+<div class="paso"><span class="n">1</span> Se sustituye: <span class="frac"><span class="num">5 + (−3)</span><span class="den">5 − (−3)</span></span>.</div>
+<div class="paso"><span class="n">2</span> Numerador: 5 + (−3) = 2. Denominador: 5 − (−3) = 5 + 3 = 8.</div>
+<div class="paso"><span class="n">3</span> Se divide y simplifica: <span class="frac"><span class="num">2</span><span class="den">8</span></span> = <span class="frac"><span class="num">1</span><span class="den">4</span></span>.</div>
+<p><strong>Respuesta:</strong> <span class="frac"><span class="num">1</span><span class="den">4</span></span>.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 8 · Valor fraccionario</span>
+<p>Evaluar 2x + <span class="frac"><span class="num">1</span><span class="den">2</span></span> para x = <span class="frac"><span class="num">3</span><span class="den">4</span></span>.</p>
+<div class="paso"><span class="n">1</span> Se sustituye: 2(<span class="frac"><span class="num">3</span><span class="den">4</span></span>) + <span class="frac"><span class="num">1</span><span class="den">2</span></span>.</div>
+<div class="paso"><span class="n">2</span> MD: 2 × <span class="frac"><span class="num">3</span><span class="den">4</span></span> = <span class="frac"><span class="num">6</span><span class="den">4</span></span> = <span class="frac"><span class="num">3</span><span class="den">2</span></span>.</div>
+<div class="paso"><span class="n">3</span> AS: <span class="frac"><span class="num">3</span><span class="den">2</span></span> + <span class="frac"><span class="num">1</span><span class="den">2</span></span> = <span class="frac"><span class="num">4</span><span class="den">2</span></span> = 2.</div>
+<p><strong>Respuesta:</strong> 2.</p>
+</div>
+</div>
+<div class="practica" id="practica2">
+<h3>Práctica interactiva 2 · Sustituir y evaluar</h3>
+<p>Selecciona el resultado correcto.</p>
+<div class="pregunta" data-correcta="b" data-pista="3(−5) = −15; luego −15 + 4 = −11.">
+<div class="enun">1. Evalúa 3x + 4 para x = −5.</div>
+<div class="opciones"><div class="opcion" data-op="a">19</div><div class="opcion" data-op="b">−11</div><div class="opcion" data-op="c">−19</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="c" data-pista="(−3)² = 9 y 2(−3) = −6; entonces 9 − 6 = 3.">
+<div class="enun">2. Evalúa x² + 2x para x = −3.</div>
+<div class="opciones"><div class="opcion" data-op="a">15</div><div class="opcion" data-op="b">−15</div><div class="opcion" data-op="c">3</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a" data-pista="a − b = 1 − 4 = −3; (−3)² = 9; 2 × 9 = 18. El exponente va antes que la multiplicación por 2.">
+<div class="enun">3. Evalúa 2(a − b)² para a = 1 y b = 4.</div>
+<div class="opciones"><div class="opcion" data-op="a">18</div><div class="opcion" data-op="b">36</div><div class="opcion" data-op="c">−18</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+</div>
+
+<h2 class="seccion" id="s4">4. Fórmulas en contexto: así pregunta el GED</h2>
+<div class="bloque">
+<p>El examen GED de Matemáticas entrega una <strong>hoja de fórmulas</strong>. Allí no se pide memorizar nada: se pide <strong>identificar qué valor corresponde a cada letra, sustituir y aplicar PEMDAS</strong>. Es la misma destreza de la sección anterior, con palabras alrededor.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 9 · Temperatura</span>
+<p>La fórmula F = <span class="frac"><span class="num">9</span><span class="den">5</span></span>C + 32 convierte grados Celsius a Fahrenheit. ¿Cuántos grados Fahrenheit son 25 °C?</p>
+<div class="paso"><span class="n">1</span> Se sustituye C = 25: F = <span class="frac"><span class="num">9</span><span class="den">5</span></span>(25) + 32.</div>
+<div class="paso"><span class="n">2</span> MD: <span class="frac"><span class="num">9</span><span class="den">5</span></span> × 25 = <span class="frac"><span class="num">225</span><span class="den">5</span></span> = 45.</div>
+<div class="paso"><span class="n">3</span> AS: 45 + 32 = 77.</div>
+<p><strong>Respuesta:</strong> 77 °F.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 10 · Área de un trapecio</span>
+<p>El área de un trapecio es A = <span class="frac"><span class="num">1</span><span class="den">2</span></span>(b₁ + b₂)h. Calcula el área si b₁ = 6 pies, b₂ = 10 pies y h = 5 pies.</p>
+<div class="paso"><span class="n">1</span> Se sustituye: A = <span class="frac"><span class="num">1</span><span class="den">2</span></span>(6 + 10)(5).</div>
+<div class="paso"><span class="n">2</span> P: 6 + 10 = 16.</div>
+<div class="paso"><span class="n">3</span> MD de izquierda a derecha: <span class="frac"><span class="num">1</span><span class="den">2</span></span> × 16 = 8; 8 × 5 = 40.</div>
+<p><strong>Respuesta:</strong> 40 pies cuadrados.</p>
+</div>
+<div class="ejemplo">
+<span class="et">Ejemplo 11 · Interés simple</span>
+<p>La fórmula del interés simple es I = Prt. ¿Cuánto interés producen $1,200 a una tasa anual de 5% durante 3 años?</p>
+<div class="paso"><span class="n">1</span> Se identifican los valores: P = 1,200; r = 0.05; t = 3.</div>
+<div class="paso"><span class="n">2</span> Se multiplica: 1,200 × 0.05 = 60; 60 × 3 = 180.</div>
+<p><strong>Respuesta:</strong> $180. Esta fórmula se estudiará a fondo en la Lección 6.1.</p>
+</div>
+<div class="caja-tip">
+<strong>Estrategia para problemas con fórmula:</strong> (1) escribir la fórmula; (2) anotar debajo el valor de cada letra; (3) sustituir entre paréntesis; (4) aplicar PEMDAS; (5) responder con la unidad correcta y preguntarse si el resultado tiene sentido.
+    </div>
+</div>
+<div class="practica" id="practica3">
+<h3>Práctica interactiva 3 · Preguntas tipo GED</h3>
+<p>Lee cada situación y selecciona la respuesta correcta.</p>
+<div class="pregunta" data-correcta="b" data-pista="primero se multiplica 2.25 × 8 = 18, y luego se suman los 3.50 fijos. $46.00 sale de sumar antes de multiplicar.">
+<div class="enun">1. Un taxi cobra según la fórmula C = 3.50 + 2.25m, donde m es el número de millas. ¿Cuánto cuesta un viaje de 8 millas?</div>
+<div class="opciones"><div class="opcion" data-op="a">$46.00</div><div class="opcion" data-op="b">$21.50</div><div class="opcion" data-op="c">$13.75</div><div class="opcion" data-op="d">$18.00</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a" data-pista="el paréntesis va primero: 68 − 32 = 36; después 5/9 × 36 = 20.">
+<div class="enun">2. La fórmula C = 5/9 (F − 32) convierte Fahrenheit a Celsius. ¿Cuántos grados Celsius son 68 °F?</div>
+<div class="opciones"><div class="opcion" data-op="a">20 °C</div><div class="opcion" data-op="b">36 °C</div><div class="opcion" data-op="c">5.8 °C</div><div class="opcion" data-op="d">68 °C</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="c" data-pista="7.5 + 4 = 11.5; 2 × 11.5 = 23.">
+<div class="enun">3. El perímetro de un rectángulo es P = 2(l + w). ¿Cuál es el perímetro si l = 7.5 cm y w = 4 cm?</div>
+<div class="opciones"><div class="opcion" data-op="a">19 cm</div><div class="opcion" data-op="b">30 cm</div><div class="opcion" data-op="c">23 cm</div><div class="opcion" data-op="d">34 cm</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+</div>
+
+
+
+
+<div class="caja-tarea" id="tarea">
+<h2>Tarea</h2>
+<p>Para hacer por su cuenta, con el cuaderno abierto:</p>
+<ul><li>Ocho expresiones de PEMDAS con fracciones: barras de fracción, operaciones entre fracciones y potencias de fracciones. Escriba una línea por paso.</li><li>Cuatro expresiones algebraicas de esta lección evaluadas con valores nuevos: uno positivo, uno negativo y uno fraccionario. Sustituya siempre entre paréntesis.</li><li>Tres fórmulas de la hoja del GED (temperatura, área del trapecio y costo con tarifa fija): invente valores razonables para cada letra, evalúe y compruebe con la calculadora TI-30XS.</li><li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y haga una tanda de <em>orden de operaciones</em> y otra de <em>operaciones con fracciones</em>. La sustitución de variables practíquela en papel con los ejercicios de arriba.</li></ul><p>Tiempo estimado: 50 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
+
+</div>
+
+<div class="quiz" id="quiz">
+<h2>Quiz de la lección 3.3</h2>
+<p>10 preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
+<div id="quiz-cuerpo"></div>
+<div aria-live="polite" id="resultado-quiz"></div>
+<button class="btn" id="btn-corregir" type="button">Corregir quiz</button>
+<button class="btn sec" id="btn-reintentar" style="display:none;" type="button">Intentar de nuevo</button>
+</div>
+
+<div class="rubrica" id="rubrica"><h2>Rúbrica analítica de la lección</h2><p>Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<div class="tabla-wrap"><table class="tabla-rubrica"><caption>Cuatro criterios evaluados en cuatro niveles de desempeño.</caption><thead><tr><th scope="col">Criterio</th><th scope="col">Inicial (1)</th><th scope="col">En desarrollo (2)</th><th scope="col">Competente (3)</th><th scope="col">Destacado (4)</th></tr></thead><tbody><tr><th scope="row">Denominador como paréntesis implícito</th><td>Divide antes de resolver numerador y denominador.</td><td>Resuelve cada parte por separado con apoyo.</td><td>Resuelve numerador y denominador antes de dividir, sin ayuda.</td><td>Además transcribe la fracción a una línea con los paréntesis correctos.</td></tr><tr><th scope="row">Sustitución de la variable</th><td>Sustituye sin paréntesis y pierde los signos.</td><td>Sustituye valores positivos correctamente; duda con negativos.</td><td>Sustituye entre paréntesis valores positivos, negativos y fraccionarios.</td><td>Sustituye correctamente y explica el caso −x² frente a (−x)².</td></tr><tr><th scope="row">Orden PEMDAS completo</th><td>Omite pasos o altera el orden P→E→MD→AS.</td><td>Sigue el orden en expresiones cortas.</td><td>Sigue el orden completo sin saltarse pasos.</td><td>Sigue el orden y lo justifica línea por línea.</td></tr><tr><th scope="row">Resultado correcto</th><td>El resultado es incorrecto.</td><td>Llega al resultado con errores menores de cálculo.</td><td>Obtiene el resultado correcto y simplificado.</td><td>Obtiene el resultado correcto, lo simplifica y lo verifica con la TI-30XS.</td></tr></tbody></table></div></div>
+
+<div class="cierre" id="cierre">
+<h2>Cierre del Tema 3 y enlace con el Tema 4</h2>
+<p>Con esta lección se completa el <strong>Tema 3</strong>. La pirámide PEMDAS quedó aplicada a todo el repertorio del Nivel 2: enteros con signo, potencias, raíces, <strong>fracciones</strong> y, por primera vez, <strong>expresiones con variables</strong>. Sustituir un valor entre paréntesis y respetar el orden de operaciones es la destreza que el GED exige cada vez que presenta una fórmula.</p>
+<p>El <strong>Tema 4 · Razones, tasas unitarias y proporciones</strong> abre con la <strong>Lección 4.1 · Razones y tasas unitarias en contexto</strong>. Del cálculo de expresiones se pasa a <strong>comparar cantidades</strong>: precios por unidad, velocidades y consumos. Las fracciones que se practicaron hoy reaparecerán como razones.</p>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 3 · Lección 3.3</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
+</div>
+<script>
+window.QUIZ = [
+ {
+  "enun": "1. Evalúa: (10 + 6) ÷ (7 − 3).",
+  "ops": [
+   "4",
+   "6.6",
+   "17",
+   "−4"
+  ],
+  "correcta": 0,
+  "exp": "Numerador 16, denominador 4; 16 ÷ 4 = 4."
+ },
+ {
+  "enun": "2. Evalúa: (4² − 1) ÷ (2 + 3).",
+  "ops": [
+   "1",
+   "3",
+   "15",
+   "8.2"
+  ],
+  "correcta": 1,
+  "exp": "16 − 1 = 15 y 2 + 3 = 5; 15 ÷ 5 = 3."
+ },
+ {
+  "enun": "3. Evalúa: 1/4 + 1/2 × 1/3.",
+  "ops": [
+   "1/4",
+   "1/6",
+   "5/12",
+   "1/2"
+  ],
+  "correcta": 2,
+  "exp": "Primero 1/2 × 1/3 = 1/6; luego 1/4 + 1/6 = 3/12 + 2/12 = 5/12."
+ },
+ {
+  "enun": "4. Evalúa: (1/2)² + 3/4.",
+  "ops": [
+   "1",
+   "5/4",
+   "7/8",
+   "1/2"
+  ],
+  "correcta": 0,
+  "exp": "(1/2)² = 1/4; 1/4 + 3/4 = 1."
+ },
+ {
+  "enun": "5. Evalúa 5x − 8 para x = −2.",
+  "ops": [
+   "2",
+   "−2",
+   "−18",
+   "18"
+  ],
+  "correcta": 2,
+  "exp": "5(−2) = −10; −10 − 8 = −18."
+ },
+ {
+  "enun": "6. Evalúa −x² + 4 para x = −3.",
+  "ops": [
+   "13",
+   "−5",
+   "5",
+   "−13"
+  ],
+  "correcta": 1,
+  "exp": "−(−3)² + 4 = −9 + 4 = −5. El exponente se aplica antes que el signo de delante."
+ },
+ {
+  "enun": "7. Evalúa (a − b) ÷ (a + b) para a = 6 y b = 2.",
+  "ops": [
+   "1/2",
+   "2",
+   "4",
+   "1/4"
+  ],
+  "correcta": 0,
+  "exp": "(6 − 2) ÷ (6 + 2) = 4 ÷ 8 = 1/2."
+ },
+ {
+  "enun": "8. Evalúa 4x + 1/2 para x = 1/8.",
+  "ops": [
+   "4 1/8",
+   "1",
+   "5/8",
+   "1/4"
+  ],
+  "correcta": 1,
+  "exp": "4 × 1/8 = 1/2; 1/2 + 1/2 = 1."
+ },
+ {
+  "enun": "9. Un gimnasio cobra C = 25 + 30m, donde m es el número de meses. ¿Cuánto paga una persona por 6 meses?",
+  "ops": [
+   "$330",
+   "$180",
+   "$205",
+   "$185"
+  ],
+  "correcta": 2,
+  "exp": "30 × 6 = 180; 180 + 25 = 205. $330 sale de sumar 25 + 30 antes de multiplicar."
+ },
+ {
+  "enun": "10. El área de un triángulo es A = ½bh. ¿Cuál es el área si b = 9 m y h = 4 m?",
+  "ops": [
+   "18 m²",
+   "36 m²",
+   "13 m²",
+   "6.5 m²"
+  ],
+  "correcta": 0,
+  "exp": "½ × 9 × 4 = 36 ÷ 2 = 18 m²."
+ }
+];
+window.QUIZ_MIN = 7;
+window.QUIZ_SIGUE = "Has completado el Tema 3. Puedes continuar al Tema 4.";
+</script>
+<script>
+(function () {
+  function num(txt) {
+    var t = String(txt).trim().replace(/\s/g, '').replace(/[−–]/g, '-').replace(/[$%]/g, '').replace(/,/g, '');
+    if (t === '') return null;
+    var m = t.match(/^(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)$/);
+    if (m) { var d = parseFloat(m[2]); return d === 0 ? null : { v: parseFloat(m[1]) / d, dec: false }; }
+    if (/^-?\d*\.?\d+$/.test(t)) return { v: parseFloat(t), dec: t.indexOf('.') !== -1 };
+    return null;
+  }
+  window.leerNumero = num;
+
+  /* Práctica de opciones (clic o teclado) */
+  document.querySelectorAll('.practica .pregunta[data-correcta]').forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.setAttribute('tabindex', '0'); op.setAttribute('role', 'button');
+      function elegir() {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        if (op.getAttribute('data-op') === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! ' + (preg.getAttribute('data-ok') || 'Bien razonado.');
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) { if (o.getAttribute('data-op') === correcta) o.classList.add('correcta'); });
+          fb.textContent = 'Revisa: ' + (preg.getAttribute('data-pista') || 'la opción marcada en verde es la correcta.');
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      }
+      op.addEventListener('click', elegir);
+      op.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); elegir(); } });
+    });
+  });
+
+  /* Práctica de respuesta abierta: acepta enteros, decimales y fracciones equivalentes */
+  document.querySelectorAll('.btn-verificar').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var grupo = btn.getAttribute('data-grupo');
+      document.querySelectorAll('input[data-grupo="' + grupo + '"]').forEach(function (campo) {
+        var fb = document.getElementById('fb-' + campo.id);
+        var r = num(campo.value);
+        var clave = num(campo.getAttribute('data-clave')).v;
+        var tol = r && r.dec ? parseFloat(campo.getAttribute('data-tol') || '0.005') : 1e-9;
+        if (r === null) {
+          fb.textContent = 'Escribe un número (entero, decimal o fracción como 3/4).';
+          fb.className = 'fb no';
+        } else if (Math.abs(r.v - clave) <= tol) {
+          fb.textContent = '¡Correcto!';
+          fb.className = 'fb ok';
+        } else {
+          fb.textContent = 'Revisa: ' + (campo.getAttribute('data-pista') || 'repasa el procedimiento paso a paso.');
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* Quiz */
+  var Q = window.QUIZ || [], MIN = window.QUIZ_MIN || 0, cuerpo = document.getElementById('quiz-cuerpo');
+  if (!cuerpo) return;
+  Q.forEach(function (p, i) {
+    var div = document.createElement('div'); div.className = 'pregunta';
+    var enun = document.createElement('div'); enun.className = 'enun'; enun.id = 'q' + i; enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div'); cont.className = 'opciones';
+    cont.setAttribute('role', 'group'); cont.setAttribute('aria-labelledby', 'q' + i);
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div'); op.className = 'opcion'; op.textContent = texto;
+      op.setAttribute('tabindex', '0'); op.setAttribute('role', 'button');
+      function elegir() {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('elegida'); o.setAttribute('aria-pressed', 'false'); });
+        op.classList.add('elegida'); op.setAttribute('aria-pressed', 'true');
+        div.setAttribute('data-elegida', j);
+      }
+      op.addEventListener('click', elegir);
+      op.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); elegir(); } });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div'); fb.className = 'fb'; div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+  var bC = document.getElementById('btn-corregir'), bR = document.getElementById('btn-reintentar'), res = document.getElementById('resultado-quiz');
+  bC.addEventListener('click', function () {
+    var ok = 0;
+    cuerpo.querySelectorAll('.pregunta').forEach(function (div, i) {
+      var el = div.getAttribute('data-elegida'), fb = div.querySelector('.fb'), ops = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      ops[Q[i].correcta].classList.add('correcta');
+      if (el === null) { fb.textContent = 'No se respondió esta pregunta.'; fb.className = 'fb no'; }
+      else if (parseInt(el, 10) === Q[i].correcta) { ok++; fb.textContent = '¡Correcto!'; fb.className = 'fb ok'; }
+      else { ops[parseInt(el, 10)].classList.add('incorrecta'); fb.textContent = 'Incorrecto. ' + (Q[i].exp || 'La respuesta correcta está marcada en verde.'); fb.className = 'fb no'; }
+      fb.style.display = 'block';
+    });
+    res.style.display = 'block';
+    res.setAttribute('role', 'status');
+    if (ok >= MIN) { res.className = 'aprob'; res.textContent = 'Resultado: ' + ok + ' de ' + Q.length + ' correctas. ¡Aprobado! ' + (window.QUIZ_SIGUE || ''); }
+    else { res.className = 'repro'; res.textContent = 'Resultado: ' + ok + ' de ' + Q.length + ' correctas. Repasa la lección e intenta de nuevo (se requieren ' + MIN + ').'; }
+    bC.style.display = 'none'; bR.style.display = 'inline-block';
+  });
+  bR.addEventListener('click', function () {
+    cuerpo.querySelectorAll('.pregunta').forEach(function (div) {
+      div.removeAttribute('data-elegida'); div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); o.setAttribute('aria-pressed', 'false'); });
+      var fb = div.querySelector('.fb'); fb.style.display = 'none'; fb.textContent = '';
+    });
+    res.style.display = 'none'; bR.style.display = 'none'; bC.style.display = 'inline-block';
+    document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

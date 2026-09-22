@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<!-- Lección 5.3 · Matemáticas Nivel 2 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+
+
+<title>Lección 5.3 · Descuento, impuesto, propina y aplicaciones mixtas</title><meta content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago" name="author"/><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
+<style>
+  :root {
+    --tema: #b33c00; --tema-d: #7a2800; --tema-bg: #ffe0b2; --tema-bg2: #ffecd6; --tema-soft: #fff3e0;
+    --txt: #222; --bg: #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; margin: 0; background: var(--bg);
+         color: var(--txt); line-height: 1.6; font-size: 16px; }
+  .contenedor { max-width: 880px; margin: 0 auto; padding: 24px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+             clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+  header.principal { background: var(--tema); background: linear-gradient(135deg, #7a2800 0%, #a33a00 55%, #b33c00 100%); color: #fff; padding: 32px 30px;
+    border-radius: 14px; margin-bottom: 22px; box-shadow: 0 4px 14px rgba(122,40,0,.28); }
+  header.principal .ruta { font-size: 13px; letter-spacing: .4px; text-transform: uppercase; }
+  header.principal h1 { margin: 8px 0 6px; font-size: 25px; font-weight: 700; }
+  header.principal .meta { font-size: 14px; }
+
+  nav.indice { background: #fff; border-radius: 10px; padding: 12px 20px 14px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px; }
+  nav.indice h2 { font-size: 15px; margin: 0 0 6px; color: var(--tema-d); text-transform: uppercase; letter-spacing: .4px; }
+  nav.indice ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 28px; font-size: 14px; }
+  nav.indice li { margin: 3px 0; break-inside: avoid; }
+  nav.indice a { color: var(--tema-d); font-weight: 600; }
+  nav.indice a:hover, nav.indice a:focus { text-decoration: underline; }
+  @media (max-width: 620px) { nav.indice ol { columns: 1; } }[id] { scroll-margin-top: 14px; }
+
+  h2.seccion { color: var(--tema-d); font-size: 21px; margin: 34px 0 12px; padding-bottom: 6px;
+    border-bottom: 3px solid var(--tema-bg); }
+  h3 { color: var(--tema-d); font-size: 17px; margin: 20px 0 8px; }
+
+  .caja-objetivos { background: var(--tema-soft); border-left: 6px solid var(--tema);
+    padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 18px; }
+  .caja-objetivos h2 { margin: 0 0 10px; color: var(--tema-d); font-size: 19px; }
+  .caja-objetivos ul { margin: 0; padding-left: 22px; }
+  .caja-objetivos li { margin: 5px 0; }
+
+  .bloque { background: #fff; border-radius: 10px; padding: 4px 24px 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.06); margin-bottom: 18px; }
+  p { margin: 10px 0; }
+
+  .frac { display: inline-block; text-align: center; vertical-align: middle; margin: 0 4px; font-size: 16px; }
+  .frac .num { display: block; padding: 0 7px; border-bottom: 2px solid #444; }
+  .frac .den { display: block; padding: 0 7px; }
+  .frac.grande { font-size: 20px; }
+  .formula-grande { text-align: center; font-size: 18px; font-weight: 700; color: var(--tema-d); margin: 14px 0; }
+
+  .ejemplo { background: #fafafa; border: 1px solid #e3e3e3; border-radius: 8px; padding: 14px 18px; margin: 14px 0; }
+  .ejemplo .et { display: inline-block; background: var(--tema); color: #fff; font-size: 12px; font-weight: 700;
+    padding: 3px 12px; border-radius: 12px; margin-bottom: 8px; letter-spacing: .4px; }
+  .paso { margin: 7px 0; padding-left: 30px; position: relative; }
+  .paso .n { position: absolute; left: 0; top: 0; background: var(--tema-bg); color: var(--tema-d);
+    width: 22px; height: 22px; border-radius: 50%; font-size: 13px; font-weight: 700; text-align: center; line-height: 22px; }
+  .expr-paso { font-family: 'Consolas', 'Courier New', monospace; background: #f5f6fa; border: 1px solid #d4d8eb;
+    padding: 9px 14px; border-radius: 6px; font-size: 16px; margin: 5px 0; overflow-x: auto; }
+  .resalta { background: #fff59d; padding: 0 3px; border-radius: 3px; font-weight: 700; color: #5a3d00; }
+
+  .caja-tip { background: #e8f5e9; border-left: 5px solid #2e7d32; padding: 12px 16px;
+    border-radius: 0 8px 8px 0; margin: 14px 0; color: #1b5e20; font-size: 15px; }
+  .caja-tip strong { color: #1b5e20; }
+  .caja-atencion { background: #fff8e1; border-left: 5px solid #f9a825; padding: 12px 16px;
+    border-radius: 0 8px 8px 0; margin: 14px 0; font-size: 15px; color: #5a3d00; }
+  .caja-atencion strong { color: #5C3900; }
+
+  .comparacion { display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0; }
+  .tipo-prop { flex: 1; min-width: 250px; border-radius: 10px; padding: 16px; }
+  .tipo-directa { background: #e3f2fd; border-left: 5px solid #1565c0; }
+  .tipo-directa h3, .tipo-directa strong { color: #0d47a1; }
+  .tipo-inversa { background: #fff3e0; border-left: 5px solid #bf360c; }
+  .tipo-inversa h3, .tipo-inversa strong { color: #8a3000; }
+  .tipo-prop h3 { margin-top: 0; }
+
+  table.tabla { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; background: #fff; }
+  table.tabla caption { caption-side: top; text-align: left; font-weight: 700; color: var(--tema-d); padding: 4px 0 6px; font-size: 14px; }
+  table.tabla th, table.tabla td { border: 1px solid #d0d0d0; padding: 9px 12px; text-align: center; }
+  table.tabla thead th { background: var(--tema); color: #fff; }
+  table.tabla tbody th { background: var(--tema-soft); color: var(--tema-d); font-weight: 600; }
+  table.tabla.izq td { text-align: left; }
+  .tabla-wrap { overflow-x: auto; }
+
+  .svg-wrap { text-align: center; margin: 16px 0; }
+  .svg-wrap svg { max-width: 100%; height: auto; }
+
+  .practica { background: var(--tema-bg2); border: 1px dashed var(--tema); border-radius: 10px; padding: 16px 20px; margin: 18px 0; }
+  .practica h3 { margin-top: 0; color: var(--tema-d); }
+  .pregunta { margin: 14px 0; }
+  .pregunta .enun { font-weight: 600; margin-bottom: 8px; }
+  .opciones { display: flex; flex-direction: column; gap: 7px; }
+  .opcion { background: #fff; border: 2px solid #bdbdbd; border-radius: 8px; padding: 9px 14px; cursor: pointer; transition: all .15s; }
+  .opcion:hover, .opcion:focus { border-color: var(--tema); outline: none; }
+  .opcion:focus-visible { outline: 3px solid var(--tema); outline-offset: 2px; }
+  .opcion.correcta { border-color: #2e7d32; background: #e8f5e9; font-weight: 600; }
+  .opcion.incorrecta { border-color: #c62828; background: #ffebee; }
+  .opcion.elegida { border-color: var(--tema); background: var(--tema-soft); }
+  .fb { margin-top: 8px; font-size: 14px; font-weight: 600; display: none; }
+  .fb.ok { color: #1b5e20; } .fb.no { color: #b71c1c; }
+  .campo { font-size: 16px; padding: 7px 10px; border: 2px solid #9e9e9e; border-radius: 7px; width: 150px; font-family: inherit; }
+  .campo:focus { border-color: var(--tema); outline: 2px solid var(--tema); }
+  .btn { background: var(--tema); color: #fff; border: none; padding: 9px 20px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 8px; }
+  .btn:hover { background: var(--tema-d); }
+  .btn:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+  .btn.sec { background: #546e7a; } .btn.sec:hover { background: #37474f; }.caja-tarea { background: #ede7f6; border-left: 6px solid #5e35b1; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0; }
+  .caja-tarea h2 { margin-top: 0; color: #4527a0; }
+
+  .quiz { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 8px 24px 20px; margin: 22px 0; }
+  .quiz h2 { color: var(--tema-d); }
+  #resultado-quiz { font-size: 17px; font-weight: 700; margin: 14px 0; padding: 12px; border-radius: 8px; text-align: center; display: none; }
+  #resultado-quiz.aprob { background: #e8f5e9; color: #1b5e20; }
+  #resultado-quiz.repro { background: #ffebee; color: #b71c1c; }
+
+  .rubrica { margin: 22px 0; }
+  .rubrica h2 { color: var(--tema-d); }
+  table.tabla-rubrica { width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+  table.tabla-rubrica caption { caption-side: top; text-align: left; font-size: 14px; color: #444; padding-bottom: 6px; }
+  table.tabla-rubrica th, table.tabla-rubrica td { border: 1px solid #e0e0e0; padding: 8px 10px; vertical-align: top; text-align: left; }
+  table.tabla-rubrica thead th { background: var(--tema); color: #fff; font-size: 12px; text-transform: uppercase; letter-spacing: .3px; }
+  table.tabla-rubrica tbody th { background: var(--tema-soft); font-weight: 600; color: var(--tema-d); }
+
+  .cierre { background: #263238; color: #eceff1; border-radius: 12px; padding: 22px 26px; margin: 24px 0 10px; }
+  .cierre h2 { color: #fff; margin-top: 0; }
+  .cierre strong { color: #9BFF8F; }
+
+  footer { text-align: center; padding: 20px; color: #222; font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px; }
+  footer a { color: var(--tema-d); }
+
+  .recibo { font-family: 'Consolas', 'Courier New', monospace; background: #fffdf7; border: 1px dashed #8d6e63;
+    max-width: 340px; margin: 14px auto; padding: 14px 18px; font-size: 14px; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+  .recibo h3 { text-align: center; font-family: inherit; margin: 0 0 8px; color: #333; font-size: 15px; }
+  .recibo .l { display: flex; justify-content: space-between; }
+  .recibo .sep { border-top: 1px dashed #8d6e63; margin: 6px 0; }
+  .recibo .tot { font-weight: 700; }
+  .simulador { background: #fff; border: 2px solid var(--tema); border-radius: 12px; padding: 14px 20px; margin: 16px 0; }
+  .fila-campos { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+  .fila-campos .ctl { display: flex; flex-direction: column; font-size: 14px; font-weight: 600; color: var(--tema-d); }
+  .fila-campos .campo { width: 120px; }
+
+
+  .volver-indice { position: fixed; right: 18px; bottom: 18px; z-index: 60; background: var(--tema-d); color: #fff;
+    border-radius: 999px; padding: 10px 16px; font-weight: 700; font-size: .92rem; text-decoration: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,.28); }
+  .volver-indice:hover { background: var(--tema); color: #fff; }
+  .volver-indice:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+  @media print { nav.indice, .volver-indice { display: none; } }
+</style>
+</head>
+<body>
+<div class="contenedor">
+<header class="principal">
+<div class="ruta">Spanish ASE Math · Nivel 2 · Tema 5 · Porcentajes: conceptos, cálculos y aplicaciones</div>
+<h1>Lección 5.3 · Descuento, impuesto, propina y aplicaciones mixtas</h1>
+<div class="meta">Unas 4 horas, a su ritmo · NRS 2–3</div>
+</header>
+<div class="caja-objetivos">
+<h2>Objetivos de la lección</h2>
+<ul><li>Calcular precios con descuento con el factor (1 − r) y con resta.</li><li>Calcular el total con impuesto sobre la venta con el factor (1 + r).</li><li>Calcular una propina razonable, incluso mentalmente.</li><li>Resolver problemas con porcentajes encadenados, aplicando cada uno sobre el valor vigente.</li><li>Justificar por qué dos porcentajes consecutivos no se suman y cuándo el orden sí importa.</li></ul>
+</div>
+<nav aria-label="Contenido de la lección" class="indice" id="indice">
+<h2>Contenido de la lección</h2>
+<ol><li><a href="#s1">Empezar por un recibo</a></li><li><a href="#s2">Descuento</a></li><li><a href="#s3">Impuesto sobre la venta</a></li><li><a href="#practica1">Práctica 1</a></li><li><a href="#s4">Propina</a></li><li><a href="#practica2">Práctica 2</a></li><li><a href="#s5">Porcentajes encadenados y simulador</a></li><li><a href="#practica3">Práctica 3</a></li><li><a href="#tarea">Tarea</a></li><li><a href="#quiz">Quiz</a></li><li><a href="#rubrica">Rúbrica</a></li><li><a href="#cierre">Cierre</a></li></ol>
+</nav>
+<div class="bloque">
+<p><strong>Conexión con la lección anterior.</strong> En la Lección 5.2 apareció el <strong>factor de cambio</strong>: multiplicar por (1 + r) para aumentar y por (1 − r) para disminuir. Esta lección, que cierra el Tema 5, lo aplica a las tres situaciones de porcentaje más comunes en la vida diaria: el <strong>descuento</strong>, el <strong>impuesto sobre la venta</strong> y la <strong>propina</strong>, y a los casos en que se combinan.</p>
+</div>
+<h2 class="seccion" id="s1">1. Empezar por un recibo</h2>
+<div class="bloque">
+<p>Antes de aprender el procedimiento, conviene mirar un recibo real y comprobar sus números. Este es un recibo simulado:</p>
+<div aria-label="Recibo simulado de una tienda" class="recibo" role="group">
+<h3>TIENDA EL AHORRO</h3>
+<div class="l"><span>Chaqueta</span><span>$60.00</span></div>
+<div class="l"><span>Descuento 25%</span><span>−$15.00</span></div>
+<div class="l"><span>Camiseta</span><span>$12.00</span></div>
+<div class="sep"></div>
+<div class="l"><span>Subtotal</span><span>$57.00</span></div>
+<div class="l"><span>Impuesto 8.25%</span><span>$4.70</span></div>
+<div class="sep"></div>
+<div class="l tot"><span>TOTAL</span><span>$61.70</span></div>
+</div>
+<p>¿Cómo se obtuvo cada línea? El 25% de $60 es $15. El subtotal es 60 − 15 + 12 = $57. El impuesto es 8.25% de 57 = 4.7025, que se redondea a <strong>$4.70</strong>. El total es 57 + 4.70 = $61.70.</p>
+<div class="caja-tip">
+<strong>Sobre el redondeo:</strong> el dinero se expresa con dos decimales (centavos). Se redondea <strong>al final</strong> de cada cálculo, no en los pasos intermedios. Si la tercera cifra decimal es 5 o más, se sube un centavo.
+    </div>
+<div class="caja-atencion">
+<strong>La tasa de impuesto cambia según el lugar.</strong> Cada estado, condado y ciudad fija la suya, y puede variar de un año a otro o según el tipo de producto. En esta lección se usan tasas supuestas; en la vida real, la tasa aplicada aparece impresa en el recibo.
+    </div>
+</div>
+
+<h2 class="seccion" id="s2">2. Descuento</h2>
+<div class="bloque">
+<p>Un descuento <strong>resta</strong> un porcentaje del precio original. Hay dos caminos equivalentes:</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 1 · Dos métodos</span>
+<p>Unos zapatos cuestan $85 y tienen un descuento del 20%. ¿Cuál es el precio final?</p>
+<div class="paso"><span class="n">A</span> <strong>Calcular y restar:</strong> descuento = 0.20 × 85 = $17; precio final = 85 − 17 = $68.</div>
+<div class="paso"><span class="n">B</span> <strong>Factor de cambio:</strong> si se descuenta el 20%, se paga el 80%. 85 × 0.80 = $68.</div>
+<p><strong>Respuesta:</strong> $68.</p>
+</div>
+<div class="tabla-wrap"><table class="tabla">
+<caption>Descuentos frecuentes y el factor por el que se multiplica el precio</caption>
+<thead><tr><th scope="col">Descuento</th><th scope="col">Se paga</th><th scope="col">Factor</th><th scope="col">Precio de $40 queda en</th></tr></thead>
+<tbody>
+<tr><th scope="row">10%</th><td>90%</td><td>× 0.90</td><td>$36</td></tr>
+<tr><th scope="row">20%</th><td>80%</td><td>× 0.80</td><td>$32</td></tr>
+<tr><th scope="row">25%</th><td>75%</td><td>× 0.75</td><td>$30</td></tr>
+<tr><th scope="row">30%</th><td>70%</td><td>× 0.70</td><td>$28</td></tr>
+<tr><th scope="row">50%</th><td>50%</td><td>× 0.50</td><td>$20</td></tr>
+</tbody>
+</table></div>
+</div>
+<h2 class="seccion" id="s3">3. Impuesto sobre la venta</h2>
+<div class="bloque">
+<p>El impuesto <strong>suma</strong> un porcentaje al precio. Con el factor de cambio: precio final = precio × (1 + tasa).</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 2</span>
+<p>Una compra de $120 tiene un impuesto del 8%. ¿Cuál es el total a pagar?</p>
+<div class="paso"><span class="n">A</span> Impuesto = 0.08 × 120 = $9.60; total = 120 + 9.60 = $129.60.</div>
+<div class="paso"><span class="n">B</span> Factor: 120 × 1.08 = $129.60.</div>
+<p><strong>Respuesta:</strong> $129.60.</p>
+</div>
+</div>
+<div class="practica" id="practica1">
+<h3>Práctica interactiva 1 · Descuento e impuesto</h3>
+<p>Selecciona la respuesta correcta.</p>
+<div class="pregunta" data-correcta="b" data-pista="se paga el 70%: 60 × 0.70 = 42.">
+<div class="enun">1. Un suéter de $60 tiene un 30% de descuento. El precio rebajado es:</div>
+<div class="opciones"><div class="opcion" data-op="a">$30</div><div class="opcion" data-op="b">$42</div><div class="opcion" data-op="c">$78</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a" data-pista="200 × 1.07 = 214.">
+<div class="enun">2. Una factura de $200 tiene un impuesto del 7%. El total a pagar es:</div>
+<div class="opciones"><div class="opcion" data-op="a">$214</div><div class="opcion" data-op="b">$186</div><div class="opcion" data-op="c">$207</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="c" data-pista="si se descuenta el 15%, se paga el 85%.">
+<div class="enun">3. ¿Por qué número se multiplica un precio para aplicarle un 15% de descuento?</div>
+<div class="opciones"><div class="opcion" data-op="a">0.15</div><div class="opcion" data-op="b">1.15</div><div class="opcion" data-op="c">0.85</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+</div>
+
+<h2 class="seccion" id="s4">4. Propina</h2>
+<div class="bloque">
+<p>En Estados Unidos es costumbre dejar una propina en restaurantes y otros servicios. Suele calcularse entre el 15% y el 20% de la cuenta, habitualmente <strong>antes del impuesto</strong>. Es un cálculo ideal para hacer mentalmente:</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 3 · Propina mental sobre $48</span>
+<div class="paso"><span class="n">1</span> <strong>10%:</strong> se mueve el punto decimal un lugar a la izquierda: $4.80.</div>
+<div class="paso"><span class="n">2</span> <strong>5%:</strong> la mitad del 10%: $2.40.</div>
+<div class="paso"><span class="n">3</span> <strong>15%</strong> = 10% + 5% = 4.80 + 2.40 = $7.20.</div>
+<div class="paso"><span class="n">4</span> <strong>20%</strong> = el doble del 10% = $9.60.</div>
+<p><strong>Respuesta:</strong> una propina razonable está entre $7.20 y $9.60.</p>
+</div>
+</div>
+<div class="practica" id="practica2">
+<h3>Práctica interactiva 2 · Propinas</h3>
+<p>Escribe la cantidad en dólares (por ejemplo, <em>9.90</em>) y presiona «Verificar».</p>
+<div class="pregunta"><div class="enun">1. Propina del 18% sobre una cuenta de $55:</div><input aria-label="Pregunta 2.1: dieciocho por ciento de propina sobre cincuenta y cinco dólares" autocomplete="off" class="campo" data-clave="9.90" data-grupo="g2" data-pista="55 × 0.18 = 9.90." id="t1" type="text"/><div aria-live="polite" class="fb" id="fb-t1"></div></div>
+<div class="pregunta"><div class="enun">2. Propina del 20% sobre una cuenta de $36.50:</div><input aria-label="Pregunta 2.2: veinte por ciento de propina sobre treinta y seis dólares con cincuenta" autocomplete="off" class="campo" data-clave="7.30" data-grupo="g2" data-pista="10% es 3.65; el doble es 7.30." id="t2" type="text"/><div aria-live="polite" class="fb" id="fb-t2"></div></div>
+<div class="pregunta"><div class="enun">3. Propina del 15% sobre una cuenta de $64:</div><input aria-label="Pregunta 2.3: quince por ciento de propina sobre sesenta y cuatro dólares" autocomplete="off" class="campo" data-clave="9.60" data-grupo="g2" data-pista="10% = 6.40 y 5% = 3.20; en total 9.60." id="t3" type="text"/><div aria-live="polite" class="fb" id="fb-t3"></div></div>
+<button class="btn btn-verificar" data-grupo="g2" type="button">Verificar</button>
+</div>
+
+<h2 class="seccion" id="s5">5. Porcentajes encadenados</h2>
+<div class="bloque">
+<p>Muchas compras combinan <strong>dos o más porcentajes</strong>. La regla de oro es que <strong>cada porcentaje se aplica sobre el valor que existe en ese momento</strong>, no sobre el precio original.</p>
+<div class="ejemplo">
+<span class="et">Ejemplo 4 · Descuento y luego impuesto</span>
+<p>Un televisor de $600 tiene un 15% de descuento. Sobre el precio rebajado se cobra un impuesto del 8.25%. ¿Cuánto se paga?</p>
+<div class="paso"><span class="n">1</span> Descuento: 600 × 0.85 = $510.</div>
+<div class="paso"><span class="n">2</span> Impuesto sobre el precio rebajado: 510 × 1.0825 = 552.075.</div>
+<div class="paso"><span class="n">3</span> Se redondea al centavo: $552.08.</div>
+<p><strong>Respuesta:</strong> $552.08. En un solo paso: 600 × 0.85 × 1.0825.</p>
+</div>
+<h3>¿Importa el orden?</h3>
+<p>Cuando <strong>los dos</strong> cambios son porcentajes, el orden <strong>no altera el resultado</strong>, porque se multiplican factores y el orden de los factores no altera el producto: 600 × 0.85 × 1.0825 = 600 × 1.0825 × 0.85. Lo que sí importa es otra cosa:</p>
+<div class="caja-atencion">
+<strong>Error 1 · Sumar los porcentajes.</strong> Un 20% de descuento seguido de un 10% adicional <strong>no</strong> equivale a un 30%. Sobre $50: 50 × 0.80 = 40; 40 × 0.90 = <strong>$36</strong>. Un 30% daría $35. El descuento real es 1 − (0.80 × 0.90) = 1 − 0.72 = <strong>28%</strong>.
+    </div>
+<div class="caja-atencion">
+<strong>Error 2 · Olvidar que un cupón fijo sí depende del orden.</strong> Cuando se combina un porcentaje con una cantidad fija en dólares, el orden cambia el resultado. Con un precio de $60, un cupón de $10 y un 20% de descuento:<br/>
+      • Cupón primero: (60 − 10) × 0.80 = <strong>$40</strong>.<br/>
+      • Porcentaje primero: 60 × 0.80 − 10 = <strong>$38</strong>.<br/>
+      Por eso las tiendas indican en qué orden se aplican las promociones.
+    </div>
+<div class="simulador" id="simulador">
+<h3>Simulador de compra</h3>
+<p>Cambia los datos y observa cómo se construye el recibo. Escribe 0 donde no haya descuento o propina.</p>
+<div class="fila-campos">
+<div class="ctl"><span id="t-sim-p">Precio ($)</span><input aria-labelledby="t-sim-p" class="campo" id="sim-p" inputmode="decimal" type="text" value="600"/></div>
+<div class="ctl"><span id="t-sim-d">Descuento (%)</span><input aria-labelledby="t-sim-d" class="campo" id="sim-d" inputmode="decimal" type="text" value="15"/></div>
+<div class="ctl"><span id="t-sim-i">Impuesto (%)</span><input aria-labelledby="t-sim-i" class="campo" id="sim-i" inputmode="decimal" type="text" value="8.25"/></div>
+<div class="ctl"><span id="t-sim-t">Propina (%)</span><input aria-labelledby="t-sim-t" class="campo" id="sim-t" inputmode="decimal" type="text" value="0"/></div>
+<button class="btn" id="sim-btn" type="button">Calcular</button>
+</div>
+<div aria-live="polite" id="sim-out"></div>
+</div>
+</div>
+<div class="practica" id="practica3">
+<h3>Práctica interactiva 3 · Aplicaciones mixtas</h3>
+<p>Selecciona la respuesta correcta. Se permite calculadora.</p>
+<div class="pregunta" data-correcta="a" data-pista="80 × 0.75 = 60; 60 × 1.08 = 64.80.">
+<div class="enun">1. Unos audífonos de $80 tienen un 25% de descuento y se cobra un 8% de impuesto sobre el precio rebajado. ¿Cuánto se paga?</div>
+<div class="opciones"><div class="opcion" data-op="a">$64.80</div><div class="opcion" data-op="b">$66.40</div><div class="opcion" data-op="c">$60.00</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="b" data-pista="0.70 × 0.90 = 0.63; se paga el 63%, así que el descuento es 37%.">
+<div class="enun">2. Una tienda ofrece 30% de descuento y luego un 10% adicional sobre el precio rebajado. ¿Qué descuento total equivale?</div>
+<div class="opciones"><div class="opcion" data-op="a">40%</div><div class="opcion" data-op="b">37%</div><div class="opcion" data-op="c">33%</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="b" data-pista="impuesto $4 y propina $6: 40 + 4 + 6 = 50.">
+<div class="enun">3. En un restaurante la cuenta es de $40 antes de impuestos. El impuesto es del 10% y se deja un 15% de propina sobre los $40. ¿Cuál es el total?</div>
+<div class="opciones"><div class="opcion" data-op="a">$46.00</div><div class="opcion" data-op="b">$50.00</div><div class="opcion" data-op="c">$50.60</div></div>
+<div aria-live="polite" class="fb"></div>
+</div>
+</div>
+
+
+
+
+<div class="caja-tarea" id="tarea">
+<h2>Tarea</h2>
+<p>Para hacer por su cuenta, con el cuaderno abierto:</p>
+<ul><li>Dos problemas de descuento y dos de impuesto sobre la venta, resueltos por los dos métodos (restar o sumar, y factor de cambio).</li><li>Dos propinas calculadas mentalmente con la estrategia del 10% y del 5%, y comprobadas después con calculadora.</li><li>Dos problemas encadenados: un descuento más impuesto, y dos descuentos sucesivos.</li><li>Un recibo propio: recalcule cada línea y compruebe la tasa de impuesto y el redondeo.</li><li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y haga una tanda de <em>porcentajes</em> del nivel más alto. Después use el simulador de compra de esta lección para comprobar sus cálculos en papel.</li></ul><p>Tiempo estimado: 50 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
+
+</div>
+
+<div class="quiz" id="quiz">
+<h2>Quiz de la lección 5.3</h2>
+<p>10 preguntas. Al finalizar se marca cada respuesta y se puede reintentar las veces necesarias. Para aprobar se requieren al menos 7 respuestas correctas.</p>
+<div id="quiz-cuerpo"></div>
+<div aria-live="polite" id="resultado-quiz"></div>
+<button class="btn" id="btn-corregir" type="button">Corregir quiz</button>
+<button class="btn sec" id="btn-reintentar" style="display:none;" type="button">Intentar de nuevo</button>
+</div>
+
+<div class="rubrica" id="rubrica"><h2>Rúbrica analítica de la lección</h2><p>Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<div class="tabla-wrap"><table class="tabla-rubrica"><caption>Cuatro criterios evaluados en cuatro niveles de desempeño.</caption><thead><tr><th scope="col">Criterio</th><th scope="col">Inicial (1)</th><th scope="col">En desarrollo (2)</th><th scope="col">Competente (3)</th><th scope="col">Destacado (4)</th></tr></thead><tbody><tr><th scope="row">Precio con descuento</th><td>No distingue el descuento del precio final.</td><td>Calcula el descuento pero olvida restarlo.</td><td>Calcula el precio rebajado por resta o por factor (1 − r).</td><td>Calcula por los dos métodos y comprueba que coinciden.</td></tr><tr><th scope="row">Impuesto sobre el precio correcto</th><td>Calcula el impuesto sobre un valor equivocado.</td><td>Calcula el impuesto sobre el precio original cuando correspondía el rebajado.</td><td>Calcula el impuesto sobre el precio que corresponde y redondea al centavo.</td><td>Además verifica un recibo real y detecta errores de redondeo.</td></tr><tr><th scope="row">Propina razonable</th><td>No calcula la propina.</td><td>Calcula la propina con calculadora y con errores.</td><td>Calcula propinas del 15% al 20% correctamente.</td><td>Calcula mentalmente con la estrategia del 10% y del 5%.</td></tr><tr><th scope="row">Porcentajes consecutivos</th><td>Suma los porcentajes (20% + 10% = 30%).</td><td>Aplica los porcentajes en cadena con apoyo.</td><td>Aplica cada porcentaje sobre el valor vigente.</td><td>Justifica por qué dos porcentajes no se suman y cuándo el orden importa (cupón fijo).</td></tr></tbody></table></div></div>
+
+<div class="cierre" id="cierre">
+<h2>Cierre del Tema 5 y enlace con el Tema 6</h2>
+<p>Con esta lección se completa el <strong>Tema 5</strong>. El porcentaje pasó de ser una razón de 100 a una herramienta para la vida diaria: convertir, hallar la parte, el todo o el porcentaje, medir el <strong>cambio porcentual</strong> y resolver <strong>descuentos, impuestos y propinas</strong>, incluso encadenados.</p>
+<p>El <strong>Tema 6 · Matemáticas financieras y conversiones de medidas</strong> abre con la <strong>Lección 6.1 · Interés simple: fórmula I = P × r × t</strong>. Allí el porcentaje se aplica <strong>a lo largo del tiempo</strong>: cuánto crece un préstamo o un ahorro con una tasa anual fija.</p>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 5 · Lección 5.3</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
+</div>
+<script>
+window.QUIZ = [
+ {
+  "enun": "1. Unos zapatos de $85 tienen un 20% de descuento. El precio final es:",
+  "ops": [
+   "$17",
+   "$65",
+   "$68",
+   "$102"
+  ],
+  "correcta": 2,
+  "exp": "85 × 0.80 = 68."
+ },
+ {
+  "enun": "2. Un televisor de $400 tiene un 15% de descuento. El precio final es:",
+  "ops": [
+   "$60",
+   "$340",
+   "$385",
+   "$460"
+  ],
+  "correcta": 1,
+  "exp": "400 × 0.85 = 340."
+ },
+ {
+  "enun": "3. Para aplicar un 25% de descuento, el precio se multiplica por:",
+  "ops": [
+   "0.25",
+   "1.25",
+   "0.75",
+   "25"
+  ],
+  "correcta": 2,
+  "exp": "Si se descuenta el 25%, se paga el 75%."
+ },
+ {
+  "enun": "4. Una compra de $50 tiene un 8% de impuesto. El total es:",
+  "ops": [
+   "$54.00",
+   "$58.00",
+   "$50.08",
+   "$46.00"
+  ],
+  "correcta": 0,
+  "exp": "50 × 1.08 = 54."
+ },
+ {
+  "enun": "5. Una compra de $120 tiene un 6.25% de impuesto. El total es:",
+  "ops": [
+   "$126.25",
+   "$127.50",
+   "$132.00",
+   "$120.75"
+  ],
+  "correcta": 1,
+  "exp": "120 × 0.0625 = 7.50; 120 + 7.50 = 127.50."
+ },
+ {
+  "enun": "6. Sobre un subtotal de $36 se cobra un 9% de impuesto. ¿Cuánto es el impuesto?",
+  "ops": [
+   "$0.32",
+   "$3.24",
+   "$3.60",
+   "$39.24"
+  ],
+  "correcta": 1,
+  "exp": "36 × 0.09 = 3.24. $39.24 es el total, no el impuesto."
+ },
+ {
+  "enun": "7. ¿Cuánto es una propina del 15% sobre una cuenta de $60?",
+  "ops": [
+   "$6.00",
+   "$7.50",
+   "$9.00",
+   "$15.00"
+  ],
+  "correcta": 2,
+  "exp": "10% = 6 y 5% = 3; 6 + 3 = 9."
+ },
+ {
+  "enun": "8. ¿Cuánto es una propina del 20% sobre una cuenta de $42.50?",
+  "ops": [
+   "$4.25",
+   "$8.50",
+   "$8.00",
+   "$10.00"
+  ],
+  "correcta": 1,
+  "exp": "10% = 4.25; el doble es 8.50."
+ },
+ {
+  "enun": "9. Un artículo de $80 tiene un 25% de descuento y luego se cobra un 8% de impuesto sobre el precio rebajado. Se paga:",
+  "ops": [
+   "$60.00",
+   "$64.80",
+   "$66.40",
+   "$86.40"
+  ],
+  "correcta": 1,
+  "exp": "80 × 0.75 = 60; 60 × 1.08 = 64.80."
+ },
+ {
+  "enun": "10. Un descuento del 20% seguido de un 10% adicional sobre el precio rebajado equivale a un descuento total de:",
+  "ops": [
+   "30%",
+   "28%",
+   "25%",
+   "32%"
+  ],
+  "correcta": 1,
+  "exp": "0.80 × 0.90 = 0.72; se paga el 72%, así que el descuento es 28%."
+ }
+];
+window.QUIZ_MIN = 7;
+window.QUIZ_SIGUE = "Has completado el Tema 5. Puedes continuar al Tema 6.";
+</script>
+<script>
+(function () {
+  function num(txt) {
+    var t = String(txt).trim().replace(/\s/g, '').replace(/[−–]/g, '-').replace(/[$%]/g, '').replace(/,/g, '');
+    if (t === '') return null;
+    var m = t.match(/^(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)$/);
+    if (m) { var d = parseFloat(m[2]); return d === 0 ? null : { v: parseFloat(m[1]) / d, dec: false }; }
+    if (/^-?\d*\.?\d+$/.test(t)) return { v: parseFloat(t), dec: t.indexOf('.') !== -1 };
+    return null;
+  }
+  window.leerNumero = num;
+
+  /* Práctica de opciones (clic o teclado) */
+  document.querySelectorAll('.practica .pregunta[data-correcta]').forEach(function (preg) {
+    var correcta = preg.getAttribute('data-correcta');
+    var opciones = preg.querySelectorAll('.opcion');
+    var fb = preg.querySelector('.fb');
+    opciones.forEach(function (op) {
+      op.setAttribute('tabindex', '0'); op.setAttribute('role', 'button');
+      function elegir() {
+        opciones.forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); });
+        if (op.getAttribute('data-op') === correcta) {
+          op.classList.add('correcta');
+          fb.textContent = '¡Correcto! ' + (preg.getAttribute('data-ok') || 'Bien razonado.');
+          fb.className = 'fb ok';
+        } else {
+          op.classList.add('incorrecta');
+          opciones.forEach(function (o) { if (o.getAttribute('data-op') === correcta) o.classList.add('correcta'); });
+          fb.textContent = 'Revisa: ' + (preg.getAttribute('data-pista') || 'la opción marcada en verde es la correcta.');
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      }
+      op.addEventListener('click', elegir);
+      op.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); elegir(); } });
+    });
+  });
+
+  /* Práctica de respuesta abierta: acepta enteros, decimales y fracciones equivalentes */
+  document.querySelectorAll('.btn-verificar').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var grupo = btn.getAttribute('data-grupo');
+      document.querySelectorAll('input[data-grupo="' + grupo + '"]').forEach(function (campo) {
+        var fb = document.getElementById('fb-' + campo.id);
+        var r = num(campo.value);
+        var clave = num(campo.getAttribute('data-clave')).v;
+        var tol = r && r.dec ? parseFloat(campo.getAttribute('data-tol') || '0.005') : 1e-9;
+        if (r === null) {
+          fb.textContent = 'Escribe un número (entero, decimal o fracción como 3/4).';
+          fb.className = 'fb no';
+        } else if (Math.abs(r.v - clave) <= tol) {
+          fb.textContent = '¡Correcto!';
+          fb.className = 'fb ok';
+        } else {
+          fb.textContent = 'Revisa: ' + (campo.getAttribute('data-pista') || 'repasa el procedimiento paso a paso.');
+          fb.className = 'fb no';
+        }
+        fb.style.display = 'block';
+      });
+    });
+  });
+
+  /* Quiz */
+  var Q = window.QUIZ || [], MIN = window.QUIZ_MIN || 0, cuerpo = document.getElementById('quiz-cuerpo');
+  if (!cuerpo) return;
+  Q.forEach(function (p, i) {
+    var div = document.createElement('div'); div.className = 'pregunta';
+    var enun = document.createElement('div'); enun.className = 'enun'; enun.id = 'q' + i; enun.textContent = p.enun;
+    div.appendChild(enun);
+    var cont = document.createElement('div'); cont.className = 'opciones';
+    cont.setAttribute('role', 'group'); cont.setAttribute('aria-labelledby', 'q' + i);
+    p.ops.forEach(function (texto, j) {
+      var op = document.createElement('div'); op.className = 'opcion'; op.textContent = texto;
+      op.setAttribute('tabindex', '0'); op.setAttribute('role', 'button');
+      function elegir() {
+        if (div.getAttribute('data-bloqueado') === 'si') return;
+        cont.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('elegida'); o.setAttribute('aria-pressed', 'false'); });
+        op.classList.add('elegida'); op.setAttribute('aria-pressed', 'true');
+        div.setAttribute('data-elegida', j);
+      }
+      op.addEventListener('click', elegir);
+      op.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); elegir(); } });
+      cont.appendChild(op);
+    });
+    div.appendChild(cont);
+    var fb = document.createElement('div'); fb.className = 'fb'; div.appendChild(fb);
+    cuerpo.appendChild(div);
+  });
+  var bC = document.getElementById('btn-corregir'), bR = document.getElementById('btn-reintentar'), res = document.getElementById('resultado-quiz');
+  bC.addEventListener('click', function () {
+    var ok = 0;
+    cuerpo.querySelectorAll('.pregunta').forEach(function (div, i) {
+      var el = div.getAttribute('data-elegida'), fb = div.querySelector('.fb'), ops = div.querySelectorAll('.opcion');
+      div.setAttribute('data-bloqueado', 'si');
+      ops[Q[i].correcta].classList.add('correcta');
+      if (el === null) { fb.textContent = 'No se respondió esta pregunta.'; fb.className = 'fb no'; }
+      else if (parseInt(el, 10) === Q[i].correcta) { ok++; fb.textContent = '¡Correcto!'; fb.className = 'fb ok'; }
+      else { ops[parseInt(el, 10)].classList.add('incorrecta'); fb.textContent = 'Incorrecto. ' + (Q[i].exp || 'La respuesta correcta está marcada en verde.'); fb.className = 'fb no'; }
+      fb.style.display = 'block';
+    });
+    res.style.display = 'block';
+    res.setAttribute('role', 'status');
+    if (ok >= MIN) { res.className = 'aprob'; res.textContent = 'Resultado: ' + ok + ' de ' + Q.length + ' correctas. ¡Aprobado! ' + (window.QUIZ_SIGUE || ''); }
+    else { res.className = 'repro'; res.textContent = 'Resultado: ' + ok + ' de ' + Q.length + ' correctas. Repasa la lección e intenta de nuevo (se requieren ' + MIN + ').'; }
+    bC.style.display = 'none'; bR.style.display = 'inline-block';
+  });
+  bR.addEventListener('click', function () {
+    cuerpo.querySelectorAll('.pregunta').forEach(function (div) {
+      div.removeAttribute('data-elegida'); div.removeAttribute('data-bloqueado');
+      div.querySelectorAll('.opcion').forEach(function (o) { o.classList.remove('correcta', 'incorrecta', 'elegida'); o.setAttribute('aria-pressed', 'false'); });
+      var fb = div.querySelector('.fb'); fb.style.display = 'none'; fb.textContent = '';
+    });
+    res.style.display = 'none'; bR.style.display = 'none'; bC.style.display = 'inline-block';
+    document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+  });
+})();
+</script>
+<script>
+(function () {
+  function v(id) { var r = window.leerNumero(document.getElementById(id).value); return r ? r.v : NaN; }
+  function d(x) { return '$' + (Math.round(x * 100) / 100).toFixed(2); }
+  function calc() {
+    var p = v('sim-p'), de = v('sim-d'), im = v('sim-i'), pr = v('sim-t'), out = document.getElementById('sim-out');
+    if ([p, de, im, pr].some(isNaN) || p < 0) { out.innerHTML = '<p>Revisa los datos: escribe solo números.</p>'; return; }
+    var desc = p * de / 100, sub = p - desc, imp = sub * im / 100, prop = sub * pr / 100, tot = sub + imp + prop;
+    out.innerHTML = '<div class="recibo" role="group" aria-label="Recibo calculado"><h3>Recibo calculado</h3>' +
+      '<div class="l"><span>Precio original</span><span>' + d(p) + '</span></div>' +
+      '<div class="l"><span>Descuento (' + de + '%)</span><span>−' + d(desc) + '</span></div>' +
+      '<div class="sep"></div><div class="l"><span>Subtotal</span><span>' + d(sub) + '</span></div>' +
+      '<div class="l"><span>Impuesto (' + im + '%)</span><span>' + d(imp) + '</span></div>' +
+      (pr > 0 ? '<div class="l"><span>Propina (' + pr + '% del subtotal)</span><span>' + d(prop) + '</span></div>' : '') +
+      '<div class="sep"></div><div class="l tot"><span>TOTAL</span><span>' + d(tot) + '</span></div></div>' +
+      '<p>Con factores: ' + p + ' × ' + (1 - de / 100).toFixed(4).replace(/0+$/,'').replace(/\.$/,'') + ' = ' + d(sub) + '; ' + d(sub) + ' × ' + (1 + im / 100).toFixed(4).replace(/0+$/,'').replace(/\.$/,'') + ' = ' + d(sub + imp) + (pr > 0 ? '; más la propina, ' + d(tot) : '') + '.</p>';
+  }
+  document.getElementById('sim-btn').addEventListener('click', calc);
+  calc();
+})();
+</script>
+</body>
+</html>

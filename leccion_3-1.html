@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <!-- Lección 3.1 · Matemáticas Nivel 2 · GEDparaHispanos
      José M. Fernández · CC BY-NC-SA 4.0 -->
-
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lección 3.1 · Orden de operaciones: repaso y extensión a paréntesis anidados</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
+<title>Lección 3.1 · Orden de operaciones: repaso y extensión a paréntesis anidados</title><meta content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago" name="author"/><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root {
     --tema:   #1a237e;
@@ -212,26 +211,19 @@
     font-size: 13px; border-top: 1px solid #ddd; margin-top: 20px;
   }
 
-  /* ── ÍNDICE DE LA LECCIÓN ── */
-  .indice{
-    background:#fff; border:1px solid #d8dde3; border-left:6px solid var(--tema);
-    border-radius:10px; padding:16px 20px; margin:24px 0;
-  }
-  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--tema-d); border:0; padding:0; background:none; }
-  .indice ol{ margin:0; padding-left:1.35em; }
-  .indice li{ margin:4px 0; }
-  .indice a{ color:var(--tema-d); text-decoration:underline; }
-  .indice a:hover{ color:var(--tema); }
-  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
-  .volver-indice{
-    position:fixed; right:18px; bottom:18px; z-index:60;
-    background:var(--tema-d); color:#fff; border-radius:999px;
-    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
-    box-shadow:0 2px 10px rgba(0,0,0,.28);
-  }
-  .volver-indice:hover{ background:var(--tema); color:#fff; }
-  footer a{ color:inherit; }
-  @media print{ .indice,.volver-indice{ display:none; } }
+  nav.indice { background: #fff; border: 1px solid #d8dde3; border-left: 6px solid var(--tema); border-radius: 10px; padding: 16px 20px; margin: 18px 0; }
+  nav.indice h2 { font-size: 1.05rem; margin: 0 0 10px; color: var(--tema-d); }
+  nav.indice ol { margin: 0; padding-left: 1.35em; }
+  nav.indice li { margin: 4px 0; }
+  nav.indice a { color: var(--tema-d); text-decoration: underline; }
+  [id] { scroll-margin-top: 14px; }
+
+  .volver-indice { position: fixed; right: 18px; bottom: 18px; z-index: 60; background: var(--tema-d); color: #fff;
+    border-radius: 999px; padding: 10px 16px; font-weight: 700; font-size: .92rem; text-decoration: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,.28); }
+  .volver-indice:hover { background: var(--tema); color: #fff; }
+  .volver-indice:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+  @media print { nav.indice, .volver-indice { display: none; } }
 </style>
 </head>
 <body>
@@ -435,8 +427,8 @@
 <li>Cinco expresiones con paréntesis simples y exponente entero positivo.</li>
 <li>Cinco expresiones con paréntesis anidados (paréntesis + corchete + llave).</li>
 <li>Tres preguntas de selección sobre cuál operación va primero.</li>
-<li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y busque los ejercicios de <em>orden de operaciones</em>. Antes de escribir cada respuesta, señale con el dedo en la pantalla cuál es la primera operación que toca: ese hábito es el que después le salva el examen.</li></ul>
-<p>Tiempo estimado: 50 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
+<li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y busque los ejercicios de <em>orden de operaciones</em>. Antes de escribir cada respuesta, señale con el dedo en la pantalla cuál es la primera operación que toca: ese hábito es el que después le salva el examen.</li></ul><p>Tiempo estimado: 50 minutos. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>
+
 </div>
 <div class="quiz">
 <h2 id="s-quiz-de-la-leccion-3-1">Quiz de la lección 3.1</h2>
@@ -487,9 +479,9 @@
 <div class="cierre">
 <h2 id="s-cierre-y-enlace-con-la-proxima-leccion">Cierre y enlace con la próxima lección</h2>
 <p>En esta lección se reunió todo lo aprendido bajo un único <strong>sistema de prioridades</strong>: PEMDAS. Quedaron claras la pirámide de cuatro niveles, la regla de izquierda a derecha para MD y AS, y la técnica de resolver paréntesis anidados <strong>del interior al exterior</strong>.</p>
-<p>En la <strong>Lección 3.2 · PEMDAS con potencias, raíces, fracciones y signos</strong> se cerrará el Tema 3 integrando <strong>todas</strong> las herramientas del Nivel 2: enteros con signo, fracciones complejas, potencias y raíces cuadradas, dentro del mismo orden de operaciones. La pirámide será la misma, pero los ingredientes serán mucho más ricos.</p>
+<p>En la <strong>Lección 3.2 · PEMDAS con potencias, raíces, fracciones y signos</strong> se incorporarán al orden de operaciones <strong>todas</strong> las herramientas del Nivel 2: enteros con signo, fracciones complejas, potencias y raíces cuadradas, dentro del mismo orden de operaciones. La pirámide será la misma, pero los ingredientes serán mucho más ricos.</p>
 </div>
-<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 3 · Lección 3.1</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 3 · Lección 3.1</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 </div>
 <script>
 (function () {
