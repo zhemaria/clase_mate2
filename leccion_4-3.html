@@ -152,6 +152,18 @@
   .volver-indice:hover { background: var(--tema); color: #fff; }
   .volver-indice:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
   @media print { nav.indice, .volver-indice { display: none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -191,6 +203,16 @@
 <strong>No basta con que una cantidad baje.</strong> Para que sea inversa, al duplicar una la otra debe quedar exactamente a la mitad; al triplicar, en la tercera parte. Si una persona gasta dinero y su saldo baja, eso no es proporcionalidad inversa: es una resta.
     </div>
 </div>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l4-2.html#directa-inversa" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: directa frente a inversa (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: directa frente a inversa</span>
+      <span class="ei-sub">Observe qué crece y qué disminuye y aplique la pregunta «si duplico X, ¿qué le pasa a Y?».</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <h2 class="seccion" id="s2">2. La constante k = x × y</h2>
 <div class="bloque">
@@ -303,6 +325,16 @@
 <button class="btn btn-verificar" data-grupo="g2" type="button">Verificar</button>
 </div>
 
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l4-2.html#inversas" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: resolver proporciones inversas (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: resolver proporciones inversas</span>
+      <span class="ei-sub">Calcule el producto constante y divídalo entre la cantidad nueva.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s4">4. Aplicaciones mixtas</h2>
 <div class="bloque">
 <p>En el GED los problemas no anuncian de qué tipo son. El procedimiento para cualquier problema de proporciones es: <strong>(1)</strong> hacer la pregunta diagnóstica; <strong>(2)</strong> elegir el método (razón constante o producto constante); <strong>(3)</strong> resolver; <strong>(4)</strong> comprobar que el resultado tiene sentido.</p>
@@ -347,6 +379,16 @@
 
 
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l4-2.html#directas" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: resolver proporciones directas (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: resolver proporciones directas</span>
+      <span class="ei-sub">Compare con los problemas directos: aquí lo constante es la razón, no el producto.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea" id="tarea">
 <h2>Tarea</h2>

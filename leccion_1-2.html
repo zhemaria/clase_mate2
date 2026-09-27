@@ -209,6 +209,18 @@
   .volver-indice:hover{ background:var(--tema); color:#fff; }
   footer a{ color:inherit; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -269,6 +281,16 @@
 </div>
 <p>La imagen ilustra <strong>−5 + 8</strong>: se parte de −5 y se avanza ocho lugares hacia la derecha, llegando a <strong>3</strong>.</p>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l1-2.html#recta-suma" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: sumar en la recta numérica (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: sumar en la recta numérica</span>
+      <span class="ei-sub">Elija el punto de partida y el número que se suma, y vea el recorrido en la recta.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-2-modelo-de-fichas-de-dos-colores">2. Modelo de fichas de dos colores</h2>
 <div class="bloque">
 <p>Otra forma de visualizar la suma es con <strong>fichas de dos colores</strong>: una cara amarilla representa <strong>+1</strong> y una cara roja representa <strong>−1</strong>. Una ficha amarilla y una roja juntas forman un <strong>par cero</strong>, porque +1 + (−1) = 0.</p>
@@ -284,6 +306,16 @@
 <strong>Por qué funciona:</strong> los pares cero no cambian el valor total, así que retirarlos es válido. Lo que queda «sin pareja» indica el resultado: si quedan rojas, es negativo; si quedan amarillas, es positivo.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l1-2.html#fichas" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: el modelo de fichas (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: el modelo de fichas</span>
+      <span class="ei-sub">Forme pares cero con fichas amarillas y rojas y descubra qué queda.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-3-la-regla-de-la-suma-de-enteros">3. La regla de la suma de enteros</h2>
 <div class="bloque">
 <p>El modelo de fichas y la recta numérica conducen a una <strong>regla práctica</strong> que permite sumar sin dibujar:</p>
@@ -349,6 +381,16 @@
 </div>
 <button class="btn" id="btn-sumas">Verificar</button>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l1-2.html#regla-suma" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la regla de la suma (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la regla de la suma</span>
+      <span class="ei-sub">Practique sumas con el mismo signo y con distinto signo sin dibujar.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-4-restar-es-sumar-el-opuesto">4. Restar es sumar el opuesto</h2>
 <div class="bloque">
 <p>La resta de enteros se vuelve sencilla con una sola transformación: <strong>restar un número equivale a sumar su opuesto</strong>.</p>
@@ -405,6 +447,16 @@
 <div class="fb"></div>
 </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l1-2.html#restar" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: restar es sumar el opuesto (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: restar es sumar el opuesto</span>
+      <span class="ei-sub">Reescriba cada resta como suma del opuesto y resuélvala.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-5-aplicaciones-a-contextos-reales">5. Aplicaciones a contextos reales</h2>
 <div class="bloque">
 <p>Las sumas y restas de enteros describen muchas situaciones cotidianas. Identificar el signo correcto es la clave para plantear bien el problema.</p>
@@ -426,6 +478,16 @@
 </div>
 </div>
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l1-2.html#contexto" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: aplicaciones a contextos reales (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: aplicaciones a contextos reales</span>
+      <span class="ei-sub">Traduzca temperaturas, depósitos y deudas a sumas y restas con signo.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea">
 <h2 id="s-tarea">Tarea</h2>

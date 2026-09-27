@@ -247,6 +247,18 @@
   .volver-indice:hover{ background:var(--tema); color:#fff; }
   footer a{ color:inherit; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -295,6 +307,16 @@
 </div>
 </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-1.html#medidas" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: las cuatro medidas en una mirada (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: las cuatro medidas en una mirada</span>
+      <span class="ei-sub">Escriba sus propios datos y la calculadora le da la media, la mediana, la moda y el rango.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-2-la-media-aritmetica">2. La media aritmética</h2>
 <div class="bloque">
 <p>La <strong>media</strong>, llamada también <strong>promedio</strong>, es la medida más conocida. Se calcula sumando todos los datos y dividiendo entre la cantidad de datos.</p>
@@ -312,6 +334,16 @@
 <strong>Idea intuitiva:</strong> la media «reparte equitativamente» todos los datos. Si los 420 puntos del ejemplo se redistribuyeran de forma pareja, cada nota tendría exactamente 84. Por eso la media es muy útil para representar un grupo con un solo número.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-1.html#media" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la media aritmética (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la media aritmética</span>
+      <span class="ei-sub">Empareje las torres para ver la media como un reparto en partes iguales, y practique.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-3-la-mediana-el-valor-del-centro">3. La mediana: el valor del centro</h2>
 <div class="bloque">
 <p>La <strong>mediana</strong> es el valor que ocupa la posición central cuando los datos están ordenados de menor a mayor. Divide el conjunto en dos mitades iguales: la mitad de los datos está debajo, la otra mitad encima.</p>
@@ -337,6 +369,16 @@
 <p><strong>Respuesta:</strong> la mediana es 10.</p>
 </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-1.html#mediana" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la mediana (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la mediana</span>
+      <span class="ei-sub">Ordene los datos y encuentre el centro, con cantidad par e impar.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-4-la-moda-y-el-rango">4. La moda y el rango</h2>
 <div class="bloque">
 <h3>La moda</h3>
@@ -386,6 +428,16 @@
 </div>
 <button class="btn" id="btn-med">Verificar</button>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-1.html#moda-rango" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la moda y el rango (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la moda y el rango</span>
+      <span class="ei-sub">Encuentre el valor que más se repite y mida qué tan dispersos están los datos.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-5-cuando-la-media-engana-los-valores-atipicos">5. Cuando la media engaña: los valores atípicos</h2>
 <div class="bloque">
 <p>La media tiene un defecto importante: se ve <strong>fuertemente afectada</strong> por valores muy distintos al resto, llamados <strong>valores atípicos</strong>. Un solo dato extremo puede arrastrar el promedio lejos de lo que «realmente» representa el grupo.</p>
@@ -402,6 +454,16 @@
 <strong>Lección práctica:</strong> cuando un titular de noticia dice «el salario promedio subió un X%», conviene preguntar si se trata de la media o de la mediana. La diferencia entre las dos suele revelar la verdadera historia detrás de los datos.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-1.html#atipicos" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: cuando la media engaña (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: cuando la media engaña</span>
+      <span class="ei-sub">Mueva el salario del gerente y vea cómo se dispara la media mientras la mediana casi no cambia.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-6-la-media-ponderada">6. La media ponderada</h2>
 <div class="bloque">
 <p>A veces, no todos los datos tienen la misma <strong>importancia</strong>. En las calificaciones, por ejemplo, el examen final pesa más que un quiz. En esos casos se calcula la <strong>media ponderada</strong>, que multiplica cada valor por su «peso» antes de promediar.</p>
@@ -492,6 +554,16 @@
 <button class="btn" id="btn-mp">Verificar</button>
 </div>
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-1.html#ponderada" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la media ponderada (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la media ponderada</span>
+      <span class="ei-sub">Calcule la nota final de un curso cuando cada parte tiene un peso distinto.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea">
 <h2 id="s-tarea">Tarea</h2>

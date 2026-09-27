@@ -229,6 +229,18 @@
   .volver-indice:hover{ background:var(--tema); color:#fff; }
   footer a{ color:inherit; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -285,6 +297,16 @@
 <strong>Idea unificadora:</strong> todas estas fórmulas comparten una estructura común: <em>base por altura</em>, ajustado por un factor (1 para el rectángulo, 1/2 para el triángulo, promedio de bases para el trapecio). Pensar así ayuda a recordarlas sin memorización mecánica.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-1.html#basicas" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: las fórmulas de área básicas (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: las fórmulas de área básicas</span>
+      <span class="ei-sub">Explore el rectángulo, el triángulo, el paralelogramo y el trapecio, y repase qué mide cada fórmula.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-2-que-es-una-figura-compuesta">2. Qué es una figura compuesta</h2>
 <div class="bloque">
 <p>Una <strong>figura compuesta</strong> es aquella que se forma al combinar dos o más figuras simples. Aparece constantemente en la vida real: el plano de un apartamento en forma de L, un terreno con una esquina recortada, una fachada con un triángulo encima de un rectángulo (como una casa dibujada por un niño).</p>
@@ -305,6 +327,16 @@
 </div>
 <p>Cualquiera de estas figuras puede medirse aplicando una idea sencilla: <strong>dividir para conquistar</strong>. Se traza una o varias líneas auxiliares que descomponen la figura en piezas simples cuya área se sabe calcular; luego se suman, o en algunos casos se restan.</p>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-1.html#compuesta" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: qué es una figura compuesta (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: qué es una figura compuesta</span>
+      <span class="ei-sub">Reconozca figuras formadas por piezas simples y decida cómo dividirlas.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-3-estrategia-de-adicion">3. Estrategia de adición</h2>
 <div class="bloque">
 <p>En la <strong>estrategia de adición</strong>, se traza una línea auxiliar que parte la figura en dos (o más) piezas simples. Se calcula el área de cada pieza por separado y se <strong>suman</strong> los resultados.</p>
@@ -342,6 +374,16 @@
 <strong>Estrategia visual:</strong> conviene marcar cada pieza con una letra o un color distinto (R1, R2, T1...) y anotar el área parcial al lado de cada una. Al final, sumar todas las áreas se vuelve un paso mecánico.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-1.html#adicion" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la estrategia de adición (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la estrategia de adición</span>
+      <span class="ei-sub">Mueva las medidas del apartamento en L, deduzca el lado que falta y sume las piezas.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-4-estrategia-de-sustraccion">4. Estrategia de sustracción</h2>
 <div class="bloque">
 <p>En algunos casos, la figura compuesta se ve mejor como un <strong>rectángulo grande al que le falta un trozo</strong>. La estrategia de <strong>sustracción</strong> consiste en calcular el área del rectángulo completo y luego restar el área del trozo faltante.</p>
@@ -404,6 +446,16 @@
 <div class="fb"></div>
 </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-1.html#sustraccion" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la estrategia de sustracción (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la estrategia de sustracción</span>
+      <span class="ei-sub">Complete el rectángulo, reste el trozo que falta y compruebe que da lo mismo que por adición.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-5-comparacion-de-las-dos-estrategias">5. Comparación de las dos estrategias</h2>
 <div class="bloque">
 <p>En muchas figuras, las dos estrategias funcionan y conducen al mismo resultado. Vale la pena verlo en un ejemplo concreto.</p>
@@ -427,6 +479,16 @@
 <div class="paso"><span class="n">3</span> Área de la L: 360 − 60 = 300 m². ✓ Coincide con el resultado anterior.</div>
 </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-1.html#compuesta" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: adición o sustracción: cuál conviene (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: adición o sustracción: cuál conviene</span>
+      <span class="ei-sub">Compare los dos caminos y elija el más cómodo para cada figura.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-6-aplicaciones-reales-costo-de-materiales">6. Aplicaciones reales: costo de materiales</h2>
 <div class="bloque">
 <p>Una vez calculada el área, es muy común multiplicarla por un <strong>precio unitario</strong> para conocer el costo total de un material: pintura por metro cuadrado, alfombra por metro cuadrado, baldosas por pie cuadrado.</p>
@@ -500,6 +562,16 @@
 </div>
 </div>
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-1.html#costo" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: el costo de los materiales (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: el costo de los materiales</span>
+      <span class="ei-sub">Pase del área al presupuesto y redondee hacia arriba las latas o los rollos.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea">
 <h2 id="s-tarea">Tarea</h2>

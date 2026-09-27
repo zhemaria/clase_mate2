@@ -143,6 +143,18 @@
   .volver-indice:hover { background: var(--tema); color: #fff; }
   .volver-indice:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
   @media print { nav.indice, .volver-indice { display: none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -190,6 +202,16 @@
     </div>
 </div>
 
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l3-2.html#barra-fraccion" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la barra de fracción como agrupador (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la barra de fracción como agrupador</span>
+      <span class="ei-sub">Resuelva numerador y denominador por separado y divida al final.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s2">2. Operar con fracciones siguiendo PEMDAS</h2>
 <div class="bloque">
 <p>Las fracciones <strong>no cambian el orden</strong> de las operaciones. Lo que cambia es la forma de hacer cada operación, que ya se estudió en el Tema 2: para sumar y restar se busca un denominador común; para multiplicar, numerador por numerador y denominador por denominador; para dividir, se multiplica por el recíproco.</p>
@@ -220,6 +242,16 @@
 <div class="pregunta"><div class="enun">3. (3/4)² × 16 =</div><input aria-label="Pregunta 3: tres cuartos al cuadrado, por dieciséis" autocomplete="off" class="campo" data-clave="9" data-grupo="g1" data-pista="primero eleva la fracción completa: 9/16; después multiplica por 16." id="a3" type="text"/><div aria-live="polite" class="fb" id="fb-a3"></div></div>
 <button class="btn btn-verificar" data-grupo="g1" type="button">Verificar</button>
 </div>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l2-1.html#sumar-restar" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: repaso de operaciones con fracciones (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: repaso de operaciones con fracciones</span>
+      <span class="ei-sub">Repase sumar y restar fracciones con signo (Tema 2) antes de combinarlas con PEMDAS.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <h2 class="seccion" id="s3">3. Del número a la letra: sustituir y evaluar</h2>
 <div class="bloque">
@@ -287,6 +319,16 @@
 </div>
 </div>
 
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l3-3.html#sustituir" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: sustituir y evaluar (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: sustituir y evaluar</span>
+      <span class="ei-sub">Cambie cada letra por su valor entre paréntesis y vea los pasos de PEMDAS; luego practique.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s4">4. Fórmulas en contexto: así pregunta el GED</h2>
 <div class="bloque">
 <p>El examen GED de Matemáticas entrega una <strong>hoja de fórmulas</strong>. Allí no se pide memorizar nada: se pide <strong>identificar qué valor corresponde a cada letra, sustituir y aplicar PEMDAS</strong>. Es la misma destreza de la sección anterior, con palabras alrededor.</p>
@@ -339,6 +381,16 @@
 
 
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l3-3.html#formulas" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: fórmulas en contexto (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: fórmulas en contexto</span>
+      <span class="ei-sub">Pruebe las fórmulas de la hoja del GED y resuelva preguntas tipo examen.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea" id="tarea">
 <h2>Tarea</h2>

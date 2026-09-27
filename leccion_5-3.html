@@ -154,6 +154,18 @@
   .volver-indice:hover { background: var(--tema); color: #fff; }
   .volver-indice:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
   @media print { nav.indice, .volver-indice { display: none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -250,6 +262,16 @@
 </div>
 </div>
 
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l5-1.html#cotidianas" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: aplicaciones cotidianas (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: aplicaciones cotidianas</span>
+      <span class="ei-sub">Practique descuentos, impuestos, propinas y comisiones en la tienda y el restaurante.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s4">4. Propina</h2>
 <div class="bloque">
 <p>En Estados Unidos es costumbre dejar una propina en restaurantes y otros servicios. Suele calcularse entre el 15% y el 20% de la cuenta, habitualmente <strong>antes del impuesto</strong>. Es un cálculo ideal para hacer mentalmente:</p>
@@ -270,6 +292,16 @@
 <div class="pregunta"><div class="enun">3. Propina del 15% sobre una cuenta de $64:</div><input aria-label="Pregunta 2.3: quince por ciento de propina sobre sesenta y cuatro dólares" autocomplete="off" class="campo" data-clave="9.60" data-grupo="g2" data-pista="10% = 6.40 y 5% = 3.20; en total 9.60." id="t3" type="text"/><div aria-live="polite" class="fb" id="fb-t3"></div></div>
 <button class="btn btn-verificar" data-grupo="g2" type="button">Verificar</button>
 </div>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l5-3.html#propina" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la propina mental (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la propina mental</span>
+      <span class="ei-sub">Calcule el 10 %, el 5 %, el 15 % y el 20 % de cabeza.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <h2 class="seccion" id="s5">5. Porcentajes encadenados</h2>
 <div class="bloque">
@@ -328,6 +360,16 @@
 
 
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l5-3.html#encadenados" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: porcentajes encadenados (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: porcentajes encadenados</span>
+      <span class="ei-sub">Use el simulador de compra y aplique cada porcentaje sobre el valor de ese momento.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea" id="tarea">
 <h2>Tarea</h2>

@@ -227,6 +227,18 @@
   .volver-indice:hover { background: var(--tema); color: #fff; }
   .volver-indice:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
   @media print { nav.indice, .volver-indice { display: none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -286,6 +298,16 @@
 <strong>El símbolo radical como agrupador:</strong> todo lo que está bajo el símbolo √ se considera <strong>dentro de un paréntesis invisible</strong>. Por eso √(16 + 9) ≠ √16 + √9. En el primer caso, primero se suma (16 + 9 = 25) y luego se saca la raíz: √25 = 5. En el segundo, se sacarían dos raíces por separado: 4 + 3 = 7.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l3-2.html#potencias-raices" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: potencias y raíces (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: potencias y raíces</span>
+      <span class="ei-sub">Resuelva expresiones en las que el radical agrupa como un paréntesis invisible.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-2-la-barra-de-fraccion-como-agrupador">2. La barra de fracción como agrupador</h2>
 <div class="bloque">
 <p>De forma similar al radical, la <strong>barra de fracción</strong> agrupa lo que está arriba y lo que está abajo. Numerador y denominador se evalúan por separado, y luego se realiza la división.</p>
@@ -332,6 +354,16 @@
 <div class="fb"></div>
 </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l3-2.html#barra-fraccion" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la barra de fracción como agrupador (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la barra de fracción como agrupador</span>
+      <span class="ei-sub">Resuelva numerador y denominador por separado y divida al final.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-3-pemdas-con-enteros-negativos">3. PEMDAS con enteros negativos</h2>
 <div class="bloque">
 <p>Cuando aparecen <strong>signos negativos</strong>, lo importante es saber distinguir cuándo el signo forma parte del número y cuándo indica una resta o un opuesto.</p>
@@ -357,6 +389,16 @@
 <strong>Regla:</strong> el exponente afecta solo al símbolo que está justo a su izquierda. Sin paréntesis, el signo menos queda <strong>fuera</strong> del alcance del exponente.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l3-2.html#negativos" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: PEMDAS con negativos (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: PEMDAS con negativos</span>
+      <span class="ei-sub">Compare (−5)² con −5² y practique expresiones con signos.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-4-expresiones-integradoras">4. Expresiones integradoras</h2>
 <div class="bloque">
 <p>Una expresión <strong>integradora</strong> es la que combina, en un solo cálculo, herramientas de los tres temas del nivel. Resolverla es exactamente igual que las anteriores: PEMDAS, paso a paso, copiando cada línea.</p>
@@ -396,6 +438,16 @@
 <button class="btn" id="btn-int">Verificar</button>
 </div>
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l3-2.html#arbitro" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: el árbitro del orden de operaciones (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: el árbitro del orden de operaciones</span>
+      <span class="ei-sub">Revise resoluciones ajenas y encuentre el paso equivocado, si lo hay.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea">
 <h2 id="s-tarea">Tarea</h2>

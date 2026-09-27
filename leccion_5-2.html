@@ -156,6 +156,18 @@
   .volver-indice:hover { background: var(--tema); color: #fff; }
   .volver-indice:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
   @media print { nav.indice, .volver-indice { display: none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -185,6 +197,16 @@
 </div>
 <div class="caja-tip"><strong>Referencias útiles:</strong> 10% se obtiene moviendo el punto decimal un lugar a la izquierda; 50% es la mitad; un aumento del 100% significa que la cantidad se duplicó.</div>
 </div>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l5-2.html#estimar" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: antes de calcular, estimar (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: antes de calcular, estimar</span>
+      <span class="ei-sub">Estime el tamaño del cambio con el 10 % y compárelo con el cálculo exacto.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <h2 class="seccion" id="s2">2. La fórmula del cambio porcentual</h2>
 <div class="bloque">
@@ -253,6 +275,16 @@
 <button class="btn btn-verificar" data-grupo="g1" type="button">Verificar</button>
 </div>
 
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l5-1.html#cambio" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: cambio porcentual (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: cambio porcentual</span>
+      <span class="ei-sub">Compare el valor inicial y el final, y compruebe por qué subir y bajar el mismo porcentaje no deja todo igual.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s5">5. Cambio absoluto y cambio relativo</h2>
 <div class="bloque">
 <p>¿Un aumento de $5 representa siempre el mismo porcentaje? No. El <strong>cambio absoluto</strong> dice cuántas unidades cambió algo; el <strong>cambio relativo</strong> (el porcentual) dice cuánto representa ese cambio en comparación con el punto de partida.</p>
@@ -290,6 +322,16 @@
 </div>
 </div>
 
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l5-2.html#absoluto-relativo" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: cambio absoluto y cambio relativo (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: cambio absoluto y cambio relativo</span>
+      <span class="ei-sub">Vea cómo el mismo aumento en dólares pesa distinto según el precio de partida.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s6">6. Del porcentaje al valor nuevo: el factor de cambio</h2>
 <div class="bloque">
 <p>A veces se conoce el porcentaje y se quiere el valor nuevo. Se puede calcular el cambio y sumarlo o restarlo, o se puede multiplicar directamente por un <strong>factor de cambio</strong>:</p>
@@ -308,6 +350,16 @@
 
 
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l5-2.html#factor" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: el factor de cambio (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: el factor de cambio</span>
+      <span class="ei-sub">Multiplique por (1 + r) o por (1 − r) y compruebe que da lo mismo que sumar o restar el cambio.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea" id="tarea">
 <h2>Tarea</h2>

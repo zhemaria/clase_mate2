@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<!-- Lección 6.1 · Actividad 1: identificar los datos del interés simple · Spanish ASE Math, Nivel 2 · © José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago. Licencia Creative Commons CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es) -->
+<!-- Lección 6.1 · Actividad 1: identificar los datos del interés simple (versión autocorregible) · Matemáticas Nivel 2 · GEDparaHispanos
+José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lección 6.1 · Actividad 1: identificar los datos del interés simple</title>
+<meta name="description" content="Actividad autocorregible: identifique el principal, la tasa y el tiempo en diez situaciones de interés simple, con retroalimentación después de cada intento.">
 <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
 <meta name="license" content="CC BY-NC-SA 4.0">
 <meta name="dcterms.license" content="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
@@ -13,302 +15,382 @@
   :root{
     --tema:#00695c; --tema-d:#004d40; --tema-bg:#b2dfdb; --tema-soft:#e0f2f1;
     --txt:#222; --bg:#f5f7fa;
-    --doc:#5e35b1; --doc-d:#4527a0; --doc-soft:#ede7f6;
+    --ok:#1b5e20; --ok-bg:#e8f5e9; --no:#b71c1c; --no-bg:#ffebee;
     --ambar:#5c3900; --ambar-bg:#fff8e1;
   }
   *{box-sizing:border-box;}
-  body{
-    font-family:'Segoe UI', system-ui, sans-serif; margin:0;
-    background:var(--bg); color:var(--txt); line-height:1.6; font-size:16px;
-  }
+  body{font-family:'Segoe UI', system-ui, sans-serif; margin:0; background:var(--bg); color:var(--txt); line-height:1.6; font-size:16px;}
   .contenedor{max-width:880px; margin:0 auto; padding:24px;}
 
-  header.principal{
-    background:linear-gradient(135deg,#004d40 0%,#00695c 55%,#00897b 100%);
-    color:#fff; padding:30px; border-radius:14px; margin-bottom:22px;
-    box-shadow:0 4px 14px rgba(0,77,64,.28);
-  }
+  header.principal{background:linear-gradient(135deg,#004d40 0%,#00695c 55%,#00897b 100%); color:#fff; padding:30px; border-radius:14px; margin-bottom:22px; box-shadow:0 4px 14px rgba(0,77,64,.28);}
   header.principal .ruta{font-size:13px; opacity:.92; letter-spacing:.4px; text-transform:uppercase;}
   header.principal h1{margin:8px 0 6px; font-size:24px; font-weight:700;}
   header.principal .meta{font-size:14px; opacity:.94;}
 
-  h2.seccion{
-    color:var(--tema-d); font-size:21px; margin:32px 0 12px;
-    padding-bottom:6px; border-bottom:3px solid var(--tema-bg);
-  }
+  h2.seccion{color:var(--tema-d); font-size:21px; margin:32px 0 12px; padding-bottom:6px; border-bottom:3px solid var(--tema-bg);}
 
-  .caja-objetivos{
-    background:var(--tema-soft); border-left:6px solid var(--tema);
-    padding:18px 22px; border-radius:0 10px 10px 0; margin-bottom:22px;
-  }
+  .caja-objetivos{background:var(--tema-soft); border-left:6px solid var(--tema); padding:18px 22px; border-radius:0 10px 10px 0; margin-bottom:22px;}
   .caja-objetivos h2{margin:0 0 10px; color:var(--tema-d); font-size:19px;}
   .caja-objetivos ul{margin:0; padding-left:22px;}
   .caja-objetivos li{margin:5px 0;}
 
-  .bloque{
-    background:#fff; border-radius:10px; padding:4px 24px 18px;
-    box-shadow:0 1px 5px rgba(0,0,0,.06); margin-bottom:18px;
-  }
+  .bloque{background:#fff; border-radius:10px; padding:4px 24px 18px; box-shadow:0 1px 5px rgba(0,0,0,.06); margin-bottom:18px;}
   p{margin:10px 0;}
 
-  /* Guía del docente (acordeón nativo) */
-  details.guia-docente{
-    background:var(--doc-soft); border-left:6px solid var(--doc);
-    border-radius:0 10px 10px 0; margin-bottom:22px; padding:0 22px;
-  }
-  details.guia-docente summary{
-    cursor:pointer; font-weight:700; color:var(--doc-d); font-size:18px;
-    padding:16px 0; list-style:none; display:flex; align-items:center; gap:10px;
-  }
-  details.guia-docente summary::-webkit-details-marker{display:none;}
-  details.guia-docente summary .chev{transition:transform .2s; font-size:14px;}
-  details.guia-docente[open] summary .chev{transform:rotate(90deg);}
-  details.guia-docente .interior{padding:0 0 18px;}
-  details.guia-docente h3{color:var(--doc-d); font-size:16px; margin:16px 0 6px;}
-  details.guia-docente ul{padding-left:22px; margin:8px 0;}
-  details.guia-docente li{margin:5px 0;}
-  .etq-doc{
-    display:inline-block; background:var(--doc); color:#fff; font-size:11px;
-    font-weight:700; padding:3px 11px; border-radius:11px; letter-spacing:.5px;
-  }
-
-  .caja-formula{
-    background:#fafafa; border:1px solid #e3e3e3; border-radius:8px;
-    padding:16px 18px; margin:14px 0; text-align:center;
-  }
+  .caja-formula{background:#fafafa; border:1px solid #e3e3e3; border-radius:8px; padding:16px 18px; margin:14px 0; text-align:center;}
   .caja-formula .ec{font-size:22px; font-weight:700; color:var(--tema-d);}
   .caja-formula .glosa{font-size:14px; color:#555; margin-top:8px;}
+  .caja-tip{background:#e8f5e9; border-left:5px solid #2e7d32; padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0; color:#1b5e20; font-size:15px;}
+  .caja-atencion{background:var(--ambar-bg); border-left:5px solid #f9a825; padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0; color:var(--ambar); font-size:15px;}
 
-  .caja-tip{
-    background:#e8f5e9; border-left:5px solid #2e7d32;
-    padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0;
-    color:#1b5e20; font-size:15px;
-  }
-  .caja-atencion{
-    background:var(--ambar-bg); border-left:5px solid #f9a825;
-    padding:12px 16px; border-radius:0 8px 8px 0; margin:14px 0;
-    color:var(--ambar); font-size:15px;
-  }
-
-  /* Pasos del estudiante */
   ol.pasos{counter-reset:p; list-style:none; padding-left:0; margin:14px 0;}
-  ol.pasos li{
-    position:relative; padding:8px 0 8px 44px; margin:6px 0;
-  }
-  ol.pasos li::before{
-    counter-increment:p; content:counter(p);
-    position:absolute; left:0; top:8px;
-    width:28px; height:28px; border-radius:50%;
-    background:var(--tema); color:#fff; font-weight:700;
-    text-align:center; line-height:28px; font-size:14px;
-  }
+  ol.pasos li{position:relative; padding:8px 0 8px 44px; margin:6px 0;}
+  ol.pasos li::before{counter-increment:p; content:counter(p); position:absolute; left:0; top:8px; width:28px; height:28px; border-radius:50%; background:var(--tema); color:#fff; font-weight:700; text-align:center; line-height:28px; font-size:14px;}
 
-  /* Situaciones */
-  .situaciones{margin:14px 0;}
-  .situacion{
-    background:#fff; border:1px solid #e3e3e3; border-left:5px solid var(--tema);
-    border-radius:0 9px 9px 0; padding:12px 16px 12px 14px; margin:10px 0;
-    display:flex; gap:14px; align-items:flex-start;
-  }
-  .situacion .num{
-    flex-shrink:0; width:30px; height:30px; border-radius:50%;
-    background:var(--tema-soft); color:var(--tema-d); font-weight:700;
-    text-align:center; line-height:30px;
-  }
-  .situacion p{margin:3px 0;}
+  /* Barra de progreso */
+  .progreso{position:sticky; top:0; z-index:20; background:#fff; border:1px solid #d8dde3; border-left:6px solid var(--tema); border-radius:10px; padding:10px 16px; margin:18px 0; display:flex; flex-wrap:wrap; gap:6px 18px; align-items:center; font-size:15px; box-shadow:0 2px 8px rgba(0,0,0,.06);}
+  .progreso strong{color:var(--tema-d);}
+  .progreso .puntos{display:flex; gap:5px; flex-wrap:wrap;}
+  .progreso .punto{width:26px; height:26px; border-radius:50%; border:2px solid #b0bec5; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; color:#546e7a; text-decoration:none; background:#fff;}
+  .progreso .punto.ok{background:var(--ok); border-color:var(--ok); color:#fff;}
+  .progreso .punto.visto{background:#fff3e0; border-color:#e65100; color:#bf360c;}
+  .progreso .punto:focus-visible{outline:3px solid #b05e00; outline-offset:2px;}
 
-  /* Tabla plantilla */
-  .tabla-wrap{overflow-x:auto; margin:14px 0;}
-  table.plantilla{width:100%; border-collapse:collapse; font-size:14px; min-width:520px;}
-  table.plantilla th, table.plantilla td{
-    border:1px solid #d9d9d9; padding:10px 12px; text-align:center;
-  }
-  table.plantilla th{background:var(--tema); color:#fff; font-size:13px;}
-  table.plantilla td.sit{background:var(--tema-soft); text-align:left; font-weight:600; color:var(--tema-d);}
-  table.plantilla tr.ejemplo td{background:#fffde7;}
-  table.plantilla .vacia{color:#bbb;}
+  /* Tarjeta de situación */
+  .sit{background:#fff; border:1px solid #e0e0e0; border-left:6px solid var(--tema); border-radius:0 12px 12px 0; padding:16px 20px 18px; margin:16px 0; box-shadow:0 1px 5px rgba(0,0,0,.05); scroll-margin-top:80px;}
+  .sit.resuelta{border-left-color:var(--ok);}
+  .sit h3{margin:0 0 6px; font-size:17px; color:var(--tema-d); display:flex; align-items:center; gap:10px;}
+  .sit h3 .num{width:30px; height:30px; border-radius:50%; background:var(--tema-soft); color:var(--tema-d); text-align:center; line-height:30px; font-size:15px; flex-shrink:0;}
+  .sit .enunciado{margin:4px 0 12px;}
+  .campos{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px 18px;}
+  fieldset.campo{border:1px solid #e3e3e3; border-radius:9px; padding:8px 12px 10px; margin:0; min-width:0;}
+  fieldset.campo legend{font-weight:700; font-size:14px; color:var(--tema-d); padding:0 4px;}
+  .fila{display:flex; gap:6px; align-items:center; flex-wrap:wrap;}
+  .fila .pre{font-weight:700; color:#455a64;}
+  input.num, select{font:inherit; font-size:16px; padding:6px 9px; border:2px solid #cfd8dc; border-radius:7px; background:#fff; color:var(--txt);}
+  input.num{width:110px;}
+  input.num:focus, select:focus{border-color:var(--tema); outline:3px solid #80cbc4; outline-offset:1px;}
+  .campo.bien{border-color:#66bb6a; background:var(--ok-bg);}
+  .campo.mal{border-color:#e57373; background:var(--no-bg);}
+  .marca{font-size:14px; font-weight:700; margin-top:5px; min-height:1.2em;}
+  .campo.bien .marca{color:var(--ok);}
+  .campo.mal .marca{color:var(--no);}
+  .campo.bandera{grid-column:1 / -1;}
+  .campo.bandera label{display:inline-flex; align-items:center; gap:6px; margin:4px 16px 2px 0; cursor:pointer;}
+  .campo.bandera input{width:18px; height:18px; accent-color:var(--tema);}
 
-  /* Botón hoja compartida */
-  .enlace-hoja{
-    display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--txt);
-    background:#fff; border:1px solid #e3e3e3; border-left:5px solid #1e8e3e;
-    border-radius:11px; padding:15px 18px; box-shadow:0 1px 5px rgba(0,0,0,.06);
-    margin:16px 0; transition:transform .18s, box-shadow .18s;
-  }
-  .enlace-hoja:hover{transform:translateY(-3px); box-shadow:0 7px 20px rgba(30,142,62,.18);}
-  .enlace-hoja .ico{
-    flex-shrink:0; width:50px; height:50px; border-radius:10px; font-size:26px;
-    display:flex; align-items:center; justify-content:center; background:#e6f4ea;
-  }
-  .enlace-hoja .titulo{font-weight:700; color:#1e6b2f; font-size:16px;}
-  .enlace-hoja .desc{font-size:13px; color:#546e7a; margin-top:3px;}
-  .enlace-hoja .flecha{margin-left:auto; font-size:20px; color:#1e8e3e;}
+  .acciones{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+  .btn{background:var(--tema); color:#fff; border:none; padding:9px 20px; border-radius:8px; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit;}
+  .btn:hover{background:var(--tema-d);}
+  .btn:focus-visible{outline:3px solid #b05e00; outline-offset:2px;}
+  .btn.sec{background:#fff; color:var(--tema-d); border:2px solid var(--tema);}
+  .btn.sec:hover{background:var(--tema-soft);}
+  .btn[hidden]{display:none;}
+  .intento{font-size:14px; color:#546e7a;}
 
-  .cierre{
-    background:#263238; color:#eceff1; border-radius:12px; padding:22px 26px; margin:24px 0 10px;
-  }
+  .fb{margin-top:12px; border-radius:9px; padding:12px 16px; font-size:15px;}
+  .fb:empty{display:none;}
+  .fb.ok{background:var(--ok-bg); color:var(--ok); border-left:5px solid #2e7d32;}
+  .fb.pista{background:var(--ambar-bg); color:var(--ambar); border-left:5px solid #f9a825;}
+  .fb.revela{background:#eceff1; color:#263238; border-left:5px solid #546e7a;}
+  .fb .sol{display:block; margin-top:6px;}
+  .fb .nota{display:block; margin-top:6px;}
+
+  /* Resumen final */
+  #resumen{background:#fff; border:2px solid var(--tema); border-radius:12px; padding:6px 24px 18px; margin:26px 0;}
+  #resumen h2{color:var(--tema-d);}
+  #resumen .bloqueado{color:#546e7a; font-style:italic;}
+  #resumen li{margin:7px 0;}
+  .pill{display:inline-block; font-weight:700; font-size:12px; padding:1px 9px; border-radius:10px; background:var(--tema-soft); color:var(--tema-d);}
+
+  .cierre{background:#263238; color:#eceff1; border-radius:12px; padding:22px 26px; margin:24px 0 10px;}
   .cierre h2{color:#fff; margin-top:0;}
   .cierre strong{color:#9BFF8F;}
+  .cierre a{color:#b2dfdb;}
 
-  footer{
-    text-align:center; padding:20px; color:#222; font-size:13px;
-    border-top:1px solid #ddd; margin-top:20px;
-  }
+  footer{text-align:center; padding:20px; color:#222; font-size:13px; border-top:1px solid #ddd; margin-top:20px;}
+  footer a{color:inherit;}
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+  @media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto !important;} }
+  @media (max-width:600px){ .progreso{position:static;} }
+  @media print{ .progreso, .acciones{display:none;} }
 </style>
 </head>
 <body>
 <div class="contenedor">
 
-  <header class="principal">
-    <div class="ruta">Spanish ASE Math · Nivel 2 · Tema 6 · Lección 6.1 · Actividad 1</div>
-    <h1>Actividad colaborativa: identificar los datos del interés simple</h1>
-    <div class="meta">Trabajo en parejas · Hoja compartida · 25–30 minutos</div>
-  </header>
+<header class="principal">
+  <div class="ruta">GEDparaHispanos · Matemáticas · Nivel 2 · Tema 6 · Lección 6.1 · Actividad 1</div>
+  <h1>Identificar los datos del interés simple</h1>
+  <div class="meta">Actividad autocorregible · a su ritmo · 25–30 minutos</div>
+</header>
 
-  <div class="caja-objetivos">
-    <h2>Objetivo de la actividad</h2>
+<div class="caja-objetivos">
+  <h2>Objetivo de la actividad</h2>
+  <ul>
+    <li>Leer una situación financiera y reconocer sus tres datos esenciales: el principal, la tasa de interés y el tiempo.</li>
+    <li>Detectar cuándo un dato no aparece de forma directa y hay que deducirlo o cambiarlo de unidad.</li>
+    <li>Preparar el terreno para aplicar la fórmula del interés simple.</li>
+  </ul>
+</div>
+
+<h2 class="seccion">¿Qué datos buscamos?</h2>
+<div class="bloque">
+  <p>El <strong>interés simple</strong> relaciona tres cantidades. Separarlas con claridad es el primer paso para resolver cualquier problema de interés.</p>
+  <div class="caja-formula">
+    <div class="ec">I = P × r × t</div>
+    <div class="glosa"><strong>P</strong> = principal o capital (el dinero inicial) &nbsp;·&nbsp; <strong>r</strong> = tasa de interés (el porcentaje) &nbsp;·&nbsp; <strong>t</strong> = tiempo (el plazo)</div>
+  </div>
+  <div class="caja-atencion"><strong>Atención:</strong> la tasa y el tiempo deben estar en la <strong>misma unidad</strong>. Si la tasa es anual, el tiempo va en años; si la tasa es mensual, el tiempo va en meses.</div>
+</div>
+
+<h2 class="seccion">Instrucciones</h2>
+<div class="bloque">
+  <p>Aquí <strong>no hace falta calcular el interés</strong>: solo hay que leer con atención.</p>
+  <ol class="pasos">
+    <li>En cada situación, escriba el <strong>principal</strong>, la <strong>tasa</strong> (con su unidad) y el <strong>tiempo</strong> (con su unidad).</li>
+    <li>Diga si hay un <strong>dato escondido o disfrazado</strong> 🚩: una tasa que no está escrita o que no es anual, o un tiempo en meses, en días o como un rango de fechas.</li>
+    <li>Pulse <strong>«Comprobar»</strong>. Si algo no está bien, recibirá una pista y tendrá un segundo intento. Después verá la explicación completa.</li>
+  </ol>
+  <div class="caja-tip"><strong>Puede escribir el tiempo como prefiera:</strong> «18 meses» y «1.5 años» valen lo mismo. Lo mismo con la tasa: «1.5 % mensual» equivale a «18 % anual». Se aceptan las formas equivalentes.</div>
+</div>
+
+<div class="progreso" role="region" aria-label="Progreso de la actividad">
+  <span><strong id="cuenta">0 de 10</strong> situaciones completadas</span>
+  <span class="puntos" id="puntos"></span>
+</div>
+
+<h2 class="seccion">Las diez situaciones</h2>
+<div id="situaciones"></div>
+
+<section id="resumen" aria-labelledby="resumen-titulo">
+  <h2 id="resumen-titulo">Lo que enseñan estas diez situaciones</h2>
+  <p class="bloqueado" id="resumen-bloqueado">Este resumen se abre cuando termine las diez situaciones. Así no se revela de antemano cuáles tienen truco.</p>
+  <div id="resumen-cuerpo" hidden>
+    <p id="resumen-marcador"></p>
     <ul>
-      <li>Leer una situación financiera y reconocer sus tres datos esenciales: el capital, la tasa de interés y el tiempo.</li>
-      <li>Detectar cuándo un dato no aparece de forma directa y debe deducirse o convertirse de unidad.</li>
-      <li>Preparar el terreno para aplicar la fórmula del interés simple en la siguiente parte de la lección.</li>
+      <li><strong>Tasa escondida</strong>, que hay que deducir o calcular: situaciones <span class="pill">6</span> y <span class="pill">10</span>. En la 6 se despeja la tasa con r = I ÷ (P × t); en la 10 se calcula «el doble» de otra tasa.</li>
+      <li><strong>Tiempo en otra unidad o disfrazado</strong>: situaciones <span class="pill">2</span> (meses), <span class="pill">5</span> (fechas) y <span class="pill">9</span> (días). El tiempo casi nunca viene servido en años.</li>
+      <li><strong>Trampa de unidades en la tasa</strong>: situación <span class="pill">4</span> (mensual). Aquí no hay que convertir nada, porque la tasa y el tiempo ya coinciden. El reto es <em>no</em> convertir de más.</li>
+      <li><strong>Distractor</strong>: situación <span class="pill">3</span>. El descuento por pagar antes no entra en el cálculo: no todo dato del enunciado sirve.</li>
+      <li><strong>Sin truco</strong>: situaciones <span class="pill">1</span>, <span class="pill">7</span> y <span class="pill">8</span>.</li>
     </ul>
+    <p>Un dato escondido no significa que falte: significa que hay que transformarlo antes de usar la fórmula.</p>
   </div>
+</section>
 
-  <!-- ===== GUÍA PARA EL DOCENTE ===== -->
-  <details class="guia-docente" open>
-    <summary><span class="chev" aria-hidden="true">▶</span> <span class="etq-doc">Para el docente</span> &nbsp;Cómo conducir la actividad</summary>
-    <div class="interior">
-      <p>Esta actividad <strong>no pide calcular</strong>: pide <strong>leer con atención</strong>. Antes de resolver cualquier problema de interés simple, el estudiante debe separar correctamente el capital, la tasa y el tiempo. El valor pedagógico está en descubrir que, en la vida real, esos datos casi nunca vienen "ordenaditos".</p>
+<div class="cierre">
+  <h2>Para cerrar</h2>
+  <p>Leer bien es la mitad del trabajo. Cuando logra separar el <strong>principal</strong>, la <strong>tasa</strong> y el <strong>tiempo</strong>, aunque vengan disfrazados, calcular el interés simple se vuelve sencillo. Vuelva a la <a href="leccion_6-1.html">Lección 6.1</a> para aplicar la fórmula <strong>I = P × r × t</strong> con estos mismos datos.</p>
+</div>
 
-      <h3>1. Antes de empezar</h3>
-      <ul>
-        <li>Prepare una <strong>hoja compartida</strong> (se recomienda Google Sheets) con las cuatro columnas de la plantilla y una fila por cada situación.</li>
-        <li>Comparta el enlace de edición y péguelo también en el botón de esta página.</li>
-        <li>Organice el espacio según el grupo: <em>una sola hoja</em> con un bloque por pareja; <em>una pestaña por sala</em> de trabajo; o, si trabaja dentro de Brightspace, incruste la hoja en la página.</li>
-      </ul>
-
-      <h3>2. Durante el trabajo</h3>
-      <ul>
-        <li>Cada pareja completa, para las diez situaciones, las columnas <strong>Capital</strong>, <strong>Tasa</strong> y <strong>Tiempo</strong>.</li>
-        <li>La cuarta columna es una <strong>bandera</strong> (🚩): el estudiante la marca cuando no logró identificar con seguridad la tasa o el tiempo. Así, al final, los casos difíciles saltan a la vista sin tener que revisar las diez situaciones una por una.</li>
-        <li>Recorra las parejas (o las salas) y observe sin corregir de inmediato; lo interesante es ver dónde se traban.</li>
-      </ul>
-
-      <h3>3. Puesta en común (al final)</h3>
-      <ul>
-        <li>Pida que compartan únicamente los casos donde colocaron una bandera.</li>
-        <li>Varias situaciones presentan la tasa o el tiempo de forma <strong>indirecta</strong>: en otra unidad de tiempo (meses, días), como un rango de fechas, expresada de forma mensual en lugar de anual, o deducible a partir de otro dato. Esos son los casos que conviene discutir en voz alta.</li>
-        <li>Cierre la actividad recordando que un dato "escondido" no significa que falte: significa que hay que transformarlo antes de usar la fórmula.</li>
-      </ul>
-
-      <div class="caja-tip" style="margin-top:14px;"><strong>Sugerencia:</strong> mantenga una <em>clave de respuestas</em> aparte, solo para usted. Así guía la puesta en común sin revelar de antemano cuáles situaciones son las complicadas.</div>
-    </div>
-  </details>
-
-  <!-- ===== RECORDATORIO ===== -->
-  <h2 class="seccion">¿Qué datos buscamos?</h2>
-  <div class="bloque">
-    <p>El <strong>interés simple</strong> relaciona tres cantidades. Identificarlas con claridad es el primer paso para resolver cualquier problema financiero.</p>
-    <div class="caja-formula">
-      <div class="ec">I = P × r × t</div>
-      <div class="glosa">
-        <strong>P</strong> = principal o capital (el dinero inicial) &nbsp;·&nbsp;
-        <strong>r</strong> = tasa de interés (el porcentaje) &nbsp;·&nbsp;
-        <strong>t</strong> = tiempo (el plazo)
-      </div>
-    </div>
-    <div class="caja-atencion"><strong>Atención:</strong> la tasa y el tiempo deben referirse a la <strong>misma unidad</strong>. Si la tasa es anual, el tiempo debe expresarse en años. Por eso, parte del trabajo es <strong>convertir</strong> antes de identificar.</div>
-  </div>
-
-  <!-- ===== INSTRUCCIONES ESTUDIANTE ===== -->
-  <h2 class="seccion">Instrucciones</h2>
-  <div class="bloque">
-    <ol class="pasos">
-      <li>Abre la hoja compartida usando el botón de más abajo.</li>
-      <li>Para cada una de las diez situaciones, escribe en la fila correspondiente el <strong>capital</strong>, la <strong>tasa</strong> y el <strong>tiempo</strong>.</li>
-      <li>Si la tasa o el tiempo <strong>no aparecen de forma directa</strong> (están en otra unidad, hay que calcularlos o deducirlos), escribe lo que puedas y <strong>marca la bandera</strong> 🚩 en esa fila.</li>
-      <li>Al terminar, prepárate para comentar con el grupo las filas donde pusiste una bandera.</li>
-    </ol>
-  </div>
-
-  <a class="enlace-hoja" href="PEGAR-AQUÍ-EL-ENLACE-DE-LA-HOJA-COMPARTIDA" target="_blank" rel="noopener noreferrer">
-    <span class="ico" aria-hidden="true">📊</span>
-    <span>
-      <span class="titulo">Abrir la hoja compartida</span>
-      <span class="desc">Aquí completarás los datos de las diez situaciones en equipo</span>
-    </span>
-    <span class="flecha" aria-hidden="true">→</span>
-  </a>
-
-  <!-- ===== SITUACIONES ===== -->
-  <h2 class="seccion">Las diez situaciones</h2>
-  <div class="bloque situaciones">
-
-    <div class="situacion"><span class="num">1</span><p>María deposita <strong>$1,200</strong> en una cuenta de ahorros que paga una tasa de interés simple del <strong>3% anual</strong>. Quiere saber cuánto ganará en <strong>2 años</strong>.</p></div>
-
-    <div class="situacion"><span class="num">2</span><p>Un préstamo de <strong>$5,000</strong> tiene una tasa de interés simple del <strong>8% anual</strong> y debe pagarse en <strong>18 meses</strong>.</p></div>
-
-    <div class="situacion"><span class="num">3</span><p>José pidió prestados <strong>$800</strong>. El acuerdo fija una tasa simple del <strong>5% anual</strong> por un plazo de <strong>medio año</strong>; además menciona un descuento si paga antes.</p></div>
-
-    <div class="situacion"><span class="num">4</span><p>Una tienda ofrece financiar un refrigerador de <strong>$2,400</strong> a una tasa del <strong>1.5% mensual</strong> durante <strong>10 meses</strong>.</p></div>
-
-    <div class="situacion"><span class="num">5</span><p>Ana abrió un certificado de <strong>$10,000</strong> el <strong>1 de enero</strong>; vence el <strong>1 de julio</strong> del mismo año. La tasa de interés simple es del <strong>4% anual</strong>.</p></div>
-
-    <div class="situacion"><span class="num">6</span><p>Un banco presta <strong>$3,500</strong> por un plazo de <strong>3 años</strong>. El contrato indica que el cliente pagará <strong>$420 de interés en total</strong>, pero no escribe el porcentaje de la tasa.</p></div>
-
-    <div class="situacion"><span class="num">7</span><p>Pedro deposita <strong>$600</strong> en la cuenta de ahorro de su cooperativa de crédito durante <strong>un año y medio</strong>, con un rendimiento simple del <strong>2% anual</strong>.</p></div>
-
-    <div class="situacion"><span class="num">8</span><p>Una cooperativa otorga un crédito de <strong>$7,200</strong> con una tasa de interés simple del <strong>6% anual</strong>, a pagar en <strong>4 años</strong>.</p></div>
-
-    <div class="situacion"><span class="num">9</span><p>Luis tiene un saldo de <strong>$1,500</strong> en su tarjeta. La tasa de interés simple es del <strong>24% anual</strong> y el estado de cuenta reporta un período de <strong>90 días</strong>.</p></div>
-
-    <div class="situacion"><span class="num">10</span><p>Una empresa invierte <strong>$25,000</strong> durante <strong>2 años</strong>. El documento promete pagar <strong>el doble de la tasa del mercado</strong>, que es del <strong>3.5% anual</strong>.</p></div>
-
-  </div>
-
-  <!-- ===== PLANTILLA ===== -->
-  <h2 class="seccion">Plantilla de tres columnas</h2>
-  <div class="bloque">
-    <p>Así se ve la estructura que encontrarás en la hoja compartida. La primera fila va resuelta como <strong>ejemplo</strong>; complétalas todas en equipo.</p>
-    <div class="tabla-wrap">
-      <table class="plantilla">
-        <caption>Plantilla de la hoja compartida: una fila por situación</caption>
-        <thead>
-          <tr>
-            <th scope="col" style="min-width:90px;">Situación</th>
-            <th scope="col">Principal (P)</th>
-            <th scope="col">Tasa (r)</th>
-            <th scope="col">Tiempo (t)</th>
-            <th scope="col" style="min-width:60px;"><span aria-hidden="true">🚩</span> Bandera</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="ejemplo">
-            <td class="sit" style="background:#fff9c4;">1 (ejemplo)</td>
-            <td>$1,200</td>
-            <td>3% anual</td>
-            <td>2 años</td>
-            <td>—</td>
-          </tr>
-          <tr><td class="sit">2</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">⬜</td></tr>
-          <tr><td class="sit">3</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">⬜</td></tr>
-          <tr><td class="sit">4</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">⬜</td></tr>
-          <tr><td class="sit">5</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">⬜</td></tr>
-          <tr><td class="sit">…</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">…</td><td class="vacia">⬜</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="caja-tip"><strong>Recuerda:</strong> si un dato está en otra unidad o hay que deducirlo, anótalo igual y <strong>marca la bandera</strong> 🚩. Esos casos son justamente los que comentaremos al final.</div>
-  </div>
-
-  <!-- ===== CIERRE ===== -->
-  <div class="cierre">
-    <h2>Para cerrar</h2>
-    <p>Leer bien es la mitad del trabajo. Cuando logras separar el <strong>capital</strong>, la <strong>tasa</strong> y el <strong>tiempo</strong> —aunque vengan disfrazados— el cálculo del interés simple se vuelve sencillo. En la próxima parte usaremos estos mismos datos para aplicar la fórmula <strong>I = P × r × t</strong>.</p>
-  </div>
-
-  <footer>Spanish ASE Math · Nivel 2 · Lección 6.1 · Actividad 1<br>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago.<br>Material bajo licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer license">Creative Commons CC BY-NC-SA 4.0</a>.</footer>
+<footer>
+  <p>GEDparaHispanos · Matemáticas · Nivel 2 · Tema 6 · Lección 6.1 · Actividad 1</p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
 
 </div>
+
+<script>
+(function(){
+  /* Unidades: la tasa se normaliza a anual y el tiempo a años. */
+  var TASA = { anual: 1, mensual: 12 };
+  var TIEMPO = { "años": 1, meses: 1/12, "días": null };  /* días: 360 o 365 */
+  var BANDERA = { no: "No, todo está directo", tasa: "Sí, la tasa", tiempo: "Sí, el tiempo" };
+
+  /* Datos de las diez situaciones.
+     P: principal · r: tasa anual en % · t: años (tAlt: otra lectura válida)
+     band: dato escondido · pistas: por campo · sol: respuesta · nota: explicación */
+  var S = [
+    { txt: "María deposita <strong>$1,200</strong> en una cuenta de ahorros que paga una tasa de interés simple del <strong>3% anual</strong>. Quiere saber cuánto ganará en <strong>2 años</strong>.",
+      P: 1200, r: 3, t: 2, band: "no",
+      pistas: { r: "La tasa está escrita tal cual en el enunciado.", t: "El plazo aparece directamente, en años." },
+      sol: "P = $1,200 · r = 3% anual · t = 2 años · sin dato escondido.",
+      nota: "Los tres datos están a la vista. Si calculara: I = 1,200 × 0.03 × 2 = $72." },
+    { txt: "Un préstamo de <strong>$5,000</strong> tiene una tasa de interés simple del <strong>8% anual</strong> y debe pagarse en <strong>18 meses</strong>.",
+      P: 5000, r: 8, t: 1.5, band: "tiempo",
+      pistas: { t: "El plazo está en meses. ¿Cuántos años son 18 meses? (Divida entre 12.)", band: "La tasa es anual, pero el tiempo no viene en años: ese es el dato disfrazado." },
+      sol: "P = $5,000 · r = 8% anual · t = 18 meses = 1.5 años · dato disfrazado: el tiempo.",
+      nota: "El tiempo viene en meses; con una tasa anual hay que pasarlo a años: 18 ÷ 12 = 1.5. Si calculara: I = 5,000 × 0.08 × 1.5 = $600." },
+    { txt: "José pidió prestados <strong>$800</strong>. El acuerdo fija una tasa simple del <strong>5% anual</strong> por un plazo de <strong>medio año</strong>; además menciona un descuento si paga antes.",
+      P: 800, r: 5, t: 0.5, band: "no",
+      pistas: { t: "«Medio año» es la mitad de un año: escríbalo como 0.5 años o 6 meses.", band: "Todos los datos están; el descuento por pagar antes no forma parte de la fórmula." },
+      sol: "P = $800 · r = 5% anual · t = medio año = 0.5 años · sin dato escondido.",
+      nota: "Los datos están completos. El descuento por pagar antes es un <strong>distractor</strong>: no entra en el cálculo. Si calculara: I = 800 × 0.05 × 0.5 = $20." },
+    { txt: "Una tienda ofrece financiar un refrigerador de <strong>$2,400</strong> a una tasa del <strong>1.5% mensual</strong> durante <strong>10 meses</strong>.",
+      P: 2400, r: 18, t: 10/12, band: "tasa",
+      pistas: { r: "Fíjese en la unidad de la tasa: no dice «anual».", t: "El plazo es de 10 meses.", band: "La tasa no es anual: es mensual. Ese es el dato que hay que vigilar." },
+      sol: "P = $2,400 · r = 1.5% mensual · t = 10 meses · dato a vigilar: la tasa (mensual).",
+      nota: "La tasa es <strong>mensual</strong>, no anual. Pero el tiempo también está en meses, así que <strong>ya coinciden</strong>: no hace falta convertir. El error típico es «anualizar» sin necesidad. Si calculara: I = 2,400 × 0.015 × 10 = $360." },
+    { txt: "Ana abrió un certificado de <strong>$10,000</strong> el <strong>1 de enero</strong>; vence el <strong>1 de julio</strong> del mismo año. La tasa de interés simple es del <strong>4% anual</strong>.",
+      P: 10000, r: 4, t: 0.5, band: "tiempo",
+      pistas: { t: "Cuente los meses del 1 de enero al 1 de julio y páselos a años.", band: "El plazo no está escrito como un número de años o meses: viene como dos fechas." },
+      sol: "P = $10,000 · r = 4% anual · t = del 1 de enero al 1 de julio = 6 meses = 0.5 años · dato disfrazado: el tiempo.",
+      nota: "El tiempo viene como un <strong>rango de fechas</strong>: hay que contar los meses (6) y pasarlos a años (0.5). Si calculara: I = 10,000 × 0.04 × 0.5 = $200." },
+    { txt: "Un banco presta <strong>$3,500</strong> por un plazo de <strong>3 años</strong>. El contrato indica que el cliente pagará <strong>$420 de interés en total</strong>, pero no escribe el porcentaje de la tasa.",
+      P: 3500, r: 4, t: 3, band: "tasa",
+      pistas: { P: "El principal es el dinero prestado, no el interés.", r: "La tasa no aparece: despéjela con r = I ÷ (P × t) = 420 ÷ (3,500 × 3).", band: "Falta la tasa escrita: hay que deducirla del interés." },
+      sol: "P = $3,500 · r = 4% anual (deducida) · t = 3 años · dato escondido: la tasa.",
+      nota: "La tasa <strong>no aparece</strong>: se deduce del interés total. r = I ÷ (P × t) = 420 ÷ (3,500 × 3) = 420 ÷ 10,500 = 0.04 = <strong>4%</strong>. Los $420 son el interés, no un dato de la fórmula que se busca." },
+    { txt: "Pedro deposita <strong>$600</strong> en la cuenta de ahorro de su cooperativa de crédito durante <strong>un año y medio</strong>, con un rendimiento simple del <strong>2% anual</strong>.",
+      P: 600, r: 2, t: 1.5, band: "no",
+      pistas: { t: "«Un año y medio» son 1.5 años, o 18 meses.", band: "Los tres datos están; solo hay que leer «año y medio» como número." },
+      sol: "P = $600 · r = 2% anual · t = año y medio = 1.5 años · sin dato escondido.",
+      nota: "Datos completos. Solo hay que leer «año y medio» como 1.5 años. Si calculara: I = 600 × 0.02 × 1.5 = $18." },
+    { txt: "Una cooperativa otorga un crédito de <strong>$7,200</strong> con una tasa de interés simple del <strong>6% anual</strong>, a pagar en <strong>4 años</strong>.",
+      P: 7200, r: 6, t: 4, band: "no",
+      pistas: { r: "La tasa está escrita tal cual.", t: "El plazo aparece directamente, en años." },
+      sol: "P = $7,200 · r = 6% anual · t = 4 años · sin dato escondido.",
+      nota: "Los tres datos están a la vista: un caso limpio. Si calculara: I = 7,200 × 0.06 × 4 = $1,728." },
+    { txt: "Luis tiene un saldo de <strong>$1,500</strong> en su tarjeta. La tasa de interés simple es del <strong>24% anual</strong> y el estado de cuenta reporta un período de <strong>90 días</strong>.",
+      P: 1500, r: 24, t: 0.25, tAlt: 90/365, band: "tiempo",
+      pistas: { t: "El plazo está en días. Con el año comercial, 90 ÷ 360 = 0.25 años (o 3 meses).", band: "La tasa es anual, pero el tiempo viene en días." },
+      sol: "P = $1,500 · r = 24% anual · t = 90 días = 0.25 años (año de 360 días) · dato disfrazado: el tiempo.",
+      nota: "El tiempo viene en <strong>días</strong>. El enunciado no dice qué año usar, así que valen las dos lecturas: con el año comercial de 360 días, 90 ÷ 360 = 0.25 años (I = $90); con 365 días, unos 0.247 años (I ≈ $88.77). Un buen problema debe indicar la base." },
+    { txt: "Una empresa invierte <strong>$25,000</strong> durante <strong>2 años</strong>. El documento promete pagar <strong>el doble de la tasa del mercado</strong>, que es del <strong>3.5% anual</strong>.",
+      P: 25000, r: 7, t: 2, band: "tasa",
+      pistas: { r: "La tasa no es 3.5%: es «el doble» de 3.5%.", band: "La tasa hay que calcularla a partir de la del mercado." },
+      sol: "P = $25,000 · r = 7% anual (2 × 3.5%) · t = 2 años · dato escondido: la tasa.",
+      nota: "La tasa es «el doble de la del mercado»: hay que <strong>calcularla</strong>: 2 × 3.5% = <strong>7%</strong>. Si calculara: I = 25,000 × 0.07 × 2 = $3,500." }
+  ];
+
+  function numero(v){
+    v = String(v).trim().replace(/[\s$%]/g, "").replace(/,(?=\d{3}(\D|$))/g, "");
+    v = v.replace(",", ".");
+    if (!/^-?\d*\.?\d+$/.test(v)) return NaN;
+    return parseFloat(v);
+  }
+  function cerca(a, b){ return Math.abs(a - b) <= Math.max(0.005, Math.abs(b) * 0.002); }
+
+  var cont = document.getElementById("situaciones");
+  var puntos = document.getElementById("puntos");
+  var estado = [];
+
+  S.forEach(function(s, i){
+    var n = i + 1, id = "s" + n;
+    estado.push({ intentos: 0, fin: false, bien: false });
+    var d = document.createElement("article");
+    d.className = "sit"; d.id = id; d.setAttribute("aria-labelledby", id + "-h");
+    d.innerHTML =
+      '<h3 id="' + id + '-h"><span class="num" aria-hidden="true">' + n + '</span>Situación ' + n + '</h3>' +
+      '<p class="enunciado">' + s.txt + '</p>' +
+      '<div class="campos">' +
+        '<fieldset class="campo" data-c="P"><legend>Principal (P)</legend><div class="fila"><span class="pre" aria-hidden="true">$</span>' +
+          '<input class="num" id="' + id + '-P" inputmode="decimal" autocomplete="off" aria-label="Principal de la situación ' + n + ', en dólares"></div>' +
+          '<div class="marca" aria-live="polite"></div></fieldset>' +
+        '<fieldset class="campo" data-c="r"><legend>Tasa (r)</legend><div class="fila">' +
+          '<input class="num" id="' + id + '-r" inputmode="decimal" autocomplete="off" aria-label="Tasa de la situación ' + n + ', en porcentaje"><span class="pre" aria-hidden="true">%</span>' +
+          '<select id="' + id + '-ru" aria-label="Unidad de la tasa de la situación ' + n + '"><option value="anual">anual</option><option value="mensual">mensual</option></select></div>' +
+          '<div class="marca" aria-live="polite"></div></fieldset>' +
+        '<fieldset class="campo" data-c="t"><legend>Tiempo (t)</legend><div class="fila">' +
+          '<input class="num" id="' + id + '-t" inputmode="decimal" autocomplete="off" aria-label="Tiempo de la situación ' + n + '">' +
+          '<select id="' + id + '-tu" aria-label="Unidad del tiempo de la situación ' + n + '"><option value="años">años</option><option value="meses">meses</option><option value="días">días</option></select></div>' +
+          '<div class="marca" aria-live="polite"></div></fieldset>' +
+        '<fieldset class="campo bandera" data-c="band"><legend><span aria-hidden="true">🚩</span> ¿Hay un dato escondido o disfrazado?</legend>' +
+          Object.keys(BANDERA).map(function(k){ return '<label><input type="radio" name="' + id + '-b" value="' + k + '"> ' + BANDERA[k] + '</label>'; }).join("") +
+          '<div class="marca" aria-live="polite"></div></fieldset>' +
+      '</div>' +
+      '<div class="acciones"><button type="button" class="btn" data-acc="comprobar">Comprobar</button>' +
+        '<button type="button" class="btn sec" data-acc="ver" hidden>Ver la explicación</button>' +
+        '<span class="intento" aria-live="polite"></span></div>' +
+      '<div class="fb" role="status"></div>';
+    cont.appendChild(d);
+
+    var p = document.createElement("a");
+    p.className = "punto"; p.href = "#" + id; p.textContent = n;
+    p.setAttribute("aria-label", "Ir a la situación " + n + ": pendiente");
+    puntos.appendChild(p);
+
+    d.querySelector('[data-acc="comprobar"]').addEventListener("click", function(){ comprobar(i); });
+    d.querySelector('[data-acc="ver"]').addEventListener("click", function(){ revelar(i, false); });
+  });
+
+  function leer(i){
+    var id = "s" + (i + 1), q = function(x){ return document.getElementById(id + x); };
+    var b = document.querySelector('input[name="' + id + '-b"]:checked');
+    return { P: q("-P").value, r: q("-r").value, ru: q("-ru").value, t: q("-t").value, tu: q("-tu").value, band: b ? b.value : "" };
+  }
+
+  function evalua(s, v){
+    var r = {};
+    var P = numero(v.P); r.P = !isNaN(P) && cerca(P, s.P);
+    var ra = numero(v.r); r.r = !isNaN(ra) && cerca(ra * TASA[v.ru], s.r);
+    var t = numero(v.t), ok = false;
+    if (!isNaN(t)){
+      var cands = v.tu === "días" ? [t / 360, t / 365] : [t * TIEMPO[v.tu]];
+      var metas = [s.t].concat(s.tAlt ? [s.tAlt] : []);
+      cands.forEach(function(c){ metas.forEach(function(m){ if (Math.abs(c - m) < 0.004) ok = true; }); });
+    }
+    r.t = ok;
+    r.band = v.band === s.band;
+    r.vacio = { P: v.P.trim() === "", r: v.r.trim() === "", t: v.t.trim() === "", band: v.band === "" };
+    return r;
+  }
+
+  function comprobar(i){
+    var s = S[i], e = estado[i], d = document.getElementById("s" + (i + 1));
+    if (e.fin) return;
+    var v = leer(i), r = evalua(s, v);
+    var fb = d.querySelector(".fb"), faltan = [];
+    ["P", "r", "t", "band"].forEach(function(c){ if (r.vacio[c]) faltan.push(c); });
+    if (faltan.length){
+      fb.className = "fb pista";
+      fb.textContent = "Complete los cuatro apartados antes de comprobar: principal, tasa, tiempo y la pregunta del dato escondido.";
+      return;
+    }
+    e.intentos++;
+    var todos = r.P && r.r && r.t && r.band;
+    ["P", "r", "t", "band"].forEach(function(c){
+      var f = d.querySelector('[data-c="' + c + '"]');
+      f.classList.remove("bien", "mal"); f.classList.add(r[c] ? "bien" : "mal");
+      f.querySelector(".marca").textContent = r[c] ? "✓ Correcto" : "✗ Revise este dato";
+    });
+    if (todos){ e.bien = true; revelar(i, true); return; }
+    if (e.intentos === 1){
+      var pistas = [];
+      ["P", "r", "t", "band"].forEach(function(c){
+        if (!r[c]) pistas.push(s.pistas && s.pistas[c] ? s.pistas[c] : { P: "Busque la cantidad de dinero inicial, el que se deposita o se presta.", r: "Revise el porcentaje y su unidad.", t: "Revise el plazo y su unidad.", band: "Piense si algún dato viene en otra unidad o no está escrito." }[c]);
+      });
+      fb.className = "fb pista";
+      fb.innerHTML = "<strong>Pista:</strong> " + pistas.join(" ") + " Tiene un segundo intento.";
+      d.querySelector(".intento").textContent = "Intento 1 de 2";
+      d.querySelector('[data-acc="ver"]').hidden = false;
+    } else {
+      revelar(i, false);
+    }
+  }
+
+  function revelar(i, acierto){
+    var s = S[i], e = estado[i], d = document.getElementById("s" + (i + 1));
+    e.fin = true;
+    var fb = d.querySelector(".fb");
+    fb.className = acierto ? "fb ok" : "fb revela";
+    fb.innerHTML = (acierto ? "<strong>¡Muy bien! Identificó los cuatro datos.</strong>" : "<strong>Así se resuelve:</strong>") +
+      '<span class="sol">' + s.sol + '</span><span class="nota">' + s.nota + '</span>';
+    d.querySelector('[data-acc="comprobar"]').hidden = true;
+    d.querySelector('[data-acc="ver"]').hidden = true;
+    d.querySelector(".intento").textContent = "";
+    d.querySelectorAll("input, select").forEach(function(x){ x.disabled = true; });
+    if (acierto) d.classList.add("resuelta");
+    var p = puntos.children[i];
+    p.classList.add(acierto ? "ok" : "visto");
+    p.setAttribute("aria-label", "Ir a la situación " + (i + 1) + (acierto ? ": correcta" : ": con explicación"));
+    actualiza();
+  }
+
+  function actualiza(){
+    var hechos = estado.filter(function(e){ return e.fin; }).length;
+    var bien = estado.filter(function(e){ return e.bien; }).length;
+    document.getElementById("cuenta").textContent = hechos + " de 10";
+    if (hechos === 10){
+      document.getElementById("resumen-bloqueado").hidden = true;
+      document.getElementById("resumen-cuerpo").hidden = false;
+      document.getElementById("resumen-marcador").innerHTML = "Identificó correctamente <strong>" + bien + " de 10</strong> situaciones" +
+        (bien >= 8 ? ". ¡Excelente lectura!" : bien >= 5 ? ". Buen trabajo: repase las explicaciones de las que se le escaparon." : ". Vuelva a leer las explicaciones con calma; la lectura se entrena.");
+    }
+  }
+})();
+</script>
 </body>
 </html>

@@ -206,6 +206,18 @@
   .volver-indice:hover{ background:var(--tema); color:#fff; }
   footer a{ color:inherit; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -310,6 +322,16 @@
 <div class="fb"></div>
 </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l1-1.html#recta" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la recta numérica completa (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la recta numérica completa</span>
+      <span class="ei-sub">Ubique enteros en la recta y compare cuál es mayor según su posición.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-2-el-valor-absoluto-distancia-al-cero">2. El valor absoluto: distancia al cero</h2>
 <div class="bloque">
 <p>El <strong>valor absoluto</strong> de un número es la <strong>distancia</strong> que lo separa del cero en la recta numérica. Como una distancia nunca puede ser negativa, el valor absoluto siempre es positivo o cero.</p>
@@ -354,6 +376,16 @@
 </div>
 <button class="btn" id="btn-va">Verificar</button>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l1-1.html#valor-absoluto" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: el valor absoluto (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: el valor absoluto</span>
+      <span class="ei-sub">Mida la distancia de un número al cero y compruebe por qué nunca es negativa.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-3-los-opuestos-inverso-aditivo">3. Los opuestos (inverso aditivo)</h2>
 <div class="bloque">
 <p>Dos números son <strong>opuestos</strong> cuando están a la misma distancia del cero pero en lados contrarios de la recta. El opuesto de 6 es −6; el opuesto de −6 es 6.</p>
@@ -410,6 +442,16 @@
 </div>
 </div>
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l1-1.html#opuestos" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: los opuestos (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: los opuestos</span>
+      <span class="ei-sub">Refleje números al otro lado del cero y practique el doble signo negativo.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea">
 <h2 id="s-tarea">Tarea</h2>

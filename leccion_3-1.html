@@ -224,6 +224,18 @@
   .volver-indice:hover { background: var(--tema); color: #fff; }
   .volver-indice:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
   @media print { nav.indice, .volver-indice { display: none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -278,6 +290,16 @@
 <strong>Error frecuente:</strong> creer que la multiplicación siempre va antes que la división porque «la M aparece primero». No es así: en 20 ÷ 4 × 5 se divide primero por estar más a la izquierda (20 ÷ 4 = 5; 5 × 5 = 25). Lo contrario, multiplicar primero, daría un resultado equivocado.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l3-1.html#piramide" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la pirámide de prioridades (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la pirámide de prioridades</span>
+      <span class="ei-sub">Identifique qué operación va primero según los cuatro niveles de PEMDAS.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-2-aplicacion-paso-a-paso">2. Aplicación paso a paso</h2>
 <div class="bloque">
 <p>La técnica más segura consiste en <strong>copiar la expresión en cada paso</strong>, resolviendo solo la operación de mayor prioridad y dejando intacto el resto. Así se ve con claridad cuál es la siguiente jugada.</p>
@@ -337,6 +359,16 @@
 <div class="fb"></div>
 </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l3-1.html#paso-a-paso" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: aplicación paso a paso (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: aplicación paso a paso</span>
+      <span class="ei-sub">Siga la expresión línea por línea, resolviendo una sola operación en cada paso.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-3-parentesis-anidados-del-interior-hacia-el-exterior">3. Paréntesis anidados: del interior hacia el exterior</h2>
 <div class="bloque">
 <p>Cuando una expresión tiene <strong>paréntesis dentro de paréntesis</strong>, se resuelve siempre <strong>desde el paréntesis más interior hacia el más exterior</strong>. Es la única forma de mantener la consistencia.</p>
@@ -395,6 +427,16 @@
 </div>
 <button class="btn" id="btn-expr">Verificar</button>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l3-1.html#anidados" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: paréntesis anidados (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: paréntesis anidados</span>
+      <span class="ei-sub">Resuelva de adentro hacia afuera con paréntesis, corchetes y llaves en colores distintos.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-4-combinando-todo-pemdas-con-anidamiento">4. Combinando todo: PEMDAS con anidamiento</h2>
 <div class="bloque">
 <p>La estrategia general para cualquier expresión es siempre la misma: <strong>primero los símbolos de agrupación del interior al exterior</strong>, y <strong>dentro de cada uno se aplica PEMDAS desde el principio</strong>. Una vez resueltos todos los agrupadores, se aplica PEMDAS al resto.</p>
@@ -418,6 +460,16 @@
     </div>
 </div>
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l3-1.html#combinado" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: todo combinado (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: todo combinado</span>
+      <span class="ei-sub">Practique expresiones que combinan agrupadores, potencias y las cuatro operaciones.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea">
 <h2 id="s-tarea">Tarea</h2>

@@ -229,6 +229,18 @@
   .volver-indice:hover{ background:var(--tema); color:#fff; }
   footer a{ color:inherit; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -312,6 +324,16 @@
 <p><strong>Respuesta:</strong> el área del círculo es aproximadamente 78.5 m².</p>
 </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-3.html#area" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la fórmula del área del círculo (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la fórmula del área del círculo</span>
+      <span class="ei-sub">Vea de dónde sale A = πr² y practique elevando primero el radio al cuadrado.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-2-circunferencia-vs-area-cual-usar">2. Circunferencia vs. área: ¿cuál usar?</h2>
 <div class="bloque">
 <p>El círculo es la única figura del Nivel 2 que tiene dos «medidas» distintas en este tema, cada una con su fórmula. Confundirlas es uno de los errores más comunes. La regla es sencilla: depende de qué se quiera medir, el <strong>borde</strong> o la <strong>superficie</strong>.</p>
@@ -369,6 +391,16 @@
 <div class="fb"></div>
 </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-3.html#cual-usar" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: ¿circunferencia o área? (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: ¿circunferencia o área?</span>
+      <span class="ei-sub">Decida si la situación pide el borde o la superficie a partir de las palabras clave.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-3-el-problema-inverso-hallar-el-radio-a-partir-del-area">3. El problema inverso: hallar el radio a partir del área</h2>
 <div class="bloque">
 <p>Cuando se conoce el área y se quiere encontrar el radio, hay que <strong>despejar</strong> la fórmula. Como el radio está al cuadrado, hace falta la <strong>raíz cuadrada</strong> al final.</p>
@@ -387,6 +419,16 @@
 <strong>Conexión con el Tema 2:</strong> aquí se aprovecha lo aprendido en la Lección 2.3 sobre raíces de cuadrados perfectos. Cuando el cociente A ÷ π da un cuadrado perfecto (25, 36, 49, 100…), el radio sale «redondo» y el cálculo es inmediato. Por eso conviene tener bien memorizada esa tabla.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-3.html#inverso" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: hallar el radio a partir del área (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: hallar el radio a partir del área</span>
+      <span class="ei-sub">Divida entre π y saque la raíz cuadrada para recuperar el radio.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-4-figuras-compuestas-con-semicirculos">4. Figuras compuestas con semicírculos</h2>
 <div class="bloque">
 <p>Un <strong>semicírculo</strong> es la mitad de un círculo. Su área es, naturalmente, <strong>la mitad</strong> del área del círculo completo:</p>
@@ -444,6 +486,16 @@
 </div>
 <button class="btn" id="btn-area">Verificar</button>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-3.html#semicirculos" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: figuras con semicírculos (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: figuras con semicírculos</span>
+      <span class="ei-sub">Arme una ventana con arco o una pista de atletismo y calcule su área total.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-5-aplicaciones-reales">5. Aplicaciones reales</h2>
 <div class="bloque">
 <p>Calcular el área del círculo aparece en situaciones cotidianas: sembrar césped, comprar pintura para una pared circular, cubrir el fondo de una piscina, repartir una pizza.</p>
@@ -464,6 +516,16 @@
 </div>
 </div>
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-3.html#aplicaciones" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: aplicaciones del área del círculo (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: aplicaciones del área del círculo</span>
+      <span class="ei-sub">Resuelva problemas de pizzas, jardines y aspersores, y compare precios por pulgada cuadrada.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea">
 <h2 id="s-tarea">Tarea</h2>

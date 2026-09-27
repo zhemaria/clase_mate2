@@ -295,6 +295,18 @@
   .volver-indice:hover{ background:var(--tema); color:#fff; }
   footer a{ color:inherit; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -344,6 +356,16 @@
 <p><strong>Respuesta:</strong> la probabilidad es 1/2, o 0.5, o 50%. Las tres formas son equivalentes.</p>
 </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-3.html#definicion" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la definición de probabilidad simple (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la definición de probabilidad simple</span>
+      <span class="ei-sub">Explore el espacio muestral del dado, la moneda, la urna y la ruleta, y cuente los casos favorables.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-2-las-tres-formas-de-expresar-una-probabilidad">2. Las tres formas de expresar una probabilidad</h2>
 <div class="bloque">
 <p>Como la probabilidad es una razón, se puede expresar de las tres maneras vistas en el Tema 5: fracción, decimal y porcentaje.</p>
@@ -441,6 +463,16 @@
 <div class="fb"></div>
 </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-3.html#tres-formas" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: fracción, decimal y porcentaje (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: fracción, decimal y porcentaje</span>
+      <span class="ei-sub">Exprese una misma probabilidad de las tres formas y ubíquela entre imposible y seguro.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-3-calculos-tipicos-de-probabilidad">3. Cálculos típicos de probabilidad</h2>
 <div class="bloque">
 <div class="ejemplo">
@@ -488,6 +520,16 @@
 </div>
 <button class="btn" id="btn-prob">Verificar</button>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-3.html#calculos" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: cálculos típicos de probabilidad (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: cálculos típicos de probabilidad</span>
+      <span class="ei-sub">Calcule probabilidades con dados, urnas y barajas, incluso la de «no sacar» algo.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-4-experimento-y-teoria">4. Experimento y teoría</h2>
 <div class="bloque">
 <p>La probabilidad calculada con la fórmula —«favorables sobre totales»— se llama <strong>probabilidad teórica</strong>. Pero si se realiza el experimento muchas veces y se anotan los resultados, se obtiene la <strong>probabilidad experimental</strong> (también llamada <em>frecuencia relativa</em>).</p>
@@ -507,6 +549,16 @@
 </div>
 
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-3.html#experimento" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: experimento y teoría (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: experimento y teoría</span>
+      <span class="ei-sub">Lance un dado 10, 100 o 1,000 veces y vea cómo la frecuencia se acerca a la probabilidad teórica.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea">
 <h2 id="s-tarea">Tarea</h2><p>Para hacer por su cuenta, con el cuaderno abierto:</p><ul><li>Ocho probabilidades simples con dados, monedas, barajas y bolsas de colores, escritas en las <strong>tres formas</strong>: fracción simplificada, decimal y porcentaje.</li><li>Cuatro casos de los extremos: sucesos imposibles (0) y sucesos seguros (1). Explique en una frase por qué una probabilidad nunca puede salir mayor que 1.</li><li>Un experimento propio: lance una moneda cincuenta veces, anote los resultados y compare la frecuencia obtenida con la probabilidad teórica de 0.5. Escriba por qué no coinciden exactamente y qué pasaría con quinientos lanzamientos.</li><li>El <strong>proyecto final integrador</strong> del Nivel 2, en la plantilla <em>proyecto_final_nivel2.html</em>: conjunto de datos propio, medidas de tendencia central, gráfico circular, interpretación escrita y un cálculo aplicado.</li><li><strong>ThatQuiz:</strong> entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y busque los ejercicios de <em>probabilidad</em>. Escriba cada resultado en las tres formas —fracción, decimal y porcentaje— antes de contestar, aunque el ejercicio solo pida una.</li></ul><p>Tiempo estimado: 60 minutos la tarea, más dos o tres sesiones tranquilas para el proyecto. Resuelva en papel y evalúe su trabajo con la rúbrica de esta lección.</p>

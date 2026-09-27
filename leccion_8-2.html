@@ -245,6 +245,18 @@
   .volver-indice:hover{ background:var(--tema); color:#fff; }
   footer a{ color:inherit; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -309,6 +321,16 @@
 <strong>Cuándo conviene un gráfico circular:</strong> es ideal para representar la <strong>composición</strong> de un total: cómo se reparte un presupuesto, qué porcentaje de la población vive en cada barrio, cómo se distribuye un día. No es la mejor opción para comparar valores a lo largo del tiempo (eso pide gráficos de líneas) ni para muchas categorías muy pequeñas (los sectores se vuelven ilegibles).
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-2.html#que-es" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: qué es un gráfico circular (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: qué es un gráfico circular</span>
+      <span class="ei-sub">Compruebe que los sectores suman 100 % y encuentre el porcentaje que falta.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-2-el-angulo-central-de-cada-sector">2. El ángulo central de cada sector</h2>
 <div class="bloque">
 <p>Para construir un gráfico circular hace falta convertir cada porcentaje en un <strong>ángulo central</strong>: el ángulo del sector medido desde el centro del círculo. Como el círculo completo abarca <strong>360°</strong> y representa el 100% de los datos, la regla es directa:</p>
@@ -363,6 +385,16 @@
 </div>
 <button class="btn" id="btn-ang">Verificar</button>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-2.html#angulo" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: el ángulo central de cada sector (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: el ángulo central de cada sector</span>
+      <span class="ei-sub">Mueva el sector y vea la relación entre el porcentaje y los grados.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-3-convertir-entre-porcentaje-angulo-y-valor">3. Convertir entre porcentaje, ángulo y valor</h2>
 <div class="bloque">
 <p>Las tres formas de expresar un sector están conectadas. Conociendo cualquiera de ellas y el total real, se obtienen las otras dos.</p>
@@ -384,6 +416,16 @@
 <strong>Atención a las unidades:</strong> ángulos van en grados (°), porcentajes en % y valores absolutos en la unidad del problema ($, personas, horas). Confundir las tres es un error frecuente. Antes de escribir la respuesta, conviene preguntarse: «¿en qué unidad debe ir esto?».
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-2.html#convertir" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: porcentaje, ángulo y valor (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: porcentaje, ángulo y valor</span>
+      <span class="ei-sub">Cambie el ingreso del presupuesto y pase de una forma a las otras dos.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-4-como-construir-un-grafico-circular">4. Cómo construir un gráfico circular</h2>
 <div class="bloque">
 <p>Construir un gráfico circular paso a paso con transportador y compás es un ejercicio clásico que ayuda a entender la geometría detrás. El procedimiento es siempre el mismo:</p>
@@ -401,6 +443,16 @@
 <strong>Sugerencia visual:</strong> ordenar las categorías de mayor a menor antes de dibujar suele dar un gráfico más limpio. Las categorías más pequeñas se ubican juntas al final y son más fáciles de etiquetar afuera, con líneas guía si es necesario.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-2.html#construir" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: construir un gráfico circular (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: construir un gráfico circular</span>
+      <span class="ei-sub">Siga los pasos: porcentaje, ángulo y sector con transportador.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-5-leer-e-interpretar-graficos-reales">5. Leer e interpretar gráficos reales</h2>
 <div class="bloque">
 <p>Leer un gráfico circular es la habilidad más común en el examen GED y en la vida cotidiana. Implica reconocer la categoría más grande y la más pequeña, comparar dos sectores, y a veces calcular el valor absoluto de uno de ellos.</p>
@@ -474,6 +526,16 @@
 </div>
 </div>
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l8-2.html#leer" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: leer e interpretar gráficos reales (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: leer e interpretar gráficos reales</span>
+      <span class="ei-sub">Identifique el sector mayor, compare categorías y calcule el valor real de una parte.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea">
 <h2 id="s-tarea">Tarea</h2>

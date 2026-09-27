@@ -227,6 +227,18 @@
   .volver-indice:hover{ background:var(--tema); color:#fff; }
   footer a{ color:inherit; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -283,6 +295,16 @@
 <strong>Cuidado con las palabras:</strong> «círculo» y «circunferencia» no son exactamente lo mismo. El <strong>círculo</strong> es la región completa (incluyendo el interior); la <strong>circunferencia</strong> es solo el borde. En este nivel se usan a veces como sinónimos, pero al medir hay que tener claro qué se está midiendo.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-2.html#anatomia" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la anatomía del círculo (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la anatomía del círculo</span>
+      <span class="ei-sub">Mueva el radio y vea cómo cambian el diámetro y la circunferencia.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-2-el-descubrimiento-de">2. El descubrimiento de π</h2>
 <div class="bloque">
 <p>Si se mide con una cuerda el contorno (la circunferencia, C) de varios objetos circulares y se mide también su diámetro (d) con una regla, se descubre algo asombroso: <strong>la razón C ÷ d siempre da el mismo número</strong>, no importa el tamaño del objeto.</p>
@@ -306,6 +328,16 @@
 <strong>Idea fundamental:</strong> π no es una invención humana. Es una constante de la naturaleza: cualquier círculo del universo, sin importar su tamaño, cumple que su circunferencia mide aproximadamente 3.14159 veces su diámetro. Esa es la razón profunda por la que aparece tantas veces en las matemáticas.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-2.html#pi" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: el descubrimiento de π (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: el descubrimiento de π</span>
+      <span class="ei-sub">Desenrolle el borde de una rueda y vea que siempre mide un poco más de tres diámetros: π.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-3-las-dos-formulas-de-la-circunferencia">3. Las dos fórmulas de la circunferencia</h2>
 <div class="bloque">
 <p>La definición de π da inmediatamente la fórmula de la circunferencia. Si C ÷ d = π, entonces:</p>
@@ -357,6 +389,16 @@
 </div>
 <button class="btn" id="btn-circ">Verificar</button>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-2.html#formulas" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: las dos fórmulas de la circunferencia (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: las dos fórmulas de la circunferencia</span>
+      <span class="ei-sub">Use la calculadora con el diámetro o con el radio y practique C = πd y C = 2πr.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-4-el-problema-inverso-hallar-el-radio">4. El problema inverso: hallar el radio</h2>
 <div class="bloque">
 <p>A veces se conoce la <strong>circunferencia</strong> y se busca el radio o el diámetro. Basta con despejar la fórmula.</p>
@@ -375,6 +417,16 @@
 <strong>Verificación:</strong> conviene comprobar el resultado calculando hacia atrás. Si r = 30 cm, entonces C = 2 × 3.14 × 30 = 188.4 cm. ✓ Coincide. Esta verificación rápida atrapa errores aritméticos.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-2.html#inverso" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: hallar el radio o el diámetro (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: hallar el radio o el diámetro</span>
+      <span class="ei-sub">Parta de la circunferencia y despeje el diámetro o el radio.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-5-aplicaciones-reales">5. Aplicaciones reales</h2>
 <div class="bloque">
 <p>La circunferencia aparece en situaciones muy concretas: cuánta cerca se necesita para rodear un jardín circular, cuánto cordón cubre el borde de un sombrero, qué distancia recorre una llanta en una vuelta completa.</p>
@@ -465,6 +517,16 @@
 </div>
 </div>
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l7-2.html#aplicaciones" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: aplicaciones de la circunferencia (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: aplicaciones de la circunferencia</span>
+      <span class="ei-sub">Resuelva problemas de ruedas, cercas y pistas circulares.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea">
 <h2 id="s-tarea">Tarea</h2>

@@ -158,6 +158,18 @@
   .volver-indice:hover { background: var(--tema); color: #fff; }
   .volver-indice:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
   @media print { nav.indice, .volver-indice { display: none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -195,6 +207,16 @@
 <div aria-label="Rejilla de cien celdas con 25 coloreadas" class="grid100" id="grid" role="img"></div>
 <p aria-live="polite" class="grid-titulo" id="grid-t"></p>
 </div>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l5-1.html#razon-100" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: el porcentaje como razón de 100 (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: el porcentaje como razón de 100</span>
+      <span class="ei-sub">Coloree la cuadrícula de 100 y diga qué porcentaje representa.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <h2 class="seccion" id="s2">2. Conversiones entre porcentaje, decimal y fracción</h2>
 <div class="bloque">
@@ -257,6 +279,16 @@
 </div>
 </div>
 
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l5-1.html#conversiones" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: fracción, decimal y porcentaje (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: fracción, decimal y porcentaje</span>
+      <span class="ei-sub">Use el conversor y practique el paso entre las tres formas.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s3">3. Una sola fórmula: el triángulo del porcentaje</h2>
 <div class="bloque">
 <p>Todo problema de porcentaje relaciona tres elementos: la <strong>parte</strong>, el <strong>todo</strong> (el total de referencia) y el <strong>porcentaje</strong>. Los tres se unen en una sola fórmula:</p>
@@ -282,6 +314,16 @@
 </div>
 </div>
 </div>
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l5-1.html#triangulo" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: el triángulo del porcentaje (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: el triángulo del porcentaje</span>
+      <span class="ei-sub">Tape lo que falta y descubra qué operación resuelve cada problema.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <h2 class="seccion" id="s4">4. Los tres casos fundamentales</h2>
 <div class="bloque">
@@ -343,6 +385,16 @@
 <button class="btn btn-verificar" data-grupo="g3" type="button">Verificar</button>
 </div>
 
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l5-1.html#tres-tipos" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: los tres tipos de problemas (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: los tres tipos de problemas</span>
+      <span class="ei-sub">Identifique qué se busca —la parte, el total o el porcentaje— y resuelva con el modelo de barra.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s5">5. Método alternativo: la proporción porcentual</h2>
 <div class="bloque">
 <p>Como un porcentaje es una razón de 100, cualquier problema se puede plantear como la <strong>proporción directa</strong> estudiada en la Lección 4.2:</p>
@@ -361,6 +413,16 @@
 
 
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l5-1.html#proporcion-porcentual" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la proporción porcentual (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la proporción porcentual</span>
+      <span class="ei-sub">Plantee parte/todo = %/100, coloque la x y resuelva con el producto cruzado.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea" id="tarea">
 <h2>Tarea</h2>

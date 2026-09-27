@@ -208,6 +208,18 @@
   .volver-indice:hover{ background:var(--tema); color:#fff; }
   footer a{ color:inherit; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  a.enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--tema-bg);
+    border:2px solid var(--tema);border-left:6px solid var(--tema);border-radius:10px;
+    padding:16px 20px;margin:4px 0 22px;text-decoration:none;color:var(--tema-d);}
+  a.enlace-interactivo:hover{filter:brightness(.96);}
+  a.enlace-interactivo:focus-visible{outline:3px solid var(--tema-d);outline-offset:3px;}
+  a.enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  a.enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--tema-d);}
+  a.enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  a.enlace-interactivo .ei-cta{display:inline-block;background:var(--tema);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -256,6 +268,16 @@
 <strong>Estrategia directa:</strong> para calcular la raíz cuadrada de un cuadrado perfecto, basta con recordar qué número elevado al cuadrado lo produjo. Por eso la tabla de cuadrados perfectos memorizada en la Lección 2.2 sirve también, leída al revés, como tabla de raíces.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l2-3.html#inversa" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la raíz como operación inversa (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la raíz como operación inversa</span>
+      <span class="ei-sub">Relacione cada cuadrado perfecto con su raíz y practique en ambos sentidos.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-2-la-raiz-cuadrada-como-lado-de-un-cuadrado">2. La raíz cuadrada como lado de un cuadrado</h2>
 <div class="bloque">
 <p>La raíz cuadrada tiene un significado <strong>geométrico</strong> muy claro. El área de un cuadrado se calcula elevando su lado al cuadrado. Por lo tanto, si se conoce el área, la raíz cuadrada del área devuelve la medida del lado.</p>
@@ -313,6 +335,16 @@
 </div>
 <button class="btn" id="btn-raiz">Verificar</button>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l2-3.html#lado-cuadrado" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la raíz como lado de un cuadrado (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la raíz como lado de un cuadrado</span>
+      <span class="ei-sub">Cambie el área de un cuadrado y vea cuánto mide su lado.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-3-estimar-raices-de-numeros-no-perfectos">3. Estimar raíces de números no perfectos</h2>
 <div class="bloque">
 <p>No todos los números son cuadrados perfectos. La raíz cuadrada de un número como 50 no es un entero, pero sí se puede <strong>estimar</strong> ubicándola entre dos cuadrados perfectos consecutivos.</p>
@@ -342,6 +374,16 @@
 <strong>Atención:</strong> al estimar, conviene fijarse de qué cuadrado perfecto está más cerca el radicando. √50 está casi pegado a √49, así que su valor está apenas por encima de 7. En cambio, √60 está más cerca de 64, así que su valor se acerca a 8.
     </div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l2-3.html#estimar" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: estimar raíces no exactas (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: estimar raíces no exactas</span>
+      <span class="ei-sub">Ubique una raíz entre dos enteros consecutivos y decida a cuál está más cerca.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+
 <h2 class="seccion" id="s-4-verificacion-con-la-calculadora-ti-30xs">4. Verificación con la calculadora TI-30XS</h2>
 <div class="bloque">
 <p>La calculadora <strong>TI-30XS</strong> permite verificar raíces cuadradas con la tecla del símbolo radical (√). Es la calculadora autorizada en el examen GED, por lo que conviene familiarizarse con ella desde este nivel.</p>
@@ -419,6 +461,16 @@
 </div>
 </div>
 
+
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n2-l2-3.html#verificar" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: verificar elevando al cuadrado (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: verificar elevando al cuadrado</span>
+      <span class="ei-sub">Compruebe cada raíz con la operación inversa antes de usar la calculadora.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 
 <div class="caja-tarea">
 <h2 id="s-tarea">Tarea</h2>
