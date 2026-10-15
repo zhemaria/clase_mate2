@@ -360,23 +360,23 @@
 <h3>Práctica interactiva 1 · Sumar enteros</h3>
 <p>Escribe el resultado de cada suma y presiona «Verificar».</p>
 <div class="pregunta">
-<div class="enun">1. −8 + (−5) =</div>
-<input aria-label="Respuesta de la pregunta 1: menos ocho más menos cinco" class="campo-num" id="s1" inputmode="numeric" type="text"/>
+<div class="enun">A. −8 + (−5) =</div>
+<input aria-label="Respuesta de la pregunta A: menos ocho más menos cinco" class="campo-num" id="s1" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-s1"></div>
 </div>
 <div class="pregunta">
-<div class="enun">2. −10 + 6 =</div>
-<input aria-label="Respuesta de la pregunta 2: menos diez más seis" class="campo-num" id="s2" inputmode="numeric" type="text"/>
+<div class="enun">B. −10 + 6 =</div>
+<input aria-label="Respuesta de la pregunta B: menos diez más seis" class="campo-num" id="s2" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-s2"></div>
 </div>
 <div class="pregunta">
-<div class="enun">3. 14 + (−9) =</div>
-<input aria-label="Respuesta de la pregunta 3: catorce más menos nueve" class="campo-num" id="s3" inputmode="numeric" type="text"/>
+<div class="enun">C. 14 + (−9) =</div>
+<input aria-label="Respuesta de la pregunta C: catorce más menos nueve" class="campo-num" id="s3" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-s3"></div>
 </div>
 <div class="pregunta">
-<div class="enun">4. −7 + 7 =</div>
-<input aria-label="Respuesta de la pregunta 4: menos siete más siete" class="campo-num" id="s4" inputmode="numeric" type="text"/>
+<div class="enun">D. −7 + 7 =</div>
+<input aria-label="Respuesta de la pregunta D: menos siete más siete" class="campo-num" id="s4" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-s4"></div>
 </div>
 <button class="btn" id="btn-sumas">Verificar</button>
@@ -419,30 +419,30 @@
 <div class="practica">
 <h3>Práctica interactiva 2 · Restas reescritas como suma</h3>
 <p>Selecciona la reescritura correcta antes de calcular.</p>
-<div class="pregunta" data-correcta="b">
-<div class="enun">1. ¿Cómo se reescribe 7 − 15?</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">A. ¿Cómo se reescribe 7 − 15?</div>
 <div class="opciones">
-<div class="opcion" data-op="a">7 + 15</div>
-<div class="opcion" data-op="b">7 + (−15)</div>
+<div class="opcion" data-op="a">7 + (−15)</div>
+<div class="opcion" data-op="b">7 + 15</div>
 <div class="opcion" data-op="c">−7 + 15</div>
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="a">
-<div class="enun">2. ¿Cómo se reescribe −6 − (−8)?</div>
+<div class="pregunta" data-correcta="c">
+<div class="enun">B. ¿Cómo se reescribe −6 − (−8)?</div>
 <div class="opciones">
-<div class="opcion" data-op="a">−6 + 8</div>
-<div class="opcion" data-op="b">−6 + (−8)</div>
-<div class="opcion" data-op="c">6 + 8</div>
+<div class="opcion" data-op="a">−6 + (−8)</div>
+<div class="opcion" data-op="b">6 + 8</div>
+<div class="opcion" data-op="c">−6 + 8</div>
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="c">
-<div class="enun">3. ¿Cuál es el resultado de −3 − 10?</div>
+<div class="pregunta" data-correcta="b">
+<div class="enun">C. ¿Cuál es el resultado de −3 − 10?</div>
 <div class="opciones">
 <div class="opcion" data-op="a">7</div>
-<div class="opcion" data-op="b">13</div>
-<div class="opcion" data-op="c">−13</div>
+<div class="opcion" data-op="b">−13</div>
+<div class="opcion" data-op="c">13</div>
 </div>
 <div class="fb"></div>
 </div>
@@ -608,18 +608,18 @@
 
   /* ---- Quiz ---- */
   var preguntasQuiz = [
-    { enun: '1. Resuelve: −8 + (−6).', ops: ['−14', '−2', '2', '14'], correcta: 0 },
-    { enun: '2. Resuelve: −11 + 4.', ops: ['15', '7', '−7', '−15'], correcta: 2 },
-    { enun: '3. Resuelve: 9 + (−9).', ops: ['18', '0', '−18', '−9'], correcta: 1 },
-    { enun: '4. ¿Cómo se reescribe la resta 6 − 14?', ops: ['6 + 14', '6 + (−14)', '−6 + 14', '−6 + (−14)'], correcta: 1 },
-    { enun: '5. Resuelve: 5 − 13.', ops: ['8', '−8', '18', '−18'], correcta: 1 },
-    { enun: '6. Resuelve: −7 − (−10).', ops: ['−17', '−3', '3', '17'], correcta: 2 },
-    { enun: '7. Al sumar dos enteros del mismo signo, los valores absolutos se:', ops: ['Restan', 'Suman', 'Multiplican', 'Dividen'], correcta: 1 },
-    { enun: '8. Al sumar enteros de distinto signo, el resultado lleva el signo del número con:', ops: ['Menor valor absoluto', 'Mayor valor absoluto', 'Signo positivo siempre', 'Signo negativo siempre'], correcta: 1 },
-    { enun: '9. La temperatura era −5 °F y bajó 6 grados. La nueva temperatura es:', ops: ['1 °F', '−1 °F', '11 °F', '−11 °F'], correcta: 3 },
-    { enun: '10. Una cuenta con saldo −$60 recibe un depósito de $25. El nuevo saldo es:', ops: ['$85', '−$85', '$35', '−$35'], correcta: 3 },
-    { enun: '11. Resuelve: −12 − 8.', ops: ['−4', '4', '−20', '20'], correcta: 2 },
-    { enun: '12. Restar un número negativo equivale a:', ops: ['Sumar ese número negativo', 'Sumar su opuesto positivo', 'Restar dos veces', 'No cambia nada'], correcta: 1 }
+    { enun: 'A. Resuelve: −8 + (−6).', ops: ['−2', '2', '14', '−14'], correcta: 3 },
+    { enun: 'B. Resuelve: −11 + 4.', ops: ['15', '−7', '7', '−15'], correcta: 1 },
+    { enun: 'C. Resuelve: 9 + (−9).', ops: ['0', '18', '−18', '−9'], correcta: 0 },
+    { enun: 'D. ¿Cómo se reescribe la resta 6 − 14?', ops: ['6 + 14', '−6 + 14', '6 + (−14)', '−6 + (−14)'], correcta: 2 },
+    { enun: 'E. Resuelve: 5 − 13.', ops: ['8', '18', '−18', '−8'], correcta: 3 },
+    { enun: 'F. Resuelve: −7 − (−10).', ops: ['−17', '3', '−3', '17'], correcta: 1 },
+    { enun: 'G. Al sumar dos enteros del mismo signo, los valores absolutos se:', ops: ['Suman', 'Restan', 'Multiplican', 'Dividen'], correcta: 0 },
+    { enun: 'H. Al sumar enteros de distinto signo, el resultado lleva el signo del número con:', ops: ['Menor valor absoluto', 'Signo positivo siempre', 'Mayor valor absoluto', 'Signo negativo siempre'], correcta: 2 },
+    { enun: 'I. La temperatura era −5 °F y bajó 6 grados. La nueva temperatura es:', ops: ['1 °F', '−11 °F', '−1 °F', '11 °F'], correcta: 1 },
+    { enun: 'J. Una cuenta con saldo −$60 recibe un depósito de $25. El nuevo saldo es:', ops: ['−$35', '$85', '−$85', '$35'], correcta: 0 },
+    { enun: 'K. Resuelve: −12 − 8.', ops: ['−4', '4', '20', '−20'], correcta: 3 },
+    { enun: 'L. Restar un número negativo equivale a:', ops: ['Sumar ese número negativo', 'Restar dos veces', 'Sumar su opuesto positivo', 'No cambia nada'], correcta: 2 }
   ];
 
   var cuerpo = document.getElementById('quiz-cuerpo');

@@ -317,18 +317,18 @@
 <h3>Práctica interactiva 1 · Evaluar potencias</h3>
 <p>Escribe el valor de cada potencia y presiona «Verificar».</p>
 <div class="pregunta">
-<div class="enun">1. 3<sup>4</sup> =</div>
-<input aria-label="Respuesta de la pregunta 1: tres elevado a la cuarta potencia" class="campo-num" id="p1" inputmode="numeric" type="text"/>
+<div class="enun">A. 3<sup>4</sup> =</div>
+<input aria-label="Respuesta de la pregunta A: tres elevado a la cuarta potencia" class="campo-num" id="p1" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-p1"></div>
 </div>
 <div class="pregunta">
-<div class="enun">2. 6<sup>0</sup> =</div>
-<input aria-label="Respuesta de la pregunta 2: seis elevado a la potencia cero" class="campo-num" id="p2" inputmode="numeric" type="text"/>
+<div class="enun">B. 6<sup>0</sup> =</div>
+<input aria-label="Respuesta de la pregunta B: seis elevado a la potencia cero" class="campo-num" id="p2" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-p2"></div>
 </div>
 <div class="pregunta">
-<div class="enun">3. (−2)<sup>4</sup> =</div>
-<input aria-label="Respuesta de la pregunta 3: menos dos elevado a la cuarta potencia" class="campo-num" id="p3" inputmode="numeric" type="text"/>
+<div class="enun">C. (−2)<sup>4</sup> =</div>
+<input aria-label="Respuesta de la pregunta C: menos dos elevado a la cuarta potencia" class="campo-num" id="p3" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-p3"></div>
 </div>
 <button class="btn" id="btn-pot">Verificar</button>
@@ -375,7 +375,7 @@
 <h3>Práctica interactiva 2 · Potencias de 10</h3>
 <p>Selecciona el resultado correcto.</p>
 <div class="pregunta" data-correcta="c">
-<div class="enun">1. ¿Cuánto vale 10<sup>5</sup>?</div>
+<div class="enun">A. ¿Cuánto vale 10<sup>5</sup>?</div>
 <div class="opciones">
 <div class="opcion" data-op="a">50</div>
 <div class="opcion" data-op="b">10 000</div>
@@ -383,20 +383,20 @@
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="b">
-<div class="enun">2. ¿Cuánto vale 4.7 × 10<sup>2</sup>?</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">B. ¿Cuánto vale 4.7 × 10<sup>2</sup>?</div>
 <div class="opciones">
-<div class="opcion" data-op="a">47</div>
-<div class="opcion" data-op="b">470</div>
+<div class="opcion" data-op="a">470</div>
+<div class="opcion" data-op="b">47</div>
 <div class="opcion" data-op="c">4 700</div>
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="a">
-<div class="enun">3. ¿Cuánto vale 8 × 10<sup>4</sup>?</div>
+<div class="pregunta" data-correcta="b">
+<div class="enun">C. ¿Cuánto vale 8 × 10<sup>4</sup>?</div>
 <div class="opciones">
-<div class="opcion" data-op="a">80 000</div>
-<div class="opcion" data-op="b">8 000</div>
+<div class="opcion" data-op="a">8 000</div>
+<div class="opcion" data-op="b">80 000</div>
 <div class="opcion" data-op="c">32</div>
 </div>
 <div class="fb"></div>
@@ -440,7 +440,7 @@
 <h3>Práctica interactiva 3 · Cuadrados perfectos</h3>
 <p>Selecciona la respuesta correcta.</p>
 <div class="pregunta" data-correcta="b">
-<div class="enun">1. ¿Cuál de estos números es un cuadrado perfecto?</div>
+<div class="enun">A. ¿Cuál de estos números es un cuadrado perfecto?</div>
 <div class="opciones">
 <div class="opcion" data-op="a">50</div>
 <div class="opcion" data-op="b">144</div>
@@ -448,21 +448,21 @@
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="c">
-<div class="enun">2. ¿Cuánto vale 13²?</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">B. ¿Cuánto vale 13²?</div>
 <div class="opciones">
-<div class="opcion" data-op="a">26</div>
-<div class="opcion" data-op="b">139</div>
-<div class="opcion" data-op="c">169</div>
+<div class="opcion" data-op="a">169</div>
+<div class="opcion" data-op="b">26</div>
+<div class="opcion" data-op="c">139</div>
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="a">
-<div class="enun">3. El número 81 es el cuadrado de:</div>
+<div class="pregunta" data-correcta="c">
+<div class="enun">C. El número 81 es el cuadrado de:</div>
 <div class="opciones">
-<div class="opcion" data-op="a">9</div>
-<div class="opcion" data-op="b">8</div>
-<div class="opcion" data-op="c">40.5</div>
+<div class="opcion" data-op="a">8</div>
+<div class="opcion" data-op="b">40.5</div>
+<div class="opcion" data-op="c">9</div>
 </div>
 <div class="fb"></div>
 </div>
@@ -597,18 +597,18 @@
 
   /* ---- Quiz ---- */
   var preguntasQuiz = [
-    { enun: '1. En la potencia 7⁴, el número 4 es:', ops: ['La base', 'El exponente', 'La potencia', 'Un factor más'], correcta: 1 },
-    { enun: '2. Evalúa 4³.', ops: ['12', '64', '81', '7'], correcta: 1 },
-    { enun: '3. Evalúa 2⁶.', ops: ['12', '36', '64', '128'], correcta: 2 },
-    { enun: '4. ¿Cuánto vale 9⁰?', ops: ['0', '1', '9', '90'], correcta: 1 },
-    { enun: '5. ¿Cuánto vale 15¹?', ops: ['1', '15', '0', '225'], correcta: 1 },
-    { enun: '6. Evalúa (−4)².', ops: ['−16', '16', '−8', '8'], correcta: 1 },
-    { enun: '7. Evalúa (−2)³.', ops: ['8', '−8', '6', '−6'], correcta: 1 },
-    { enun: '8. ¿Cuánto vale 10⁴?', ops: ['40', '1 000', '10 000', '100 000'], correcta: 2 },
-    { enun: '9. ¿Cuánto vale 6.2 × 10³?', ops: ['62', '620', '6 200', '62 000'], correcta: 2 },
-    { enun: '10. ¿Cuál de estos números es un cuadrado perfecto?', ops: ['120', '169', '180', '200'], correcta: 1 },
-    { enun: '11. ¿Cuánto vale 12²?', ops: ['24', '124', '144', '288'], correcta: 2 },
-    { enun: '12. El error de pensar que 5³ = 15 ocurre porque:', ops: ['Se multiplica la base por el exponente', 'Se suma la base tres veces', 'Se eleva el exponente al cubo', 'No hay ningún error'], correcta: 0 }
+    { enun: 'A. En la potencia 7⁴, el número 4 es:', ops: ['La base', 'El exponente', 'La potencia', 'Un factor más'], correcta: 1 },
+    { enun: 'B. Evalúa 4³.', ops: ['12', '81', '7', '64'], correcta: 3 },
+    { enun: 'C. Evalúa 2⁶.', ops: ['64', '12', '36', '128'], correcta: 0 },
+    { enun: 'D. ¿Cuánto vale 9⁰?', ops: ['0', '9', '1', '90'], correcta: 2 },
+    { enun: 'E. ¿Cuánto vale 15¹?', ops: ['1', '0', '225', '15'], correcta: 3 },
+    { enun: 'F. Evalúa (−4)².', ops: ['16', '−16', '−8', '8'], correcta: 0 },
+    { enun: 'G. Evalúa (−2)³.', ops: ['8', '−8', '6', '−6'], correcta: 1 },
+    { enun: 'H. ¿Cuánto vale 10⁴?', ops: ['40', '1 000', '10 000', '100 000'], correcta: 2 },
+    { enun: 'I. ¿Cuánto vale 6.2 × 10³?', ops: ['62', '6 200', '620', '62 000'], correcta: 1 },
+    { enun: 'J. ¿Cuál de estos números es un cuadrado perfecto?', ops: ['120', '180', '200', '169'], correcta: 3 },
+    { enun: 'K. ¿Cuánto vale 12²?', ops: ['144', '24', '124', '288'], correcta: 0 },
+    { enun: 'L. El error de pensar que 5³ = 15 ocurre porque:', ops: ['Se suma la base tres veces', 'Se eleva el exponente al cubo', 'Se multiplica la base por el exponente', 'No hay ningún error'], correcta: 2 }
   ];
 
   var cuerpo = document.getElementById('quiz-cuerpo');

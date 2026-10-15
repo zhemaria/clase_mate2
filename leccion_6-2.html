@@ -482,17 +482,17 @@
 <div class="practica">
 <h3>Práctica interactiva 2 · Depreciación y aplicaciones</h3>
 <p>Selecciona la respuesta correcta. Puedes usar el teclado: tabulador para moverte y Enter para elegir.</p>
-<div class="pregunta" data-correcta="a" data-pista="Resta primero el valor residual.">
-<div class="enun">1. Una impresora de $900 tiene un valor residual de $100 y una vida útil de 4 años. ¿Cuál es la depreciación anual?</div>
+<div class="pregunta" data-correcta="c" data-pista="Resta primero el valor residual.">
+<div class="enun">A. Una impresora de $900 tiene un valor residual de $100 y una vida útil de 4 años. ¿Cuál es la depreciación anual?</div>
 <div class="opciones">
-<div class="opcion" data-op="a">$200</div>
-<div class="opcion" data-op="b">$225</div>
-<div class="opcion" data-op="c">$250</div>
+<div class="opcion" data-op="a">$225</div>
+<div class="opcion" data-op="b">$250</div>
+<div class="opcion" data-op="c">$200</div>
 </div>
 <div aria-live="polite" class="fb"></div>
 </div>
 <div class="pregunta" data-correcta="a" data-pista="Calcula D y réstalo tres veces al valor inicial.">
-<div class="enun">2. Un taladro profesional de $450 tiene un valor residual de $50 y una vida útil de 5 años. ¿Cuál es su valor contable al final del año 3?</div>
+<div class="enun">B. Un taladro profesional de $450 tiene un valor residual de $50 y una vida útil de 5 años. ¿Cuál es su valor contable al final del año 3?</div>
 <div class="opciones">
 <div class="opcion" data-op="a">$210</div>
 <div class="opcion" data-op="b">$240</div>
@@ -501,7 +501,7 @@
 <div aria-live="polite" class="fb"></div>
 </div>
 <div class="pregunta" data-correcta="b" data-pista="La tasa anual es 1 ÷ n.">
-<div class="enun">3. Un bien tiene una vida útil de 8 años. ¿Cuál es su tasa anual de depreciación lineal?</div>
+<div class="enun">C. Un bien tiene una vida útil de 8 años. ¿Cuál es su tasa anual de depreciación lineal?</div>
 <div class="opciones">
 <div class="opcion" data-op="a">8%</div>
 <div class="opcion" data-op="b">12.5%</div>
@@ -585,34 +585,34 @@
 var QUIZ_MINIMO = 7;
 var QUIZ = [
   { enun: 'Un equipo cuesta $5,000, tiene un valor residual de $1,000 y una vida útil de 4 años. ¿Cuál es la depreciación anual?',
-    ops: ['$1,000', '$1,250', '$1,500', '$4,000'], correcta: 0,
+    ops: ['$1,250', '$1,500', '$4,000', '$1,000'], correcta: 3,
     exp: 'D = (5,000 − 1,000) ÷ 4 = 4,000 ÷ 4 = $1,000.' },
   { enun: 'Una computadora de $1,300 tiene un valor residual de $100 y una vida útil de 3 años. ¿Cuál es la depreciación anual?',
-    ops: ['$300', '$400', '$433.33', '$1,200'], correcta: 1,
+    ops: ['$300', '$433.33', '$400', '$1,200'], correcta: 2,
     exp: 'D = (1,300 − 100) ÷ 3 = 1,200 ÷ 3 = $400. La opción $433.33 olvida restar el valor residual.' },
   { enun: 'Un bien tiene una vida útil de 5 años. ¿Cuál es su tasa anual de depreciación lineal?',
     ops: ['5%', '20%', '25%', '50%'], correcta: 1,
     exp: 'Tasa = 1 ÷ 5 = 0.20 = 20% por año.' },
   { enun: 'Una maquinaria de $12,000 se deprecia un 15% anual de su costo original. ¿Cuánto valor pierde cada año?',
-    ops: ['$180', '$1,200', '$1,800', '$10,200'], correcta: 2,
+    ops: ['$1,800', '$180', '$1,200', '$10,200'], correcta: 0,
     exp: '15% de 12,000 = 12,000 × 0.15 = $1,800 por año.' },
   { enun: 'Un carro de $20,000 tiene un valor residual de $2,000 y una vida útil de 6 años. ¿Cuál es su valor contable al final del año 4?',
-    ops: ['$8,000', '$12,000', '$10,000', '$6,000'], correcta: 0,
+    ops: ['$12,000', '$10,000', '$8,000', '$6,000'], correcta: 2,
     exp: 'D = 18,000 ÷ 6 = 3,000. Valor = 20,000 − 3,000 × 4 = $8,000. La opción $12,000 es la depreciación acumulada.' },
   { enun: 'Un tractor de $36,000 tiene un valor residual de $6,000 y una vida útil de 10 años. ¿Cuál es su valor contable al final del año 7?',
-    ops: ['$21,000', '$15,000', '$9,000', '$6,000'], correcta: 1,
+    ops: ['$15,000', '$21,000', '$9,000', '$6,000'], correcta: 0,
     exp: 'D = 30,000 ÷ 10 = 3,000. Valor = 36,000 − 3,000 × 7 = 36,000 − 21,000 = $15,000.' },
   { enun: 'Una tabla de depreciación lineal muestra: año 0, $4,800; año 1, $4,200; año 2, $3,600. Si el patrón continúa, ¿cuál es el valor al final del año 5?',
     ops: ['$1,200', '$1,800', '$2,400', '$3,000'], correcta: 1,
     exp: 'Pierde $600 por año. Valor = 4,800 − 600 × 5 = $1,800.' },
   { enun: 'Luis pide $10,000 al 5% de interés simple anual por 3 años para comprar un equipo que se deprecia $1,500 por año. Al terminar de pagar, ¿cuánto vale el equipo?',
-    ops: ['$5,500', '$8,500', '$11,500', '$1,500'], correcta: 0,
+    ops: ['$8,500', '$11,500', '$1,500', '$5,500'], correcta: 3,
     exp: 'Valor = 10,000 − 1,500 × 3 = $5,500. La opción $11,500 es lo que Luis devuelve por el préstamo.' },
   { enun: 'Con los datos de Luis (préstamo de $10,000 al 5% anual por 3 años; el equipo pierde $1,500 por año), ¿cuál es la diferencia entre lo que pagó en total y lo que vale el equipo al terminar el préstamo?',
-    ops: ['$1,500', '$4,500', '$6,000', '$11,500'], correcta: 2,
+    ops: ['$6,000', '$1,500', '$4,500', '$11,500'], correcta: 0,
     exp: 'Total pagado: 10,000 + 10,000 × 0.05 × 3 = $11,500. Valor del equipo: $5,500. Diferencia: $6,000.' },
   { enun: 'Una computadora cuesta $1,000 más un impuesto del 8%. Se usará 4 años y al final valdrá $80. ¿Cuál es su valor contable después de 2 años?',
-    ops: ['$500', '$540', '$580', '$830'], correcta: 2,
+    ops: ['$500', '$580', '$540', '$830'], correcta: 1,
     exp: 'Valor inicial: 1,000 × 1.08 = 1,080. D = (1,080 − 80) ÷ 4 = 250. Valor = 1,080 − 250 × 2 = $580.' }
 ];
 
@@ -682,7 +682,7 @@ var QUIZ = [
       div.className = 'pregunta';
       var enun = document.createElement('div');
       enun.className = 'enun'; enun.id = 'q' + i + '-enun';
-      enun.textContent = (i + 1) + '. ' + q.enun;
+      enun.textContent = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.charAt(i) + '. ' + q.enun;
       div.appendChild(enun);
       var ops = document.createElement('div');
       ops.className = 'opciones'; ops.setAttribute('role', 'group');

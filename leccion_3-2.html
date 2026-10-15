@@ -326,30 +326,30 @@
 <div class="practica">
 <h3>Práctica interactiva 1 · Potencias, raíces y fracciones</h3>
 <p>Selecciona el resultado correcto.</p>
-<div class="pregunta" data-correcta="b">
-<div class="enun">1. Evalúa: 4 + √36 × 2.</div>
+<div class="pregunta" data-correcta="c">
+<div class="enun">A. Evalúa: 4 + √36 × 2.</div>
 <div class="opciones">
 <div class="opcion" data-op="a">20</div>
-<div class="opcion" data-op="b">16</div>
-<div class="opcion" data-op="c">8</div>
+<div class="opcion" data-op="b">8</div>
+<div class="opcion" data-op="c">16</div>
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="a">
-<div class="enun">2. Evalúa: 5² − √(9 + 16).</div>
+<div class="pregunta" data-correcta="b">
+<div class="enun">B. Evalúa: 5² − √(9 + 16).</div>
 <div class="opciones">
-<div class="opcion" data-op="a">20</div>
-<div class="opcion" data-op="b">18</div>
+<div class="opcion" data-op="a">18</div>
+<div class="opcion" data-op="b">20</div>
 <div class="opcion" data-op="c">28</div>
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="c">
-<div class="enun">3. Evalúa: (2² + 6) ÷ (5 − 3).</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">C. Evalúa: (2² + 6) ÷ (5 − 3).</div>
 <div class="opciones">
-<div class="opcion" data-op="a">8</div>
-<div class="opcion" data-op="b">10</div>
-<div class="opcion" data-op="c">5</div>
+<div class="opcion" data-op="a">5</div>
+<div class="opcion" data-op="b">8</div>
+<div class="opcion" data-op="c">10</div>
 </div>
 <div class="fb"></div>
 </div>
@@ -421,18 +421,18 @@
 <h3>Práctica interactiva 2 · Integradoras</h3>
 <p>Escribe el resultado de cada expresión (puede ser número entero o fracción simple como <em>3/2</em>) y presiona «Verificar».</p>
 <div class="pregunta">
-<div class="enun">1. (−4)² − 10 ÷ 2 =</div>
-<input aria-label="Respuesta de la pregunta 1: paréntesis menos cuatro cerrar paréntesis al cuadrado menos diez dividido entre dos" class="campo-texto" id="i1" type="text"/>
+<div class="enun">A. (−4)² − 10 ÷ 2 =</div>
+<input aria-label="Respuesta de la pregunta A: paréntesis menos cuatro cerrar paréntesis al cuadrado menos diez dividido entre dos" class="campo-texto" id="i1" type="text"/>
 <div class="fb" id="fb-i1"></div>
 </div>
 <div class="pregunta">
-<div class="enun">2. √81 + 3² × 2 =</div>
-<input aria-label="Respuesta de la pregunta 2: raíz cuadrada de ochenta y uno más tres al cuadrado por dos" class="campo-texto" id="i2" type="text"/>
+<div class="enun">B. √81 + 3² × 2 =</div>
+<input aria-label="Respuesta de la pregunta B: raíz cuadrada de ochenta y uno más tres al cuadrado por dos" class="campo-texto" id="i2" type="text"/>
 <div class="fb" id="fb-i2"></div>
 </div>
 <div class="pregunta">
-<div class="enun">3. (5 + 7) ÷ 4 − √9 =</div>
-<input aria-label="Respuesta de la pregunta 3: paréntesis cinco más siete cerrar paréntesis dividido entre cuatro menos raíz cuadrada de nueve" class="campo-texto" id="i3" type="text"/>
+<div class="enun">C. (5 + 7) ÷ 4 − √9 =</div>
+<input aria-label="Respuesta de la pregunta C: paréntesis cinco más siete cerrar paréntesis dividido entre cuatro menos raíz cuadrada de nueve" class="campo-texto" id="i3" type="text"/>
 <div class="fb" id="fb-i3"></div>
 </div>
 <button class="btn" id="btn-int">Verificar</button>
@@ -581,18 +581,18 @@
 
   /* ---- Quiz ---- */
   var preguntasQuiz = [
-    { enun: '1. Evalúa: 2 + 3².', ops: ['25', '11', '13', '10'], correcta: 1 },
-    { enun: '2. Evalúa: √49 − 3.', ops: ['46', '7', '4', '10'], correcta: 2 },
-    { enun: '3. Evalúa: 2 × √36 + 1.', ops: ['13', '12', '37', '25'], correcta: 0 },
-    { enun: '4. Evalúa: √(4 + 21).', ops: ['5', '7', '25', '23'], correcta: 0 },
-    { enun: '5. La expresión √16 + √9 NO es igual a:', ops: ['4 + 3', '7', '√25', '3 + 4'], correcta: 2 },
-    { enun: '6. Evalúa: (12 + 4) ÷ (6 − 2).', ops: ['4', '8', '14', '20'], correcta: 0 },
-    { enun: '7. Evalúa: (−6)².', ops: ['−36', '36', '−12', '12'], correcta: 1 },
-    { enun: '8. Evalúa: −6².', ops: ['36', '−36', '−12', '12'], correcta: 1 },
-    { enun: '9. Evalúa: −4 + 3 × (−5).', ops: ['−5', '−19', '−35', '11'], correcta: 1 },
-    { enun: '10. Evalúa: (−2)³ + 10.', ops: ['18', '2', '−2', '4'], correcta: 1 },
-    { enun: '11. Evalúa: 5 + √100 ÷ 2.', ops: ['10', '15', '7.5', '5'], correcta: 0 },
-    { enun: '12. Evalúa: 2² × 3 − √81.', ops: ['3', '12', '0', '−3'], correcta: 0 }
+    { enun: 'A. Evalúa: 2 + 3².', ops: ['25', '13', '11', '10'], correcta: 2 },
+    { enun: 'B. Evalúa: √49 − 3.', ops: ['46', '7', '10', '4'], correcta: 3 },
+    { enun: 'C. Evalúa: 2 × √36 + 1.', ops: ['13', '12', '37', '25'], correcta: 0 },
+    { enun: 'D. Evalúa: √(4 + 21).', ops: ['7', '5', '25', '23'], correcta: 1 },
+    { enun: 'E. La expresión √16 + √9 NO es igual a:', ops: ['√25', '4 + 3', '7', '3 + 4'], correcta: 0 },
+    { enun: 'F. Evalúa: (12 + 4) ÷ (6 − 2).', ops: ['8', '4', '14', '20'], correcta: 1 },
+    { enun: 'G. Evalúa: (−6)².', ops: ['−36', '−12', '12', '36'], correcta: 3 },
+    { enun: 'H. Evalúa: −6².', ops: ['36', '−12', '−36', '12'], correcta: 2 },
+    { enun: 'I. Evalúa: −4 + 3 × (−5).', ops: ['−5', '−19', '−35', '11'], correcta: 1 },
+    { enun: 'J. Evalúa: (−2)³ + 10.', ops: ['18', '−2', '4', '2'], correcta: 3 },
+    { enun: 'K. Evalúa: 5 + √100 ÷ 2.', ops: ['15', '7.5', '10', '5'], correcta: 2 },
+    { enun: 'L. Evalúa: 2² × 3 − √81.', ops: ['3', '12', '0', '−3'], correcta: 0 }
   ];
 
   var cuerpo = document.getElementById('quiz-cuerpo');

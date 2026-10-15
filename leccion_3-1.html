@@ -331,26 +331,26 @@
 <div class="practica">
 <h3>Práctica interactiva 1 · ¿Qué operación va primero?</h3>
 <p>Selecciona cuál operación debe resolverse primero según PEMDAS.</p>
-<div class="pregunta" data-correcta="b">
-<div class="enun">1. En 5 + 2 × 7 − 3, la primera operación es:</div>
+<div class="pregunta" data-correcta="c">
+<div class="enun">A. En 5 + 2 × 7 − 3, la primera operación es:</div>
 <div class="opciones">
 <div class="opcion" data-op="a">La suma 5 + 2</div>
-<div class="opcion" data-op="b">La multiplicación 2 × 7</div>
-<div class="opcion" data-op="c">La resta 7 − 3</div>
+<div class="opcion" data-op="b">La resta 7 − 3</div>
+<div class="opcion" data-op="c">La multiplicación 2 × 7</div>
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="c">
-<div class="enun">2. En 20 ÷ 5 × 2, la primera operación es:</div>
+<div class="pregunta" data-correcta="b">
+<div class="enun">B. En 20 ÷ 5 × 2, la primera operación es:</div>
 <div class="opciones">
 <div class="opcion" data-op="a">La multiplicación 5 × 2</div>
-<div class="opcion" data-op="b">No importa el orden</div>
-<div class="opcion" data-op="c">La división 20 ÷ 5</div>
+<div class="opcion" data-op="b">La división 20 ÷ 5</div>
+<div class="opcion" data-op="c">No importa el orden</div>
 </div>
 <div class="fb"></div>
 </div>
 <div class="pregunta" data-correcta="a">
-<div class="enun">3. En (4 + 3)² − 5, la primera operación es:</div>
+<div class="enun">C. En (4 + 3)² − 5, la primera operación es:</div>
 <div class="opciones">
 <div class="opcion" data-op="a">La suma dentro del paréntesis</div>
 <div class="opcion" data-op="b">El exponente</div>
@@ -411,18 +411,18 @@
 <h3>Práctica interactiva 2 · Resolver paso a paso</h3>
 <p>Escribe el resultado final de cada expresión y presiona «Verificar».</p>
 <div class="pregunta">
-<div class="enun">1. 7 + 6 × 2 − 4 =</div>
-<input aria-label="Respuesta de la pregunta 1: siete más seis por dos menos cuatro" class="campo-num" id="e1" inputmode="numeric" type="text"/>
+<div class="enun">A. 7 + 6 × 2 − 4 =</div>
+<input aria-label="Respuesta de la pregunta A: siete más seis por dos menos cuatro" class="campo-num" id="e1" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-e1"></div>
 </div>
 <div class="pregunta">
-<div class="enun">2. (10 − 4)² ÷ 9 =</div>
-<input aria-label="Respuesta de la pregunta 2: paréntesis diez menos cuatro cerrar paréntesis al cuadrado dividido entre nueve" class="campo-num" id="e2" inputmode="numeric" type="text"/>
+<div class="enun">B. (10 − 4)² ÷ 9 =</div>
+<input aria-label="Respuesta de la pregunta B: paréntesis diez menos cuatro cerrar paréntesis al cuadrado dividido entre nueve" class="campo-num" id="e2" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-e2"></div>
 </div>
 <div class="pregunta">
-<div class="enun">3. 3 × [2 + (8 ÷ 4)] =</div>
-<input aria-label="Respuesta de la pregunta 3: tres por corchete dos más paréntesis ocho dividido entre cuatro" class="campo-num" id="e3" inputmode="numeric" type="text"/>
+<div class="enun">C. 3 × [2 + (8 ÷ 4)] =</div>
+<input aria-label="Respuesta de la pregunta C: tres por corchete dos más paréntesis ocho dividido entre cuatro" class="campo-num" id="e3" inputmode="numeric" type="text"/>
 <div class="fb" id="fb-e3"></div>
 </div>
 <button class="btn" id="btn-expr">Verificar</button>
@@ -590,18 +590,18 @@
 
   /* ---- Quiz ---- */
   var preguntasQuiz = [
-    { enun: '1. En PEMDAS, ¿cuántos niveles reales de prioridad existen?', ops: ['Seis', 'Cinco', 'Cuatro', 'Tres'], correcta: 2 },
-    { enun: '2. Evalúa: 8 + 3 × 5.', ops: ['55', '23', '40', '16'], correcta: 1 },
-    { enun: '3. Evalúa: 24 ÷ 6 × 2.', ops: ['8', '2', '12', '24'], correcta: 0 },
-    { enun: '4. Evalúa: (4 + 2)² ÷ 9.', ops: ['4', '6', '8', '36'], correcta: 0 },
-    { enun: '5. Evalúa: 5 + 2 × 3 − 4.', ops: ['13', '11', '7', '15'], correcta: 2 },
-    { enun: '6. En 18 − 6 + 4, ¿qué operación va primero?', ops: ['La suma 6 + 4', 'La resta 18 − 6', 'Cualquiera de las dos', 'No se puede saber'], correcta: 1 },
-    { enun: '7. Evalúa: 3 × (5 + 2²).', ops: ['27', '21', '49', '13'], correcta: 0 },
-    { enun: '8. Evalúa: [12 − (3 + 4)] × 2.', ops: ['10', '14', '−2', '18'], correcta: 0 },
-    { enun: '9. Evalúa: 2 + {6 ÷ [1 + (2 × 1)]}.', ops: ['4', '5', '8', '3'], correcta: 0 },
-    { enun: '10. En paréntesis anidados, se resuelven:', ops: ['Del exterior al interior', 'Del interior al exterior', 'En cualquier orden', 'De izquierda a derecha sin importar el nivel'], correcta: 1 },
-    { enun: '11. Evalúa: 100 ÷ (2 × 5)².', ops: ['1', '4', '10', '25'], correcta: 0 },
-    { enun: '12. Los corchetes [ ] funcionan:', ops: ['Solo en álgebra', 'Igual que los paréntesis', 'Antes que los paréntesis', 'Después de las llaves'], correcta: 1 }
+    { enun: 'A. En PEMDAS, ¿cuántos niveles reales de prioridad existen?', ops: ['Cuatro', 'Seis', 'Cinco', 'Tres'], correcta: 0 },
+    { enun: 'B. Evalúa: 8 + 3 × 5.', ops: ['55', '40', '16', '23'], correcta: 3 },
+    { enun: 'C. Evalúa: 24 ÷ 6 × 2.', ops: ['2', '8', '12', '24'], correcta: 1 },
+    { enun: 'D. Evalúa: (4 + 2)² ÷ 9.', ops: ['6', '8', '4', '36'], correcta: 2 },
+    { enun: 'E. Evalúa: 5 + 2 × 3 − 4.', ops: ['7', '13', '11', '15'], correcta: 0 },
+    { enun: 'F. En 18 − 6 + 4, ¿qué operación va primero?', ops: ['La suma 6 + 4', 'La resta 18 − 6', 'Cualquiera de las dos', 'No se puede saber'], correcta: 1 },
+    { enun: 'G. Evalúa: 3 × (5 + 2²).', ops: ['21', '49', '27', '13'], correcta: 2 },
+    { enun: 'H. Evalúa: [12 − (3 + 4)] × 2.', ops: ['14', '10', '−2', '18'], correcta: 1 },
+    { enun: 'I. Evalúa: 2 + {6 ÷ [1 + (2 × 1)]}.', ops: ['5', '8', '3', '4'], correcta: 3 },
+    { enun: 'J. En paréntesis anidados, se resuelven:', ops: ['Del exterior al interior', 'En cualquier orden', 'Del interior al exterior', 'De izquierda a derecha sin importar el nivel'], correcta: 2 },
+    { enun: 'K. Evalúa: 100 ÷ (2 × 5)².', ops: ['4', '10', '25', '1'], correcta: 3 },
+    { enun: 'L. Los corchetes [ ] funcionan:', ops: ['Solo en álgebra', 'Igual que los paréntesis', 'Antes que los paréntesis', 'Después de las llaves'], correcta: 1 }
   ];
 
   var cuerpo = document.getElementById('quiz-cuerpo');

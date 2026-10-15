@@ -426,39 +426,39 @@
 <div class="practica">
 <h3>Práctica interactiva 1 · Identificar el tipo de evento</h3>
 <p>Selecciona si cada evento es imposible, posible o seguro.</p>
-<div class="pregunta" data-correcta="b">
-<div class="enun">1. Sacar un número par al lanzar un dado de seis caras.</div>
+<div class="pregunta" data-correcta="c">
+<div class="enun">A. Sacar un número par al lanzar un dado de seis caras.</div>
 <div class="opciones">
 <div class="opcion" data-op="a">Imposible (P = 0)</div>
-<div class="opcion" data-op="b">Posible (0 &lt; P &lt; 1)</div>
+<div class="opcion" data-op="b">Seguro (P = 1)</div>
+<div class="opcion" data-op="c">Posible (0 &lt; P &lt; 1)</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">B. Que el día tenga 24 horas.</div>
+<div class="opciones">
+<div class="opcion" data-op="a">Seguro (P = 1)</div>
+<div class="opcion" data-op="b">Imposible (P = 0)</div>
+<div class="opcion" data-op="c">Posible (0 &lt; P &lt; 1)</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="b">
+<div class="enun">C. Sacar un 10 al lanzar un dado de seis caras.</div>
+<div class="opciones">
+<div class="opcion" data-op="a">Posible (0 &lt; P &lt; 1)</div>
+<div class="opcion" data-op="b">Imposible (P = 0)</div>
 <div class="opcion" data-op="c">Seguro (P = 1)</div>
 </div>
 <div class="fb"></div>
 </div>
 <div class="pregunta" data-correcta="c">
-<div class="enun">2. Que el día tenga 24 horas.</div>
+<div class="enun">D. Sacar una bola roja de una urna con 4 rojas y 6 azules.</div>
 <div class="opciones">
 <div class="opcion" data-op="a">Imposible (P = 0)</div>
-<div class="opcion" data-op="b">Posible (0 &lt; P &lt; 1)</div>
-<div class="opcion" data-op="c">Seguro (P = 1)</div>
-</div>
-<div class="fb"></div>
-</div>
-<div class="pregunta" data-correcta="a">
-<div class="enun">3. Sacar un 10 al lanzar un dado de seis caras.</div>
-<div class="opciones">
-<div class="opcion" data-op="a">Imposible (P = 0)</div>
-<div class="opcion" data-op="b">Posible (0 &lt; P &lt; 1)</div>
-<div class="opcion" data-op="c">Seguro (P = 1)</div>
-</div>
-<div class="fb"></div>
-</div>
-<div class="pregunta" data-correcta="b">
-<div class="enun">4. Sacar una bola roja de una urna con 4 rojas y 6 azules.</div>
-<div class="opciones">
-<div class="opcion" data-op="a">Imposible (P = 0)</div>
-<div class="opcion" data-op="b">Posible (0 &lt; P &lt; 1)</div>
-<div class="opcion" data-op="c">Seguro (P = 1)</div>
+<div class="opcion" data-op="b">Seguro (P = 1)</div>
+<div class="opcion" data-op="c">Posible (0 &lt; P &lt; 1)</div>
 </div>
 <div class="fb"></div>
 </div>
@@ -504,18 +504,18 @@
 <h3>Práctica interactiva 2 · Calcular probabilidades</h3>
 <p>Escribe la probabilidad como fracción simplificada (por ejemplo <em>1/2</em>) y presiona «Verificar».</p>
 <div class="pregunta">
-<div class="enun">1. P(sacar un 6 al lanzar un dado) =</div>
-<input aria-label="Respuesta de la pregunta 1: probabilidad de sacar un seis al lanzar un dado" class="campo-texto" id="p1" type="text"/>
+<div class="enun">A. P(sacar un 6 al lanzar un dado) =</div>
+<input aria-label="Respuesta de la pregunta A: probabilidad de sacar un seis al lanzar un dado" class="campo-texto" id="p1" type="text"/>
 <div class="fb" id="fb-p1"></div>
 </div>
 <div class="pregunta">
-<div class="enun">2. P(sacar cara al lanzar una moneda) =</div>
-<input aria-label="Respuesta de la pregunta 2: probabilidad de sacar cara al lanzar una moneda" class="campo-texto" id="p2" type="text"/>
+<div class="enun">B. P(sacar cara al lanzar una moneda) =</div>
+<input aria-label="Respuesta de la pregunta B: probabilidad de sacar cara al lanzar una moneda" class="campo-texto" id="p2" type="text"/>
 <div class="fb" id="fb-p2"></div>
 </div>
 <div class="pregunta">
-<div class="enun">3. P(sacar un número impar al lanzar un dado) =</div>
-<input aria-label="Respuesta de la pregunta 3: probabilidad de sacar un número impar al lanzar un dado" class="campo-texto" id="p3" type="text"/>
+<div class="enun">C. P(sacar un número impar al lanzar un dado) =</div>
+<input aria-label="Respuesta de la pregunta C: probabilidad de sacar un número impar al lanzar un dado" class="campo-texto" id="p3" type="text"/>
 <div class="fb" id="fb-p3"></div>
 </div>
 <button class="btn" id="btn-prob">Verificar</button>
@@ -698,16 +698,16 @@
   /* ---- Quiz de la lección ----
      Solo probabilidad simple ---- */
   var preguntasQuiz = [
-    { enun: '1. P(sacar un 3 al lanzar un dado de seis caras):', ops: ['1/2', '1/3', '1/6', '3/6'], correcta: 2 },
-    { enun: '2. P(sacar cara al lanzar una moneda):', ops: ['1/4', '1/3', '1/2', '2/3'], correcta: 2 },
-    { enun: '3. P(sacar un número par al lanzar un dado de seis caras):', ops: ['1/6', '1/3', '1/2', '2/3'], correcta: 2 },
-    { enun: '4. Urna con 5 rojas, 3 azules y 2 verdes. P(sacar una roja):', ops: ['1/5', '1/2', '3/10', '5/2'], correcta: 1 },
-    { enun: '5. P(sacar un número mayor que 4 al lanzar un dado):', ops: ['1/6', '1/3', '1/2', '2/3'], correcta: 1 },
-    { enun: '6. La probabilidad de un evento imposible es:', ops: ['0', '0.5', '1', '−1'], correcta: 0 },
-    { enun: '7. La probabilidad de un evento seguro es:', ops: ['0', '0.5', '1', '100'], correcta: 2 },
-    { enun: '8. Una probabilidad de 1/4 equivale, en porcentaje, a:', ops: ['14%', '25%', '40%', '75%'], correcta: 1 },
-    { enun: '9. Baraja simplificada de 20 cartas (5 por palo). P(sacar un corazón):', ops: ['1/20', '1/5', '1/4', '5/4'], correcta: 2 },
-    { enun: '10. ¿Cuál de estos valores NO puede ser una probabilidad?', ops: ['0', '0.35', '1', '1.5'], correcta: 3 }
+    { enun: 'A. P(sacar un 3 al lanzar un dado de seis caras):', ops: ['1/6', '1/2', '1/3', '3/6'], correcta: 0 },
+    { enun: 'B. P(sacar cara al lanzar una moneda):', ops: ['1/4', '1/3', '2/3', '1/2'], correcta: 3 },
+    { enun: 'C. P(sacar un número par al lanzar un dado de seis caras):', ops: ['1/6', '1/3', '1/2', '2/3'], correcta: 2 },
+    { enun: 'D. Urna con 5 rojas, 3 azules y 2 verdes. P(sacar una roja):', ops: ['1/5', '1/2', '3/10', '5/2'], correcta: 1 },
+    { enun: 'E. P(sacar un número mayor que 4 al lanzar un dado):', ops: ['1/3', '1/6', '1/2', '2/3'], correcta: 0 },
+    { enun: 'F. La probabilidad de un evento imposible es:', ops: ['0.5', '0', '1', '−1'], correcta: 1 },
+    { enun: 'G. La probabilidad de un evento seguro es:', ops: ['0', '0.5', '1', '100'], correcta: 2 },
+    { enun: 'H. Una probabilidad de 1/4 equivale, en porcentaje, a:', ops: ['14%', '40%', '75%', '25%'], correcta: 3 },
+    { enun: 'I. Baraja simplificada de 20 cartas (5 por palo). P(sacar un corazón):', ops: ['1/20', '1/5', '1/4', '5/4'], correcta: 2 },
+    { enun: 'J. ¿Cuál de estos valores NO puede ser una probabilidad?', ops: ['1.5', '0', '0.35', '1'], correcta: 0 }
   ];
 
   var cuerpo = document.getElementById('quiz-cuerpo');

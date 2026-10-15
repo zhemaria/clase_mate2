@@ -358,32 +358,32 @@
 <div class="practica">
 <h3>Práctica interactiva 1 · ¿Circunferencia o área?</h3>
 <p>Selecciona qué medida del círculo conviene calcular en cada situación.</p>
-<div class="pregunta" data-correcta="b">
-<div class="enun">1. ¿Cuánta cerca se necesita para rodear un jardín circular?</div>
-<div class="opciones">
-<div class="opcion" data-op="a">Área (πr²)</div>
-<div class="opcion" data-op="b">Circunferencia (πd)</div>
-</div>
-<div class="fb"></div>
-</div>
 <div class="pregunta" data-correcta="a">
-<div class="enun">2. ¿Cuánto césped cubre el mismo jardín circular?</div>
+<div class="enun">A. ¿Cuánta cerca se necesita para rodear un jardín circular?</div>
 <div class="opciones">
-<div class="opcion" data-op="a">Área (πr²)</div>
-<div class="opcion" data-op="b">Circunferencia (πd)</div>
-</div>
-<div class="fb"></div>
-</div>
-<div class="pregunta" data-correcta="a">
-<div class="enun">3. ¿Cuánta pizza queda en una pizza redonda de 14 in de diámetro?</div>
-<div class="opciones">
-<div class="opcion" data-op="a">Área (πr²)</div>
-<div class="opcion" data-op="b">Circunferencia (πd)</div>
+<div class="opcion" data-op="a">Circunferencia (πd)</div>
+<div class="opcion" data-op="b">Área (πr²)</div>
 </div>
 <div class="fb"></div>
 </div>
 <div class="pregunta" data-correcta="b">
-<div class="enun">4. ¿Qué distancia avanza una rueda en una vuelta?</div>
+<div class="enun">B. ¿Cuánto césped cubre el mismo jardín circular?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">Circunferencia (πd)</div>
+<div class="opcion" data-op="b">Área (πr²)</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="a">
+<div class="enun">C. ¿Cuánta pizza queda en una pizza redonda de 14 in de diámetro?</div>
+<div class="opciones">
+<div class="opcion" data-op="a">Área (πr²)</div>
+<div class="opcion" data-op="b">Circunferencia (πd)</div>
+</div>
+<div class="fb"></div>
+</div>
+<div class="pregunta" data-correcta="b">
+<div class="enun">D. ¿Qué distancia avanza una rueda en una vuelta?</div>
 <div class="opciones">
 <div class="opcion" data-op="a">Área (πr²)</div>
 <div class="opcion" data-op="b">Circunferencia (πd)</div>
@@ -470,18 +470,18 @@
 <h3>Práctica interactiva 2 · Áreas de círculo</h3>
 <p>Usa π ≈ 3.14. Escribe el resultado (solo el número, con decimales si hace falta) y presiona «Verificar».</p>
 <div class="pregunta">
-<div class="enun">1. r = 4 cm. Área del círculo =</div>
-<input aria-label="Respuesta de la pregunta 1: área de un círculo de radio cuatro centímetros" class="campo-num" id="ar1" inputmode="decimal" type="text"/>
+<div class="enun">A. r = 4 cm. Área del círculo =</div>
+<input aria-label="Respuesta de la pregunta A: área de un círculo de radio cuatro centímetros" class="campo-num" id="ar1" inputmode="decimal" type="text"/>
 <div class="fb" id="fb-ar1"></div>
 </div>
 <div class="pregunta">
-<div class="enun">2. d = 12 m. Área del círculo =</div>
-<input aria-label="Respuesta de la pregunta 2: área de un círculo de diámetro doce metros" class="campo-num" id="ar2" inputmode="decimal" type="text"/>
+<div class="enun">B. d = 12 m. Área del círculo =</div>
+<input aria-label="Respuesta de la pregunta B: área de un círculo de diámetro doce metros" class="campo-num" id="ar2" inputmode="decimal" type="text"/>
 <div class="fb" id="fb-ar2"></div>
 </div>
 <div class="pregunta">
-<div class="enun">3. r = 8 pulgadas. Área del semicírculo =</div>
-<input aria-label="Respuesta de la pregunta 3: área de un semicírculo de radio ocho pulgadas" class="campo-num" id="ar3" inputmode="decimal" type="text"/>
+<div class="enun">C. r = 8 pulgadas. Área del semicírculo =</div>
+<input aria-label="Respuesta de la pregunta C: área de un semicírculo de radio ocho pulgadas" class="campo-num" id="ar3" inputmode="decimal" type="text"/>
 <div class="fb" id="fb-ar3"></div>
 </div>
 <button class="btn" id="btn-area">Verificar</button>
@@ -657,18 +657,18 @@
 
   /* ---- Quiz ---- */
   var preguntasQuiz = [
-    { enun: '1. La fórmula del área del círculo es:', ops: ['A = π · d', 'A = 2 · π · r', 'A = π · r²', 'A = π · r'], correcta: 2 },
-    { enun: '2. Si r = 3 cm, el área del círculo (π = 3.14) es:', ops: ['9.42 cm²', '18.84 cm²', '28.26 cm²', '6.28 cm²'], correcta: 2 },
-    { enun: '3. Si r = 10 m, el área del círculo es:', ops: ['31.4 m²', '62.8 m²', '100 m²', '314 m²'], correcta: 3 },
-    { enun: '4. Si d = 8 cm, el área del círculo es:', ops: ['25.12 cm²', '50.24 cm²', '200.96 cm²', '12.56 cm²'], correcta: 1 },
-    { enun: '5. Si A = 78.5 m², el radio (π = 3.14) es:', ops: ['5 m', '10 m', '25 m', '15.7 m'], correcta: 0 },
-    { enun: '6. Para calcular cuánta cerca rodea un jardín circular, se usa:', ops: ['Área (π·r²)', 'Circunferencia (π·d)', 'Diámetro × 2', 'Solo el radio'], correcta: 1 },
-    { enun: '7. Para calcular cuánto césped cubre el mismo jardín, se usa:', ops: ['Área (π·r²)', 'Circunferencia (π·d)', 'Diámetro × 2', 'Solo el radio'], correcta: 0 },
-    { enun: '8. El área de un semicírculo de radio 6 cm es:', ops: ['18.84 cm²', '37.68 cm²', '56.52 cm²', '113.04 cm²'], correcta: 2 },
-    { enun: '9. Una pista: rectángulo 50 m × 20 m + dos semicírculos de diámetro 20 m. Área total (π = 3.14):', ops: ['1 000 m²', '1 314 m²', '1 628 m²', '1 256 m²'], correcta: 1 },
-    { enun: '10. Una pizza de diámetro 14 in se reparte en 8 porciones. ¿Cuál es el área aproximada de cada porción?', ops: ['Aprox. 19.2 in²', 'Aprox. 12.4 in²', 'Aprox. 25 in²', 'Aprox. 49 in²'], correcta: 0 },
-    { enun: '11. La unidad correcta para expresar un área es:', ops: ['Metros (m)', 'Metros cuadrados (m²)', 'Pulgadas', 'Litros'], correcta: 1 },
-    { enun: '12. En la fórmula A = π · r², el cuadrado afecta:', ops: ['A π y al radio', 'Solo al radio', 'Solo a π', 'A todo el resultado'], correcta: 1 }
+    { enun: 'A. La fórmula del área del círculo es:', ops: ['A = π · d', 'A = 2 · π · r', 'A = π · r²', 'A = π · r'], correcta: 2 },
+    { enun: 'B. Si r = 3 cm, el área del círculo (π = 3.14) es:', ops: ['28.26 cm²', '9.42 cm²', '18.84 cm²', '6.28 cm²'], correcta: 0 },
+    { enun: 'C. Si r = 10 m, el área del círculo es:', ops: ['31.4 m²', '62.8 m²', '100 m²', '314 m²'], correcta: 3 },
+    { enun: 'D. Si d = 8 cm, el área del círculo es:', ops: ['25.12 cm²', '50.24 cm²', '200.96 cm²', '12.56 cm²'], correcta: 1 },
+    { enun: 'E. Si A = 78.5 m², el radio (π = 3.14) es:', ops: ['10 m', '25 m', '5 m', '15.7 m'], correcta: 2 },
+    { enun: 'F. Para calcular cuánta cerca rodea un jardín circular, se usa:', ops: ['Área (π·r²)', 'Diámetro × 2', 'Solo el radio', 'Circunferencia (π·d)'], correcta: 3 },
+    { enun: 'G. Para calcular cuánto césped cubre el mismo jardín, se usa:', ops: ['Área (π·r²)', 'Circunferencia (π·d)', 'Diámetro × 2', 'Solo el radio'], correcta: 0 },
+    { enun: 'H. El área de un semicírculo de radio 6 cm es:', ops: ['18.84 cm²', '56.52 cm²', '37.68 cm²', '113.04 cm²'], correcta: 1 },
+    { enun: 'I. Una pista: rectángulo 50 m × 20 m + dos semicírculos de diámetro 20 m. Área total (π = 3.14):', ops: ['1 000 m²', '1 628 m²', '1 314 m²', '1 256 m²'], correcta: 2 },
+    { enun: 'J. Una pizza de diámetro 14 in se reparte en 8 porciones. ¿Cuál es el área aproximada de cada porción?', ops: ['Aprox. 12.4 in²', 'Aprox. 25 in²', 'Aprox. 49 in²', 'Aprox. 19.2 in²'], correcta: 3 },
+    { enun: 'K. La unidad correcta para expresar un área es:', ops: ['Metros (m)', 'Metros cuadrados (m²)', 'Pulgadas', 'Litros'], correcta: 1 },
+    { enun: 'L. En la fórmula A = π · r², el cuadrado afecta:', ops: ['Solo al radio', 'A π y al radio', 'Solo a π', 'A todo el resultado'], correcta: 0 }
   ];
 
   var cuerpo = document.getElementById('quiz-cuerpo');
