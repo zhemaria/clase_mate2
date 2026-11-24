@@ -421,7 +421,7 @@
 <div class="practica">
 <h3>Práctica interactiva 1 · ¿Adición o sustracción?</h3>
 <p>Selecciona la estrategia más cómoda para cada caso.</p>
-<div class="pregunta" data-correcta="b">
+<div class="pregunta" data-correcta="b" data-explica="La L se parte en dos rectángulos y se suman sus áreas. Es adición.">
 <div class="enun">A. Una habitación en forma de L se descompone naturalmente en dos rectángulos.</div>
 <div class="opciones">
 <div class="opcion" data-op="a">Sustracción</div>
@@ -429,7 +429,7 @@
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="a">
+<div class="pregunta" data-correcta="a" data-explica="Al rectángulo completo le falta un pedazo: se calcula el rectángulo y se le resta el triángulo. Es sustracción.">
 <div class="enun">B. Un campo rectangular al que se le quitó un triángulo en una esquina.</div>
 <div class="opciones">
 <div class="opcion" data-op="a">Sustracción</div>
@@ -437,7 +437,7 @@
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="b">
+<div class="pregunta" data-correcta="b" data-explica="La casa es un rectángulo más un triángulo encima: se suman las dos áreas. Es adición.">
 <div class="enun">C. Una casa dibujada como un rectángulo con un triángulo encima (el techo).</div>
 <div class="opciones">
 <div class="opcion" data-op="a">Sustracción</div>
@@ -825,6 +825,7 @@
 </style>
 <script id="dos-intentos" data-trato="tu">
 /* ── Dos intentos (GEDparaHispanos · LearnGED) ──
+   Preguntas de dos opciones: la explicación se muestra de inmediato (un segundo intento no enseña nada).
    Filosofía de Lumi: ante el primer error, una pista y otro intento;
    en el segundo intento actúa el programa original de la lección,
    que muestra la respuesta correcta y su explicación. */
@@ -885,6 +886,13 @@
     if (op.classList.contains('di-mal')) { frena(ev); return; }
     var est = p.g.getAttribute('data-di');
     if (est === 'fin') return;
+    if (p.g.querySelectorAll('.opcion').length <= 2) {             /* dos opciones: se explica de inmediato */
+      setTimeout(function () {
+        var ex = p.g.getAttribute('data-explica');
+        if (ex && p.fb && p.fb.textContent.indexOf(ex) < 0) p.fb.appendChild(document.createTextNode(' ' + ex));
+      }, 0);
+      return;
+    }
     if (p.ok || est === '1') { p.g.setAttribute('data-di', 'fin'); return; }
     frena(ev);
     p.g.setAttribute('data-di', '1');
@@ -966,7 +974,8 @@
       qs.forEach(function (q) {
         var el = M.elegida(q), ok = el ? M.esCorrecta(q, el) : false;
         if (ok === null) desconocido = true;
-        if (ok) bien++; else revisar.push({ q: q, el: el });
+        if (ok) bien++;
+        else if (M.ops(q).length > 2) revisar.push({ q: q, el: el });   /* dos opciones: se explica al corregir */
       });
       if (desconocido || !revisar.length) { ronda = 3; return; }  /* todo bien al primer intento */
       frena(ev);

@@ -358,7 +358,7 @@
 <div class="practica">
 <h3>Práctica interactiva 1 · ¿Circunferencia o área?</h3>
 <p>Selecciona qué medida del círculo conviene calcular en cada situación.</p>
-<div class="pregunta" data-correcta="a">
+<div class="pregunta" data-correcta="a" data-explica="La cerca va alrededor del borde del jardín. Eso es la circunferencia, πd.">
 <div class="enun">A. ¿Cuánta cerca se necesita para rodear un jardín circular?</div>
 <div class="opciones">
 <div class="opcion" data-op="a">Circunferencia (πd)</div>
@@ -366,7 +366,7 @@
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="b">
+<div class="pregunta" data-correcta="b" data-explica="El césped cubre toda la superficie del jardín. Eso es el área, πr².">
 <div class="enun">B. ¿Cuánto césped cubre el mismo jardín circular?</div>
 <div class="opciones">
 <div class="opcion" data-op="a">Circunferencia (πd)</div>
@@ -374,7 +374,7 @@
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="a">
+<div class="pregunta" data-correcta="a" data-explica="La cantidad de pizza es la superficie que cubre. Eso es el área, πr²; con 14 in de diámetro, el radio es 7 in.">
 <div class="enun">C. ¿Cuánta pizza queda en una pizza redonda de 14 in de diámetro?</div>
 <div class="opciones">
 <div class="opcion" data-op="a">Área (πr²)</div>
@@ -382,7 +382,7 @@
 </div>
 <div class="fb"></div>
 </div>
-<div class="pregunta" data-correcta="b">
+<div class="pregunta" data-correcta="b" data-explica="En una vuelta, la rueda avanza lo que mide su borde. Eso es la circunferencia, πd.">
 <div class="enun">D. ¿Qué distancia avanza una rueda en una vuelta?</div>
 <div class="opciones">
 <div class="opcion" data-op="a">Área (πr²)</div>
@@ -782,6 +782,7 @@
 </style>
 <script id="dos-intentos" data-trato="tu">
 /* ── Dos intentos (GEDparaHispanos · LearnGED) ──
+   Preguntas de dos opciones: la explicación se muestra de inmediato (un segundo intento no enseña nada).
    Filosofía de Lumi: ante el primer error, una pista y otro intento;
    en el segundo intento actúa el programa original de la lección,
    que muestra la respuesta correcta y su explicación. */
@@ -842,6 +843,13 @@
     if (op.classList.contains('di-mal')) { frena(ev); return; }
     var est = p.g.getAttribute('data-di');
     if (est === 'fin') return;
+    if (p.g.querySelectorAll('.opcion').length <= 2) {             /* dos opciones: se explica de inmediato */
+      setTimeout(function () {
+        var ex = p.g.getAttribute('data-explica');
+        if (ex && p.fb && p.fb.textContent.indexOf(ex) < 0) p.fb.appendChild(document.createTextNode(' ' + ex));
+      }, 0);
+      return;
+    }
     if (p.ok || est === '1') { p.g.setAttribute('data-di', 'fin'); return; }
     frena(ev);
     p.g.setAttribute('data-di', '1');
@@ -923,7 +931,8 @@
       qs.forEach(function (q) {
         var el = M.elegida(q), ok = el ? M.esCorrecta(q, el) : false;
         if (ok === null) desconocido = true;
-        if (ok) bien++; else revisar.push({ q: q, el: el });
+        if (ok) bien++;
+        else if (M.ops(q).length > 2) revisar.push({ q: q, el: el });   /* dos opciones: se explica al corregir */
       });
       if (desconocido || !revisar.length) { ronda = 3; return; }  /* todo bien al primer intento */
       frena(ev);
